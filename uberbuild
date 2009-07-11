@@ -1,0 +1,6 @@
+#!/bin/sh
+
+(find . -name target -type d | xargs rm -rf) && \
+    rm -rf dist && \
+    mvn -Dit install site-deploy -DtestDistributionUrl=file:`pwd`/target/dist && \
+    open dist/site/index.html
