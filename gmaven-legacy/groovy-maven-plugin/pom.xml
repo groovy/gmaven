@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (C) 2006-2007 the original author or authors.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<!-- $Id$ -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.codehaus.groovy.maven</groupId>
+        <artifactId>gmaven-legacy</artifactId>
+        <version>1.0-rc-3</version>
+    </parent>
+
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>groovy-maven-plugin</artifactId>
+    <name>GMaven Legacy :: Groovy Maven Plugin</name>
+    <packaging>maven-plugin</packaging>
+
+    <description>
+        Adapts the latest Groovy Maven Plugin to the legacy 'org.codehaus.mojo:groovy-maven-plugin' location.
+    </description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.codehaus.groovy.maven</groupId>
+            <artifactId>gmaven-plugin</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!--
+    NOTE: Using the 'Mojo' projects distribution configuration here to allow this module to be published to the correct
+          location to pick up the 'groovy' plugin prefix support.
+    -->
+    
+    <distributionManagement>
+        <repository>
+            <id>codehaus.org</id>
+            <name>Mojo Central Repository</name>
+            <url>dav:https://dav.codehaus.org/repository/mojo/</url>
+        </repository>
+        <snapshotRepository>
+            <id>codehaus.org</id>
+            <name>Mojo Central Development Repository</name>
+            <url>dav:https://dav.codehaus.org/snapshots.repository/mojo/</url>
+        </snapshotRepository>
+        <site>
+            <id>codehaus.org</id>
+            <name>Mojo Website</name>
+            <url>dav:https://dav.codehaus.org/mojo/groovy-maven-plugin/</url>
+        </site>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.codehaus.groovy.maven</groupId>
+                                    <artifactId>gmaven-plugin</artifactId>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.groovy.maven</groupId>
+                <artifactId>gmaven-plugin</artifactId>
+
+                <executions>
+                    <execution>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <!--
+                            Massage the plugin descriptor and then re-write it for inclusion in the plugin jar.
+                            -->
+                            <source>
+                                def input = new File(pom.basedir, 'target/dependency/META-INF/maven/plugin.xml')
+                                def output = new File(pom.basedir, 'target/classes/META-INF/maven/plugin.xml')
+                                
+                                if (output.exists()) {
+                                    output.delete()
+                                }
+                                else {
+                                    output.parentFile.mkdirs()
+                                }
+                                
+                                def plugin = new XmlParser().parse(input)
+                                
+                                plugin.groupId[0].value = [ 'org.codehaus.mojo' ]
+                                plugin.artifactId[0].value = [ 'groovy-maven-plugin' ]
+                                
+                                new XmlNodePrinter(output.newPrintWriter()).print(plugin)
+                            </source>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+
