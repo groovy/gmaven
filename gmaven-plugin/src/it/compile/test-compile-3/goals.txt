@@ -1,0 +1,1 @@
+clean compile org.codehaus.groovy.maven:gmaven-plugin:testing:testCompile test
