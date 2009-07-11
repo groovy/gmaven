@@ -1,0 +1,1 @@
+clean org.codehaus.groovy.maven:gmaven-plugin:testing:execute
