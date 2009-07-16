@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.v1_6.stubgen;
+package org.codehaus.gmaven.runtime.v1_6.stubgen;
 
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.ClassDef;
-import org.codehaus.groovy.maven.runtime.support.stubgen.render.Renderer;
-import org.codehaus.groovy.maven.runtime.support.stubgen.render.RendererFactorySupport;
-import org.codehaus.groovy.maven.runtime.support.stubgen.render.RendererSupport;
+import org.codehaus.gmaven.runtime.support.stubgen.model.ClassDef;
+import org.codehaus.gmaven.runtime.support.stubgen.render.Renderer;
+import org.codehaus.gmaven.runtime.support.stubgen.render.RendererFactorySupport;
+import org.codehaus.gmaven.runtime.support.stubgen.render.RendererSupport;
 
 /**
  * Provides source defintion renderers for Groovy 1.6.

@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.v1_6;
+package org.codehaus.gmaven.runtime.v1_6;
 
 import groovy.lang.Binding;
 import org.codehaus.gmaven.common.StreamPair;
 import org.codehaus.gmaven.feature.Component;
-import org.codehaus.groovy.maven.support.ComponentSupport;
-import org.codehaus.groovy.maven.support.FeatureSupport;
-import org.codehaus.groovy.maven.runtime.Console;
-import org.codehaus.groovy.maven.runtime.support.util.NoExitSecurityManager;
+import org.codehaus.gmaven.feature.support.FeatureSupport;
+import org.codehaus.gmaven.feature.support.ComponentSupport;
+import org.codehaus.gmaven.runtime.Console;
+import org.codehaus.gmaven.runtime.support.util.NoExitSecurityManager;
 
 import java.util.EventObject;
 

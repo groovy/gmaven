@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.v1_6;
+package org.codehaus.gmaven.runtime.v1_6;
 
 import groovy.lang.GroovyClassLoader;
 import groovy.lang.GroovyCodeSource;
 import groovy.lang.GroovyResourceLoader;
 import org.codehaus.gmaven.feature.Component;
 import org.codehaus.gmaven.feature.ComponentException;
-import org.codehaus.groovy.maven.support.ComponentSupport;
-import org.codehaus.groovy.maven.support.FeatureSupport;
-import org.codehaus.groovy.maven.runtime.ClassFactory;
-import org.codehaus.groovy.maven.runtime.support.util.ResourceLoaderImpl;
+import org.codehaus.gmaven.feature.support.FeatureSupport;
+import org.codehaus.gmaven.feature.support.ComponentSupport;
+import org.codehaus.gmaven.runtime.ClassFactory;
+import org.codehaus.gmaven.runtime.support.util.ResourceLoaderImpl;
 import org.codehaus.gmaven.runtime.util.ClassSource;
 import org.codehaus.gmaven.runtime.util.ResourceLoader;
 
