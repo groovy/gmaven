@@ -19,7 +19,7 @@ package org.codehaus.groovy.maven.plugin;
 import org.apache.maven.shared.io.scan.StaleResourceScanner;
 import org.apache.maven.shared.io.scan.mapping.SourceMapping;
 import org.apache.maven.shared.model.fileset.FileSet;
-import org.codehaus.groovy.maven.common.ArtifactItem;
+import org.codehaus.gmaven.common.ArtifactItem;
 
 import java.io.File;
 import java.io.IOException;

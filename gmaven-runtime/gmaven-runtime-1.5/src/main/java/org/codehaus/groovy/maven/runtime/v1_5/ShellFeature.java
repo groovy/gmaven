@@ -18,7 +18,7 @@ package org.codehaus.groovy.maven.runtime.v1_5;
 
 import groovy.lang.Binding;
 import groovy.ui.InteractiveShell;
-import org.codehaus.groovy.maven.common.StreamPair;
+import org.codehaus.gmaven.common.StreamPair;
 import org.codehaus.groovy.maven.feature.Component;
 import org.codehaus.groovy.maven.feature.Configuration;
 import org.codehaus.groovy.maven.feature.support.ComponentSupport;

@@ -22,7 +22,7 @@ import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.settings.Settings;
-import org.codehaus.groovy.maven.common.ArtifactItem;
+import org.codehaus.gmaven.common.ArtifactItem;
 import org.codehaus.groovy.maven.feature.Component;
 import org.codehaus.groovy.maven.feature.Configuration;
 import org.codehaus.groovy.maven.plugin.ComponentMojoSupport;

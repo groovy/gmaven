@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.common;
+package org.codehaus.gmaven.common;
 
 import junit.framework.TestCase;
 
