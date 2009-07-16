@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.v1_5;
+package org.codehaus.gmaven.runtime.v1_5;
 
 import groovy.lang.Closure;
 import groovy.util.AntBuilder;
 import org.apache.tools.ant.BuildLogger;
 import org.codehaus.gmaven.feature.Component;
 import org.codehaus.gmaven.feature.ComponentException;
-import org.codehaus.groovy.maven.support.FeatureSupport;
-import org.codehaus.groovy.maven.runtime.ClassFactory;
-import org.codehaus.groovy.maven.runtime.ScriptExecutor;
-import org.codehaus.groovy.maven.runtime.support.ScriptExecutorSupport;
+import org.codehaus.gmaven.feature.support.FeatureSupport;
+import org.codehaus.gmaven.runtime.ClassFactory;
+import org.codehaus.gmaven.runtime.ScriptExecutor;
+import org.codehaus.gmaven.runtime.support.ScriptExecutorSupport;
 import org.codehaus.gmaven.runtime.util.Callable;
 import org.codehaus.gmaven.runtime.util.MagicAttribute;
 

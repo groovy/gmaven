@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.v1_5;
+package org.codehaus.gmaven.runtime.v1_5;
 
 import org.codehaus.gmaven.feature.Feature;
 import org.codehaus.gmaven.feature.Version;
-import org.codehaus.groovy.maven.support.ProviderSupport;
+import org.codehaus.gmaven.feature.support.ProviderSupport;
 import org.codehaus.groovy.runtime.InvokerHelper;
 
 import java.util.LinkedHashMap;

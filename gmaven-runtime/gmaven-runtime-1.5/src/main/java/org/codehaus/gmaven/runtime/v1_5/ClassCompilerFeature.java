@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.v1_5;
+package org.codehaus.gmaven.runtime.v1_5;
 
 import groovy.lang.GroovyClassLoader;
 import org.codehaus.groovy.control.CompilationUnit;
 import org.codehaus.groovy.control.CompilerConfiguration;
 import org.codehaus.gmaven.feature.Component;
-import org.codehaus.groovy.maven.support.FeatureSupport;
-import org.codehaus.groovy.maven.runtime.ClassCompiler;
-import org.codehaus.groovy.maven.runtime.support.CompilerSupport;
+import org.codehaus.gmaven.feature.support.FeatureSupport;
+import org.codehaus.gmaven.runtime.ClassCompiler;
+import org.codehaus.gmaven.runtime.support.CompilerSupport;
 import org.codehaus.groovy.tools.GroovyClass;
 
 import java.net.URL;

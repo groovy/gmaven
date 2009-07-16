@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.v1_5;
+package org.codehaus.gmaven.runtime.v1_5;
 
 import org.codehaus.gmaven.feature.Component;
-import org.codehaus.groovy.maven.support.FeatureSupport;
-import org.codehaus.groovy.maven.runtime.StubCompiler;
-import org.codehaus.groovy.maven.runtime.support.CompilerSupport;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.ModelFactory;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.SourceDef;
-import org.codehaus.groovy.maven.runtime.support.stubgen.parser.SourceType;
-import org.codehaus.groovy.maven.runtime.support.stubgen.render.Renderer;
-import org.codehaus.groovy.maven.runtime.support.stubgen.render.RendererFactory;
-import org.codehaus.groovy.maven.runtime.v1_5.stubgen.ModelFactoryImpl;
-import org.codehaus.groovy.maven.runtime.v1_5.stubgen.RendererFactoryImpl;
+import org.codehaus.gmaven.feature.support.FeatureSupport;
+import org.codehaus.gmaven.runtime.StubCompiler;
+import org.codehaus.gmaven.runtime.support.CompilerSupport;
+import org.codehaus.gmaven.runtime.support.stubgen.model.ModelFactory;
+import org.codehaus.gmaven.runtime.support.stubgen.model.SourceDef;
+import org.codehaus.gmaven.runtime.support.stubgen.parser.SourceType;
+import org.codehaus.gmaven.runtime.support.stubgen.render.Renderer;
+import org.codehaus.gmaven.runtime.support.stubgen.render.RendererFactory;
+import org.codehaus.gmaven.runtime.v1_5.stubgen.ModelFactoryImpl;
+import org.codehaus.gmaven.runtime.v1_5.stubgen.RendererFactoryImpl;
 
 import java.io.BufferedWriter;
 import java.io.File;
