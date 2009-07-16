@@ -31,8 +31,8 @@
     <description>
         GMaven provides integration of the Groovy language into Maven.
     </description>
-    
-    <url>http://groovy.codehaus.org/GMaven</url>
+
+    <url>http://gmaven.codehaus.org</url>
 
     <inceptionYear>2006</inceptionYear>
 
@@ -44,25 +44,25 @@
     <mailingLists>
         <mailingList>
             <name>Development List</name>
-            <subscribe>dev-subscribe@groovy.codehaus.org</subscribe>
-            <unsubscribe>dev-unsubscribe@groovy.codehaus.org</unsubscribe>
-            <post>dev@groovy.codehaus.org</post>
-            <archive>http://archive.groovy.codehaus.org/dev</archive>
+            <subscribe>dev-subscribe@gmaven.codehaus.org</subscribe>
+            <unsubscribe>dev-unsubscribe@gmaven.codehaus.org</unsubscribe>
+            <post>dev@gmaven.codehaus.org</post>
+            <archive>http://archive.gmaven.codehaus.org/dev</archive>
         </mailingList>
 
         <mailingList>
             <name>User List</name>
-            <subscribe>user-subscribe@groovy.codehaus.org</subscribe>
-            <unsubscribe>user-unsubscribe@groovy.codehaus.org</unsubscribe>
-            <post>user@groovy.codehaus.org</post>
-            <archive>http://archive.groovy.codehaus.org/user</archive>
+            <subscribe>user-subscribe@gmaven.codehaus.org</subscribe>
+            <unsubscribe>user-unsubscribe@gmaven.codehaus.org</unsubscribe>
+            <post>user@gmaven.codehaus.org</post>
+            <archive>http://archive.gmaven.codehaus.org/user</archive>
         </mailingList>
 
         <mailingList>
             <name>Commits List</name>
-            <subscribe>scm-subscribe@groovy.codehaus.org</subscribe>
-            <unsubscribe>scm-unsubscribe@groovy.codehaus.org</unsubscribe>
-            <archive>http://archive.groovy.codehaus.org/scm</archive>
+            <subscribe>scm-subscribe@gmaven.codehaus.org</subscribe>
+            <unsubscribe>scm-unsubscribe@gmaven.codehaus.org</unsubscribe>
+            <archive>http://archive.gmaven.codehaus.org/scm</archive>
         </mailingList>
     </mailingLists>
 
@@ -97,14 +97,14 @@
     </pluginRepositories>
 
     <scm>
-        <connection>scm:svn:https://svn.codehaus.org/groovy/gmaven/trunk</connection>
-        <developerConnection>scm:svn:https://svn.codehaus.org/groovy/gmaven/trunk</developerConnection>
-        <url>http://fisheye.codehaus.org/browse/groovy/gmaven/trunk</url>
+        <connection>scm:svn:https://svn.codehaus.org/gmaven/trunk</connection>
+        <developerConnection>scm:svn:https://svn.codehaus.org/gmaven/trunk</developerConnection>
+        <url>http://fisheye.codehaus.org/browse/gmaven/trunk</url>
     </scm>
 
     <issueManagement>
         <system>jira</system>
-        <url>http://jira.codehaus.org/browse/MGROOVY</url>
+        <url>http://jira.codehaus.org/browse/GMAVEN</url>
     </issueManagement>
     
     <ciManagement>
@@ -120,13 +120,13 @@
         <repository>
             <id>codehaus.org</id>
             <name>Groovy Central Repository</name>
-            <url>dav:https://dav.codehaus.org/repository/groovy</url>
+            <url>dav:https://dav.codehaus.org/repository/gmaven</url>
         </repository>
 
         <snapshotRepository>
             <id>codehaus.org</id>
             <name>Groovy Central Development Repository</name>
-            <url>dav:https://dav.codehaus.org/snapshots.repository/groovy</url>
+            <url>dav:https://dav.codehaus.org/snapshots.repository/gmaven</url>
         </snapshotRepository>
 
         <site>
@@ -135,7 +135,7 @@
             <!--
             TODO: May eventually want to add on ${version} here...
             -->
-            <url>dav:https://dav.codehaus.org/groovy/gmaven-generated</url>
+            <url>dav:https://dav.codehaus.org/gmaven/maven-generated</url>
         </site>
     </distributionManagement>
 
