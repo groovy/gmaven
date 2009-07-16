@@ -15,14 +15,14 @@
  */
 
 
-package org.codehaus.groovy.maven.runtime.support.stubgen.parser;
+package org.codehaus.gmaven.runtime.support.stubgen.parser;
 
 import junit.framework.TestCase;
 
 import java.net.URL;
 
 /**
- * Tests for the {@link org.codehaus.groovy.maven.runtime.support.stubgen.parser.SourceType} class.
+ * Tests for the {@link org.codehaus.gmaven.runtime.support.stubgen.parser.SourceType} class.
  *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>

@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.support.stubgen.model;
+package org.codehaus.gmaven.runtime.support.stubgen.model;
 
-import org.codehaus.groovy.maven.runtime.support.stubgen.parser.SourceType;
+import org.codehaus.gmaven.runtime.support.stubgen.parser.SourceType;
 
 import java.net.URL;
 

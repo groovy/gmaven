@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.support;
+package org.codehaus.gmaven.runtime.support;
 
 import org.codehaus.gmaven.feature.ComponentException;
 import org.codehaus.gmaven.feature.Configuration;
 import org.codehaus.gmaven.feature.Feature;
-import org.codehaus.groovy.maven.support.ComponentSupport;
-import org.codehaus.groovy.maven.runtime.ClassFactory;
-import org.codehaus.groovy.maven.runtime.ScriptExecutor;
+import org.codehaus.gmaven.feature.support.ComponentSupport;
+import org.codehaus.gmaven.runtime.ClassFactory;
+import org.codehaus.gmaven.runtime.ScriptExecutor;
 import org.codehaus.gmaven.runtime.util.Callable;
 import org.codehaus.gmaven.runtime.util.ClassSource;
 import org.codehaus.gmaven.runtime.util.MagicAttribute;

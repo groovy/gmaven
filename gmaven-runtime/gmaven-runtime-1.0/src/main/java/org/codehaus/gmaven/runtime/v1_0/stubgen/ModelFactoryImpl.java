@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.v1_0.stubgen;
+package org.codehaus.gmaven.runtime.v1_0.stubgen;
 
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.ImportDef;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.ModelFactorySupport;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.SourceDef;
+import org.codehaus.gmaven.runtime.support.stubgen.model.ImportDef;
+import org.codehaus.gmaven.runtime.support.stubgen.model.ModelFactorySupport;
+import org.codehaus.gmaven.runtime.support.stubgen.model.SourceDef;
 
 /**
  * Creates a stub model for Groovy 1.5.

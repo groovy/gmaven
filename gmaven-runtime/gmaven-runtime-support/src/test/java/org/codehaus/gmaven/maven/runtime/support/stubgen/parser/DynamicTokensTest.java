@@ -15,12 +15,12 @@
  */
 
 
-package org.codehaus.groovy.maven.runtime.support.stubgen.parser;
+package org.codehaus.gmaven.runtime.support.stubgen.parser;
 
 import junit.framework.TestCase;
 
 /**
- * Tests for the {@link org.codehaus.groovy.maven.runtime.support.stubgen.parser.DynamicTokens} class.
+ * Tests for the {@link org.codehaus.gmaven.runtime.support.stubgen.parser.DynamicTokens} class.
  *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>

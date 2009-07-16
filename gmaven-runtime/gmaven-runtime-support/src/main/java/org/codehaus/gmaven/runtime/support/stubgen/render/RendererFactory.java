@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.support.stubgen.render;
+package org.codehaus.gmaven.runtime.support.stubgen.render;
 
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.SourceDef;
+import org.codehaus.gmaven.runtime.support.stubgen.model.SourceDef;
 
 import java.util.Set;
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.support.util;
+package org.codehaus.gmaven.runtime.support.util;
 
 import java.security.Permission;
 

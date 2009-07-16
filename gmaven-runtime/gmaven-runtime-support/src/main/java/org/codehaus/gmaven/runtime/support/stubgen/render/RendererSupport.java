@@ -14,24 +14,24 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.support.stubgen.render;
+package org.codehaus.gmaven.runtime.support.stubgen.render;
 
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.ClassDef;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.ConstructorDef;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.EnumConstantDef;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.EnumDef;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.FieldDef;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.ImportDef;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.JavaDocAware;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.JavaDocDef;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.MethodDef;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.ModifiersAware;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.ModifiersDef;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.PackageDef;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.ParameterDef;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.SuperParameterDef;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.TagDef;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.TypeDef;
+import org.codehaus.gmaven.runtime.support.stubgen.model.ClassDef;
+import org.codehaus.gmaven.runtime.support.stubgen.model.ConstructorDef;
+import org.codehaus.gmaven.runtime.support.stubgen.model.EnumConstantDef;
+import org.codehaus.gmaven.runtime.support.stubgen.model.EnumDef;
+import org.codehaus.gmaven.runtime.support.stubgen.model.FieldDef;
+import org.codehaus.gmaven.runtime.support.stubgen.model.ImportDef;
+import org.codehaus.gmaven.runtime.support.stubgen.model.JavaDocAware;
+import org.codehaus.gmaven.runtime.support.stubgen.model.JavaDocDef;
+import org.codehaus.gmaven.runtime.support.stubgen.model.MethodDef;
+import org.codehaus.gmaven.runtime.support.stubgen.model.ModifiersAware;
+import org.codehaus.gmaven.runtime.support.stubgen.model.ModifiersDef;
+import org.codehaus.gmaven.runtime.support.stubgen.model.PackageDef;
+import org.codehaus.gmaven.runtime.support.stubgen.model.ParameterDef;
+import org.codehaus.gmaven.runtime.support.stubgen.model.SuperParameterDef;
+import org.codehaus.gmaven.runtime.support.stubgen.model.TagDef;
+import org.codehaus.gmaven.runtime.support.stubgen.model.TypeDef;
 
 import java.io.BufferedReader;
 import java.io.IOException;

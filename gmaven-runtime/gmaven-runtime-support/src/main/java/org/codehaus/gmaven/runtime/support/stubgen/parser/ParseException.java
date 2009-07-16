@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.support.stubgen.parser;
+package org.codehaus.gmaven.runtime.support.stubgen.parser;
 
 /**
  * Thrown to indicate a parsing failure.

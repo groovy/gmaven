@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.support;
+package org.codehaus.gmaven.runtime.support;
 
 import org.codehaus.gmaven.feature.Configuration;
 import org.codehaus.gmaven.feature.Feature;
-import org.codehaus.groovy.maven.support.ComponentSupport;
-import org.codehaus.groovy.maven.runtime.TraceSanitizer;
+import org.codehaus.gmaven.feature.support.ComponentSupport;
+import org.codehaus.gmaven.runtime.TraceSanitizer;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;

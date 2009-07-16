@@ -15,10 +15,10 @@
  */
 
 
-package org.codehaus.groovy.maven.runtime.support.stubgen.parser;
+package org.codehaus.gmaven.runtime.support.stubgen.parser;
 
 /**
- * Helper to test {@link org.codehaus.groovy.maven.runtime.support.stubgen.parser.DynamicTokens}.
+ * Helper to test {@link org.codehaus.gmaven.runtime.support.stubgen.parser.DynamicTokens}.
  *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>

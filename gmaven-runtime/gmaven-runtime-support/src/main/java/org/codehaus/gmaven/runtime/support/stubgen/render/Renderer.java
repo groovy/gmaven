@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.support.stubgen.render;
+package org.codehaus.gmaven.runtime.support.stubgen.render;
 
 import java.io.IOException;
 import java.io.Writer;

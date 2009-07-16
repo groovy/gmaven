@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.support.util;
+package org.codehaus.gmaven.runtime.support.util;
 
-import org.codehaus.groovy.maven.runtime.support.stubgen.parser.SourceType;
+import org.codehaus.gmaven.runtime.support.stubgen.parser.SourceType;
 import org.codehaus.gmaven.runtime.util.ResourceLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

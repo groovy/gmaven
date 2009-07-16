@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.v1_0;
+package org.codehaus.gmaven.runtime.v1_0;
 
 import org.codehaus.gmaven.feature.Component;
-import org.codehaus.groovy.maven.support.FeatureSupport;
-import org.codehaus.groovy.maven.runtime.TraceSanitizer;
-import org.codehaus.groovy.maven.runtime.support.TraceSanitizerSupport;
+import org.codehaus.gmaven.feature.support.FeatureSupport;
+import org.codehaus.gmaven.runtime.TraceSanitizer;
+import org.codehaus.gmaven.runtime.support.TraceSanitizerSupport;
 
 /**
  * Provides the stack trace sanitization feature.

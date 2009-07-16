@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.support.stubgen;
+package org.codehaus.gmaven.runtime.support.stubgen;
 
 /**
  * Thrown to indicate that and unsupported feature was detected.

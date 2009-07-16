@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.v1_5.stubgen;
+package org.codehaus.gmaven.runtime.v1_5.stubgen;
 
 import foo
 import foo.bar

@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.v1_0.stubgen;
+package org.codehaus.gmaven.runtime.v1_0.stubgen;
 
 import junit.framework.TestCase;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.ModelFactory;
-import org.codehaus.groovy.maven.runtime.support.stubgen.model.SourceDef;
+import org.codehaus.gmaven.runtime.support.stubgen.model.ModelFactory;
+import org.codehaus.gmaven.runtime.support.stubgen.model.SourceDef;
 
 import java.net.URL;
 

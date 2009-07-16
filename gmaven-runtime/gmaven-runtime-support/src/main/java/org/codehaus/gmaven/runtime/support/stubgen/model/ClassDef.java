@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.support.stubgen.model;
+package org.codehaus.gmaven.runtime.support.stubgen.model;
 
 import java.util.Collections;
 import java.util.Iterator;
