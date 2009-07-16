@@ -16,7 +16,7 @@
 
 package org.codehaus.groovy.maven.examples.clean
 
-import org.codehaus.groovy.maven.mojo.GroovyMojo
+import org.codehaus.gmaven.mojo.GroovyMojo
 
 import org.apache.maven.project.MavenProject
 

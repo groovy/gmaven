@@ -21,7 +21,7 @@
 
 package ${package}
 
-import org.codehaus.groovy.maven.mojo.GroovyMojo
+import org.codehaus.gmaven.mojo.GroovyMojo
 
 /**
  * Example Maven2 Groovy Mojo.

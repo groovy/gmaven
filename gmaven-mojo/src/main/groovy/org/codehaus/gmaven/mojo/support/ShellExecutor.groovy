@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.mojo.support
+package org.codehaus.gmaven.mojo.support
 
 // import org.codehaus.groovy.maven.util.AntBuilder
 

@@ -20,7 +20,7 @@ package org.codehaus.groovy.maven.examples.install
 // NOTE: Ported to Groovy from the org.apache.maven.plugins:maven-install-plugin
 //
 
-import org.codehaus.groovy.maven.mojo.GroovyMojo
+import org.codehaus.gmaven.mojo.GroovyMojo
 
 import org.apache.maven.artifact.Artifact
 import org.apache.maven.artifact.installer.ArtifactInstaller
@@ -36,7 +36,7 @@ import java.security.NoSuchAlgorithmException
  * @version $Id$
  */
 abstract class InstallMojoSupport
-    extends org.codehaus.groovy.maven.mojo.GroovyMojo
+    extends org.codehaus.gmaven.mojo.GroovyMojo
 {
     /**
      * Flag to create checksums(MD5, SHA1) or not.

@@ -16,7 +16,7 @@
 
 package mymojo
 
-import org.codehaus.groovy.maven.mojo.GroovyMojo
+import org.codehaus.gmaven.mojo.GroovyMojo
 
 /**
  * This is my mojo
