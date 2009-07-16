@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.plugin.execute;
+package org.codehaus.gmaven.plugin.execute;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
@@ -25,7 +25,7 @@ import org.apache.maven.settings.Settings;
 import org.codehaus.gmaven.common.ArtifactItem;
 import org.codehaus.groovy.maven.feature.Component;
 import org.codehaus.groovy.maven.feature.Configuration;
-import org.codehaus.groovy.maven.plugin.ComponentMojoSupport;
+import org.codehaus.gmaven.plugin.ComponentMojoSupport;
 import org.codehaus.groovy.maven.runtime.ScriptExecutor;
 import org.codehaus.groovy.maven.runtime.loader.realm.RealmManager;
 import org.codehaus.groovy.maven.runtime.support.util.ResourceLoaderImpl;

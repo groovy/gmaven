@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.plugin.compile;
+package org.codehaus.gmaven.plugin.compile;
 
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.apache.maven.shared.model.fileset.FileSet;
@@ -24,30 +24,40 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Compiles Groovy sources.
+ * Compiles Groovy <em>test</em> sources.
  *
- * @goal compile
- * @phase compile
- * @requiresDependencyResolution compile
+ * @goal testCompile
+ * @phase test-compile
+ * @requiresDependencyResolution test
  * @since 1.0-alpha-1
  *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  */
-public class CompileMojo
+public class TestCompileMojo
     extends AbstractCompileMojo
 {
     /**
      * The directory where generated Java class files will be placed.
      *
-     * @parameter default-value="${project.build.outputDirectory}"
+     * @parameter default-value="${project.build.testOutputDirectory}"
      * @required
+     *
      * @noinspection UnusedDeclaration
      */
     private File outputDirectory;
-
+    
+    /**
+     * Flag to allow test compiliation to be skipped.
+     *
+     * @parameter expression="${maven.test.skip}" default-value="false"
+     *
+     * @noinspection UnusedDeclaration
+     */
+    private boolean skip;
+    
     protected List getProjectClasspathElements() throws DependencyResolutionRequiredException {
-        return project.getCompileClasspathElements();
+        return project.getTestClasspathElements();
     }
 
     protected File getOutputDirectory() {
@@ -55,13 +65,13 @@ public class CompileMojo
     }
 
     protected List getSourceRoots() {
-        return project.getCompileSourceRoots();
+        return project.getTestCompileSourceRoots();
     }
 
     protected FileSet[] getDefaultSources() {
         FileSet set = new FileSet();
-        
-        File basedir = new File(project.getBasedir(), "src/main/groovy");
+
+        File basedir = new File(project.getBasedir(), "src/test/groovy");
         set.setDirectory(basedir.getAbsolutePath());
         set.addInclude("**/*.groovy");
 
@@ -69,6 +79,15 @@ public class CompileMojo
     }
 
     protected Set getForcedCompileSources() {
-        return compileState.getForcedCompilationSources(project);
+        return compileState.getForcedCompilationTestSources(project);
+    }
+
+    protected void doExecute() throws Exception {
+        if (skip) {
+            log.info("Test compiliation is skipped");
+        }
+        else {
+            super.doExecute();
+        }
     }
 }

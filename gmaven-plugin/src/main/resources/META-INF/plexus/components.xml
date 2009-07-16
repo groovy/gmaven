@@ -25,8 +25,8 @@
         -->
 
         <component>
-            <role>org.codehaus.groovy.maven.plugin.CompileState</role>
-            <implementation>org.codehaus.groovy.maven.plugin.CompileState</implementation>
+            <role>org.codehaus.gmaven.plugin.CompileState</role>
+            <implementation>org.codehaus.gmaven.plugin.CompileState</implementation>
             <instantiation-strategy>singleton</instantiation-strategy>
         </component>
 
@@ -53,7 +53,7 @@
             <requirements>
                 <requirement>
                     <role>org.codehaus.plexus.component.configurator.converters.ConfigurationConverter</role>
-                    <role-hint>org.codehaus.groovy.maven.plugin.execute.Source</role-hint>
+                    <role-hint>org.codehaus.gmaven.plugin.execute.Source</role-hint>
                     <field-name>customConverters</field-name>
                 </requirement>
             </requirements>
@@ -61,8 +61,8 @@
 
         <component>
             <role>org.codehaus.plexus.component.configurator.converters.ConfigurationConverter</role>
-            <role-hint>org.codehaus.groovy.maven.plugin.execute.Source</role-hint>
-            <implementation>org.codehaus.groovy.maven.plugin.execute.SourceConverter</implementation>
+            <role-hint>org.codehaus.gmaven.plugin.execute.Source</role-hint>
+            <implementation>org.codehaus.gmaven.plugin.execute.SourceConverter</implementation>
         </component>
 
     </components>

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.plugin;
+package org.codehaus.gmaven.plugin;
 
 import org.codehaus.groovy.maven.feature.Component;
 import org.codehaus.groovy.maven.feature.Configuration;

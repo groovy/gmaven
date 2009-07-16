@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.plugin.tools;
+package org.codehaus.gmaven.plugin.tools;
 
 import org.codehaus.groovy.maven.feature.Feature;
 import org.codehaus.groovy.maven.feature.Provider;
 import org.codehaus.groovy.maven.feature.ProviderManager;
 import org.codehaus.groovy.maven.feature.ProviderRegistry;
 import org.codehaus.groovy.maven.feature.ProviderSelector;
-import org.codehaus.groovy.maven.plugin.ProviderMojoSupport;
+import org.codehaus.gmaven.plugin.ProviderMojoSupport;
 
 import java.net.URL;
 import java.net.URLClassLoader;

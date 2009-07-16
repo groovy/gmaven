@@ -14,48 +14,37 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.plugin.compile;
+package org.codehaus.gmaven.plugin.stubgen;
 
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.apache.maven.shared.model.fileset.FileSet;
 
 import java.io.File;
 import java.util.List;
-import java.util.Set;
 
 /**
- * Compiles Groovy <em>test</em> sources.
+ * Generate Java stubs from Groovy <em>test</em> sources.
  *
- * @goal testCompile
- * @phase test-compile
+ * @goal generateTestStubs
+ * @phase generate-test-sources
  * @requiresDependencyResolution test
- * @since 1.0-alpha-1
+ * @since 1.0-beta-2
  *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  */
-public class TestCompileMojo
-    extends AbstractCompileMojo
+public class GenerateTestStubsMojo
+    extends AbstractGenerateStubsMojo
 {
     /**
-     * The directory where generated Java class files will be placed.
+     * The directory where generated Java stub files will be placed.
      *
-     * @parameter default-value="${project.build.testOutputDirectory}"
+     * @parameter default-value="${project.build.directory}/generated-sources/groovy-stubs/test"
      * @required
-     *
      * @noinspection UnusedDeclaration
      */
     private File outputDirectory;
-    
-    /**
-     * Flag to allow test compiliation to be skipped.
-     *
-     * @parameter expression="${maven.test.skip}" default-value="false"
-     *
-     * @noinspection UnusedDeclaration
-     */
-    private boolean skip;
-    
+
     protected List getProjectClasspathElements() throws DependencyResolutionRequiredException {
         return project.getTestClasspathElements();
     }
@@ -78,16 +67,7 @@ public class TestCompileMojo
         return new FileSet[] { set };
     }
 
-    protected Set getForcedCompileSources() {
-        return compileState.getForcedCompilationTestSources(project);
-    }
-
-    protected void doExecute() throws Exception {
-        if (skip) {
-            log.info("Test compiliation is skipped");
-        }
-        else {
-            super.doExecute();
-        }
+    protected void forceCompile(final File file) {
+        compileState.addForcedCompilationTestSource(project, file);
     }
 }

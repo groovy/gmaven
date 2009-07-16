@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.plugin;
+package org.codehaus.gmaven.plugin;
 
 import java.io.File;
 import java.io.IOException;

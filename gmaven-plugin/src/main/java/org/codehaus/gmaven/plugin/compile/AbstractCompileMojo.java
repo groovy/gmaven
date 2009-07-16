@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.plugin.compile;
+package org.codehaus.gmaven.plugin.compile;
 
 import org.apache.maven.shared.io.scan.mapping.SourceMapping;
 import org.apache.maven.shared.io.scan.mapping.SuffixMapping;
 import org.apache.maven.shared.model.fileset.FileSet;
 import org.codehaus.groovy.maven.feature.Component;
 import org.codehaus.groovy.maven.feature.Configuration;
-import org.codehaus.groovy.maven.plugin.CompilerMojoSupport;
+import org.codehaus.gmaven.plugin.CompilerMojoSupport;
 import org.codehaus.groovy.maven.runtime.ClassCompiler;
 
 import java.io.File;

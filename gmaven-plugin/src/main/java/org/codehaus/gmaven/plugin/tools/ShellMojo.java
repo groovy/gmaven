@@ -14,17 +14,16 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.plugin.tools;
+package org.codehaus.gmaven.plugin.tools;
 
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.codehaus.groovy.maven.feature.Component;
 import org.codehaus.groovy.maven.feature.Configuration;
-import org.codehaus.groovy.maven.plugin.ComponentMojoSupport;
+import org.codehaus.gmaven.plugin.ComponentMojoSupport;
 import org.codehaus.groovy.maven.runtime.Shell;
 import org.codehaus.groovy.maven.runtime.loader.realm.RealmManager;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
 
-import java.net.URLClassLoader;
 import java.util.List;
 
 /**

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.plugin.stubgen;
+package org.codehaus.gmaven.plugin.stubgen;
 
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.apache.maven.shared.model.fileset.FileSet;
