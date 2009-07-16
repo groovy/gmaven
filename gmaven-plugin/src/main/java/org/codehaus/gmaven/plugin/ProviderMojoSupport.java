@@ -23,9 +23,9 @@ import org.apache.maven.artifact.resolver.ArtifactResolutionResult;
 import org.apache.maven.artifact.resolver.filter.ArtifactFilter;
 import org.apache.maven.artifact.versioning.VersionRange;
 import org.apache.commons.lang.SystemUtils;
-import org.codehaus.groovy.maven.feature.Provider;
-import org.codehaus.groovy.maven.feature.ProviderException;
-import org.codehaus.groovy.maven.feature.ProviderManager;
+import org.codehaus.gmaven.feature.Provider;
+import org.codehaus.gmaven.feature.ProviderException;
+import org.codehaus.gmaven.feature.ProviderManager;
 import org.codehaus.groovy.maven.runtime.loader.artifact.ArtifactHandler;
 import org.codehaus.groovy.maven.runtime.loader.artifact.ArtifactProviderLoader;
 

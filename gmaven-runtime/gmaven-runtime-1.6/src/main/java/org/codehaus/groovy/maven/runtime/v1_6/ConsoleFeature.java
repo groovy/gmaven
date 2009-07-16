@@ -18,9 +18,9 @@ package org.codehaus.groovy.maven.runtime.v1_6;
 
 import groovy.lang.Binding;
 import org.codehaus.gmaven.common.StreamPair;
-import org.codehaus.groovy.maven.feature.Component;
-import org.codehaus.groovy.maven.feature.support.ComponentSupport;
-import org.codehaus.groovy.maven.feature.support.FeatureSupport;
+import org.codehaus.gmaven.feature.Component;
+import org.codehaus.groovy.maven.support.ComponentSupport;
+import org.codehaus.groovy.maven.support.FeatureSupport;
 import org.codehaus.groovy.maven.runtime.Console;
 import org.codehaus.groovy.maven.runtime.support.util.NoExitSecurityManager;
 

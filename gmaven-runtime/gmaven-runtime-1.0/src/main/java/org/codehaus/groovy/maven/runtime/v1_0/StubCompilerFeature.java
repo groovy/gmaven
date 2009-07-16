@@ -16,8 +16,8 @@
 
 package org.codehaus.groovy.maven.runtime.v1_0;
 
-import org.codehaus.groovy.maven.feature.Component;
-import org.codehaus.groovy.maven.feature.support.FeatureSupport;
+import org.codehaus.gmaven.feature.Component;
+import org.codehaus.groovy.maven.support.FeatureSupport;
 import org.codehaus.groovy.maven.runtime.StubCompiler;
 import org.codehaus.groovy.maven.runtime.support.CompilerSupport;
 import org.codehaus.groovy.maven.runtime.support.stubgen.model.ModelFactory;

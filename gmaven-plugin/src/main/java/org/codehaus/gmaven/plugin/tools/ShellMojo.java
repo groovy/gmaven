@@ -17,8 +17,8 @@
 package org.codehaus.gmaven.plugin.tools;
 
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
-import org.codehaus.groovy.maven.feature.Component;
-import org.codehaus.groovy.maven.feature.Configuration;
+import org.codehaus.gmaven.feature.Component;
+import org.codehaus.gmaven.feature.Configuration;
 import org.codehaus.gmaven.plugin.ComponentMojoSupport;
 import org.codehaus.groovy.maven.runtime.Shell;
 import org.codehaus.groovy.maven.runtime.loader.realm.RealmManager;

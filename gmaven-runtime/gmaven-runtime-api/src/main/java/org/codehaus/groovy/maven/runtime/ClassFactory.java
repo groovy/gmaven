@@ -16,7 +16,7 @@
 
 package org.codehaus.groovy.maven.runtime;
 
-import org.codehaus.groovy.maven.feature.Component;
+import org.codehaus.gmaven.feature.Component;
 import org.codehaus.groovy.maven.runtime.util.ClassSource;
 import org.codehaus.groovy.maven.runtime.util.ResourceLoader;
 

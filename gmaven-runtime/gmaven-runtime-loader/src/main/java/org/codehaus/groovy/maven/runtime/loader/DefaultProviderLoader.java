@@ -16,8 +16,8 @@
 
 package org.codehaus.groovy.maven.runtime.loader;
 
-import org.codehaus.groovy.maven.feature.Provider;
-import org.codehaus.groovy.maven.feature.ProviderLoader;
+import org.codehaus.gmaven.feature.Provider;
+import org.codehaus.gmaven.feature.ProviderLoader;
 import org.codehaus.plexus.PlexusConstants;
 import org.codehaus.plexus.PlexusContainer;
 import org.codehaus.plexus.context.Context;

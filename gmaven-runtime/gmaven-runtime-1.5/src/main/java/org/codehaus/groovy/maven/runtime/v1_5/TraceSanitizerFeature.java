@@ -16,8 +16,8 @@
 
 package org.codehaus.groovy.maven.runtime.v1_5;
 
-import org.codehaus.groovy.maven.feature.Component;
-import org.codehaus.groovy.maven.feature.support.FeatureSupport;
+import org.codehaus.gmaven.feature.Component;
+import org.codehaus.groovy.maven.support.FeatureSupport;
 import org.codehaus.groovy.maven.runtime.TraceSanitizer;
 import org.codehaus.groovy.maven.runtime.support.TraceSanitizerSupport;
 

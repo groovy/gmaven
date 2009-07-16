@@ -16,7 +16,7 @@
 
 package org.codehaus.groovy.maven.runtime;
 
-import org.codehaus.groovy.maven.feature.Component;
+import org.codehaus.gmaven.feature.Component;
 
 /**
  * Groovy Groovy to Java stub compiler abstraction.

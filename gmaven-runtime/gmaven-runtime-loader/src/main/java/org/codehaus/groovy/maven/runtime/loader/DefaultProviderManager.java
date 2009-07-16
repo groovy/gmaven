@@ -17,11 +17,11 @@
 package org.codehaus.groovy.maven.runtime.loader;
 
 import org.apache.commons.lang.time.StopWatch;
-import org.codehaus.groovy.maven.feature.Provider;
-import org.codehaus.groovy.maven.feature.ProviderException;
-import org.codehaus.groovy.maven.feature.ProviderManager;
-import org.codehaus.groovy.maven.feature.ProviderRegistry;
-import org.codehaus.groovy.maven.feature.ProviderSelector;
+import org.codehaus.gmaven.feature.Provider;
+import org.codehaus.gmaven.feature.ProviderException;
+import org.codehaus.gmaven.feature.ProviderManager;
+import org.codehaus.gmaven.feature.ProviderRegistry;
+import org.codehaus.gmaven.feature.ProviderSelector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

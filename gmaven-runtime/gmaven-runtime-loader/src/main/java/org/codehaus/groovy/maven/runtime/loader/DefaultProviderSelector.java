@@ -16,10 +16,10 @@
 
 package org.codehaus.groovy.maven.runtime.loader;
 
-import org.codehaus.groovy.maven.feature.Provider;
-import org.codehaus.groovy.maven.feature.ProviderLoader;
-import org.codehaus.groovy.maven.feature.ProviderRegistry;
-import org.codehaus.groovy.maven.feature.ProviderSelector;
+import org.codehaus.gmaven.feature.Provider;
+import org.codehaus.gmaven.feature.ProviderLoader;
+import org.codehaus.gmaven.feature.ProviderRegistry;
+import org.codehaus.gmaven.feature.ProviderSelector;
 import org.codehaus.plexus.PlexusConstants;
 import org.codehaus.plexus.PlexusContainer;
 import org.codehaus.plexus.context.Context;

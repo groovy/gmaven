@@ -16,7 +16,7 @@
 
 package org.slf4j.impl;
 
-import org.codehaus.groovy.maven.gossip.Gossip;
+import org.codehaus.gmaven.gossip.Gossip;
 import org.slf4j.ILoggerFactory;
 import org.slf4j.spi.LoggerFactoryBinder;
 

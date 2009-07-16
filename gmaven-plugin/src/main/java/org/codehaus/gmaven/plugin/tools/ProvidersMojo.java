@@ -16,11 +16,11 @@
 
 package org.codehaus.gmaven.plugin.tools;
 
-import org.codehaus.groovy.maven.feature.Feature;
-import org.codehaus.groovy.maven.feature.Provider;
-import org.codehaus.groovy.maven.feature.ProviderManager;
-import org.codehaus.groovy.maven.feature.ProviderRegistry;
-import org.codehaus.groovy.maven.feature.ProviderSelector;
+import org.codehaus.gmaven.feature.Feature;
+import org.codehaus.gmaven.feature.Provider;
+import org.codehaus.gmaven.feature.ProviderManager;
+import org.codehaus.gmaven.feature.ProviderRegistry;
+import org.codehaus.gmaven.feature.ProviderSelector;
 import org.codehaus.gmaven.plugin.ProviderMojoSupport;
 
 import java.net.URL;

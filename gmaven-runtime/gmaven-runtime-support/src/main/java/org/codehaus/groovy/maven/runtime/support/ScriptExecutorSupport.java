@@ -16,10 +16,10 @@
 
 package org.codehaus.groovy.maven.runtime.support;
 
-import org.codehaus.groovy.maven.feature.ComponentException;
-import org.codehaus.groovy.maven.feature.Configuration;
-import org.codehaus.groovy.maven.feature.Feature;
-import org.codehaus.groovy.maven.feature.support.ComponentSupport;
+import org.codehaus.gmaven.feature.ComponentException;
+import org.codehaus.gmaven.feature.Configuration;
+import org.codehaus.gmaven.feature.Feature;
+import org.codehaus.groovy.maven.support.ComponentSupport;
 import org.codehaus.groovy.maven.runtime.ClassFactory;
 import org.codehaus.groovy.maven.runtime.ScriptExecutor;
 import org.codehaus.groovy.maven.runtime.util.Callable;

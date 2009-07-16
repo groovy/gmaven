@@ -16,9 +16,9 @@
 
 package org.codehaus.gmaven.plugin;
 
-import org.codehaus.groovy.maven.feature.Component;
-import org.codehaus.groovy.maven.feature.Configuration;
-import org.codehaus.groovy.maven.feature.Feature;
+import org.codehaus.gmaven.feature.Component;
+import org.codehaus.gmaven.feature.Configuration;
+import org.codehaus.gmaven.feature.Feature;
 
 /**
  * Support for Mojo implementations which delegate to a feature component.

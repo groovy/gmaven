@@ -16,9 +16,9 @@
 
 package org.codehaus.groovy.maven.runtime.support;
 
-import org.codehaus.groovy.maven.feature.Configuration;
-import org.codehaus.groovy.maven.feature.Feature;
-import org.codehaus.groovy.maven.feature.support.ComponentSupport;
+import org.codehaus.gmaven.feature.Configuration;
+import org.codehaus.gmaven.feature.Feature;
+import org.codehaus.groovy.maven.support.ComponentSupport;
 import org.codehaus.groovy.maven.runtime.TraceSanitizer;
 
 import java.io.PrintWriter;

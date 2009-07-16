@@ -16,8 +16,8 @@
 
 package org.codehaus.groovy.maven.runtime.loader;
 
-import org.codehaus.groovy.maven.feature.Provider;
-import org.codehaus.groovy.maven.feature.ProviderRegistry;
+import org.codehaus.gmaven.feature.Provider;
+import org.codehaus.gmaven.feature.ProviderRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

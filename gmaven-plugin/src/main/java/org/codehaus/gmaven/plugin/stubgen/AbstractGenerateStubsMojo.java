@@ -21,7 +21,7 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.shared.io.scan.mapping.SourceMapping;
 import org.apache.maven.shared.io.scan.mapping.SuffixMapping;
 import org.apache.maven.shared.model.fileset.FileSet;
-import org.codehaus.groovy.maven.feature.Component;
+import org.codehaus.gmaven.feature.Component;
 import org.codehaus.gmaven.plugin.CompilerMojoSupport;
 import org.codehaus.groovy.maven.runtime.StubCompiler;
 

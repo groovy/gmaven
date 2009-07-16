@@ -16,9 +16,9 @@
 
 package org.codehaus.groovy.maven.runtime.v1_0;
 
-import org.codehaus.groovy.maven.feature.Feature;
-import org.codehaus.groovy.maven.feature.Version;
-import org.codehaus.groovy.maven.feature.support.ProviderSupport;
+import org.codehaus.gmaven.feature.Feature;
+import org.codehaus.gmaven.feature.Version;
+import org.codehaus.groovy.maven.support.ProviderSupport;
 import org.codehaus.groovy.runtime.InvokerHelper;
 
 import java.util.LinkedHashMap;
