@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime;
+package org.codehaus.gmaven.runtime;
 
 import org.codehaus.gmaven.feature.Component;
 
@@ -27,7 +27,7 @@ import java.net.URL;
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  */
 public interface ClassCompiler
-    extends org.codehaus.groovy.maven.runtime.util.Compiler, Component
+    extends org.codehaus.gmaven.runtime.util.Compiler, Component
 {
     String KEY = ClassCompiler.class.getName();
 

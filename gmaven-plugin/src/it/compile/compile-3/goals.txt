@@ -1,2 +1,2 @@
-clean org.codehaus.groovy.maven:gmaven-plugin:testing:compile
+clean org.codehaus.gmaven:gmaven-plugin:testing:compile
 

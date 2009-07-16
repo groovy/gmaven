@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime;
+package org.codehaus.gmaven.runtime;
 
 import org.codehaus.gmaven.feature.Component;
-import org.codehaus.groovy.maven.runtime.util.ClassSource;
-import org.codehaus.groovy.maven.runtime.util.ResourceLoader;
+import org.codehaus.gmaven.runtime.util.ClassSource;
+import org.codehaus.gmaven.runtime.util.ResourceLoader;
 
 /**
  * Provides an abstraction to load Groovy classes.

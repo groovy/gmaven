@@ -49,17 +49,17 @@
                                 org.apache.maven.plugins:maven-resources-plugin:resources
                             </process-resources>
                             <compile>
-                                org.codehaus.groovy.maven:gmaven-plugin:generateStubs,
+                                org.codehaus.gmaven:gmaven-plugin:generateStubs,
                                 org.apache.maven.plugins:maven-compiler-plugin:compile,
-                                org.codehaus.groovy.maven:gmaven-plugin:compile
+                                org.codehaus.gmaven:gmaven-plugin:compile
                             </compile>
                             <process-test-resources>
                                 org.apache.maven.plugins:maven-resources-plugin:testResources
                             </process-test-resources>
                             <test-compile>
-                                org.codehaus.groovy.maven:gmaven-plugin:generateTestStubs,
+                                org.codehaus.gmaven:gmaven-plugin:generateTestStubs,
                                 org.apache.maven.plugins:maven-compiler-plugin:testCompile,
-                                org.codehaus.groovy.maven:gmaven-plugin:testCompile
+                                org.codehaus.gmaven:gmaven-plugin:testCompile
                             </test-compile>
                             <test>
                                 org.apache.maven.plugins:maven-surefire-plugin:test
@@ -108,9 +108,9 @@
                                 org.apache.maven.plugins:maven-resources-plugin:resources
                             </process-resources>
                             <compile>
-                                org.codehaus.groovy.maven:gmaven-plugin:generateStubs,
+                                org.codehaus.gmaven:gmaven-plugin:generateStubs,
                                 org.apache.maven.plugins:maven-compiler-plugin:compile,
-                                org.codehaus.groovy.maven:gmaven-plugin:compile
+                                org.codehaus.gmaven:gmaven-plugin:compile
                             </compile>
                             <process-classes>
                                 org.apache.maven.plugins:maven-plugin-plugin:descriptor
@@ -119,9 +119,9 @@
                                 org.apache.maven.plugins:maven-resources-plugin:testResources
                             </process-test-resources>
                             <test-compile>
-                                org.codehaus.groovy.maven:gmaven-plugin:generateTestStubs,
+                                org.codehaus.gmaven:gmaven-plugin:generateTestStubs,
                                 org.apache.maven.plugins:maven-compiler-plugin:testCompile,
-                                org.codehaus.groovy.maven:gmaven-plugin:testCompile
+                                org.codehaus.gmaven:gmaven-plugin:testCompile
                             </test-compile>
                             <test>
                                 org.apache.maven.plugins:maven-surefire-plugin:test

@@ -23,7 +23,7 @@ import org.apache.maven.shared.io.scan.mapping.SuffixMapping;
 import org.apache.maven.shared.model.fileset.FileSet;
 import org.codehaus.gmaven.feature.Component;
 import org.codehaus.gmaven.plugin.CompilerMojoSupport;
-import org.codehaus.groovy.maven.runtime.StubCompiler;
+import org.codehaus.gmaven.runtime.StubCompiler;
 
 import java.io.File;
 import java.io.IOException;

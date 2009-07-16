@@ -22,13 +22,13 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>org.codehaus.groovy.maven.it.gmaven-testsuite</groupId>
+        <groupId>org.codehaus.gmaven.it.gmaven-testsuite</groupId>
         <artifactId>common</artifactId>
         <version>testing</version>
         <relativePath>../common.xml</relativePath>
     </parent>
     
-    <groupId>org.codehaus.groovy.maven.it.gmaven-testsuite.groovy-1.6</groupId>
+    <groupId>org.codehaus.gmaven.it.gmaven-testsuite.groovy-1.6</groupId>
     <artifactId>common</artifactId>
     <packaging>pom</packaging>
 

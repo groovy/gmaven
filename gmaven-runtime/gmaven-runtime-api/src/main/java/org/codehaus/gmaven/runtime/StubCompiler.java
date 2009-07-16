@@ -14,34 +14,20 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime;
+package org.codehaus.gmaven.runtime;
 
 import org.codehaus.gmaven.feature.Component;
 
-import java.io.PrintWriter;
-
 /**
- * Provides an abstraction to sanatize Groovy stack-traces.
+ * Groovy Groovy to Java stub compiler abstraction.
  *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  */
-public interface TraceSanitizer
-    extends Component
+public interface StubCompiler
+    extends org.codehaus.gmaven.runtime.util.Compiler, Component
 {
-    String KEY = TraceSanitizer.class.getName();
+    String KEY = StubCompiler.class.getName();
 
-    boolean filter(String className);
-
-    boolean filter(Class type);
-
-    Throwable sanitize(Throwable t, boolean deep);
-
-    Throwable sanitize(Throwable t);
-
-    void print(Throwable t, PrintWriter out, boolean deep);
-
-    void print(Throwable t, PrintWriter out);
-
-    void print(Throwable t);
+    // Add one off bits here to render/generate
 }

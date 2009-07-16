@@ -22,7 +22,7 @@ import org.apache.maven.shared.model.fileset.FileSet;
 import org.codehaus.gmaven.feature.Component;
 import org.codehaus.gmaven.feature.Configuration;
 import org.codehaus.gmaven.plugin.CompilerMojoSupport;
-import org.codehaus.groovy.maven.runtime.ClassCompiler;
+import org.codehaus.gmaven.runtime.ClassCompiler;
 
 import java.io.File;
 import java.util.Iterator;

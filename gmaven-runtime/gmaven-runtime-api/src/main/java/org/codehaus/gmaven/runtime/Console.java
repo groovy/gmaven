@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime;
+package org.codehaus.gmaven.runtime;
 
 import org.codehaus.gmaven.feature.Component;
 
 /**
- * Groovy Groovy to Java stub compiler abstraction.
+ * An abstraction of the Groovy GUI console.
  *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  */
-public interface StubCompiler
-    extends org.codehaus.groovy.maven.runtime.util.Compiler, Component
+public interface Console
+    extends Component
 {
-    String KEY = StubCompiler.class.getName();
+    String KEY = Console.class.getName();
 
-    // Add one off bits here to render/generate
+    void execute(ClassLoader classLoader) throws Exception;
 }

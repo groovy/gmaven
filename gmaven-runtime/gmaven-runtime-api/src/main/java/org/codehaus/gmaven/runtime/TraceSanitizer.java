@@ -14,20 +14,34 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime;
+package org.codehaus.gmaven.runtime;
 
 import org.codehaus.gmaven.feature.Component;
 
+import java.io.PrintWriter;
+
 /**
- * An abstraction of the Groovy GUI console.
+ * Provides an abstraction to sanatize Groovy stack-traces.
  *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  */
-public interface Console
+public interface TraceSanitizer
     extends Component
 {
-    String KEY = Console.class.getName();
+    String KEY = TraceSanitizer.class.getName();
 
-    void execute(ClassLoader classLoader) throws Exception;
+    boolean filter(String className);
+
+    boolean filter(Class type);
+
+    Throwable sanitize(Throwable t, boolean deep);
+
+    Throwable sanitize(Throwable t);
+
+    void print(Throwable t, PrintWriter out, boolean deep);
+
+    void print(Throwable t, PrintWriter out);
+
+    void print(Throwable t);
 }

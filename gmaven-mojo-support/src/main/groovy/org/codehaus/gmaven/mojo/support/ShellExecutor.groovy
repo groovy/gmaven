@@ -16,8 +16,6 @@
 
 package org.codehaus.gmaven.mojo.support
 
-// import org.codehaus.groovy.maven.util.AntBuilder
-
 /**
  * Helper to execute shell (/bin/sh) scripts.
  *

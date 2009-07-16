@@ -14,47 +14,23 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime;
+package org.codehaus.gmaven.runtime;
 
 import org.codehaus.gmaven.feature.Component;
+import org.codehaus.gmaven.feature.Configuration;
+import org.codehaus.gmaven.runtime.util.ClassSource;
+import org.codehaus.gmaven.runtime.util.ResourceLoader;
 
 /**
- * An abstraction of the Groovy CLI shell.
+ * Provides an abstraction to execute Groovy scripts.
  *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  */
-public interface Shell
+public interface ScriptExecutor
     extends Component
 {
-    String KEY = Shell.class.getName();
+    String KEY = ScriptExecutor.class.getName();
 
-    void execute(ClassLoader classLoader) throws Exception;
-    
-    interface Keys
-    {
-        String LEGACY = "legacy";
-
-        String VERBOSE = "verbose";
-
-        String DEBUG = "debug";
-
-        String QUIET = "quiet";
-
-        String COLOR = "color";
-
-        String TERMINAL = "terminal";
-
-        String ARGS = "args";
-
-        String[] ALL = {
-            LEGACY,
-            VERBOSE,
-            DEBUG,
-            QUIET,
-            COLOR,
-            TERMINAL,
-            ARGS
-        };
-    }
+    Object execute(ClassSource classSource, ClassLoader classLoader, ResourceLoader resourceLoader, Configuration context) throws Exception;
 }

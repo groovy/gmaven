@@ -26,8 +26,8 @@ import org.apache.commons.lang.SystemUtils;
 import org.codehaus.gmaven.feature.Provider;
 import org.codehaus.gmaven.feature.ProviderException;
 import org.codehaus.gmaven.feature.ProviderManager;
-import org.codehaus.groovy.maven.runtime.loader.artifact.ArtifactHandler;
-import org.codehaus.groovy.maven.runtime.loader.artifact.ArtifactProviderLoader;
+import org.codehaus.gmaven.runtime.loader.artifact.ArtifactHandler;
+import org.codehaus.gmaven.runtime.loader.artifact.ArtifactProviderLoader;
 
 import java.util.Collections;
 import java.util.Map;
@@ -63,7 +63,7 @@ public abstract class ProviderMojoSupport
     private String providerSelection = detectCompatibleProvider();
 
     /**
-     * @component role="org.codehaus.groovy.maven.feature.ProviderLoader" role-hint="artifact"
+     * @component role="org.codehaus.gmaven.feature.ProviderLoader" role-hint="artifact"
      * @required
      * @readonly
      * 
@@ -146,7 +146,7 @@ public abstract class ProviderMojoSupport
         private final Artifact originating;
 
         public ArtifactHandlerImpl() throws Exception {
-            String id = "org.codehaus.groovy.maven.runtime:gmaven-runtime-loader";
+            String id = "org.codehaus.gmaven.runtime:gmaven-runtime-loader";
 
             Artifact base = (Artifact) pluginArtifactMap.get(id);
 
@@ -154,10 +154,10 @@ public abstract class ProviderMojoSupport
                 throw new ProviderException("Missing dependency in the list of plugin artifacts: " + id);
             }
 
-            this.template = artifactFactory.createArtifact("org.codehaus.groovy.maven.runtime", "gmaven-runtime-", base.getBaseVersion(), base.getScope(), base.getType());
+            this.template = artifactFactory.createArtifact("org.codehaus.gmaven.runtime", "gmaven-runtime-", base.getBaseVersion(), base.getScope(), base.getType());
 
             // This is a synthetic artifact, using a reasonable sounding name to avoid confusing users about the dummy artifact
-            this.originating = artifactFactory.createBuildArtifact("org.codehaus.groovy.maven.runtime", "gmaven-runtime-loader-stub", base.getBaseVersion(), "jar");
+            this.originating = artifactFactory.createBuildArtifact("org.codehaus.gmaven.runtime", "gmaven-runtime-loader-stub", base.getBaseVersion(), "jar");
         }
 
         public Artifact createQuery(final String key) {

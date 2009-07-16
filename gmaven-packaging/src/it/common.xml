@@ -21,7 +21,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     
-    <groupId>org.codehaus.groovy.maven.it.gmaven-packaging</groupId>
+    <groupId>org.codehaus.gmaven.it.gmaven-packaging</groupId>
     <artifactId>common</artifactId>
     <version>testing</version>
     <packaging>pom</packaging>
@@ -29,7 +29,7 @@
     <build>
         <extensions>
             <extension>
-                <groupId>org.codehaus.groovy.maven</groupId>
+                <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-packaging</artifactId>
                 <version>testing</version>
             </extension>
