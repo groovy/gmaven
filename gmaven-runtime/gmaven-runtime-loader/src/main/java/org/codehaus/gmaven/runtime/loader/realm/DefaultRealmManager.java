@@ -31,7 +31,7 @@ import java.util.HashMap;
 /**
  * The default {@link RealmManager} component.
  *
- * @plexus.component role="org.codehaus.groovy.maven.runtime.loader.realm.RealmManager"
+ * @plexus.component role="org.codehaus.gmaven.runtime.loader.realm.RealmManager"
  *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>

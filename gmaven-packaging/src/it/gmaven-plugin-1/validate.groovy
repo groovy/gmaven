@@ -19,6 +19,6 @@
 //
 
 def repo = new File(settings.localRepository)
-def target = new File(repo, 'org/codehaus/groovy/maven/it/gmaven-packaging/gmaven-plugin-1/testing/gmaven-plugin-1-testing.jar')
+def target = new File(repo, 'org/codehaus/gmaven/it/gmaven-packaging/gmaven-plugin-1/testing/gmaven-plugin-1-testing.jar')
 assert target.exists() : 'Target artifact missing in local repository'
 

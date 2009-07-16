@@ -38,7 +38,7 @@ import java.util.Map;
 /**
  * Loads a provider based on a configured {@link ArtifactHandler}.
  *
- * @plexus.component role="org.codehaus.groovy.maven.feature.ProviderLoader" role-hint="artifact"
+ * @plexus.component role="org.codehaus.gmaven.feature.ProviderLoader" role-hint="artifact"
  *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
@@ -115,7 +115,7 @@ public class ArtifactProviderLoader
         ClassLoader parent = getClass().getClassLoader();
         ClassRealm realm = realmManager.createProviderRealm(key, classPath, parent);
         
-        Class type = realm.loadClass("org.codehaus.groovy.maven.runtime.v" + key.replace('.', '_').replace('-', '_') + ".ProviderImpl");
+        Class type = realm.loadClass("org.codehaus.gmaven.runtime.v" + key.replace('.', '_').replace('-', '_') + ".ProviderImpl");
 
         return (Provider) type.newInstance();
     }

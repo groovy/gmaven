@@ -36,7 +36,7 @@ import java.util.Set;
 /**
  * Default {@link ProviderSelector}.
  *
- * @plexus.component role="org.codehaus.groovy.maven.feature.ProviderSelector"
+ * @plexus.component role="org.codehaus.gmaven.feature.ProviderSelector"
  *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>

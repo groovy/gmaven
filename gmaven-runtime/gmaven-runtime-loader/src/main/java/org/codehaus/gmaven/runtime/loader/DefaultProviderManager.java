@@ -31,7 +31,7 @@ import java.util.Map;
 /**
  * Default {@link ProviderManager}.
  *
- * @plexus.component role="org.codehaus.groovy.maven.feature.ProviderManager"
+ * @plexus.component role="org.codehaus.gmaven.feature.ProviderManager"
  *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>

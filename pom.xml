@@ -113,7 +113,7 @@
     </ciManagement>
     
     <prerequisites>
-        <maven>2.0.5</maven>
+        <maven>2.0.9</maven>
     </prerequisites>
 
     <distributionManagement>
@@ -132,10 +132,7 @@
         <site>
             <id>codehaus.org</id>
             <name>Groovy Website</name>
-            <!--
-            TODO: May eventually want to add on ${version} here...
-            -->
-            <url>dav:https://dav.codehaus.org/gmaven/maven-generated</url>
+            <url>dav:https://dav.codehaus.org/gmaven/maven-generated/${pom.version}</url>
         </site>
     </distributionManagement>
 
@@ -185,25 +182,25 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>1.5.6</version>
+                <version>1.5.8</version>
             </dependency>
 
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-simple</artifactId>
-                <version>1.5.6</version>
+                <version>1.5.8</version>
             </dependency>
 
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-nop</artifactId>
-                <version>1.5.6</version>
+                <version>1.5.8</version>
             </dependency>
 
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>jcl104-over-slf4j</artifactId>
-                <version>1.5.6</version>
+                <version>1.5.8</version>
             </dependency>
 
             <dependency>
@@ -440,7 +437,6 @@
                 </includes>
             </resource>
             
-            <!--
             <resource>
                 <directory>${project.basedir}/src/main/filtered-resources</directory>
                 <filtering>true</filtering>
@@ -448,7 +444,6 @@
                     <include>**/*</include>
                 </includes>
             </resource>
-            -->
         </resources>
         
         <testResources>
@@ -460,7 +455,6 @@
                 </includes>
             </testResource>
             
-            <!--
             <testResource>
                 <directory>${project.basedir}/src/test/filtered-resources</directory>
                 <filtering>true</filtering>
@@ -468,7 +462,6 @@
                     <include>**/*</include>
                 </includes>
             </testResource>
-            -->
         </testResources>
         
         <pluginManagement>
