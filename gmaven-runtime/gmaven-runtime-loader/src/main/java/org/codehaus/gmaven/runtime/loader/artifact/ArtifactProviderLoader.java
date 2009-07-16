@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.loader.artifact;
+package org.codehaus.gmaven.runtime.loader.artifact;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.DefaultArtifact;
@@ -22,7 +22,7 @@ import org.apache.maven.artifact.resolver.ArtifactResolutionResult;
 import org.apache.maven.artifact.resolver.filter.ScopeArtifactFilter;
 import org.codehaus.gmaven.feature.Provider;
 import org.codehaus.gmaven.feature.ProviderLoader;
-import org.codehaus.groovy.maven.runtime.loader.realm.RealmManager;
+import org.codehaus.gmaven.runtime.loader.realm.RealmManager;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

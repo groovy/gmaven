@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.loader.realm;
+package org.codehaus.gmaven.runtime.loader.realm;
 
 import org.codehaus.plexus.classworlds.ClassWorld;
 import org.codehaus.plexus.classworlds.ClassWorldException;

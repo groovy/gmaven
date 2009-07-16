@@ -14,26 +14,25 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.loader.realm;
+package org.codehaus.gmaven.runtime.loader.artifact;
 
-import org.codehaus.plexus.classworlds.realm.ClassRealm;
-import org.codehaus.plexus.classworlds.realm.NoSuchRealmException;
-import org.codehaus.plexus.classworlds.ClassWorldException;
-import org.codehaus.gmaven.feature.Provider;
-
-import java.net.URL;
+import org.apache.maven.artifact.Artifact;
+import org.apache.maven.artifact.resolver.ArtifactNotFoundException;
+import org.apache.maven.artifact.resolver.ArtifactResolutionException;
+import org.apache.maven.artifact.resolver.ArtifactResolutionResult;
+import org.apache.maven.artifact.resolver.filter.ArtifactFilter;
 
 /**
- * Provides an abstraction to deal with ClassWorlds realms.
+ * Deals with the artifact details for the {@link ArtifactProviderLoader}.
  *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  */
-public interface RealmManager
+public interface ArtifactHandler
 {
-    ClassRealm createProviderRealm(String key, URL[] classPath, ClassLoader parent) throws ClassWorldException;
+    Artifact createQuery(String key);
+    
+    Artifact createDependency(Artifact query);
 
-    ClassRealm createComponentRealm(Provider provider, URL[] classPath) throws ClassWorldException;
-
-    void releaseComponentRealm(ClassRealm realm) throws NoSuchRealmException;
+    ArtifactResolutionResult resolve(Artifact artifact, ArtifactFilter filter) throws ArtifactNotFoundException, ArtifactResolutionException;
 }

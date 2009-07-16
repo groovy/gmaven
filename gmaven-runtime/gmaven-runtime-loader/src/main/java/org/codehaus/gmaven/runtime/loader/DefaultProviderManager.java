@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.loader;
+package org.codehaus.gmaven.runtime.loader;
 
 import org.apache.commons.lang.time.StopWatch;
 import org.codehaus.gmaven.feature.Provider;
