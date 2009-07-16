@@ -20,7 +20,7 @@ import org.codehaus.gmaven.feature.ComponentException;
 import org.codehaus.gmaven.feature.Configuration;
 import org.codehaus.gmaven.feature.Feature;
 import org.codehaus.groovy.maven.support.ComponentSupport;
-import org.codehaus.groovy.maven.runtime.util.Compiler;
+import org.codehaus.gmaven.runtime.util.Compiler;
 
 import java.io.File;
 import java.net.MalformedURLException;

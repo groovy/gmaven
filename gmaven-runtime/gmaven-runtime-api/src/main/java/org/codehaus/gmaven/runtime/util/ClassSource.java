@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.util;
+package org.codehaus.gmaven.runtime.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;

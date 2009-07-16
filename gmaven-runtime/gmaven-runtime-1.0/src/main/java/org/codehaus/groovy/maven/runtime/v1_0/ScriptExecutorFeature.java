@@ -26,8 +26,8 @@ import org.codehaus.groovy.maven.support.FeatureSupport;
 import org.codehaus.groovy.maven.runtime.ClassFactory;
 import org.codehaus.groovy.maven.runtime.ScriptExecutor;
 import org.codehaus.groovy.maven.runtime.support.ScriptExecutorSupport;
-import org.codehaus.groovy.maven.runtime.util.Callable;
-import org.codehaus.groovy.maven.runtime.util.MagicAttribute;
+import org.codehaus.gmaven.runtime.util.Callable;
+import org.codehaus.gmaven.runtime.util.MagicAttribute;
 
 /**
  * Provides the script execution feature.

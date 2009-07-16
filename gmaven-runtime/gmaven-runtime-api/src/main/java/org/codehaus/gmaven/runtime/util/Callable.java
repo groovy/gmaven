@@ -14,33 +14,15 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.util;
-
-import java.io.File;
-import java.net.URL;
-import java.util.Collection;
+package org.codehaus.gmaven.runtime.util;
 
 /**
- * A common interface for compiler components.
+ * Provides a simple way to represent a Groovy closure w/o the actual closure.
  *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  */
-public interface Compiler
+public interface Callable
 {
-    void setTargetDirectory(File dir);
-
-    File getTargetDirectory();
-    
-    void add(URL source);
-
-    void add(File source);
-
-    Collection sources();
-
-    int compile() throws Exception;
-
-    // Result class ?
-
-    // Listener intf ?
+    Object call(Object[] args) throws Exception;
 }

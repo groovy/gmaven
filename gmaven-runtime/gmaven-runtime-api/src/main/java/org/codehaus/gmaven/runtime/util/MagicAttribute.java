@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.util;
+package org.codehaus.gmaven.runtime.util;
 
 /**
- * Provides a simple way to represent a Groovy closure w/o the actual closure.
+ * Provides some hackish wizardy...
  *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  */
-public interface Callable
+public interface MagicAttribute
 {
-    Object call(Object[] args) throws Exception;
+    MagicAttribute ANT_BUILDER = new MagicAttribute() {};
 }

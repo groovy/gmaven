@@ -25,8 +25,8 @@ import org.codehaus.groovy.maven.support.ComponentSupport;
 import org.codehaus.groovy.maven.support.FeatureSupport;
 import org.codehaus.groovy.maven.runtime.ClassFactory;
 import org.codehaus.groovy.maven.runtime.support.util.ResourceLoaderImpl;
-import org.codehaus.groovy.maven.runtime.util.ClassSource;
-import org.codehaus.groovy.maven.runtime.util.ResourceLoader;
+import org.codehaus.gmaven.runtime.util.ClassSource;
+import org.codehaus.gmaven.runtime.util.ResourceLoader;
 
 import java.io.IOException;
 import java.net.MalformedURLException;

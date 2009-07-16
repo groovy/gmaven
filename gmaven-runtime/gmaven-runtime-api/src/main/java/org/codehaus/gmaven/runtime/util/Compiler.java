@@ -14,15 +14,33 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.runtime.util;
+package org.codehaus.gmaven.runtime.util;
+
+import java.io.File;
+import java.net.URL;
+import java.util.Collection;
 
 /**
- * Provides some hackish wizardy...
+ * A common interface for compiler components.
  *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  */
-public interface MagicAttribute
+public interface Compiler
 {
-    MagicAttribute ANT_BUILDER = new MagicAttribute() {};
+    void setTargetDirectory(File dir);
+
+    File getTargetDirectory();
+    
+    void add(URL source);
+
+    void add(File source);
+
+    Collection sources();
+
+    int compile() throws Exception;
+
+    // Result class ?
+
+    // Listener intf ?
 }

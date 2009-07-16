@@ -22,10 +22,10 @@ import org.codehaus.gmaven.feature.Feature;
 import org.codehaus.groovy.maven.support.ComponentSupport;
 import org.codehaus.groovy.maven.runtime.ClassFactory;
 import org.codehaus.groovy.maven.runtime.ScriptExecutor;
-import org.codehaus.groovy.maven.runtime.util.Callable;
-import org.codehaus.groovy.maven.runtime.util.ClassSource;
-import org.codehaus.groovy.maven.runtime.util.MagicAttribute;
-import org.codehaus.groovy.maven.runtime.util.ResourceLoader;
+import org.codehaus.gmaven.runtime.util.Callable;
+import org.codehaus.gmaven.runtime.util.ClassSource;
+import org.codehaus.gmaven.runtime.util.MagicAttribute;
+import org.codehaus.gmaven.runtime.util.ResourceLoader;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
