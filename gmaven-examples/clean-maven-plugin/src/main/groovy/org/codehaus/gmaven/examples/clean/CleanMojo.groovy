@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.examples.clean
+package org.codehaus.gmaven.examples.clean
 
 import org.codehaus.gmaven.mojo.GroovyMojo
 

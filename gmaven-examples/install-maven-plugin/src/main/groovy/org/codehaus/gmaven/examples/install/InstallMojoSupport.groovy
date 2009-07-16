@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.groovy.maven.examples.install
+package org.codehaus.gmaven.examples.install
 
 //
 // NOTE: Ported to Groovy from the org.apache.maven.plugins:maven-install-plugin
