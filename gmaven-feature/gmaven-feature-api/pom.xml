@@ -22,7 +22,7 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>org.codehaus.groovy.maven.feature</groupId>
+        <groupId>org.codehaus.gmaven.feature</groupId>
         <artifactId>gmaven-feature</artifactId>
         <version>1.1-SNAPSHOT</version>
     </parent>

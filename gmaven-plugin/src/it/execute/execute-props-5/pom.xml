@@ -22,7 +22,7 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>org.codehaus.groovy.maven.it.gmaven-plugin.execute</groupId>
+        <groupId>org.codehaus.gmaven.it.gmaven-plugin.execute</groupId>
         <artifactId>common</artifactId>
         <version>testing</version>
         <relativePath>../common.xml</relativePath>

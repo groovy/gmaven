@@ -22,7 +22,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.codehaus.groovy.maven.runtime</groupId>
+        <groupId>org.codehaus.gmaven.runtime</groupId>
         <artifactId>gmaven-runtime</artifactId>
         <version>1.1-SNAPSHOT</version>
     </parent>
@@ -185,7 +185,7 @@
         </dependency>
 
         <dependency>
-            <groupId>org.codehaus.groovy.maven.runtime</groupId>
+            <groupId>org.codehaus.gmaven.runtime</groupId>
             <artifactId>gmaven-runtime-support</artifactId>
         </dependency>
 
@@ -200,7 +200,7 @@
         </dependency>
 
         <dependency>
-            <groupId>org.codehaus.groovy.maven.support</groupId>
+            <groupId>org.codehaus.gmaven.support</groupId>
             <artifactId>slf4j-gossip</artifactId>
             <scope>test</scope>
         </dependency>

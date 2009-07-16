@@ -22,7 +22,7 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>org.codehaus.groovy.maven.it.gmaven-testsuite.mojo</groupId>
+        <groupId>org.codehaus.gmaven.it.gmaven-testsuite.mojo</groupId>
         <artifactId>mojo-2</artifactId>
         <version>testing</version>
     </parent>

@@ -32,7 +32,7 @@
     
     <dependencies>
         <dependency>
-            <groupId>org.codehaus.groovy.maven</groupId>
+            <groupId>org.codehaus.gmaven</groupId>
             <artifactId>gmaven-mojo</artifactId>
             <version>@project.version@</version>
         </dependency>
@@ -48,7 +48,7 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.groovy.maven</groupId>
+                <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-plugin</artifactId>
                 <version>@project.version@</version>
                 <executions>

@@ -21,14 +21,14 @@
 
     <modelVersion>4.0.0</modelVersion>
     
-    <groupId>org.codehaus.groovy.maven.examples.it</groupId>
+    <groupId>org.codehaus.gmaven.examples.it</groupId>
     <artifactId>clean-1</artifactId>
     <version>testing</version>
     
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.groovy.maven.examples</groupId>
+                <groupId>org.codehaus.gmaven.examples</groupId>
                 <artifactId>clean-maven-plugin</artifactId>
                 <version>testing</version>
                 

@@ -22,7 +22,7 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>org.codehaus.groovy.maven.it.gmaven-testsuite.groovy-1.0</groupId>
+        <groupId>org.codehaus.gmaven.it.gmaven-testsuite.groovy-1.0</groupId>
         <artifactId>common</artifactId>
         <version>testing</version>
         <relativePath>../common.xml</relativePath>
@@ -43,7 +43,7 @@
         NOTE: This is needed to allow the compiler:compile and compiler:testCompile goals to compile generated stubs.
         -->
         <dependency>
-            <groupId>org.codehaus.groovy.maven.runtime</groupId>
+            <groupId>org.codehaus.gmaven.runtime</groupId>
             <artifactId>gmaven-runtime-${groovy_version}</artifactId>
             <version>testing</version>
         </dependency>
@@ -71,7 +71,7 @@
             </plugin>
             
             <plugin>
-                <groupId>org.codehaus.groovy.maven</groupId>
+                <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-plugin</artifactId>
 
                 <configuration>

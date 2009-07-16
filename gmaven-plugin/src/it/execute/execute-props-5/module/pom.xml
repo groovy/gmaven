@@ -22,7 +22,7 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>org.codehaus.groovy.maven.it.gmaven-plugin.execute</groupId>
+        <groupId>org.codehaus.gmaven.it.gmaven-plugin.execute</groupId>
         <artifactId>execute-props-5</artifactId>
         <version>testing</version>
     </parent>
@@ -36,7 +36,7 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.groovy.maven</groupId>
+                <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-plugin</artifactId>
                 <executions>
                     <execution>

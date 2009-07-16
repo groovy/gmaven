@@ -22,12 +22,12 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-        <groupId>org.codehaus.groovy.maven</groupId>
+        <groupId>org.codehaus.gmaven</groupId>
         <artifactId>gmaven</artifactId>
         <version>1.1-SNAPSHOT</version>
     </parent>
     
-    <groupId>org.codehaus.groovy.maven.examples</groupId>
+    <groupId>org.codehaus.gmaven.examples</groupId>
     <artifactId>gmaven-examples</artifactId>
     <name>GMaven Examples</name>
     <packaging>pom</packaging>
@@ -70,7 +70,7 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.groovy.maven</groupId>
+                <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-plugin</artifactId>
                 <configuration>
                     <providerSelection>1.5</providerSelection>
