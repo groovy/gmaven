@@ -18,10 +18,16 @@
 <!-- $Id$ -->
 
 <project name="${project.name}">
-    <bannerLeft>
+    <bannerRight>
         <name>Groovy</name>
         <src>http://media.xircles.codehaus.org/_projects/groovy/_logos/small.png</src>
         <href>http://groovy.codehaus.org</href>
+    </bannerRight>
+    
+    <bannerLeft>
+        <name>GMaven</name>
+        <src>http://gmaven.codehaus.org/art/gmaven-logo-small.png</src>
+        <href>http://gmaven.codehaus.org</href>
     </bannerLeft>
 
     <publishDate format="dd MMM yyyy" position="left"/>
@@ -31,6 +37,7 @@
     <body>
         <links>
             <item name="Groovy" href="http://groovy.codehaus.org"/>
+            <item name="Codehaus" href="http://www.codehaus.org"/>
             <item name="Maven" href="http://maven.apache.org "/>
         </links>
 
