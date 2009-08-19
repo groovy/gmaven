@@ -24,15 +24,9 @@
         <href>http://groovy.codehaus.org</href>
     </bannerLeft>
 
-    <bannerRight>
-        <name>Codehaus</name>
-        <src>http://codehaus.org/download/attachments/64705/codehaus-title.png</src>
-        <href>http://codehaus.org</href>
-    </bannerRight>
-
     <publishDate format="dd MMM yyyy" position="left"/>
 
-    <version position="left"/>
+    <version position="right"/>
 
     <body>
         <links>
