@@ -26,8 +26,11 @@
     
     <bannerLeft>
         <name>GMaven</name>
-        <src>http://gmaven.codehaus.org/art/gmaven-logo-small.png</src>
-        <href>http://gmaven.codehaus.org</href>
+        <!-- Due to a bug in site, you can't point back to the same site where
+             you deploy.  I've put the art and a redirect index.html out on 
+             the groovy site, which seems to work. -->
+        <src>http://groovy.codehaus.org/modules/gmaven/art/gmaven-logo-small.png</src>
+        <href>http://groovy.codehaus.org/modules/gmaven/index.html</href>
     </bannerLeft>
 
     <publishDate format="dd MMM yyyy" position="left"/>
