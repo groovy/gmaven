@@ -31,7 +31,11 @@
     <description>
         GMaven provides integration of the Groovy language into Maven.
     </description>
-
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+ 
     <url>http://gmaven.codehaus.org</url>
 
     <inceptionYear>2006</inceptionYear>
@@ -412,11 +416,7 @@
         <module>gmaven-examples</module>
         <module>gmaven-testsuite</module>
     </modules>
-    
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-    
+   
     <build>
         <extensions>
             <extension>
@@ -610,7 +610,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>2.0-beta-7</version>
+                    <version>2.0.1</version>
                 </plugin>
                 
                 <plugin>
@@ -670,12 +670,12 @@
                                 <requireMavenVersion>
                                     <version>[2.0.9,)</version>
                                 </requireMavenVersion>
-                                <requirePluginVersions>
+                                <!-- <requirePluginVersions>
                                     <banLatest>true</banLatest>
                                     <banRelease>true</banRelease>
                                     <banSnapshots>false</banSnapshots>
                                     <banTimestamps>false</banTimestamps>
-                                </requirePluginVersions>
+                                </requirePluginVersions> -->
                             </rules>
                         </configuration>
                     </execution>
