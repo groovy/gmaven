@@ -137,13 +137,11 @@ $Id$
             <name>Groovy Central Repository</name>
             <url>dav:https://dav.codehaus.org/repository/gmaven</url>
         </repository>
-
         <snapshotRepository>
             <id>codehaus.org</id>
             <name>Groovy Central Development Repository</name>
             <url>dav:https://dav.codehaus.org/snapshots.repository/gmaven</url>
         </snapshotRepository>
-
         <site>
             <id>codehaus.org</id>
             <name>Groovy Website</name>
@@ -808,6 +806,19 @@ $Id$
     </reporting>
 
     <profiles>
+    	<profile>
+    		<id>local-site</id>
+    		<distributionManagement>
+		        <site>
+		            <id>codehaus.org</id>
+		            <name>Groovy Website</name>
+		            <!-- You get feedback on problems much quicker by generating the site to the local
+		                 file system.  You can copy this over using standard DAV tools.  -->
+		            <!-- <url>dav:https://dav.codehaus.org/gmaven/maven-generated/${pom.version}</url> -->
+		            <url>file:///${user.home}/.m2/gmaven/maven-generated/${pom.version}</url>
+		        </site>
+		    </distributionManagement>
+    	</profile>
 	    <profile>
 			<!-- Use this profile during release and release testing to get all the reports.
 			     Many reports are not necessary during documentation development, and they take
