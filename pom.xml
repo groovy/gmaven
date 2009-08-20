@@ -15,7 +15,18 @@
     limitations under the License.
 -->
 
-<!-- $Id$ -->
+<!--
+BUILD NOTES:
+
+To create site docs:
+    C:\work\gmaven>mvn clean install 
+    C:\work\gmaven>mvn site:site org.codehaus.gmaven.support:filter-plugin:1.1-SNAPSHOT:site site:deploy -Preports 
+    
+The filter-plugin performs standard Maven filtering on /target/site, which is a lot less cumbersome than trying to
+work within the rules for filtering imposed by the maven-site-plugin.
+
+$Id$ 
+-->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
