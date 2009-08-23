@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <title>Building Groovy Projects</title>
+    <author email="dev@groovy.codehaus.org">Jason Smith</author>
+  </properties>
+  <body>
+    <section name="Building Groovy Projects">
+    	
+		<subsection name="Project Structure">
+			<p>Groovy projects are structured based on the Maven standard, 
+			notably adding a <code>/groovy</code> sub-directory to the <code>/src/main</code> 
+			and <code>src/test</code> folders.</p>
+			<pre><![CDATA[maven-project/
+  +- pom.xml
+  +- src/
+     +- main/
+     |  +- java/
+     |  +- groovy/
+     |     +- Example.groovy 
+     |  +- resources/
+     +- test/
+        +- java/
+        +- groovy/ 
+        +- resources/]]></pre>
+		</subsection>
+    	  
+	</section>
+  </body>
+</document>
