@@ -31,6 +31,12 @@ or you can run without this profile to deploy to DAV the old-fashioned way (slow
 The filter-plugin performs standard Maven filtering on /target/site, which is a lot less cumbersome than trying to
 work within the rules for filtering imposed by the maven-site-plugin.
 
+NOTE:
+You can upload the site docs for the GMaven-Plugin projects like this:
+    C:\work\gmaven\gmaven-plugin>mvn clean site:site org.codehaus.gmaven.support:filter-plugin:1.1-SNAPSHOT:site site:deploy -Preports
+
+This takes about 5 minutes, which is much faster than generating and uploading the documentation for all the projects.
+
 $Id$ 
 -->
 
