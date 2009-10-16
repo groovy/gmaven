@@ -23,14 +23,14 @@
     
     <groupId>org.codehaus.gmaven.examples.it</groupId>
     <artifactId>clean-1</artifactId>
-    <version>testing</version>
+    <version>@project.version@</version>
     
     <build>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.gmaven.examples</groupId>
                 <artifactId>clean-maven-plugin</artifactId>
-                <version>testing</version>
+                <version>@project.version@</version>
                 
                 <executions>
                     <execution>

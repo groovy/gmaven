@@ -33,22 +33,6 @@
     <description>
         Provides custom packaging types for GMaven support.
     </description>
-    
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>shitty-maven-plugin</artifactId>
-                <configuration>
-                    <!--
-                    HACK: Allow failures for now, since the tests fail because Maven is not properly installing
-                          artifacts from custom packaging with the correct extention into the local repository.
-                    -->
-                    <ignoreFailures>true</ignoreFailures>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
 

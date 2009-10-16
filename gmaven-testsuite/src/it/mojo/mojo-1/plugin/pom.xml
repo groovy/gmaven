@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.codehaus.gmaven.it.gmaven-testsuite.mojo</groupId>
         <artifactId>mojo-1</artifactId>
-        <version>testing</version>
+        <version>@project.version@</version>
     </parent>
     
     <artifactId>plugin</artifactId>
@@ -34,7 +34,7 @@
         <dependency>
             <groupId>org.codehaus.gmaven</groupId>
             <artifactId>gmaven-mojo</artifactId>
-            <version>testing</version>
+            <version>@project.version@</version>
         </dependency>
     </dependencies>
     
@@ -52,7 +52,7 @@
             <plugin>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-plugin</artifactId>
-                <version>testing</version>
+                <version>@project.version@</version>
                 
                 <executions>
                     <execution>

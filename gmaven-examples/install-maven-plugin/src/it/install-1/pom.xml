@@ -23,7 +23,7 @@
     
     <groupId>org.codehaus.gmaven.examples.it</groupId>
     <artifactId>install-1</artifactId>
-    <version>testing</version>
+    <version>@project.version@</version>
     
     <build>
         <pluginManagement>
@@ -40,7 +40,7 @@
             <plugin>
                 <groupId>org.codehaus.gmaven.examples</groupId>
                 <artifactId>install-maven-plugin</artifactId>
-                <version>testing</version>
+                <version>@project.version@</version>
                 
                 <executions>
                     <execution>

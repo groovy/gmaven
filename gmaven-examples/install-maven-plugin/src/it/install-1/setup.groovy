@@ -18,6 +18,12 @@
 // $Id$
 //
 
-def repo = new File(settings.localRepository)
-def target = new File(repo, 'org/codehaus/gmaven/examples/it/install-1/testing/install-1-testing.jar')
+def ant = new AntBuilder()
+
+def props = new Properties()
+props.load(new File(basedir, 'invoker.properties').newInputStream())
+def version = props['project.version']
+
+def target = new File(localRepositoryPath, "org/codehaus/gmaven/examples/it/install-1/${version}/install-1-${version}.jar")
 ant.delete(file: target)
+return true

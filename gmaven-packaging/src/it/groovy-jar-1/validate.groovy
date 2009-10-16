@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-//
-// $Id$
-//
+def props = new Properties()
+props.load(new File(basedir, 'invoker.properties').newInputStream())
+def version = props['project.version']
 
-def repo = new File(settings.localRepository)
-def target = new File(repo, 'org/codehaus/gmaven/it/gmaven-packaging/groovy-jar-1/testing/groovy-jar-1-testing.jar')
-assert target.exists() : 'Target artifact missing in local repository'
+def target = new File(localRepositoryPath, "org/codehaus/gmaven/it/gmaven-packaging/groovy-jar-1/${version}/groovy-jar-1-${version}.jar")
+assert target.exists() : "Artifact missing in local repository: $target"
 

@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.codehaus.gmaven.it.gmaven-plugin</groupId>
         <artifactId>script-library</artifactId>
-        <version>testing</version>
+        <version>@project.version@</version>
     </parent>
     
     <artifactId>library</artifactId>

@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-//
-// $Id$
-//
+
+def ant = new AntBuilder()
 
 def dir = new File(basedir, 'target')
 if (dir.exists()) {
@@ -27,3 +26,4 @@ ant.mkdir(dir: dir)
 def file = new File(dir, 'test')
 ant.touch(file: file)
 
+return true

@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.codehaus.gmaven.it.gmaven-plugin.execute</groupId>
         <artifactId>execute-props-5</artifactId>
-        <version>testing</version>
+        <version>@project.version@</version>
     </parent>
     
     <artifactId>module</artifactId>

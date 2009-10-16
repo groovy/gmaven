@@ -639,7 +639,13 @@ $Id$
                     <artifactId>plexus-maven-plugin</artifactId>
                     <version>1.3.8</version>
                 </plugin>
-                
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-invoker-plugin</artifactId>
+                    <version>1.4</version>
+                </plugin>
+
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
@@ -650,12 +656,6 @@ $Id$
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>cobertura-maven-plugin</artifactId>
                     <version>2.2</version>
-                </plugin>
-                
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>shitty-maven-plugin</artifactId>
-                    <version>1.0-alpha-3</version>
                 </plugin>
                 
                 <!-- INTERNAL -->
@@ -688,9 +688,7 @@ $Id$
                                 <requireJavaVersion>
                                     <version>[1.4,1.7)</version>
                                 </requireJavaVersion>
-                                <requireMavenVersion>
-                                    <version>[2.0.10]</version>
-                                </requireMavenVersion>
+                                <version>[2.0.9,)</version>
                                 <!--
                                 <requirePluginVersions>
                                     <banLatest>true</banLatest>
@@ -893,14 +891,24 @@ $Id$
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>shitty-maven-plugin</artifactId>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-invoker-plugin</artifactId>
+                        <configuration>
+                            <projectsDirectory>src/it</projectsDirectory>
+                            <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
+                            <pomIncludes>
+                                <pomInclude>*/pom.xml</pomInclude>
+                            </pomIncludes>
+                            <settingsFile>src/it/settings.xml</settingsFile>
+                            <localRepositoryPath>${project.build.directory}/it-repo</localRepositoryPath>
+                            <preBuildHookScript>setup.groovy</preBuildHookScript>
+                            <postBuildHookScript>validate.groovy</postBuildHookScript>
+                        </configuration>
                         <executions>
                             <execution>
                                 <goals>
-                                    <goal>clean</goal>
                                     <goal>install</goal>
-                                    <goal>test</goal>
+                                    <goal>run</goal>
                                 </goals>
                             </execution>
                         </executions>
@@ -920,15 +928,6 @@ $Id$
             
             <build>
                 <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>shitty-maven-plugin</artifactId>
-                        <configuration>
-                            <verbose>true</verbose>
-                            <color>false</color>
-                        </configuration>
-                    </plugin>
-                    
                     <!--
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>

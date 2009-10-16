@@ -23,7 +23,7 @@
     
     <groupId>org.codehaus.gmaven.it.gmaven-testsuite</groupId>
     <artifactId>common</artifactId>
-    <version>testing</version>
+    <version>@project.version@</version>
     <packaging>pom</packaging>
     
     <dependencyManagement>
@@ -84,7 +84,7 @@
                 <plugin>
                     <groupId>org.codehaus.gmaven</groupId>
                     <artifactId>gmaven-plugin</artifactId>
-                    <version>testing</version>
+                    <version>@project.version@</version>
                 </plugin>
             </plugins>
         </pluginManagement>

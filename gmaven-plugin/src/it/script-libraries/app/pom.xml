@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.codehaus.gmaven.it.gmaven-plugin</groupId>
         <artifactId>script-library</artifactId>
-        <version>testing</version>
+        <version>@project.version@</version>
     </parent>
     
     <artifactId>app</artifactId>
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>org.codehaus.gmaven.it.gmaven-plugin</groupId>
             <artifactId>library</artifactId>
-            <version>testing</version>
+            <version>@project.version@</version>
         </dependency>
     </dependencies>
     

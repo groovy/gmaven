@@ -1,1 +1,0 @@
-clean org.codehaus.gmaven:gmaven-plugin:testing:execute

@@ -23,7 +23,7 @@
     
     <groupId>org.codehaus.gmaven.it.gmaven-plugin</groupId>
     <artifactId>common</artifactId>
-    <version>testing</version>
+    <version>@project.version@</version>
     <packaging>pom</packaging>
     
     <dependencyManagement>
@@ -102,7 +102,7 @@
                 <plugin>
                     <groupId>org.codehaus.gmaven</groupId>
                     <artifactId>gmaven-plugin</artifactId>
-                    <version>testing</version>
+                    <version>@project.version@</version>
                     <configuration>
                         <!--
                         NOTE: Using the Java 1.4 compatible Groovy 1.5 here for compatibility.

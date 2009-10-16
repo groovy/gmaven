@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.codehaus.gmaven.it.gmaven-testsuite.mojo</groupId>
         <artifactId>common</artifactId>
-        <version>testing</version>
+        <version>@project.version@</version>
         <relativePath>../common.xml</relativePath>
     </parent>
     

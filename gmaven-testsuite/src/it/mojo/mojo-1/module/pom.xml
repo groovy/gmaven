@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.codehaus.gmaven.it.gmaven-testsuite.mojo</groupId>
         <artifactId>mojo-1</artifactId>
-        <version>testing</version>
+        <version>@project.version@</version>
     </parent>
     
     <artifactId>module</artifactId>
@@ -34,7 +34,7 @@
             <plugin>
                 <groupId>${pom.groupId}</groupId>
                 <artifactId>plugin</artifactId>
-                <version>testing</version>
+                <version>@project.version@</version>
                 
                 <executions>
                     <execution>

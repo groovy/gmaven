@@ -24,13 +24,13 @@
     <parent>
         <groupId>org.codehaus.gmaven.it.gmaven-plugin</groupId>
         <artifactId>common</artifactId>
-        <version>testing</version>
+        <version>@project.version@</version>
         <relativePath>../common.xml</relativePath>
     </parent>
     
     <groupId>org.codehaus.gmaven.it.gmaven-plugin.compile</groupId>
     <artifactId>common</artifactId>
-    <version>testing</version>
+    <version>@project.version@</version>
     <packaging>pom</packaging>
 
 </project>
