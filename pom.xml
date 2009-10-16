@@ -688,7 +688,9 @@ $Id$
                                 <requireJavaVersion>
                                     <version>[1.4,1.7)</version>
                                 </requireJavaVersion>
-                                <version>[2.0.10,)</version>
+                                <requireMavenVersion>
+                                    <version>[2.0.10,)</version>
+                                </requireMavenVersion>
                                 <!--
                                 <requirePluginVersions>
                                     <banLatest>true</banLatest>
