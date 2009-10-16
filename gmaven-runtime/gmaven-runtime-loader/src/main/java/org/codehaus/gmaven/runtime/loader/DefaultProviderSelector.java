@@ -29,6 +29,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -104,7 +105,6 @@ public class DefaultProviderSelector
         assert registry != null;
 
         Map supported = registry.providers(true);
-
         Provider provider = null;
 
         if (supported != null && !supported.isEmpty()) {
@@ -156,7 +156,6 @@ public class DefaultProviderSelector
         log.debug("Discovering providers for selection: {}", selection);
 
         Map discovered = null;
-
         String[] keys = selection.split(",");
 
         // Attempt to discover providers for each key
@@ -198,7 +197,6 @@ public class DefaultProviderSelector
         assert key != null;
 
         Map found = null;
-
         Map loaders = findLoaders();
 
         if (loaders == null || loaders.isEmpty()) {
@@ -239,8 +237,8 @@ public class DefaultProviderSelector
         }
         
         Set keys = loaders.keySet();
-
         Map found = null;
+        ProviderLoader defaultLoader = null;
 
         for (Iterator iter = keys.iterator(); iter.hasNext();) {
             String key = (String)iter.next();
@@ -257,12 +255,21 @@ public class DefaultProviderSelector
 
             if (loader != null) {
                 if (found == null) {
-                    found = new HashMap();
+                    // we need an ordered map
+                    found = new LinkedHashMap();
                 }
-
-                found.put(key, loader);
+                if (key.equals(SELECT_DEFAULT)) {
+                    defaultLoader = loader;
+                }
+                else {
+                    found.put(key, loader);
+                }
             }
         }
+
+        // the default should be added at the end (as fallback)
+        assert defaultLoader != null;
+        found.put(SELECT_DEFAULT, defaultLoader);
 
         return found;
     }
