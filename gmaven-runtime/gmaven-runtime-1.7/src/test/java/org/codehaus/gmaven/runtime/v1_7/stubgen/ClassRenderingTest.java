@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2006-2007 the original author or authors.
+ * Copyright (C) 2007 the original author or authors.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
@@ -14,22 +14,20 @@
  * limitations under the License.
  */
 
-package org.codehaus.gmaven.runtime;
+package org.codehaus.gmaven.runtime.v1_7.stubgen;
 
-import org.codehaus.gmaven.feature.Component;
-
-import java.net.URL;
+import org.codehaus.gmaven.runtime.v1_7.RendererTestSupport;
 
 /**
- * Groovy Groovy to Java stub compiler abstraction.
+ * Tests for rendering classes.
  *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  */
-public interface StubCompiler
-    extends org.codehaus.gmaven.runtime.util.Compiler, Component
+public class ClassRenderingTest
+    extends RendererTestSupport
 {
-    String KEY = StubCompiler.class.getName();
-
-    // Add one off bits here to render/generate
+    public void testRender() throws Exception {
+        chew("classes.groovy.txt");
+    }
 }

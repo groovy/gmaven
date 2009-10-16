@@ -17,6 +17,7 @@
 package org.codehaus.gmaven.runtime.v1_6;
 
 import groovy.lang.Binding;
+import groovy.lang.MetaClass;
 import org.codehaus.gmaven.common.StreamPair;
 import org.codehaus.gmaven.feature.Component;
 import org.codehaus.gmaven.feature.support.FeatureSupport;

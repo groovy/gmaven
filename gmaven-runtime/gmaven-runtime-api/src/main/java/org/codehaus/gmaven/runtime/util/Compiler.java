@@ -40,6 +40,10 @@ public interface Compiler
 
     int compile() throws Exception;
 
+    void setClassPath(URL[] urls);
+
+    URL[] getClassPath();
+
     // Result class ?
 
     // Listener intf ?

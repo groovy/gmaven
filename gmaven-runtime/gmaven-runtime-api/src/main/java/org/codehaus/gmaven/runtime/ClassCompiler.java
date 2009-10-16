@@ -31,10 +31,6 @@ public interface ClassCompiler
 {
     String KEY = ClassCompiler.class.getName();
 
-    void setClassPath(URL[] urls);
-
-    URL[] getClassPath();
-
     interface Keys
     {
         String DEBUG = "debug";
