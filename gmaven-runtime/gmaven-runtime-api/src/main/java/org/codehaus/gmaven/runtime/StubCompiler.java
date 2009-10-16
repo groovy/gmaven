@@ -18,6 +18,8 @@ package org.codehaus.gmaven.runtime;
 
 import org.codehaus.gmaven.feature.Component;
 
+import java.net.URL;
+
 /**
  * Groovy Groovy to Java stub compiler abstraction.
  *
@@ -28,6 +30,10 @@ public interface StubCompiler
     extends org.codehaus.gmaven.runtime.util.Compiler, Component
 {
     String KEY = StubCompiler.class.getName();
+
+    void setClassPath(URL[] urls);
+
+    URL[] getClassPath();
 
     // Add one off bits here to render/generate
 }

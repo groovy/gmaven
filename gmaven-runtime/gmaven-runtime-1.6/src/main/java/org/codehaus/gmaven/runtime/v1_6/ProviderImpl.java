@@ -39,6 +39,7 @@ public class ProviderImpl
         super(KEY);
     }
 
+    @Override
     protected Map detectFeatures() {
         Feature[] features = {
             new ClassFactoryFeature(),
@@ -59,10 +60,12 @@ public class ProviderImpl
         return map;
     }
 
+    @Override
     protected Version detectVersion() {
-        return new Version(1, 6, 0);
+        return new Version(1, 6, 5);
     }
 
+    @Override
     public String name() {
         return "Groovy v" + InvokerHelper.getVersion();
     }

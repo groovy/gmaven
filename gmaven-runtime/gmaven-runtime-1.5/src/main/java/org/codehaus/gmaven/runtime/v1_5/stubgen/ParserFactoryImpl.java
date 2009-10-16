@@ -215,7 +215,7 @@ class ParserFactoryImpl
             AntlrASTProcessor processor;
 
             // Decorate the AST w/line+col information
-            processor = new AntlrASTProcessSnippets(sourceBuffer);
+            processor = new AntlrASTProcessSnippets();
             ast = processor.process(ast);
 
             return node(ast);
@@ -251,7 +251,7 @@ class ParserFactoryImpl
             processor.process(ast);
 
             // Decorate the AST w/line+col information
-            processor = new AntlrASTProcessSnippets(sourceBuffer);
+            processor = new AntlrASTProcessSnippets();
             ast = processor.process(ast);
 
             return node(ast);

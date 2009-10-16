@@ -45,6 +45,7 @@ public class ClassFactoryFeature
         super(ClassFactory.KEY);
     }
 
+    @Override
     protected Component doCreate() throws Exception {
         return new ClassFactoryImpl();
     }

@@ -34,6 +34,7 @@ public class TraceSanitizerFeature
         super(TraceSanitizer.KEY);
     }
 
+    @Override
     protected Component doCreate() throws Exception {
         return new TraceSanitizerSupport(this);
     }

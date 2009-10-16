@@ -43,6 +43,7 @@ public class ShellFeature
         super(Shell.KEY);
     }
 
+    @Override
     protected Component doCreate() throws Exception {
         return new ShellImpl();
     }

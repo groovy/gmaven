@@ -41,6 +41,7 @@ public class ScriptExecutorFeature
         super(ScriptExecutor.KEY);
     }
 
+    @Override
     protected Component doCreate() throws Exception {
         return new ScriptExecutorImpl();
     }
@@ -56,6 +57,7 @@ public class ScriptExecutorFeature
             super(ScriptExecutorFeature.this);
         }
 
+        @Override
         protected ClassFactory getClassFactory() {
             try {
                 return (ClassFactory) provider().feature(ClassFactory.KEY).create(config());
@@ -65,6 +67,7 @@ public class ScriptExecutorFeature
             }
         }
 
+        @Override
         protected Object createClosure(final Callable target) {
             assert target != null;
             
@@ -94,6 +97,7 @@ public class ScriptExecutorFeature
             return ant;
         }
 
+        @Override
         protected Object createMagicAttribute(final MagicAttribute attr) {
             assert attr != null;
 

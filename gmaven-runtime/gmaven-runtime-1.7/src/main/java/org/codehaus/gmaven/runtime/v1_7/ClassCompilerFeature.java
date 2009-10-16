@@ -43,6 +43,7 @@ public class ClassCompilerFeature
         super(ClassCompiler.KEY);
     }
 
+    @Override
     protected Component doCreate() throws Exception {
         return new ClassCompilerImpl();
     }
@@ -89,20 +90,6 @@ public class ClassCompilerFeature
             if (config.contains(SOURCE_ENCODING)) {
                 cc.setSourceEncoding(config.get(SOURCE_ENCODING, (String)null));
             }
-        }
-
-        public void setClassPath(final URL[] urls) {
-            assert urls != null && urls.length > 0;
-
-            this.classPath = urls;
-        }
-
-        public URL[] getClassPath() {
-            if (classPath == null || classPath.length == 0) {
-                throw new IllegalStateException("Classpath not bound, or is empty");
-            }
-            
-            return classPath;
         }
 
         public int compile() throws Exception {

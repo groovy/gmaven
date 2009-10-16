@@ -43,6 +43,7 @@ public class ClassCompilerFeature
         super(ClassCompiler.KEY);
     }
 
+    @Override
     protected Component doCreate() throws Exception {
         return new ClassCompilerImpl();
     }

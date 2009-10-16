@@ -44,6 +44,8 @@ public abstract class CompilerSupport
 
     protected File targetDir;
 
+    private URL[] classPath;
+
     protected CompilerSupport(final Feature feature, final Configuration config) {
         super(feature, config);
     }
@@ -70,7 +72,6 @@ public abstract class CompilerSupport
         assert source != null;
 
         sources.add(source);
-
         log.debug("Added: {}", source);
     }
 
@@ -87,5 +88,19 @@ public abstract class CompilerSupport
 
     public Collection sources() {
         return Collections.unmodifiableCollection(sources);
+    }
+
+    public void setClassPath(final URL[] urls) {
+        assert urls != null && urls.length > 0;
+
+        this.classPath = urls;
+    }
+
+    public URL[] getClassPath() {
+        if (classPath == null) {
+            return new URL[0];
+        }
+
+        return classPath;
     }
 }

@@ -57,7 +57,7 @@ public abstract class AbstractGenerateStubsMojo
     }
     
     public void execute() throws MojoExecutionException, MojoFailureException {
-    	super.execute();
+        super.execute();
 
         // Treatment for MGROOVY-187.
         try {
@@ -121,8 +121,8 @@ public abstract class AbstractGenerateStubsMojo
         StubCompiler compiler = (StubCompiler)component;
 
         compiler.setTargetDirectory(getOutputDirectory());
-        
-        // compiler.setClassPath(createClassPath());
+
+        compiler.setClassPath(createClassPath());
 
         //
         // TODO: Bridge mojo config to component config

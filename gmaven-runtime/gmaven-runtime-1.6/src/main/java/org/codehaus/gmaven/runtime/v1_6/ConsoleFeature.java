@@ -39,6 +39,7 @@ public class ConsoleFeature
         super(Console.KEY);
     }
 
+    @Override
     protected Component doCreate() throws Exception {
         return new ConsoleImpl();
     }

@@ -51,6 +51,7 @@ public class StubCompilerFeature
         super(StubCompiler.KEY);
     }
 
+    @Override
     protected Component doCreate() throws Exception {
         return new StubCompilerImpl();
     }

@@ -20,9 +20,17 @@ import org.codehaus.gmaven.feature.Component;
 import org.codehaus.gmaven.feature.support.FeatureSupport;
 import org.codehaus.gmaven.runtime.StubCompiler;
 import org.codehaus.gmaven.runtime.support.CompilerSupport;
+import org.codehaus.groovy.tools.javac.JavaAwareCompilationUnit;
+import org.codehaus.groovy.control.CompilerConfiguration;
+import org.codehaus.groovy.control.Phases;
 
 import java.net.URL;
 import java.util.Iterator;
+import java.util.HashMap;
+import java.util.Map;
+import java.security.CodeSource;
+
+import groovy.lang.GroovyClassLoader;
 
 /**
  * Provides the stub compilation feature.
@@ -37,7 +45,12 @@ public class StubCompilerFeature
         super(StubCompiler.KEY);
     }
 
+    @Override
     protected Component doCreate() throws Exception {
+        return new StubCompilerImpl();
+    }
+
+    StubCompilerImpl createInternal() throws Exception {
         return new StubCompilerImpl();
     }
 
@@ -49,6 +62,8 @@ public class StubCompilerFeature
         extends CompilerSupport
         implements StubCompiler
     {
+        private CompilerConfiguration cc = new CompilerConfiguration();
+
         private StubCompilerImpl() throws Exception {
             super(StubCompilerFeature.this);
         }
@@ -56,77 +71,48 @@ public class StubCompilerFeature
         public int compile() throws Exception {
             if (sources.isEmpty()) {
                 log.debug("No sources added to compile; skipping");
-
                 return 0;
             }
 
-            log.debug("Compiling {} stubs for source(s)", String.valueOf(sources.size()));
+            Map<String,Object> options = new HashMap<String,Object>();
+            options.put("stubDir", getTargetDirectory());
+            cc.setJointCompilationOptions(options);
+            ClassLoader parent = ClassLoader.getSystemClassLoader();
 
-            int count = 0;
+            GroovyClassLoader gcl = new GroovyClassLoader(parent, cc);
+
+            log.debug("Classpath:");
+
+            // Append each URL to the GCL
+            URL[] classpath = getClassPath();
+
+            for (int i=0; i<classpath.length; i++) {
+                gcl.addURL(classpath[i]);
+                log.debug("    {}", classpath[i]);
+            }
+
+            CodeSource security = null;
+            GroovyClassLoader transformLoader = new GroovyClassLoader(getClass().getClassLoader());
+            for (int i=0; i<classpath.length; i++) {
+                transformLoader.addURL(classpath[i]);
+            }
+
+            JavaStubCompilationUnit cu = new JavaStubCompilationUnit(cc, gcl);
+
+            log.debug("Compiling {} stubs for source(s)", sources.size());
 
             for (Iterator iter = sources.iterator(); iter.hasNext();) {
                 URL url = (URL) iter.next();
                 log.debug("    {}", url);
-
-                // count += render(url);
+                cu.addSource(url);
             }
 
+            cu.compile();
+
+            int count = cu.getStubCount();
             log.debug("Compiled {} stubs", String.valueOf(count));
 
             return count;
         }
-
-        /*
-        private int render(final URL url) throws Exception {
-            assert url != null;
-            
-            SourceDef model = modelFactory.create(url);
-
-            Set renderers = rendererFactory.create(model);
-
-            Iterator iter = renderers.iterator();
-
-            int count = 0;
-
-            while (iter.hasNext()) {
-                Renderer renderer = (Renderer)iter.next();
-
-                Writer writer = createWriter(renderer, getTargetDirectory());
-
-                try {
-                    renderer.render(writer);
-                    count ++;
-                }
-                finally {
-                    writer.close();
-                }
-            }
-
-            return count;
-        }
-
-        private PrintWriter createWriter(final Renderer renderer, final File outputDir) throws IOException {
-            assert renderer != null;
-            assert outputDir != null;
-
-            StringBuffer buff = new StringBuffer();
-
-            String pkg = renderer.getPackage();
-
-            if (pkg != null) {
-                buff.append(pkg.replace('.', '/'));
-                buff.append("/");
-            }
-
-            buff.append(renderer.getName());
-            buff.append(SourceType.JAVA_EXT);
-
-            File outputFile = new File(outputDir, buff.toString());
-
-            outputFile.getParentFile().mkdirs();
-
-            return new PrintWriter(new BufferedWriter(new FileWriter(outputFile)));
-        }
-        */
     }
 }
