@@ -29,6 +29,7 @@ import org.codehaus.groovy.tools.javac.JavaStubGenerator;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Map;
+import java.net.URL;
 
 /**
  * Java-stub-only compilation unit.
@@ -41,20 +42,22 @@ import java.util.Map;
 public class JavaStubCompilationUnit
     extends CompilationUnit
 {
-    private JavaStubGenerator stubGenerator;
-
-    private File stubDir;
+    private static final String DOT_GROOVY = ".groovy";
+    
+    private final JavaStubGenerator stubGenerator;
 
     private int stubCount;
 
-    public JavaStubCompilationUnit(final CompilerConfiguration config, final GroovyClassLoader groovyClassLoader) {
-        super(config,null,groovyClassLoader);
+    public JavaStubCompilationUnit(final CompilerConfiguration config, final GroovyClassLoader gcl, File destDir) {
+        super(config,null,gcl);
+        assert config != null;
 
         Map options = config.getJointCompilationOptions();
-        stubDir = (File) options.get("stubDir");
-        stubDir.mkdirs();
+        if (destDir == null) {
+            destDir = (File) options.get("stubDir");
+        }
         boolean useJava5 = config.getTargetBytecode().equals(CompilerConfiguration.POST_JDK5);
-        stubGenerator = new JavaStubGenerator(stubDir,false,useJava5);
+        stubGenerator = new JavaStubGenerator(destDir, false, useJava5);
 
         addPhaseOperation(new PrimaryClassNodeOperation() {
             @Override
@@ -68,6 +71,10 @@ public class JavaStubCompilationUnit
                 }
             }
         },Phases.CONVERSION);
+    }
+
+    public JavaStubCompilationUnit(final CompilerConfiguration config, final GroovyClassLoader gcl) {
+        this(config, gcl, null);
     }
 
     public int getStubCount() {
@@ -89,5 +96,21 @@ public class JavaStubCompilationUnit
             final String classOutput = targetDir.getAbsolutePath();
             getClassLoader().addClasspath(classOutput);
         }
+    }
+
+    @Override
+    public SourceUnit addSource(final File file) {
+        if (file.getName().toLowerCase().endsWith(DOT_GROOVY)) {
+            return super.addSource(file);
+        }
+        return null;
+    }
+
+    @Override
+    public SourceUnit addSource(URL url) {
+        if (url.getPath().toLowerCase().endsWith(DOT_GROOVY)) {
+            return super.addSource(url);
+        }
+        return null;
     }
 }
