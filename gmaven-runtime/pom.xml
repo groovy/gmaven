@@ -39,7 +39,6 @@
     <modules>
         <module>gmaven-runtime-api</module>
         <module>gmaven-runtime-support</module>
-        <module>gmaven-runtime-1.0</module>
         <module>gmaven-runtime-1.5</module>
         <module>gmaven-runtime-loader</module>
     </modules>
