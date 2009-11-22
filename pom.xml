@@ -217,18 +217,6 @@ $Id$
             </dependency>
 
             <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-nop</artifactId>
-                <version>1.5.8</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>jcl104-over-slf4j</artifactId>
-                <version>1.5.8</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.codehaus.plexus</groupId>
                 <artifactId>plexus-classworlds</artifactId>
                 <version>1.2-alpha-13</version>
