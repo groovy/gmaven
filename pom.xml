@@ -368,6 +368,12 @@ $Id$
             </dependency>
 
             <dependency>
+                <groupId>org.codehaus.gmaven.runtime</groupId>
+                <artifactId>gmaven-runtime-1.7</artifactId>
+                <version>1.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.codehaus.gmaven.support</groupId>
                 <artifactId>slf4j-gossip</artifactId>
                 <version>1.1-SNAPSHOT</version>
