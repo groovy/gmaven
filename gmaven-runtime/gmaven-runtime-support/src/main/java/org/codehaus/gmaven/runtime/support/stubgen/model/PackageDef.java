@@ -16,9 +16,6 @@
 
 package org.codehaus.gmaven.runtime.support.stubgen.model;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 /**
  * Representation of a package definition.
  *

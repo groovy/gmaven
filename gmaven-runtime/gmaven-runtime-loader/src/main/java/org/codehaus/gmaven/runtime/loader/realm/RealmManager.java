@@ -16,10 +16,10 @@
 
 package org.codehaus.gmaven.runtime.loader.realm;
 
+import org.codehaus.gmaven.feature.Provider;
+import org.codehaus.plexus.classworlds.ClassWorldException;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.codehaus.plexus.classworlds.realm.NoSuchRealmException;
-import org.codehaus.plexus.classworlds.ClassWorldException;
-import org.codehaus.gmaven.feature.Provider;
 
 import java.net.URL;
 

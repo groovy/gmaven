@@ -20,8 +20,8 @@ import groovy.lang.Binding;
 import groovy.ui.InteractiveShell;
 import org.codehaus.gmaven.common.StreamPair;
 import org.codehaus.gmaven.feature.Component;
-import org.codehaus.gmaven.feature.support.FeatureSupport;
 import org.codehaus.gmaven.feature.support.ComponentSupport;
+import org.codehaus.gmaven.feature.support.FeatureSupport;
 import org.codehaus.gmaven.runtime.Shell;
 import org.codehaus.gmaven.runtime.support.util.NoExitSecurityManager;
 

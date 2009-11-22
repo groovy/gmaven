@@ -17,19 +17,10 @@
 package org.codehaus.gmaven.runtime.v1_7;
 
 import junit.framework.TestCase;
-import org.codehaus.gmaven.runtime.support.stubgen.model.ModelFactory;
-import org.codehaus.gmaven.runtime.support.stubgen.model.SourceDef;
-import org.codehaus.gmaven.runtime.support.stubgen.render.Renderer;
-import org.codehaus.gmaven.runtime.support.stubgen.render.RendererFactory;
-import org.codehaus.gmaven.runtime.support.stubgen.parser.SourceType;
 import org.codehaus.gmaven.runtime.StubCompiler;
-import org.codehaus.gmaven.runtime.v1_7.StubCompilerFeature;
 
-import java.io.StringWriter;
 import java.io.File;
 import java.net.URL;
-import java.util.Iterator;
-import java.util.Set;
 
 /**
  * Support for rendering tests.

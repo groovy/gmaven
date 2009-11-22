@@ -28,8 +28,8 @@ import org.codehaus.groovy.tools.javac.JavaStubGenerator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Map;
 import java.net.URL;
+import java.util.Map;
 
 /**
  * Java-stub-only compilation unit.

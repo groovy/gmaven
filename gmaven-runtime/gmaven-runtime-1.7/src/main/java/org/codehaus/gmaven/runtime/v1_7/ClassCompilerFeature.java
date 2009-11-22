@@ -17,12 +17,12 @@
 package org.codehaus.gmaven.runtime.v1_7;
 
 import groovy.lang.GroovyClassLoader;
-import org.codehaus.groovy.control.CompilationUnit;
-import org.codehaus.groovy.control.CompilerConfiguration;
 import org.codehaus.gmaven.feature.Component;
 import org.codehaus.gmaven.feature.support.FeatureSupport;
 import org.codehaus.gmaven.runtime.ClassCompiler;
 import org.codehaus.gmaven.runtime.support.CompilerSupport;
+import org.codehaus.groovy.control.CompilationUnit;
+import org.codehaus.groovy.control.CompilerConfiguration;
 import org.codehaus.groovy.tools.GroovyClass;
 
 import java.net.URL;

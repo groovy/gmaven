@@ -16,21 +16,18 @@
 
 package org.codehaus.gmaven.runtime.v1_7;
 
+import groovy.lang.GroovyClassLoader;
 import org.codehaus.gmaven.feature.Component;
 import org.codehaus.gmaven.feature.support.FeatureSupport;
 import org.codehaus.gmaven.runtime.StubCompiler;
 import org.codehaus.gmaven.runtime.support.CompilerSupport;
-import org.codehaus.groovy.tools.javac.JavaAwareCompilationUnit;
 import org.codehaus.groovy.control.CompilerConfiguration;
-import org.codehaus.groovy.control.Phases;
 
 import java.net.URL;
-import java.util.Iterator;
-import java.util.HashMap;
-import java.util.Map;
 import java.security.CodeSource;
-
-import groovy.lang.GroovyClassLoader;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Provides the stub compilation feature.

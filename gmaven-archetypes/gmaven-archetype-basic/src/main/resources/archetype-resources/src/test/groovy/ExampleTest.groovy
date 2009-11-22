@@ -1,3 +1,5 @@
+import Example
+
 ##
 ## Copyright (C) 2006-2008 the original author or authors.
 ##
@@ -20,8 +22,6 @@
 //
 
 package ${package}
-
-import groovy.util.GroovyTestCase
 
 /**
  * Tests for the {@link Example} class.

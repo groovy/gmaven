@@ -16,13 +16,6 @@
 
 package org.codehaus.gmaven.runtime.v1_5.stubgen;
 
-import foo
-import foo.bar
-import foo.bar.*
-import static foo.bar.baz
-import somelong.ClassThingy as CT
-import foo.bar.baz.ick.Poop as Crap
-
 /**
  * Javadoc for class.
  *

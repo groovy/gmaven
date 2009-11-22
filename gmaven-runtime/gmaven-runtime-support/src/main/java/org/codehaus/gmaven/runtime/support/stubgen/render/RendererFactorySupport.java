@@ -19,10 +19,10 @@ package org.codehaus.gmaven.runtime.support.stubgen.render;
 import org.codehaus.gmaven.runtime.support.stubgen.model.ClassDef;
 import org.codehaus.gmaven.runtime.support.stubgen.model.ConstructorDef;
 import org.codehaus.gmaven.runtime.support.stubgen.model.MethodDef;
+import org.codehaus.gmaven.runtime.support.stubgen.model.ModifiersDef;
 import org.codehaus.gmaven.runtime.support.stubgen.model.ParameterDef;
 import org.codehaus.gmaven.runtime.support.stubgen.model.SourceDef;
 import org.codehaus.gmaven.runtime.support.stubgen.model.TypeDef;
-import org.codehaus.gmaven.runtime.support.stubgen.model.ModifiersDef;
 
 import java.util.Iterator;
 import java.util.LinkedHashSet;

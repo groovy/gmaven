@@ -18,8 +18,6 @@ package org.codehaus.gmaven.runtime;
 
 import org.codehaus.gmaven.feature.Component;
 
-import java.net.URL;
-
 /**
  * Groovy Groovy to Java stub compiler abstraction.
  *

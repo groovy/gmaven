@@ -16,10 +16,10 @@
 
 package org.codehaus.gmaven.runtime.v1_6.stubgen;
 
-import org.codehaus.groovy.control.ResolveVisitor;
 import org.codehaus.gmaven.runtime.support.stubgen.model.ImportDef;
 import org.codehaus.gmaven.runtime.support.stubgen.model.ModelFactorySupport;
 import org.codehaus.gmaven.runtime.support.stubgen.model.SourceDef;
+import org.codehaus.groovy.control.ResolveVisitor;
 
 /**
  * Creates a stub model for Groovy 1.6.

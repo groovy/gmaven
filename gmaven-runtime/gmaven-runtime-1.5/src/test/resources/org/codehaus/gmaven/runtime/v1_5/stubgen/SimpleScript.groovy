@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-import java.lang.*
-
 println "0"
 
 class A {}

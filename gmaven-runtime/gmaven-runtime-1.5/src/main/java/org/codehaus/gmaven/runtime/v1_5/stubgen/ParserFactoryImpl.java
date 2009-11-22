@@ -18,6 +18,14 @@ package org.codehaus.gmaven.runtime.v1_5.stubgen;
 
 import groovyjarjarantlr.RecognitionException;
 import groovyjarjarantlr.collections.AST;
+import org.codehaus.gmaven.runtime.support.stubgen.parser.DynamicTokens;
+import org.codehaus.gmaven.runtime.support.stubgen.parser.Node;
+import org.codehaus.gmaven.runtime.support.stubgen.parser.NodeSupport;
+import org.codehaus.gmaven.runtime.support.stubgen.parser.ParseException;
+import org.codehaus.gmaven.runtime.support.stubgen.parser.Parser;
+import org.codehaus.gmaven.runtime.support.stubgen.parser.ParserFactory;
+import org.codehaus.gmaven.runtime.support.stubgen.parser.SourceType;
+import org.codehaus.gmaven.runtime.support.stubgen.parser.Tokens;
 import org.codehaus.groovy.antlr.AntlrASTProcessSnippets;
 import org.codehaus.groovy.antlr.AntlrASTProcessor;
 import org.codehaus.groovy.antlr.LineColumn;
@@ -30,14 +38,6 @@ import org.codehaus.groovy.antlr.parser.GroovyLexer;
 import org.codehaus.groovy.antlr.parser.GroovyRecognizer;
 import org.codehaus.groovy.antlr.parser.GroovyTokenTypes;
 import org.codehaus.groovy.antlr.treewalker.PreOrderTraversal;
-import org.codehaus.gmaven.runtime.support.stubgen.parser.DynamicTokens;
-import org.codehaus.gmaven.runtime.support.stubgen.parser.Node;
-import org.codehaus.gmaven.runtime.support.stubgen.parser.NodeSupport;
-import org.codehaus.gmaven.runtime.support.stubgen.parser.ParseException;
-import org.codehaus.gmaven.runtime.support.stubgen.parser.Parser;
-import org.codehaus.gmaven.runtime.support.stubgen.parser.ParserFactory;
-import org.codehaus.gmaven.runtime.support.stubgen.parser.SourceType;
-import org.codehaus.gmaven.runtime.support.stubgen.parser.Tokens;
 
 import java.io.Reader;
 
