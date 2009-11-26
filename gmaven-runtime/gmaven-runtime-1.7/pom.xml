@@ -60,14 +60,14 @@
                     <artifactId>junit</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>org.sonatype.jline</groupId>
+                    <groupId>jline</groupId>
                     <artifactId>jline</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
 
         <dependency>
-            <groupId>org.sonatype.jline</groupId>
+            <groupId>jline</groupId>
             <artifactId>jline</artifactId>
         </dependency>
     </dependencies>

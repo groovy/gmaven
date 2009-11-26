@@ -63,7 +63,7 @@
         </dependency>
         
         <dependency>
-            <groupId>org.sonatype.jline</groupId>
+            <groupId>jline</groupId>
             <artifactId>jline</artifactId>
         </dependency>
     </dependencies>
