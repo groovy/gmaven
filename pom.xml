@@ -571,7 +571,7 @@ $Id$
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-archetype-plugin</artifactId>
-                    <version>2.0-alpha-3</version>
+                    <version>2.0-alpha-4</version>
                 </plugin>
 
                 <plugin>
