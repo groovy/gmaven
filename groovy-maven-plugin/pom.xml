@@ -23,13 +23,13 @@
 
     <parent>
         <groupId>org.codehaus.gmaven</groupId>
-        <artifactId>gmaven-legacy</artifactId>
+        <artifactId>gmaven</artifactId>
         <version>1.1-SNAPSHOT</version>
     </parent>
 
     <groupId>org.codehaus.mojo</groupId>
     <artifactId>groovy-maven-plugin</artifactId>
-    <name>GMaven Legacy :: Groovy Maven Plugin</name>
+    <name>Groovy Maven Plugin</name>
     <packaging>maven-plugin</packaging>
 
     <description>

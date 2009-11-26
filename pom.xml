@@ -424,12 +424,12 @@ $Id$
         <module>gmaven-runtime</module>
         <module>gmaven-plugin</module>
         <module>gmaven-packaging</module>
-        <module>gmaven-legacy</module>
         <module>gmaven-mojo</module>
         <module>gmaven-mojo-support</module>
         <module>gmaven-archetypes</module>
         <module>gmaven-examples</module>
         <module>gmaven-testsuite</module>
+        <module>groovy-maven-plugin</module>
     </modules>
    
     <build>
