@@ -64,8 +64,8 @@
         </dependency>
         
         <dependency>
-            <groupId>org.codehaus.gmaven.support</groupId>
-            <artifactId>slf4j-gossip</artifactId>
+            <groupId>org.sonatype.gossip</groupId>
+            <artifactId>gossip</artifactId>
             <scope>runtime</scope>
         </dependency>
 

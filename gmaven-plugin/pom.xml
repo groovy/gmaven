@@ -51,11 +51,6 @@
             <artifactId>gmaven-runtime-support</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.codehaus.gmaven</groupId>
-            <artifactId>gmaven-common</artifactId>
-        </dependency>
-        
         <!-- For build ordering (for IT) -->
         <dependency>
             <groupId>org.codehaus.gmaven</groupId>
@@ -198,8 +193,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.codehaus.gmaven.support</groupId>
-            <artifactId>slf4j-gossip</artifactId>
+            <groupId>org.sonatype.gossip</groupId>
+            <artifactId>gossip</artifactId>
             <scope>runtime</scope>
         </dependency>
     </dependencies>

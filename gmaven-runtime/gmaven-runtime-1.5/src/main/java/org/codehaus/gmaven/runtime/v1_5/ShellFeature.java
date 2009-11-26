@@ -18,7 +18,6 @@ package org.codehaus.gmaven.runtime.v1_5;
 
 import groovy.lang.Binding;
 import groovy.ui.InteractiveShell;
-import org.codehaus.gmaven.common.StreamPair;
 import org.codehaus.gmaven.feature.Component;
 import org.codehaus.gmaven.feature.Configuration;
 import org.codehaus.gmaven.feature.support.ComponentSupport;
@@ -29,6 +28,7 @@ import org.codehaus.groovy.tools.shell.Groovysh;
 import org.codehaus.groovy.tools.shell.IO;
 import org.codehaus.groovy.tools.shell.Main;
 import org.codehaus.groovy.tools.shell.util.Logger;
+import org.sonatype.gshell.io.StreamSet;
 
 /**
  * Provides the command-line shell feature.
@@ -64,7 +64,7 @@ public class ShellFeature
 
             boolean legacy = config().get(LEGACY, false);
 
-            final StreamPair streams = StreamPair.system();
+            final StreamSet streams = StreamSet.system();
 
             // Put a nice blank before and after we run the shell
             streams.out.println();
@@ -83,7 +83,7 @@ public class ShellFeature
             finally {
                 System.setSecurityManager(sm);
 
-                StreamPair.system(streams);
+                StreamSet.system(streams);
             }
 
             // The blank after

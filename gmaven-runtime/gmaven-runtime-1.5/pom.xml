@@ -63,14 +63,8 @@
         </dependency>
         
         <dependency>
-            <groupId>jline</groupId>
+            <groupId>org.sonatype.jline</groupId>
             <artifactId>jline</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.codehaus.gmaven.support</groupId>
-            <artifactId>slf4j-gossip</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 

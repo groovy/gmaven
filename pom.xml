@@ -157,7 +157,7 @@ $Id$
         <site>
             <id>codehaus.org</id>
             <name>Groovy Website</name>
-            <url>dav:https://dav.codehaus.org/gmaven/maven-generated/${pom.version}</url>
+            <url>dav:https://dav.codehaus.org/gmaven/maven-generated/${project.version}</url>
         </site>
     </distributionManagement>
 
@@ -216,6 +216,12 @@ $Id$
                 <version>1.5.8</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.sonatype.gossip</groupId>
+                <artifactId>gossip</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            
             <dependency>
                 <groupId>org.codehaus.plexus</groupId>
                 <artifactId>plexus-classworlds</artifactId>
@@ -283,9 +289,15 @@ $Id$
             </dependency>
 
             <dependency>
-                <groupId>jline</groupId>
+                <groupId>org.sonatype.gshell</groupId>
+                <artifactId>gshell-io</artifactId>
+                <version>2.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.sonatype.jline</groupId>
                 <artifactId>jline</artifactId>
-                <version>0.9.94</version>
+                <version>2.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
@@ -374,18 +386,6 @@ $Id$
             </dependency>
 
             <dependency>
-                <groupId>org.codehaus.gmaven.support</groupId>
-                <artifactId>slf4j-gossip</artifactId>
-                <version>1.1-SNAPSHOT</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.codehaus.gmaven</groupId>
-                <artifactId>gmaven-common</artifactId>
-                <version>1.1-SNAPSHOT</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-mojo</artifactId>
                 <version>1.1-SNAPSHOT</version>
@@ -415,7 +415,6 @@ $Id$
         <module>gmaven-support</module>
         <module>gmaven-feature</module>
         <module>gmaven-runtime</module>
-        <module>gmaven-common</module>
         <module>gmaven-plugin</module>
         <module>gmaven-packaging</module>
         <module>gmaven-legacy</module>
@@ -816,8 +815,8 @@ $Id$
                     <name>Groovy Website</name>
                     <!-- You get feedback on problems much quicker by generating the site to the local
                               file system.  You can copy this over using standard DAV tools.  -->
-                    <!-- <url>dav:https://dav.codehaus.org/gmaven/maven-generated/${pom.version}</url> -->
-                    <url>file:///${user.home}/.m2/gmaven/maven-generated/${pom.version}</url>
+                    <!-- <url>dav:https://dav.codehaus.org/gmaven/maven-generated/${project.version}</url> -->
+                    <url>file:///${user.home}/.m2/gmaven/maven-generated/${project.version}</url>
                 </site>
             </distributionManagement>
         </profile>

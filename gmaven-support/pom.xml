@@ -37,7 +37,6 @@
     </description>
     
     <modules>
-        <module>slf4j-gossip</module>
         <module>filter-plugin</module>
     </modules>
 

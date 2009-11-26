@@ -49,10 +49,10 @@
             <groupId>org.codehaus.gmaven.feature</groupId>
             <artifactId>gmaven-feature-support</artifactId>
         </dependency>
-        
+
         <dependency>
-            <groupId>org.codehaus.gmaven</groupId>
-            <artifactId>gmaven-common</artifactId>
+            <groupId>org.sonatype.gshell</groupId>
+            <artifactId>gshell-io</artifactId>
         </dependency>
 
         <dependency>
@@ -63,12 +63,6 @@
         <dependency>
             <groupId>com.thoughtworks.qdox</groupId>
             <artifactId>qdox</artifactId>
-        </dependency>
-        
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 

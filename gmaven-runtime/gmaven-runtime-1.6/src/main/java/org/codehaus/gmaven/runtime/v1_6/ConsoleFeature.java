@@ -17,12 +17,12 @@
 package org.codehaus.gmaven.runtime.v1_6;
 
 import groovy.lang.Binding;
-import org.codehaus.gmaven.common.StreamPair;
 import org.codehaus.gmaven.feature.Component;
 import org.codehaus.gmaven.feature.support.ComponentSupport;
 import org.codehaus.gmaven.feature.support.FeatureSupport;
 import org.codehaus.gmaven.runtime.Console;
 import org.codehaus.gmaven.runtime.support.util.NoExitSecurityManager;
+import org.sonatype.gshell.io.StreamSet;
 
 import java.util.EventObject;
 
@@ -61,7 +61,7 @@ public class ConsoleFeature
         public void execute(final ClassLoader classLoader) throws Exception {
             assert classLoader != null;
 
-            final StreamPair streams = StreamPair.system();
+            final StreamSet streams = StreamSet.system();
 
             final SecurityManager sm = System.getSecurityManager();
 
@@ -89,7 +89,7 @@ public class ConsoleFeature
             }
             finally {
                 System.setSecurityManager(sm);
-                StreamPair.system(streams);
+                StreamSet.system(streams);
             }
         }
     }
