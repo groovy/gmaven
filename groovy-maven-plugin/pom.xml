@@ -59,11 +59,6 @@
             <name>Mojo Central Development Repository</name>
             <url>dav:https://dav.codehaus.org/snapshots.repository/mojo/</url>
         </snapshotRepository>
-        <!--<site>
-            <id>codehaus.org</id>
-            <name>Mojo Website</name>
-            <url>dav:https://dav.codehaus.org/mojo/groovy-maven-plugin/</url>
-        </site> -->
     </distributionManagement>
 
     <build>
