@@ -575,7 +575,7 @@ $Id$
                         <autoVersionSubmodules>true</autoVersionSubmodules>
                         <useReleaseProfile>false</useReleaseProfile>
                         <goals>deploy</goals>
-                        <arguments>-B -Prelease</arguments>
+                        <arguments>-B -Dit -Prelease</arguments>
                     </configuration>
                 </plugin>
 
