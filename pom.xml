@@ -298,6 +298,12 @@ $Id$
                 <groupId>org.sonatype.gshell</groupId>
                 <artifactId>gshell-io</artifactId>
                 <version>2.0</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.sonatype.jline</groupId>
+                        <artifactId>jline</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
