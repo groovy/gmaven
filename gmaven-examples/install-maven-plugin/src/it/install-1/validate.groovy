@@ -18,9 +18,13 @@
 // $Id$
 //
 
-def props = new Properties()
-props.load(new File(basedir, 'invoker.properties').newInputStream())
-def version = props['project.version']
+import javax.xml.parsers.DocumentBuilderFactory
+
+def pom = new File(basedir, 'pom.xml')
+def builder = DocumentBuilderFactory.newInstance().newDocumentBuilder()
+def doc = builder.parse(pom.newInputStream()).documentElement
+def version = doc.getElementsByTagName('version').item(0).firstChild.nodeValue
+
 
 def target = new File(localRepositoryPath, "org/codehaus/gmaven/examples/it/install-1/${version}/install-1-${version}.jar")
 assert target.exists() : "Failed to install artifact: $target"
