@@ -57,6 +57,13 @@
             <artifactId>gmaven-packaging</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <!-- For build ordering (for IT) -->
+        <dependency>
+            <groupId>org.codehaus.gmaven.runtime</groupId>
+            <artifactId>gmaven-runtime-1.5</artifactId>
+            <scope>provided</scope>
+        </dependency>
         
         <!--
         Using maven-core to allow access to Session, ExpressionEvaluator and related classes,
