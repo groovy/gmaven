@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.codehaus.gmaven.feature</groupId>
         <artifactId>gmaven-feature</artifactId>
-        <version>1.1-SNAPSHOT</version>
+        <version>1.1</version>
     </parent>
 
     <name>GMaven Feature :: Support</name>
