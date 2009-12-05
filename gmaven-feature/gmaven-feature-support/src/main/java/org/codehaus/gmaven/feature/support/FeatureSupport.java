@@ -108,7 +108,7 @@ public abstract class FeatureSupport
         try {
             Component component = doCreate();
 
-            // Merge our configuraiton
+            // Merge our configuration
             Configuration c = component.config();
             c.merge(config());
 

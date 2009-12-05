@@ -80,7 +80,7 @@ public class ResourceLoaderImpl
         // log.debug("From CL: {}", url);
 
         if (url == null) {
-            // Not sure if this is nessicary or not...
+            // Not sure if this is necessary or not...
             url = Thread.currentThread().getContextClassLoader().getResource(resource);
 
             // log.debug("From TCL: {}", url);

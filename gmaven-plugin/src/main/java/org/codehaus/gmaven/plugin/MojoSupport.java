@@ -223,7 +223,7 @@ public abstract class MojoSupport
     }
 
     /**
-     * Resolves the Artifact from the remote repository if nessessary. If no version is specified, it will
+     * Resolves the Artifact from the remote repository if necessary. If no version is specified, it will
      * be retrieved from the dependency list or from the DependencyManagement section of the pom.
      *
      *
@@ -241,11 +241,11 @@ public abstract class MojoSupport
     }
 
     /**
-     * Resolves the Artifact from the remote repository if nessessary. If no version is specified, it will
+     * Resolves the Artifact from the remote repository if necessary. If no version is specified, it will
      * be retrieved from the dependency list or from the DependencyManagement section of the pom.
      *
      * @param artifact      The artifact to be resolved; must not be null
-     * @param transitive    True to resolve the artifact transitivly
+     * @param transitive    True to resolve the artifact transitively
      * @return              The resolved artifact; never null
      *
      * @throws MojoExecutionException   Failed to resolve artifact
@@ -280,7 +280,7 @@ public abstract class MojoSupport
     }
 
     /**
-     * Tries to find missing version from dependancy list and dependency management.
+     * Tries to find missing version from dependency list and dependency management.
      * If found, the artifact is updated with the correct version.
      *
      * @param item  The item to fill in missing version details into
