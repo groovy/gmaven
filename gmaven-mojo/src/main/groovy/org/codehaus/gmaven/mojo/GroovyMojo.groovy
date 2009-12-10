@@ -19,6 +19,10 @@ package org.codehaus.gmaven.mojo
 import org.apache.maven.plugin.AbstractMojo
 import org.apache.maven.plugin.MojoExecutionException
 
+//
+// TODO: Change this to a Java class implementing GroovyObject to speed things up a little
+//
+
 /**
  * Provides support for Maven 2 plugins implemented in Groovy.
  *
@@ -79,48 +83,5 @@ abstract class GroovyMojo
         */
 
         throw new MojoExecutionException("$msg", cause)
-    }
-
-    //
-    // FIXME: Need to make sure this stuff works and add tests to keep it working, or nuke it...
-    //
-    
-    //
-    // AOP support for execute() to handle a slightly richer Mojo instance lifecycle
-    //
-
-    /**
-     * Intercept calls to execute() and surround by beforeExecute() and afterExecute()
-     */
-    def invokeMethod(String name, Object args) {
-        def result
-
-        switch (name) {
-            case 'execute':
-                beforeExecute()
-
-                try {
-                    result = metaClass.invokeMethod(this, name, args)
-                }
-                finally {
-                    afterExecute()
-                }
-
-                break
-
-            default:
-                // Else pass the call through to the metaclass for invocation
-                result = metaClass.invokeMethod(this, name, args)
-        }
-
-        return result
-    }
-
-    protected void beforeExecute() {
-        // Empty
-    }
-
-    protected void afterExecute() {
-        // Empty
     }
 }

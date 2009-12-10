@@ -28,7 +28,7 @@
         <relativePath>../common.xml</relativePath>
     </parent>
     
-    <groupId>org.codehaus.gmaven.it.gmaven-testsuite.groovy-1.0</groupId>
+    <groupId>org.codehaus.gmaven.it.gmaven-testsuite.groovy-1.7</groupId>
     <artifactId>common</artifactId>
     <packaging>pom</packaging>
 

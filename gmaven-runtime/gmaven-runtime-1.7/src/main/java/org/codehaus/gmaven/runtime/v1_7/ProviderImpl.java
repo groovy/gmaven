@@ -25,7 +25,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Provides support for Groovy 1.6.
+ * Provides support for Groovy 1.7.
  *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
@@ -62,7 +62,7 @@ public class ProviderImpl
 
     @Override
     protected Version detectVersion() {
-        return new Version(1, 7, 0, "beta-2");
+        return new Version(1, 7, 0, "rc-2");
     }
 
     @Override
