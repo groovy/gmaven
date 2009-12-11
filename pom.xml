@@ -419,7 +419,7 @@ $Id$
             <extension>
                 <groupId>org.apache.maven.wagon</groupId>
                 <artifactId>wagon-webdav-jackrabbit</artifactId>
-                <version>1.0-beta-6</version>
+                <version>1.0-beta-5</version>
             </extension>
         </extensions>
 
