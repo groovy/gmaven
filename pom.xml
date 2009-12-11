@@ -146,7 +146,7 @@ $Id$
     </ciManagement>
     
     <prerequisites>
-        <maven>2.0.9</maven>
+        <maven>2.0.10</maven>
     </prerequisites>
 
     <distributionManagement>

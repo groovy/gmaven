@@ -43,17 +43,22 @@ public abstract class GroovyMojo
      * Lazily initialize the AntBuilder, so we can pick up the log impl correctly.
      */
     private AntBuilder getAnt() {
-        if (ant == null) {
-            ant = new AntBuilder();
+        if (this.ant == null) {
+            AntBuilder ant = new AntBuilder();
             BuildLogger logger = (BuildLogger) ant.getAntProject().getBuildListeners().get(0);
             logger.setEmacsMode(true);
+            this.ant = ant;
         }
-        return ant;
+        return this.ant;
     }
 
     public Object getProperty(final String property) {
+        // TODO: Check if this is really needed
         if ("ant".equals(property)) {
             return getAnt();
+        }
+        if ("log".equals(property)) {
+            return getLog();
         }
         return super.getProperty(property);
     }
