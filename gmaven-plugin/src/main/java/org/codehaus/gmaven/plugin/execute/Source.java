@@ -38,4 +38,8 @@ public class Source
         this.configuration = configuration;
         this.evaluator = evaluator;
     }
+
+    public String toString() {
+        return configuration.toString();
+    }
 }

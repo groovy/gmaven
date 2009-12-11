@@ -173,55 +173,43 @@ public class ExecuteMojo
      * legacy behavior is not modified.  Additional elements are added first in the order of 
      * project artifacts, then in the order of plugin artifacts.
      */
-    protected List getProjectClasspathElements() throws DependencyResolutionRequiredException 
-    {
-    	Set results = new LinkedHashSet();
-    	
-    	for(Iterator i = project.getRuntimeClasspathElements().iterator(); i.hasNext(); )
-    	{
-    		String cpe = (String)i.next();
-    		try
-			{
-				results.add(new File(cpe).getCanonicalPath());
-			}
-			catch(IOException e)
-			{
-				throw new RuntimeException("Classpath element not found: " + cpe, e);
-			}
-    	}
-    	
-    	for(Iterator i = project.getArtifacts().iterator(); i.hasNext(); )
-    	{
-    		Artifact artifact = (Artifact)i.next();
-    		if(artifact.getType().equals("jar") && artifact.getClassifier() == null)
-    		{
-    			try
-    			{
-    				results.add(artifact.getFile().getCanonicalPath());
-    			}
-    			catch(IOException e)
-    			{
-    				throw new RuntimeException("Maven artifact file not found: " + artifact.toString(), e);
-    			}
-    		}
-    	}
-    	
-    	for(Iterator i = pluginArtifacts.iterator(); i.hasNext(); )
-    	{
-    		Artifact artifact = (Artifact)i.next();
-    		if(artifact.getType().equals("jar") && artifact.getClassifier() == null)
-    		{
-    			try
-    			{
-    				results.add(artifact.getFile().getCanonicalPath());
-    			}
-    			catch(IOException e)
-    			{
-    				throw new RuntimeException("Maven plugin-artifact file not found: " + artifact.toString(), e);
-    			}
-    		}
-    	}
-    	return new ArrayList(results);
+    protected List getProjectClasspathElements() throws DependencyResolutionRequiredException {
+        Set results = new LinkedHashSet();
+
+        for (Iterator i = project.getRuntimeClasspathElements().iterator(); i.hasNext();) {
+            String cpe = (String) i.next();
+            try {
+                results.add(new File(cpe).getCanonicalPath());
+            }
+            catch (IOException e) {
+                throw new RuntimeException("Classpath element not found: " + cpe, e);
+            }
+        }
+
+        for (Iterator i = project.getArtifacts().iterator(); i.hasNext();) {
+            Artifact artifact = (Artifact) i.next();
+            if (artifact.getType().equals("jar") && artifact.getClassifier() == null) {
+                try {
+                    results.add(artifact.getFile().getCanonicalPath());
+                }
+                catch (IOException e) {
+                    throw new RuntimeException("Maven artifact file not found: " + artifact.toString(), e);
+                }
+            }
+        }
+
+        for (Iterator i = pluginArtifacts.iterator(); i.hasNext();) {
+            Artifact artifact = (Artifact) i.next();
+            if (artifact.getType().equals("jar") && artifact.getClassifier() == null) {
+                try {
+                    results.add(artifact.getFile().getCanonicalPath());
+                }
+                catch (IOException e) {
+                    throw new RuntimeException("Maven plugin-artifact file not found: " + artifact.toString(), e);
+                }
+            }
+        }
+        return new ArrayList(results);
     }
 
     protected ArtifactItem[] getUserClassspathElements() {
@@ -238,6 +226,7 @@ public class ExecuteMojo
         }
         
         ClassSource classSource = ClassSource.forValue(source.configuration.getValue());
+        log.debug("Class source: {}", classSource);
 
         ClassRealm realm = realmManager.createComponentRealm(provider(), createClassPath());
 
@@ -245,7 +234,7 @@ public class ExecuteMojo
 
         Configuration context = createContext();
 
-        log.debug("Executing {} w/context: {}", source, context);
+        log.debug("Executing '''{}''' w/context: {}", source, context);
 
         Object result = executor.execute(classSource, realm, resourceLoader, context);
 
