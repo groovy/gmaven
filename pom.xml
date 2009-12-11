@@ -959,8 +959,7 @@ $Id$
                             <goals>deploy</goals>
                         </configuration>
                     </plugin>
-                    
-                    <!--
+
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
@@ -975,7 +974,6 @@ $Id$
                             </execution>
                         </executions>
                     </plugin>
-                    -->
                     
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
