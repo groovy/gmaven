@@ -109,17 +109,22 @@
                     </execution>
                 </executions>
             </plugin>
-        </plugins>
-    </build>
-    
-    <reporting>
-        <plugins>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>build-javadocs</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>javadoc</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
-    </reporting>
+    </build>
 
 </project>
 
