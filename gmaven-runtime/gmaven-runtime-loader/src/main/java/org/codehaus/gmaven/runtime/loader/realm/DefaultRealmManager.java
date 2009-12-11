@@ -21,9 +21,14 @@ import org.codehaus.plexus.classworlds.ClassWorld;
 import org.codehaus.plexus.classworlds.ClassWorldException;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.codehaus.plexus.classworlds.realm.NoSuchRealmException;
+import org.codehaus.plexus.classworlds.strategy.ParentFirstStrategy;
+import org.codehaus.plexus.classworlds.strategy.Strategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,13 +60,8 @@ public class DefaultRealmManager
         log.debug("Creating provider realm: {}", id);
 
         ClassRealm realm = classWorld.newRealm(id, parent);
-
-        for (int i=0; i<classPath.length; i++) {
-            realm.addURL(classPath[i]);
-            
-            log.debug("    {}", classPath[i]);
-        }
-
+        setupRealm(realm, classPath);
+        
         providerRealms.put(key, realm);
 
         return realm;
@@ -77,9 +77,9 @@ public class DefaultRealmManager
         assert provider != null;
         assert classPath != null;
 
-        String id = Provider.class.getName() + "#component[" + uniqueId() + "]";
+        String id = provider.getClass().getName() + "#component[" + uniqueId() + "]";
 
-        log.debug("Creating component realm: " + id);
+        log.debug("Creating component realm: {}", id);
 
         ClassRealm providerRealm = (ClassRealm)providerRealms.get(provider.key());
 
@@ -87,9 +87,28 @@ public class DefaultRealmManager
             throw new Error("No realm for provider: " + provider);
         }
 
-        log.debug("Provider realm: {}", providerRealm.getId());
+        log.debug("    Provider realm: {}", providerRealm.getId());
 
         ClassRealm realm = providerRealm.createChildRealm(id);
+        setupRealm(realm, classPath);
+
+        return realm;
+    }
+
+    public void releaseComponentRealm(final ClassRealm realm) throws NoSuchRealmException {
+        assert realm != null;
+
+        log.debug("Releasing component realm: {}", realm.getId());
+
+        classWorld.disposeRealm(realm.getId());
+    }
+
+    private void setupRealm(final ClassRealm realm, final URL[] classPath) {
+        assert realm != null;
+        assert classPath != null;
+
+        // HACK: Force the realm to use parent-first, instead of the default self-first
+        setStrategy(realm, new ParentFirstStrategy(realm));
 
         for (int i=0; i<classPath.length; i++) {
             realm.addURL(classPath[i]);
@@ -97,18 +116,40 @@ public class DefaultRealmManager
             log.debug("    {}", classPath[i]);
         }
 
-        //
-        // FIXME: This does not allow access as we need
-        //
-        
-        return realm;
+        if (log.isTraceEnabled()) {
+            ByteArrayOutputStream buff = new ByteArrayOutputStream();
+            realm.display(new PrintStream(buff, true));
+            log.trace("Realm configuration:\n" + new String(buff.toByteArray()));
+        }
     }
 
-    public void releaseComponentRealm(final ClassRealm realm) throws NoSuchRealmException {
+    /**
+     * There is no public API to set/change a realms strategy, so we use some reflection muck to set the private field.
+     */
+    private void setStrategy(final ClassRealm realm, final Strategy strategy) {
         assert realm != null;
+        assert strategy != null;
 
-        log.debug("Releasing component realm: " + realm.getId());
+        try {
+            Field field = realm.getClass().getDeclaredField("strategy");
 
-        classWorld.disposeRealm(realm.getId());
+            try {
+                field.set(realm, strategy);
+            }
+            catch (IllegalAccessException ignore) {
+                // try again
+                field.setAccessible(true);
+
+                try {
+                    field.set(realm, strategy);
+                }
+                catch (IllegalAccessException e) {
+                    throw new IllegalAccessError(e.getMessage());
+                }
+            }
+        }
+        catch (NoSuchFieldException e) {
+            throw new Error(e);
+        }
     }
 }

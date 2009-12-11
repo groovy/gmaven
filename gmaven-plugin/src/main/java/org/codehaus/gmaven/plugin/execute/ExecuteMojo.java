@@ -65,6 +65,7 @@ public class ExecuteMojo
 {
     /** 
      * The plugin dependencies.
+     *
      * @parameter expression="${plugin.artifacts}" 
      * @noinspection UnusedDeclaration
      * @readonly

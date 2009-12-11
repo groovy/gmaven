@@ -71,9 +71,9 @@
                         <configuration>
                             <source>
                                 // Need to sleep for a sec to make sure we aren't too fast
-                                ant.sleep(1)
+                                ant.sleep(seconds: 1)
 
-                                def source = new File(pom.basedir, "src/main/groovy/testing/DarkCrystal.groovy")
+                                def source = new File(pom.basedir, 'src/main/groovy/testing/DarkCrystal.groovy')
                                 assert source.exists()
                                 
                                 def before = source.lastModified()

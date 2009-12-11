@@ -207,36 +207,6 @@
     </dependencies>
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>shitty-maven-plugin</artifactId>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>clean</goal>
-                                <goal>install</goal>
-                                <goal>test</goal>
-                            </goals>
-                            <configuration>
-                                <projects>
-                                    <fileset>
-                                        <directory>src/it</directory>
-                                        <includes>
-                                            <include>compile/*/pom.xml</include>
-                                            <include>execute/*/pom.xml</include>
-                                            <include>*/pom.xml</include>
-                                        </includes>
-                                    </fileset>
-                                </projects>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-        
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -267,6 +237,49 @@
             </plugin>
         </plugins>
     </reporting>
+
+    <profiles>
+        <profile>
+            <id>integration-tests</id>
+            <activation>
+                <property>
+                    <name>it</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-invoker-plugin</artifactId>
+                        <configuration>
+                            <projectsDirectory>src/it</projectsDirectory>
+                            <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
+                            <pomIncludes>
+                                <pomInclude>*/pom.xml</pomInclude>
+                                <pomInclude>compile/*/pom.xml</pomInclude>
+                                <pomInclude>execute/*/pom.xml</pomInclude>
+                            </pomIncludes>
+                            <settingsFile>src/it/settings.xml</settingsFile>
+                            <localRepositoryPath>${project.build.directory}/it-repo</localRepositoryPath>
+                            <preBuildHookScript>setup.groovy</preBuildHookScript>
+                            <postBuildHookScript>validate.groovy</postBuildHookScript>
+                            <properties>
+                                <gmaven.logging>TRACE</gmaven.logging>
+                            </properties>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>install</goal>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
 

@@ -48,17 +48,29 @@
                         </goals>
                         <configuration>
                             <source>
+                                println log
+                                println log?.class
                                 assert log instanceof org.slf4j.Logger
                                 log.info("Hello")
                                 
+                                println project
+                                println project?.class
                                 assert project instanceof org.apache.maven.project.MavenProject
                                 assert pom
                                 assert pom == project
-
+                                
+                                println settings
+                                println settings?.class
                                 assert settings instanceof org.apache.maven.settings.Settings
+                                
+                                println session
+                                println session?.class
                                 assert session instanceof org.apache.maven.execution.MavenSession
 
+                                println ant
+                                println ant?.class
                                 assert ant instanceof groovy.util.AntBuilder
+                                
                                 ant.echo(level: "info", "Hello")
                                 ant.echo(level: "debug", "Goodbye")
                                 

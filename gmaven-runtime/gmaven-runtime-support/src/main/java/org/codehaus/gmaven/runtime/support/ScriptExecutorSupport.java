@@ -108,8 +108,15 @@ public abstract class ScriptExecutorSupport
                 value = createMagicAttribute(attr);
             }
 
-            log.debug("    {} -> {}", name, value);
-
+            if (log.isDebugEnabled()) {
+                if (value != null) {
+                    log.debug("    {} -> {} ({})", new Object[] { name, value, value.getClass() });
+                }
+                else {
+                    log.debug("    {} -> {}", name, value);
+                }
+            }
+            
             invokeMethod(target, setter, new Object[] { name, value });
         }
     }
@@ -152,7 +159,9 @@ public abstract class ScriptExecutorSupport
         assert method != null;
         assert args != null;
 
-        log.debug("Invoking {} on {} with {}", new Object[] {method, target, Arrays.asList(args)});
+        if (log.isTraceEnabled()) {
+            log.trace("Invoking {} on {} with {}", new Object[] {method, target, Arrays.asList(args)});
+        }
 
         try {
             return method.invoke(target, args);

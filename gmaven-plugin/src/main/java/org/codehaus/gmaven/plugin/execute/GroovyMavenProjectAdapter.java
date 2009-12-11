@@ -107,7 +107,7 @@ public class GroovyMavenProjectAdapter
         //
 
         public Object lookup(final Object key) {
-            // First try ourself (pom + custom)
+            // First try our self (pom + custom)
             Object value = super.get(key);
 
             // Then try execution (system) properties
@@ -161,7 +161,7 @@ public class GroovyMavenProjectAdapter
             // Have to set in the original to preserve between executions
             getDelegate().getProperties().put(key, value);
 
-            // But need to update ourself so resolution in the same execution works too
+            // But need to update our self so resolution in the same execution works too
             return super.put(key, value);
         }
     }
