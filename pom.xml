@@ -55,10 +55,6 @@ $Id$
         GMaven provides integration of the Groovy language into Maven.
     </description>
     
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
- 
     <url>http://gmaven.codehaus.org</url>
 
     <inceptionYear>2006</inceptionYear>
@@ -101,6 +97,10 @@ $Id$
         </license>
     </licenses>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    
     <repositories>
         <repository>
             <id>codehaus.org</id>
@@ -306,29 +306,10 @@ $Id$
                 <version>0.9.94</version>
             </dependency>
 
-            <!-- FIXME: Upgrade to 1.10 -->
             <dependency>
                 <groupId>com.thoughtworks.qdox</groupId>
                 <artifactId>qdox</artifactId>
-                <version>1.8</version>
-                
-                <!--
-                NOTE: Don't include any of the dependencies, they are incorrectly scoped.
-                -->
-                <exclusions>
-                    <exclusion>
-                        <groupId>ant</groupId>
-                        <artifactId>ant</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>junit</groupId>
-                        <artifactId>junit</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>jmock</groupId>
-                        <artifactId>jmock</artifactId>
-                    </exclusion>
-                </exclusions>
+                <version>1.10</version>
             </dependency>
             
             <dependency>
