@@ -63,6 +63,9 @@ public class ClassCompilerFeature
         private ClassCompilerImpl() throws Exception {
             super(ClassCompilerFeature.this);
 
+        }
+
+        private void configure() {
             cc.setVerbose(config.get(VERBOSE, false));
 
             cc.setDebug(config.get(DEBUG, false));
@@ -113,6 +116,7 @@ public class ClassCompilerFeature
                 return 0;
             }
 
+            configure();
             cc.setTargetDirectory(getTargetDirectory().getCanonicalPath());
 
             //
