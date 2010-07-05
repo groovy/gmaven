@@ -62,7 +62,7 @@ public class ProviderImpl
 
     @Override
     protected Version detectVersion() {
-        return new Version(1, 6, 5);
+        return new Version(1, 6, 9);
     }
 
     @Override
