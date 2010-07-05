@@ -556,6 +556,7 @@ $Id$
                         <useReleaseProfile>false</useReleaseProfile>
                         <goals>deploy</goals>
                         <arguments>-B -Dit -Prelease</arguments>
+                        <!--<tagBase>https://svn.codehaus.org/gmaven/tags</tagBase>-->
                     </configuration>
                 </plugin>
 
@@ -577,15 +578,6 @@ $Id$
                     <version>2.1</version>
                 </plugin>
 
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>2.0-beta-9</version>
-                    <configuration>
-                        <tagBase>https://svn.codehaus.org/gmaven/tags</tagBase>
-                    </configuration>
-                </plugin>
-                
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-gpg-plugin</artifactId>
