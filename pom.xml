@@ -152,17 +152,14 @@ $Id$
     <distributionManagement>
         <repository>
             <id>codehaus.org</id>
-            <name>Groovy Central Repository</name>
             <url>dav:https://dav.codehaus.org/repository/gmaven</url>
         </repository>
         <snapshotRepository>
             <id>codehaus.org</id>
-            <name>Groovy Central Development Repository</name>
             <url>dav:https://dav.codehaus.org/snapshots.repository/gmaven</url>
         </snapshotRepository>
         <site>
             <id>codehaus.org</id>
-            <name>Groovy Website</name>
             <url>dav:https://dav.codehaus.org/gmaven/maven-generated/${project.version}</url>
         </site>
     </distributionManagement>
