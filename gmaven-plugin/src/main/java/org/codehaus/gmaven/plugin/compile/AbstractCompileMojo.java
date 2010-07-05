@@ -45,7 +45,7 @@ public abstract class AbstractCompileMojo
     /**
      * Sets the encoding to be used when reading source files.
      *
-     * @parameter expression="${sourceEncoding}" default-value="${file.encoding}"
+     * @parameter expression="${sourceEncoding}" default-value="${project.build.sourceEncoding}"
      * 
      * @noinspection UnusedDeclaration
      */
