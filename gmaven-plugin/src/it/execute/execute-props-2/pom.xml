@@ -53,8 +53,6 @@
                         </goals>
                         <configuration>
                             <source>
-                                import org.apache.maven.project.MavenProject
-                                
                                 println "project: " + project.properties['prop3']
                                 println "system:  " + System.properties['prop3']
                                 println "exec:    " + project.session.executionProperties['prop3']
@@ -68,12 +66,8 @@
                                 println project.properties['prop3']
                                 println ""
 
-                                assert project.properties['prop1'] instanceof MavenProject
-                                assert project.properties['prop3'] instanceof MavenProject
-                                
-                                def proj = project.properties['prop1']
-                                assert proj != null
-                                assert proj.artifactId == project.artifactId
+                                assert project.properties['prop1'] == 'test'
+                                assert project.properties['prop3'] == 'test'
                             </source>
                         </configuration>
                     </execution>

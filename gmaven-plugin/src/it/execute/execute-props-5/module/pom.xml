@@ -60,13 +60,7 @@
                         </goals>
                         <configuration>
                             <source>
-                                import org.apache.maven.project.MavenProject
-                                
-                                assert project.properties['fromSystem1'] instanceof MavenProject
-                                
-                                def proj = project.properties['fromSystem1']
-                                assert proj != null
-                                assert proj.artifactId == project.artifactId
+                                assert project.properties['fromSystem1'] == 'test'
                             </source>
                         </configuration>
                     </execution>
