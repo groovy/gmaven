@@ -24,6 +24,7 @@ import org.codehaus.groovy.control.CompilationUnit;
 import org.codehaus.groovy.control.CompilerConfiguration;
 import org.codehaus.groovy.control.Phases;
 import org.codehaus.groovy.control.SourceUnit;
+import org.codehaus.groovy.tools.javac.JavaAwareResolveVisitor;
 import org.codehaus.groovy.tools.javac.JavaStubGenerator;
 
 import java.io.File;
@@ -59,7 +60,8 @@ public class JavaStubCompilationUnit
         boolean useJava5 = config.getTargetBytecode().equals(CompilerConfiguration.POST_JDK5);
         stubGenerator = new JavaStubGenerator(destDir, false, useJava5);
 
-        addPhaseOperation(new PrimaryClassNodeOperation() {
+        addPhaseOperation(new PrimaryClassNodeOperation()
+        {
             @Override
             public void call(final SourceUnit source, final GeneratorContext context, final ClassNode node) throws CompilationFailedException {
                 try {
