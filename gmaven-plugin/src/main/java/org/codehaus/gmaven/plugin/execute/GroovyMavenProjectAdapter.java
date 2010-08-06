@@ -107,12 +107,12 @@ public class GroovyMavenProjectAdapter
         //
 
         public Object lookup(final Object key) {
-            // First try our self (pom + custom)
-            Object value = super.get(key);
+            // First try execution properties, should include system
+            Object value = session.getExecutionProperties().get(key);
 
-            // Then try execution (system) properties
+            // Else try ourselves
             if (value == null) {
-                value = session.getExecutionProperties().get(key);
+                value = super.get(key);
             }
 
             // Then try defaults (from adapter, not from properties, which is not used)
