@@ -25,8 +25,6 @@ import org.codehaus.groovy.control.CompilationUnit;
 import org.codehaus.groovy.control.CompilerConfiguration;
 import org.codehaus.groovy.control.Phases;
 import org.codehaus.groovy.control.SourceUnit;
-import org.codehaus.groovy.tools.javac.JavaAwareResolveVisitor;
-import org.codehaus.groovy.tools.javac.JavaCompiler;
 import org.codehaus.groovy.tools.javac.JavaStubGenerator;
 
 import java.io.File;
@@ -63,14 +61,6 @@ public class JavaStubCompilationUnit
         boolean useJava5 = config.getTargetBytecode().equals(CompilerConfiguration.POST_JDK5);
         stubGenerator = new JavaStubGenerator(destDir, false, useJava5);
 
-        // Copied from groovy/core, trying to see how to fix import problems
-//        addPhaseOperation(new PrimaryClassNodeOperation()
-//        {
-//            public void call(final SourceUnit source, final GeneratorContext context, final ClassNode node) throws CompilationFailedException {
-//                new JavaAwareResolveVisitor(JavaStubCompilationUnit.this).startResolving(node, source);
-//            }
-//        },Phases.CONVERSION);
-
         addPhaseOperation(new PrimaryClassNodeOperation()
         {
             @Override
@@ -90,18 +80,18 @@ public class JavaStubCompilationUnit
         this(config, gcl, null);
     }
 
-    // Copied from groovy/core, trying to see how to fix import problems
-//    public void gotoPhase(final int phase) throws CompilationFailedException {
-//        super.gotoPhase(phase);
-//
-//        if (phase==Phases.SEMANTIC_ANALYSIS) {
-//            Iterator modules = getAST().getModules().iterator();
-//            while (modules.hasNext()) {
-//                ModuleNode module = (ModuleNode) modules.next();
-//                module.setImportsResolved(false);
-//            }
-//        }
-//    }
+    public void gotoPhase(final int phase) throws CompilationFailedException {
+        super.gotoPhase(phase);
+
+        if (phase==Phases.SEMANTIC_ANALYSIS) {
+            // This appears to be needed to avoid missing imports
+            Iterator modules = getAST().getModules().iterator();
+            while (modules.hasNext()) {
+                ModuleNode module = (ModuleNode) modules.next();
+                module.setImportsResolved(false);
+            }
+        }
+    }
 
     public int getStubCount() {
         return stubCount;
