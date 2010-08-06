@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.codehaus.gmaven.runtime</groupId>
         <artifactId>gmaven-runtime</artifactId>
-        <version>1.3-SNAPSHOT</version>
+        <version>1.3</version>
     </parent>
 
     <name>GMaven Runtime :: 1.6</name>
