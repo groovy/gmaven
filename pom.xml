@@ -44,6 +44,12 @@ $Id$
 
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.codehaus</groupId>
+        <artifactId>codehaus-parent</artifactId>
+        <version>1</version>
+    </parent>
+    
     <groupId>org.codehaus.gmaven</groupId>
     <artifactId>gmaven</artifactId>
     <name>GMaven</name>
@@ -149,20 +155,20 @@ $Id$
         <maven>2.0.10</maven>
     </prerequisites>
 
-    <distributionManagement>
-        <repository>
-            <id>codehaus.org</id>
-            <url>dav:https://dav.codehaus.org/repository/gmaven</url>
-        </repository>
-        <snapshotRepository>
-            <id>codehaus.org</id>
-            <url>dav:https://dav.codehaus.org/snapshots.repository/gmaven</url>
-        </snapshotRepository>
-        <site>
-            <id>codehaus.org</id>
-            <url>dav:https://dav.codehaus.org/gmaven/maven-generated/${project.version}</url>
-        </site>
-    </distributionManagement>
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<id>codehaus.org</id>-->
+            <!--<url>dav:https://dav.codehaus.org/repository/gmaven</url>-->
+        <!--</repository>-->
+        <!--<snapshotRepository>-->
+            <!--<id>codehaus.org</id>-->
+            <!--<url>dav:https://dav.codehaus.org/snapshots.repository/gmaven</url>-->
+        <!--</snapshotRepository>-->
+        <!--<site>-->
+            <!--<id>codehaus.org</id>-->
+            <!--<url>dav:https://dav.codehaus.org/gmaven/maven-generated/${project.version}</url>-->
+        <!--</site>-->
+    <!--</distributionManagement>-->
 
     <developers>
         <developer>
