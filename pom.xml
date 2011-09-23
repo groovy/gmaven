@@ -332,73 +332,79 @@ $Id$
             <dependency>
                 <groupId>org.codehaus.gmaven.feature</groupId>
                 <artifactId>gmaven-feature-api</artifactId>
-                <version>1.4-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.codehaus.gmaven.feature</groupId>
                 <artifactId>gmaven-feature-support</artifactId>
-                <version>1.4-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.codehaus.gmaven.runtime</groupId>
                 <artifactId>gmaven-runtime-api</artifactId>
-                <version>1.4-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.codehaus.gmaven.runtime</groupId>
                 <artifactId>gmaven-runtime-support</artifactId>
-                <version>1.4-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.codehaus.gmaven.runtime</groupId>
                 <artifactId>gmaven-runtime-loader</artifactId>
-                <version>1.4-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.codehaus.gmaven.runtime</groupId>
                 <artifactId>gmaven-runtime-1.5</artifactId>
-                <version>1.4-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.codehaus.gmaven.runtime</groupId>
                 <artifactId>gmaven-runtime-1.6</artifactId>
-                <version>1.4-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.codehaus.gmaven.runtime</groupId>
                 <artifactId>gmaven-runtime-1.7</artifactId>
-                <version>1.4-SNAPSHOT</version>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.codehaus.gmaven.runtime</groupId>
+                <artifactId>gmaven-runtime-1.8</artifactId>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-mojo</artifactId>
-                <version>1.4-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-mojo-support</artifactId>
-                <version>1.4-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-plugin</artifactId>
-                <version>1.4-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             
             <dependency>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-packaging</artifactId>
-                <version>1.4-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -640,7 +646,7 @@ $Id$
                 <plugin>
                     <groupId>org.codehaus.gmaven</groupId>
                     <artifactId>gmaven-plugin</artifactId>
-                    <version>1.4-SNAPSHOT</version>
+                    <version>${project.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>

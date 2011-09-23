@@ -61,6 +61,7 @@
                                 <pomInclude>groovy-1.5/*/pom.xml</pomInclude>
                                 <pomInclude>groovy-1.6/*/pom.xml</pomInclude>
                                 <pomInclude>groovy-1.7/*/pom.xml</pomInclude>
+                                <pomInclude>groovy-1.8/*/pom.xml</pomInclude>
                                 <pomInclude>mojo/*/pom.xml</pomInclude>
                             </pomIncludes>
                             <settingsFile>src/it/settings.xml</settingsFile>
