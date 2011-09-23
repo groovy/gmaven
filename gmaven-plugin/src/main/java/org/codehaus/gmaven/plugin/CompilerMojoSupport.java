@@ -76,7 +76,7 @@ public abstract class CompilerMojoSupport
 
         List roots = getSourceRoots();
         assert roots != null;
-        
+
         String path = dir.getCanonicalPath();
 
         if (!roots.contains(path)) {
