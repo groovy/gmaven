@@ -1,6 +1,3 @@
-import Example
-import Helper
-
 ##
 ## Copyright (C) 2006-2008 the original author or authors.
 ##
@@ -23,6 +20,9 @@ import Helper
 //
 
 package ${package}
+
+import ${package}.Helper
+import ${package}.Example
 
 /**
  * Tests for the {@link Helper} class.

@@ -1,5 +1,3 @@
-import Example
-
 ##
 ## Copyright (C) 2006-2008 the original author or authors.
 ##
@@ -22,6 +20,8 @@ import Example
 //
 
 package ${package}
+
+import ${package}.Example
 
 /**
  * Tests for the {@link Example} class.
