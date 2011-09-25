@@ -19,7 +19,7 @@ package org.codehaus.gmaven.runtime.v1_7;
 import org.codehaus.gmaven.feature.Feature;
 import org.codehaus.gmaven.feature.Version;
 import org.codehaus.gmaven.feature.support.ProviderSupport;
-import org.codehaus.groovy.runtime.InvokerHelper;
+import groovy.lang.GroovySystem;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -67,6 +67,6 @@ public class ProviderImpl
 
     @Override
     public String name() {
-        return "Groovy v" + InvokerHelper.getVersion();
+        return "Groovy v" + GroovySystem.getVersion();
     }
 }
