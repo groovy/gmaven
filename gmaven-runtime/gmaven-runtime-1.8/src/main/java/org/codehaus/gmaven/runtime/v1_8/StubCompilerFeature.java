@@ -57,12 +57,18 @@ public class StubCompilerFeature
 
     private class StubCompilerImpl
         extends CompilerSupport
-        implements StubCompiler
+        implements StubCompiler, StubCompiler.Keys
     {
         private CompilerConfiguration cc = new CompilerConfiguration();
 
         private StubCompilerImpl() throws Exception {
             super(StubCompilerFeature.this);
+        }
+
+        private void configure() {
+            if (config.contains(SOURCE_ENCODING)) {
+                cc.setSourceEncoding(config.get(SOURCE_ENCODING, (String)null));
+            }
         }
 
         public int compile() throws Exception {
@@ -104,6 +110,7 @@ public class StubCompilerFeature
                 cu.addSource(url);
             }
 
+            configure();
             cu.compile();
 
             int count = cu.getStubCount();

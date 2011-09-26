@@ -29,5 +29,10 @@ public interface StubCompiler
 {
     String KEY = StubCompiler.class.getName();
 
+    interface Keys
+    {
+        String SOURCE_ENCODING = "sourceEncoding";
+    }
+
     // Add one off bits here to render/generate
 }
