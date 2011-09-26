@@ -24,17 +24,17 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>${groupId}</groupId>
-    <artifactId>${artifactId}</artifactId>
-    <name>${name}</name>
-    <version>${version}</version>
+    <groupId>\${groupId}</groupId>
+    <artifactId>\${artifactId}</artifactId>
+    <name>\${artifactId} project</name>
+    <version>\${version}</version>
     <packaging>maven-plugin</packaging>
     
     <dependencies>
         <dependency>
             <groupId>org.codehaus.gmaven</groupId>
             <artifactId>gmaven-mojo</artifactId>
-            <version>1.4-SNAPSHOT</version>
+            <version>@project.version@</version>
         </dependency>
         
         <dependency>
@@ -50,7 +50,7 @@
             <plugin>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-plugin</artifactId>
-                <version>1.4-SNAPSHOT</version>
+                <version>@project.version@</version>
                 <executions>
                     <execution>
                         <goals>

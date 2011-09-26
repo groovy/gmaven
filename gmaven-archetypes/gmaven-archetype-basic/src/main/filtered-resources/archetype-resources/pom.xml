@@ -24,16 +24,16 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>${groupId}</groupId>
-    <artifactId>${artifactId}</artifactId>
-    <name>${name}</name>
-    <version>${version}</version>
+    <groupId>\${groupId}</groupId>
+    <artifactId>\${artifactId}</artifactId>
+    <name>\${artifactId} project</name>
+    <version>\${version}</version>
 
     <dependencies>
         <dependency>
             <groupId>org.codehaus.gmaven.runtime</groupId>
             <artifactId>gmaven-runtime-1.6</artifactId>
-            <version>1.4-SNAPSHOT</version>
+            <version>@project.version@</version>
         </dependency>
         
         <dependency>
@@ -49,7 +49,7 @@
             <plugin>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-plugin</artifactId>
-                <version>1.4-SNAPSHOT</version>
+                <version>@project.version@</version>
                 <executions>
                     <execution>
                         <goals>
