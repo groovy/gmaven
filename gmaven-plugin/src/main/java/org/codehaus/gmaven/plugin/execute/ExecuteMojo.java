@@ -75,7 +75,7 @@ public class ExecuteMojo
     /**
      * The source of the script to execute.  This can be a URL, File or script body.
      *
-     * @parameter
+     * @parameter expression="${source}"
      * @required
      *
      * @noinspection UnusedDeclaration
