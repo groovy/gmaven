@@ -34,7 +34,7 @@
         <dependency>
             <groupId>org.codehaus.gmaven</groupId>
             <artifactId>gmaven-mojo</artifactId>
-            <version>@project.version@</version>
+            <version>1.4-SNAPSHOT</version>
         </dependency>
         
         <dependency>
@@ -50,7 +50,7 @@
             <plugin>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-plugin</artifactId>
-                <version>@project.version@</version>
+                <version>1.4-SNAPSHOT</version>
                 <executions>
                     <execution>
                         <goals>

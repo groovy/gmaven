@@ -33,7 +33,7 @@
         <dependency>
             <groupId>org.codehaus.gmaven.runtime</groupId>
             <artifactId>gmaven-runtime-1.6</artifactId>
-            <version>@project.version@</version>
+            <version>1.4-SNAPSHOT</version>
         </dependency>
         
         <dependency>
@@ -49,7 +49,7 @@
             <plugin>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-plugin</artifactId>
-                <version>@project.version@</version>
+                <version>1.4-SNAPSHOT</version>
                 <executions>
                     <execution>
                         <goals>
