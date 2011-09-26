@@ -51,7 +51,7 @@ public abstract class ProviderMojoSupport
     private ProviderManager providerManager;
 
     /**
-     * A comma-seperated list of provider keys, in order of preference of selection.
+     * A comma-separated list of provider keys, in order of preference of selection.
      *
      * If the invoking JVM is at least Java 1.5, then the Groovy 1.6 runtime will be used, else
      * the Groovy 1.5 runtime is used.
