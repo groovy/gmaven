@@ -20,13 +20,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>org.codehaus.gmaven.examples</groupId>
         <artifactId>gmaven-examples</artifactId>
         <version>1.4-SNAPSHOT</version>
     </parent>
-    
+
     <artifactId>clean-maven-plugin</artifactId>
     <name>GMaven Examples :: Clean Maven Plugin</name>
     <packaging>maven-plugin</packaging>
@@ -40,13 +40,13 @@
             <groupId>org.codehaus.gmaven</groupId>
             <artifactId>gmaven-mojo</artifactId>
         </dependency>
-        
+
         <dependency>
             <groupId>org.apache.maven.shared</groupId>
             <artifactId>file-management</artifactId>
         </dependency>
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -65,6 +65,6 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>
 

@@ -35,28 +35,28 @@ class ProcessLauncher
     //
     // TODO: Use logging
     //
-    
+
     String name
-    
+
     Closure process
-    
+
     Closure verifier
-    
+
     int verifyWaitDelay = 1000
-    
+
     int timeout = -1
-    
+
     boolean background = false
-    
+
     def launch() {
         assert process
         assert name
-        
+
         //
         // FIXME: Can probably just use a Throwable local here
         //
         def errors = []
-        
+
         def runner = {
             try {
                 process()
@@ -65,37 +65,37 @@ class ProcessLauncher
                 errors << e
             }
         }
-        
+
         def t = new Thread(runner, "$name Runner")
-        
+
         println "Launching $name"
         t.start()
-        
+
         if (verifier) {
             def timer = new Timer("$name Timer", true)
-            
+
             def timedOut = false
-            
+
             def timeoutTask
             if (timeout > 0) {
                 timeoutTask = timer.runAfter(timeout * 1000, {
                     timedOut = true
                 })
             }
-            
+
             def started = false
-            
+
             println "Waiting for ${name}..."
-            
+
             while (!started) {
                 if (timedOut) {
                     throw new Exception("Unable to verify if $name was started in the given time ($timeout seconds)")
                 }
-                
+
                 if (errors) {
                     throw new Exception("Failed to start: $name", errors[0])
                 }
-                
+
                 if (verifier()) {
                     started = true
                 }
@@ -103,17 +103,17 @@ class ProcessLauncher
                     Thread.sleep(verifyWaitDelay)
                 }
             }
-            
+
             timeoutTask?.cancel()
         }
-        
+
         println "$name started"
-        
+
         if (!background) {
             println "Waiting for $name to shutdown..."
-            
+
             t.join()
-            
+
             println "$name has shutdown"
         }
     }

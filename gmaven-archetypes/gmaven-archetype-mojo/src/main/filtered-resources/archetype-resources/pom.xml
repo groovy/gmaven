@@ -29,14 +29,14 @@
     <name>\${artifactId} project</name>
     <version>\${version}</version>
     <packaging>maven-plugin</packaging>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.codehaus.gmaven</groupId>
             <artifactId>gmaven-mojo</artifactId>
             <version>@project.version@</version>
         </dependency>
-        
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

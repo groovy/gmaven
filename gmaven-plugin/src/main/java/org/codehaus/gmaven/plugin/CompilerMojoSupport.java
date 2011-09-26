@@ -81,7 +81,7 @@ public abstract class CompilerMojoSupport
 
         if (!roots.contains(path)) {
             log.debug("Adding source root: {}", path);
-            
+
             roots.add(path);
         }
     }
@@ -128,16 +128,16 @@ public abstract class CompilerMojoSupport
 
         if (!sourceDir.exists()) {
             log.debug("Skipping; missing source directory: {}", sourceDir);
-            
+
             return new File[0];
         }
-        
+
         File targetDir = getOutputDirectory();
         Set includes = getIncludesFrom(fileSet);
         Set excludes = getExcludesFrom(fileSet);
-        
+
         StaleResourceScanner scanner = new StaleResourceScanner(0, includes, excludes);
-        
+
         if (mappings != null && mappings.length > 0) {
             for (int i=0; i<mappings.length; i++) {
                 scanner.addSourceMapping(mappings[i]);

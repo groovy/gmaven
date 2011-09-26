@@ -20,24 +20,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>org.codehaus.gmaven.it.gmaven-testsuite.groovy-1.7</groupId>
         <artifactId>common</artifactId>
         <version>@project.version@</version>
         <relativePath>../common.xml</relativePath>
     </parent>
-    
+
     <artifactId>execute</artifactId>
-    
+
     <description>
         Tests that execution related fluff works with Groovy 1.7.
     </description>
-    
+
     <properties>
         <groovy_version>1.7</groovy_version>
     </properties>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -59,15 +59,15 @@
                             <source>
                                 def version = org.codehaus.groovy.runtime.InvokerHelper.getVersion()
                                 assert version
-                                
+
                                 def expect = pom.properties['groovy_version']
                                 assert expect
-                                
+
                                 assert version.startsWith(expect)
                             </source>
                         </configuration>
                     </execution>
-                    
+
                     <execution>
                         <id>execute-file</id>
                         <goals>
@@ -92,7 +92,7 @@
                             <!--<source>file:${pom.basedir}/src/script/checkversion.groovy</source>-->
                         <!--</configuration>-->
                     <!--</execution>-->
-                    
+
                     <execution>
                         <id>check-inline-defaults</id>
                         <goals>
@@ -103,21 +103,21 @@
                             <source>
                                 assert log instanceof org.slf4j.Logger
                                 log.info("Hello")
-                                
+
                                 assert project instanceof org.apache.maven.project.MavenProject
                                 assert pom
                                 assert pom == project
-                                
+
                                 assert ant instanceof groovy.util.AntBuilder
                                 ant.echo(level: "info", "Hello")
                                 ant.echo(level: "debug", "Goodbye")
-                                
+
                                 assert fail
                                 // can't test fail though...
                             </source>
                         </configuration>
                     </execution>
-                    
+
                     <execution>
                         <id>check-file-defaults</id>
                         <goals>

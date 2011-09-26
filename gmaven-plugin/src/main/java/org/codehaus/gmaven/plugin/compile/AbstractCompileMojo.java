@@ -87,7 +87,7 @@ public abstract class AbstractCompileMojo
      * @noinspection UnusedDeclaration
      */
     private int tolerance;
-    
+
     /**
      * Allow setting the bytecode compatibility.
      *
@@ -96,7 +96,7 @@ public abstract class AbstractCompileMojo
      * @noinspection UnusedDeclaration
      */
     private String targetBytecode;
-    
+
     /**
      * Sets the warning level.
      *
@@ -105,7 +105,7 @@ public abstract class AbstractCompileMojo
      * @noinspection UnusedDeclaration
      */
     private int warningLevel;
-    
+
     /**
      * Sets the name of the base class for scripts. It must be a subclass of <tt>groovy.lang.Script</tt>.
      *
@@ -132,7 +132,7 @@ public abstract class AbstractCompileMojo
         ClassCompiler compiler = (ClassCompiler)component;
 
         compiler.setTargetDirectory(getOutputDirectory());
-        
+
         compiler.setClassPath(createClassPath());
 
         Configuration config = component.config();
@@ -142,13 +142,13 @@ public abstract class AbstractCompileMojo
         config.set(DEBUG, debug);
 
         config.set(TOLERANCE, tolerance);
-        
+
         if (targetBytecode != null) {
             config.set(TARGET_BYTECODE, targetBytecode);
         }
 
         config.set(WARNING_LEVEL, warningLevel);
-        
+
         if (sourceEncoding != null) {
             config.set(SOURCE_ENCODING, sourceEncoding);
         }
@@ -156,7 +156,7 @@ public abstract class AbstractCompileMojo
         if (scriptBaseClassname != null) {
             config.set(SCRIPT_BASE_CLASSNAME, scriptBaseClassname);
         }
-        
+
         if (defaultScriptExtension != null) {
             config.set(DEFAULT_SCRIPT_EXTENSION, defaultScriptExtension);
         }

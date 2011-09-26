@@ -76,7 +76,7 @@ class SimpleTest
     BigDecimal bigDec
 
     BigInteger bigInt
-    
+
     /** Byte array. */
     byte[] byteArray
 
@@ -118,45 +118,45 @@ class SimpleTest
      */
     def SimpleTest() {
         super((String)"foo", 1, 2 as long, new Object())
-        
+
         foo.bar.println "bar"
     }
-    
+
     /**
      * Constructor w/${}
      */
     def SimpleTest() {
         super("${}")
     }
-    
+
     /**
      * Constructor w/${a}
      */
     def SimpleTest() {
         super("${a}")
     }
-    
+
     /**
      * Constructor w/super(otherMethod())
      */
     def SimpleTest() {
         super(otherMethod())
     }
-    
+
     /**
      * Constructor w/super(1 + 1)
      */
     def SimpleTest() {
         super(1 + 1)
     }
-    
+
     /**
      * Constructor w/super(1 - 1)
      */
     def SimpleTest() {
         super(1 - 1)
     }
-    
+
     def SimpleTest() {
     }
 
@@ -187,7 +187,7 @@ class SimpleTest
     private CT foo() {}
 
     Crap foo() {}
-    
+
     /**
      * Javadoc for test() method.
      *
@@ -197,12 +197,12 @@ class SimpleTest
      */
     public static final void test(final int a, Crap b, float c) {
         def var1
-        
+
         println "hi"
-        
+
         super.test("foo")
     }
-    
+
     /**
      * Javadoc for test2() method.
      *
@@ -210,7 +210,7 @@ class SimpleTest
      */
     public static final def test2(foo, bar, baz) throws a.b.c, b, c, d {
         println "there"
-        
+
         return "blah"
     }
 }

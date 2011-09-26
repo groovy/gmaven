@@ -26,10 +26,10 @@ class GroovyTest
     void testVersion() {
         def version = Testoid.getVersion()
         assert version
-        
+
         def expect = System.getProperty('groovy_version')
         assert expect
-        
+
         assert version.startsWith(expect)
     }
 }

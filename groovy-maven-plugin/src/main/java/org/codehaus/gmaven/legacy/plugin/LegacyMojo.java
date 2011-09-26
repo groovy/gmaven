@@ -35,7 +35,7 @@ public class LegacyMojo
      * @parameter
      */
     private boolean dummy;
-    
+
     public void execute() throws MojoExecutionException, MojoFailureException {
         throw new InternalError();
     }

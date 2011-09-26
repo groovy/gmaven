@@ -36,7 +36,7 @@
         <module>gmaven-archetype-basic</module>
         <module>gmaven-archetype-mojo</module>
     </modules>
-    
+
     <build>
         <extensions>
             <extension>
@@ -45,7 +45,7 @@
                 <version>2.0-alpha-2</version>
             </extension>
         </extensions>
-        
+
         <pluginManagement>
             <plugins>
                 <!--
@@ -53,7 +53,7 @@
                       packaging is not getting resolved properly, causing the archive to be installed with a
                       .maven-archetype extention instead of .jar.  So force a .jar artifact to be installed.
                 -->
-                
+
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
@@ -74,7 +74,7 @@
                         </execution>
                     </executions>
                 </plugin>
-                
+
                 <!--
                 Manually filter @project.version@, since the maven-resources-plugin will clobber
                 more ${} things than it should, so *ucking stupid.

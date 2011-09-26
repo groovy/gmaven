@@ -39,24 +39,24 @@ class CleanMojo
      * @readonly
      */
     MavenProject project
-    
+
     /**
      * Extra files to be deleted in addition to the default directories.
      *
      * @parameter
      */
     FileSet[] filesets
-    
+
     void execute() {
         ant.delete(dir: project.build.directory)
         ant.delete(dir: project.build.outputDirectory)
         ant.delete(dir: project.build.testOutputDirectory)
         ant.delete(dir: project.reporting.outputDirectory)
-        
+
         // Then if given delete the additional files specified by the filesets
         if (filesets) {
             def fsm = new FileSetManager(log, verbose)
-            
+
             filesets.each {
                 fsm.delete(it)
             }

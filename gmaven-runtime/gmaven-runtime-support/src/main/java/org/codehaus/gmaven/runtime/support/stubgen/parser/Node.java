@@ -41,7 +41,7 @@ public interface Node
     //
     // Type helpers
     //
-    
+
     boolean is(String name);
 
     boolean is(String[] names);

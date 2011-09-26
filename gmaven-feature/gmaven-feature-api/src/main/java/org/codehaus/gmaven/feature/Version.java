@@ -163,7 +163,7 @@ public class Version implements Comparable {
         if (tag != null) {
             buff.append("-").append(tag);
         }
-        
+
         return buff.toString();
     }
 

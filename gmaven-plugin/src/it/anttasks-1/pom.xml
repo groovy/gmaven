@@ -20,20 +20,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>org.codehaus.gmaven.it.gmaven-plugin</groupId>
         <artifactId>common</artifactId>
         <version>@project.version@</version>
         <relativePath>../common.xml</relativePath>
     </parent>
-    
+
     <artifactId>anttasks-1</artifactId>
-    
+
     <description>
         Tests that basic inline ant tasks work.
     </description>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -51,7 +51,7 @@
                         </configuration>
                     </execution>
                     -->
-                    
+
                     <execution>
                         <phase>compile</phase>
                         <goals>
@@ -60,9 +60,9 @@
                         <configuration>
                             <source>
                                 ant.echo(message: "hello")
-                                
+
                                 ant.mkdir(dir: "${project.build.directory}")
-                                
+
                                 ant.zip(file: "${project.build.directory}/test.zip") {
                                     fileset(dir: "${project.basedir}") {
                                         include(name: "pom.xml")
@@ -75,6 +75,6 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>
 

@@ -88,7 +88,7 @@ public class ExpressionEvaluatorImpl
 
         return basedir;
     }
-    
+
     public Object evaluate(final String expr) throws ExpressionEvaluationException {
         try {
             return doEvaluate(expr);

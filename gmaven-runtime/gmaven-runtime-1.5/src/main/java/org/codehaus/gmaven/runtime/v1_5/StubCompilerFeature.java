@@ -96,7 +96,7 @@ public class StubCompilerFeature
 
         private int render(final URL url) throws Exception {
             assert url != null;
-            
+
             SourceDef model = modelFactory.create(url);
 
             Set renderers = rendererFactory.create(model);

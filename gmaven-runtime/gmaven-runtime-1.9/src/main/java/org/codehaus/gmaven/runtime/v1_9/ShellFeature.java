@@ -50,7 +50,7 @@ public class ShellFeature
     //
     // ShellImpl
     //
-    
+
     private class ShellImpl
         extends ComponentSupport
         implements Shell, Shell.Keys

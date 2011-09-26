@@ -33,7 +33,7 @@ public class ModelFactoryImpl
     public ModelFactoryImpl() {
         super(new ParserFactoryImpl());
     }
-    
+
     protected void addDefaultImports(final SourceDef model) {
         assert model != null;
 

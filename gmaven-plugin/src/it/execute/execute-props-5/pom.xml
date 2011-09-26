@@ -20,27 +20,27 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>org.codehaus.gmaven.it.gmaven-plugin.execute</groupId>
         <artifactId>common</artifactId>
         <version>@project.version@</version>
         <relativePath>../common.xml</relativePath>
     </parent>
-    
+
     <artifactId>execute-props-5</artifactId>
     <packaging>pom</packaging>
-    
+
     <description>
         Verify that properties work and resolve as expected in the reactor.
     </description>
-    
+
     <properties>
         <fromParent1>${fromParent2}</fromParent1>
         <fromParent2>${fromChild1}</fromParent2>
         <!-- fromChild1 is in child pom -->
     </properties>
-    
+
     <modules>
         <module>module</module>
     </modules>

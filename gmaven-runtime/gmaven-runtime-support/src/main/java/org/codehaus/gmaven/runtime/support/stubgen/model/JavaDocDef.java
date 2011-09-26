@@ -37,7 +37,7 @@ public class JavaDocDef
     public JavaDocDef(final String comment) {
         setComment(comment);
     }
-    
+
     public String getComment() {
         return comment;
     }

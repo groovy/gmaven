@@ -92,7 +92,7 @@ public class DefaultProviderLoader
         if (providers == null) {
             throw new Error("No providers discovered");
         }
-        
+
         Set keys = providers.keySet();
         Map found = null;
 
@@ -100,7 +100,7 @@ public class DefaultProviderLoader
             String key = (String)iter.next();
 
             Provider provider;
-            
+
             try {
                 provider = (Provider) getContainer().lookup(Provider.class.getName(), key);
             }

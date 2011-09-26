@@ -20,20 +20,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>org.codehaus.gmaven.it.gmaven-plugin.execute</groupId>
         <artifactId>common</artifactId>
         <version>@project.version@</version>
         <relativePath>../common.xml</relativePath>
     </parent>
-    
+
     <artifactId>execute-source</artifactId>
-    
+
     <description>
         Test source definitions.
     </description>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -53,7 +53,7 @@
                             </source>
                         </configuration>
                     </execution>
-                    
+
                     <execution>
                         <id>url</id>
                         <phase>compile</phase>
@@ -64,7 +64,7 @@
                             <source>file:${basedir}/src/main/groovy/test.groovy</source>
                         </configuration>
                     </execution>
-                    
+
                     <execution>
                         <id>file</id>
                         <phase>compile</phase>
@@ -79,6 +79,6 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>
 

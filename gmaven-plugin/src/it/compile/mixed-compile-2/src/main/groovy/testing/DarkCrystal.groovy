@@ -24,7 +24,7 @@ class DarkCrystal
 {
     def tok() {
         super.tok()
-        
+
         println 'Ah the crystal...'
     }
 }

@@ -20,27 +20,27 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>org.codehaus.gmaven.it.gmaven-plugin</groupId>
         <artifactId>common</artifactId>
         <version>@project.version@</version>
         <relativePath>../common.xml</relativePath>
     </parent>
-    
+
     <artifactId>plexus-descriptor-1</artifactId>
-    
+
     <description>
         Verify we can generate a Plexus descriptor using the stub generator.
     </description>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all-minimal</artifactId>
         </dependency>
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -55,7 +55,7 @@
                     </execution>
                 </executions>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.codehaus.plexus</groupId>
                 <artifactId>plexus-maven-plugin</artifactId>
@@ -69,6 +69,6 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>
 

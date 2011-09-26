@@ -53,7 +53,7 @@ public class ConsoleMojo
     protected List getProjectClasspathElements() throws DependencyResolutionRequiredException {
         return project.getTestClasspathElements();
     }
-    
+
     protected void process(final Component component) throws Exception {
         assert component != null;
 

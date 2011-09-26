@@ -118,7 +118,7 @@ public class ExecuteMojo
      * @noinspection UnusedDeclaration
      */
     private Map properties;
-    
+
     /**
      * Trap assertion errors and rethrow them as execution failures.
      *
@@ -162,7 +162,7 @@ public class ExecuteMojo
      * @noinspection UnusedDeclaration
      */
     private RealmManager realmManager;
-    
+
     public ExecuteMojo() {
         super(ScriptExecutor.KEY);
     }
@@ -224,7 +224,7 @@ public class ExecuteMojo
         if (source.configuration.getChildCount() != 0) {
             throw new MojoExecutionException("Invalid value for 'source' parameter; contains nested elements");
         }
-        
+
         ClassSource classSource = ClassSource.forValue(source.configuration.getValue());
         log.debug("Class source: {}", classSource);
 

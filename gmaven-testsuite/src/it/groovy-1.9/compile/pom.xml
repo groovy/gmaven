@@ -20,24 +20,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>org.codehaus.gmaven.it.gmaven-testsuite.groovy-1.9</groupId>
         <artifactId>common</artifactId>
         <version>@project.version@</version>
         <relativePath>../common.xml</relativePath>
     </parent>
-    
+
     <artifactId>compile</artifactId>
-    
+
     <description>
         Tests that compilation related fluff (includeing Javadoc generation) works with Groovy 1.9.
     </description>
-    
+
     <properties>
         <groovy_version>1.9</groovy_version>
     </properties>
-    
+
     <dependencies>
         <!--
         NOTE: This is needed to allow the compiler:compile and compiler:testCompile goals to compile generated stubs.
@@ -47,14 +47,14 @@
             <artifactId>gmaven-runtime-${groovy_version}</artifactId>
             <version>@project.version@</version>
         </dependency>
-        
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -69,7 +69,7 @@
                     </systemProperties>
                 </configuration>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -86,7 +86,7 @@
                     <source>1.5</source>
                 </configuration>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-plugin</artifactId>
@@ -105,7 +105,7 @@
                             <goal>testCompile</goal>
                         </goals>
                     </execution>
-                    
+
                     <execution>
                         <id>execute</id>
                         <goals>
@@ -116,17 +116,17 @@
                             <source>
                                 def version = Testoid.getVersion()
                                 assert version
-                                
+
                                 def expect = pom.properties['groovy_version']
                                 assert expect
-                                
+
                                 assert version.startsWith(expect)
                             </source>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>

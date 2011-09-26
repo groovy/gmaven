@@ -49,7 +49,7 @@ public class FieldDef
         ModifiersDef modifiers = getModifiers();
 
         assert parent != null;
-        
+
         return !parent.isInterface() && !modifiers.hasAccessModifiers();
     }
 }

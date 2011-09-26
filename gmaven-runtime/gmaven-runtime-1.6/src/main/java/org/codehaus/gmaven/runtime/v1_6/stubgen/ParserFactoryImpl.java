@@ -69,11 +69,11 @@ class ParserFactoryImpl
 
     private Node node(final AST ast) {
         // ast may be null
-        
+
         if (ast == null) {
             return null;
         }
-        
+
         return new NodeSupport() {
             protected Tokens tokens() {
                 return tokens;

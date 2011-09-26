@@ -50,7 +50,7 @@ public class ShellFeature
     //
     // ShellImpl
     //
-    
+
     private class ShellImpl
         extends ComponentSupport
         implements Shell, Shell.Keys
@@ -115,7 +115,7 @@ public class ShellFeature
             assert config != null;
 
             io = new IO();
-            
+
             Logger.io = io;
 
             if (config.get(VERBOSE, false)) {
@@ -142,12 +142,12 @@ public class ShellFeature
 
             args = config.get(ARGS, (String)null);
         }
-        
+
         public void run(final ClassLoader classLoader) throws Exception {
             assert classLoader != null;
 
             Groovysh shell = new Groovysh(classLoader, new Binding(), io);
-            
+
             shell.run(args);
         }
     }
@@ -155,7 +155,7 @@ public class ShellFeature
     //
     // LegacyTask
     //
-    
+
     private class LegacyTask
         implements Task
     {

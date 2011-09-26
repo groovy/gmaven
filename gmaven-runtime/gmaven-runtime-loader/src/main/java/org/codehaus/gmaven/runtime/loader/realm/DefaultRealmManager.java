@@ -45,7 +45,7 @@ public class DefaultRealmManager
     implements RealmManager
 {
     private final Logger log = LoggerFactory.getLogger(getClass());
-    
+
     private ClassWorld classWorld = new ClassWorld();
 
     private Map providerRealms = new HashMap();
@@ -56,12 +56,12 @@ public class DefaultRealmManager
         assert parent != null;
 
         String id = Provider.class.getName() + "[" + key + "]";
-        
+
         log.debug("Creating provider realm: {}", id);
 
         ClassRealm realm = classWorld.newRealm(id, parent);
         setupRealm(realm, classPath);
-        
+
         providerRealms.put(key, realm);
 
         return realm;

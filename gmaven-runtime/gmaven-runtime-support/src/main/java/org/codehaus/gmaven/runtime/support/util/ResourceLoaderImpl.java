@@ -34,7 +34,7 @@ public class ResourceLoaderImpl
     implements ResourceLoader
 {
     protected final Logger log = LoggerFactory.getLogger(getClass());
-    
+
     protected ClassLoader classLoader;
 
     public ResourceLoaderImpl(final ClassLoader classLoader) {
@@ -49,7 +49,7 @@ public class ResourceLoaderImpl
 
     protected String toResourceName(final String className) {
         assert className != null;
-        
+
         // Figure out what resource to load
         String resource = className;
 

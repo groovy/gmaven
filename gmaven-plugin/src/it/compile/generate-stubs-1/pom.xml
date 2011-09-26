@@ -27,7 +27,7 @@
         <version>@project.version@</version>
         <relativePath>../common.xml</relativePath>
     </parent>
-    
+
     <artifactId>generate-stubs-1</artifactId>
 
     <description>
@@ -60,7 +60,7 @@
                             <goal>compile</goal>
                         </goals>
                     </execution>
-                    
+
                     <execution>
                         <id>touch</id>
                         <phase>generate-sources</phase>
@@ -75,7 +75,7 @@
 
                                 def source = new File(pom.basedir, 'src/main/groovy/testing/DarkCrystal.groovy')
                                 assert source.exists()
-                                
+
                                 def before = source.lastModified()
 
                                 ant.touch(file: source)
@@ -84,7 +84,7 @@
                             </source>
                         </configuration>
                     </execution>
-                    
+
                     <execution>
                         <id>generateStubs-2</id>
                         <goals>

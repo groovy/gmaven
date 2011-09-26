@@ -31,7 +31,7 @@ public class ConstructorDef
     public static final String SUPER = "super";
 
     public static final String THIS = "this";
-    
+
     private final boolean magic;
 
     private String superType;

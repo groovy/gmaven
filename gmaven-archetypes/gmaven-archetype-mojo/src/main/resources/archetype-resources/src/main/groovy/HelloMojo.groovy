@@ -35,7 +35,7 @@ class HelloMojo
      * @parameter expression="${message}" default-value="Hello World"
      */
     String message
-    
+
     void execute() {
         println "${message}"
     }

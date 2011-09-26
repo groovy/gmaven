@@ -130,7 +130,7 @@ public abstract class ProviderSupport
                     ((FeatureSupport)feature).register(this);
                 }
             }
-            
+
             features = new HashMap(detected);
         }
 
@@ -148,7 +148,7 @@ public abstract class ProviderSupport
         if (!features.containsKey(key)) {
             throw new FeatureException("Unknown feature: " + key);
         }
-        
+
         return (Feature)features.get(key);
     }
 

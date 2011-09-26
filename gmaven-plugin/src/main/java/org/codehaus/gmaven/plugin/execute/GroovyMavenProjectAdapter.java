@@ -44,7 +44,7 @@ public class GroovyMavenProjectAdapter
     private final Map properties;
 
     private final Map defaults;
-    
+
     private Properties props;
 
     public GroovyMavenProjectAdapter(final MavenProject project, final MavenSession session, final Map properties, final Map defaults) {

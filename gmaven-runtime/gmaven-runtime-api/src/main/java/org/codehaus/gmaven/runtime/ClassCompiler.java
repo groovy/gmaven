@@ -38,13 +38,13 @@ public interface ClassCompiler
         String SOURCE_ENCODING = "sourceEncoding";
 
         String TOLERANCE = "tolerance";
-        
+
         String TARGET_BYTECODE = "targetBytecode";
 
         String SCRIPT_BASE_CLASSNAME = "scriptBaseClassname";
 
         String DEFAULT_SCRIPT_EXTENSION = "defaultScriptExtension";
-        
+
         String WARNING_LEVEL = "warningLevel";
 
         String[] ALL = {

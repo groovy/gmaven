@@ -86,7 +86,7 @@ public class TypeDef
             super.setName(name);
         }
     }
-    
+
     public String toString() {
         StringBuffer buff = new StringBuffer();
 

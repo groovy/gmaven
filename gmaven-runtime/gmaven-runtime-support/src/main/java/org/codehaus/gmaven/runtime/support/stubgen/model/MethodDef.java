@@ -33,7 +33,7 @@ public class MethodDef
     private final Type type;
 
     private ClassDef parent;
-    
+
     private TypeDef returns;
 
     private final Set parameters = new LinkedHashSet();
@@ -57,7 +57,7 @@ public class MethodDef
     public boolean isConstructor() {
         return type == Type.CTOR;
     }
-    
+
     public ClassDef getParent() {
         return parent;
     }
@@ -134,7 +134,7 @@ public class MethodDef
 
         while (iter.hasNext()) {
             // FIXME: This does not take into account fully defined types, vs. partially defined, vs. aliased
-            
+
             ParameterDef param = (ParameterDef)iter.next();
             buff.append(param.getType());
 
@@ -147,7 +147,7 @@ public class MethodDef
 
         return buff.toString();
     }
-    
+
     //
     // Type
     //

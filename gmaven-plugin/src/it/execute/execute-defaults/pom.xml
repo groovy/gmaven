@@ -20,20 +20,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>org.codehaus.gmaven.it.gmaven-plugin.execute</groupId>
         <artifactId>common</artifactId>
         <version>@project.version@</version>
         <relativePath>../common.xml</relativePath>
     </parent>
-    
+
     <artifactId>execute-defaults</artifactId>
-    
+
     <description>
         Test access to the default variables injected for groovy:execute.
     </description>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -52,17 +52,17 @@
                                 println log?.class
                                 assert log instanceof org.slf4j.Logger
                                 log.info("Hello")
-                                
+
                                 println project
                                 println project?.class
                                 assert project instanceof org.apache.maven.project.MavenProject
                                 assert pom
                                 assert pom == project
-                                
+
                                 println settings
                                 println settings?.class
                                 assert settings instanceof org.apache.maven.settings.Settings
-                                
+
                                 println session
                                 println session?.class
                                 assert session instanceof org.apache.maven.execution.MavenSession
@@ -70,16 +70,16 @@
                                 println ant
                                 println ant?.class
                                 assert ant instanceof groovy.util.AntBuilder
-                                
+
                                 ant.echo(level: "info", "Hello")
                                 ant.echo(level: "debug", "Goodbye")
-                                
+
                                 assert fail
                                 // can't test fail though...
                             </source>
                         </configuration>
                     </execution>
-                    
+
                     <execution>
                         <id>2</id>
                         <phase>compile</phase>
@@ -91,16 +91,16 @@
                                 // Make sure we can clobber them if needed
                                 log = false
                                 assert !log
-                                
+
                                 pom = false
                                 assert !pom
-                                
+
                                 project = false
                                 assert !project
-                                
+
                                 ant = false
                                 assert !ant
-                                
+
                                 fail = false
                                 assert !fail
                             </source>
@@ -110,6 +110,6 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>
 

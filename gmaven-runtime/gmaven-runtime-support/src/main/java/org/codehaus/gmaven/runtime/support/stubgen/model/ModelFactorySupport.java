@@ -562,7 +562,7 @@ public abstract class ModelFactorySupport
 
     protected void annotationFieldDef(final Node parent) {
         assert parent != null;
-        
+
         // methodDef(parent);
 
         MethodDef def = new MethodDef();
@@ -589,14 +589,14 @@ public abstract class ModelFactorySupport
         //
         // TODO: Support "default"
         //
-        
+
         node = name(def, node);
 
         javadocs(def, parent);
 
         clazz.addMethod(def);
     }
-    
+
     protected void fieldDef(final Node parent) {
         assert parent != null;
 
@@ -838,7 +838,7 @@ public abstract class ModelFactorySupport
             def.setDimensions(dim);
             def.setName(qualifiedName(node));
         }
-        
+
         return def;
     }
 

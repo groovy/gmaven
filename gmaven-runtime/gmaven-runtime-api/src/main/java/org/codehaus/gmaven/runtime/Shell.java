@@ -30,7 +30,7 @@ public interface Shell
     String KEY = Shell.class.getName();
 
     void execute(ClassLoader classLoader) throws Exception;
-    
+
     interface Keys
     {
         String LEGACY = "legacy";

@@ -20,26 +20,26 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>org.codehaus.gmaven.it.gmaven-plugin.execute</groupId>
         <artifactId>common</artifactId>
         <version>@project.version@</version>
         <relativePath>../common.xml</relativePath>
     </parent>
-    
+
     <artifactId>execute-props-3</artifactId>
-    
+
     <description>
         Verify that custom properties are picked up per execution.
     </description>
-    
+
     <properties>
         <prop1>${prop2}</prop1>
         <prop2>${prop3}</prop2>
         <!-- prop3 is defined below in an execution's properties -->
     </properties>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -56,7 +56,7 @@
                             <properties>
                                 <prop3>hello</prop3>
                             </properties>
-                            
+
                             <source>
                                 println "----"
                                 project.properties.each {
@@ -64,12 +64,12 @@
                                 }
                                 println "----"
                                 println ""
-                                
+
                                 assert project.properties['prop1'] == 'hello'
                             </source>
                         </configuration>
                     </execution>
-                    
+
                     <execution>
                         <id>2</id>
                         <phase>compile</phase>
@@ -80,16 +80,16 @@
                             <properties>
                                 <prop3>${project}</prop3>
                             </properties>
-                            
+
                             <source>
                                 import org.apache.maven.project.MavenProject
-                                
+
                                 println "prop1: " + project.properties['prop1']
                                 println "prop3: " + project.properties['prop3']
-                                
+
                                 assert project.properties['prop1'] instanceof MavenProject
                                 assert project.properties['prop3'] instanceof MavenProject
-                                
+
                                 def proj = project.properties['prop1']
                                 assert proj != null
                                 assert proj.artifactId == project.artifactId
@@ -100,6 +100,6 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>
 

@@ -118,7 +118,7 @@ public class ShellMojo
     protected List getProjectClasspathElements() throws DependencyResolutionRequiredException {
         return project.getTestClasspathElements();
     }
-    
+
     protected void configure(final Configuration config) throws Exception {
         assert config != null;
 

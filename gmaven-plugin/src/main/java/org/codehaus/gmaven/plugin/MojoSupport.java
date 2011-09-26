@@ -51,7 +51,7 @@ public abstract class MojoSupport
     extends AbstractMojo
 {
     protected final Logger log = LoggerFactory.getLogger(getClass());
-    
+
     /**
      * @parameter expression="${project}"
      * @required
@@ -172,7 +172,7 @@ public abstract class MojoSupport
      * @noinspection UnusedDeclaration
      */
     protected ArtifactRepository artifactRepository;
-    
+
     /**
      * @parameter expression="${project.pluginArtifactRepositories}"
      * @required
@@ -181,7 +181,7 @@ public abstract class MojoSupport
      * @noinspection UnusedDeclaration
      */
     protected List remoteRepositories;
-    
+
     /**
      * Create a new artifact. If no version is specified, it will be retrieved from the dependency
      * list or from the DependencyManagement section of the pom.

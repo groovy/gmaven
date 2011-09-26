@@ -19,11 +19,11 @@
 
 <component-set>
     <components>
-        
+
         <!--
         Defines the 'groovy-jar' packaging and artifact handling.
         -->
-        
+
         <component>
             <role>org.apache.maven.artifact.handler.ArtifactHandler</role>
             <role-hint>groovy-jar</role-hint>
@@ -35,7 +35,7 @@
                 <addedToClasspath>true</addedToClasspath>
             </configuration>
         </component>
-        
+
         <component>
             <role>org.apache.maven.lifecycle.mapping.LifecycleMapping</role>
             <role-hint>groovy-jar</role-hint>
@@ -78,11 +78,11 @@
                 </lifecycles>
             </configuration>
         </component>
-        
+
         <!--
         Defines the 'gmaven-plugin' packaging and artifact handling.
         -->
-        
+
         <component>
             <role>org.apache.maven.artifact.handler.ArtifactHandler</role>
             <role-hint>gmaven-plugin</role-hint>
@@ -94,7 +94,7 @@
                 <addedToClasspath>true</addedToClasspath>
             </configuration>
         </component>
-            
+
         <component>
             <role>org.apache.maven.lifecycle.mapping.LifecycleMapping</role>
             <role-hint>gmaven-plugin</role-hint>

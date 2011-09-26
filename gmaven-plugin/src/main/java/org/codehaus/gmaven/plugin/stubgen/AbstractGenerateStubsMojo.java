@@ -55,7 +55,7 @@ public abstract class AbstractGenerateStubsMojo
     protected AbstractGenerateStubsMojo() {
         super(StubCompiler.KEY);
     }
-    
+
     public void execute() throws MojoExecutionException, MojoFailureException {
         super.execute();
 
@@ -67,7 +67,7 @@ public abstract class AbstractGenerateStubsMojo
             throw new MojoExecutionException("Failed to get output folder.", e);
         }
     }
-   
+
     /**
      * Modifies the dates of the created stubs to 1970, ensuring that the Java
      * compiler will not come along and overwrite perfectly good compiled Groovy 
@@ -85,7 +85,7 @@ public abstract class AbstractGenerateStubsMojo
             file.setLastModified(0L);
         }
     }
-    
+
     /**
      * Get all files, recursively, in a folder.
      * TODO: Should be moved into a utility class.
@@ -137,7 +137,7 @@ public abstract class AbstractGenerateStubsMojo
 
         // Seems like we have to add the output dir each time so that the m-p-p site muck works
         addSourceRoot(getOutputDirectory());
-        
+
         for (int i=0; i<sources.length; i++) {
             addSourceRoot(sources[i]);
 
@@ -172,7 +172,7 @@ public abstract class AbstractGenerateStubsMojo
 
         // Hook up as a source root so other plugins (like the m-compiler-p) can process anything in here if needed
         File basedir = new File(fileSet.getDirectory());
-        
+
         addSourceRoot(basedir);
     }
 }

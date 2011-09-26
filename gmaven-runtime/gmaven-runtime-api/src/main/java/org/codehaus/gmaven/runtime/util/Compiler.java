@@ -31,7 +31,7 @@ public interface Compiler
     void setTargetDirectory(File dir);
 
     File getTargetDirectory();
-    
+
     void add(URL source);
 
     void add(File source);

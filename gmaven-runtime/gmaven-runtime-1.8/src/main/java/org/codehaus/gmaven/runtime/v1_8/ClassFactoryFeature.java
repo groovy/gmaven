@@ -92,14 +92,14 @@ public class ClassFactoryFeature
             if (source == null) {
                 throw new ComponentException("Missing source for: " + className);
             }
-            
+
             return create(new ClassSource(source), classLoader, resourceLoader);
         }
 
         public Class create(final String className, final ClassLoader classLoader) throws Exception {
             return create(className, classLoader, null);
         }
-        
+
         private GroovyClassLoader createGroovyClassLoader(final ClassLoader classLoader, final ResourceLoader resourceLoader) {
             assert classLoader != null;
             // resourceLoader can be null

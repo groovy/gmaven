@@ -37,7 +37,7 @@ public class DefaultProviderRegistry
     implements ProviderRegistry
 {
     private final Logger log = LoggerFactory.getLogger(getClass());
-    
+
     private final Map providers = new HashMap();
 
     public Map providers() {

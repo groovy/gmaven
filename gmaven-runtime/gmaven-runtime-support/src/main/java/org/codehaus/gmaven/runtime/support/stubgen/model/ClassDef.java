@@ -91,7 +91,7 @@ public class ClassDef
 
         return parent.getImports();
     }
-    
+
     public TypeDef getSuperClass() {
         return superClass;
     }
@@ -105,7 +105,7 @@ public class ClassDef
 
         setSuperClass(new TypeDef(type));
     }
-    
+
     public void addImplements(final TypeDef type) {
         assert type != null;
 

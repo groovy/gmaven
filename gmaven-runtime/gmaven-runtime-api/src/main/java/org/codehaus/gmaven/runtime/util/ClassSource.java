@@ -78,7 +78,7 @@ public class ClassSource
             assert name != null;
             assert codeBase != null;
             assert input != null;
-            
+
             this.name = name;
             this.codeBase = codeBase;
             this.input = input;

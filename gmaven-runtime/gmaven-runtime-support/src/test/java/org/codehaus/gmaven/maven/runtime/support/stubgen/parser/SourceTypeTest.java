@@ -32,7 +32,7 @@ public class SourceTypeTest
 {
     public void testForURL() throws Exception {
         assertEquals(SourceType.GROOVY, SourceType.forURL(new URL("file:/foo.GrooVY")));
-        
+
         assertEquals(SourceType.JAVA, SourceType.forURL(new URL("file:/foo.jaVA")));
 
         try {

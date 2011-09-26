@@ -29,6 +29,6 @@ public interface ProviderManager
     ProviderSelector getSelector();
 
     Provider select(String selection);
-    
+
     Provider select();
 }

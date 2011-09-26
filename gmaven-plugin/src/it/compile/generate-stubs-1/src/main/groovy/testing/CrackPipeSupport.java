@@ -24,7 +24,7 @@ public abstract class CrackPipeSupport
 {
     public Object tok() {
         System.err.println("Puff, puff (" + this + ")");
-        
+
         return this;
     }
 }

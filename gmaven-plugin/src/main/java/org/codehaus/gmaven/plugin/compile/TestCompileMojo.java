@@ -46,7 +46,7 @@ public class TestCompileMojo
      * @noinspection UnusedDeclaration
      */
     private File outputDirectory;
-    
+
     /**
      * Flag to allow test compiliation to be skipped.
      *
@@ -55,7 +55,7 @@ public class TestCompileMojo
      * @noinspection UnusedDeclaration
      */
     private boolean skip;
-    
+
     protected List getProjectClasspathElements() throws DependencyResolutionRequiredException {
         return project.getTestClasspathElements();
     }

@@ -71,7 +71,7 @@ public abstract class RendererFactorySupport
 
         ClassDef script = new ClassDef();
         script.setParent(def);
-        
+
         script.getModifiers().add(ModifiersDef.PUBLIC);
         script.setName(def.getScriptName());
         script.setSuperClass("groovy.lang.Script");

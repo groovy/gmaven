@@ -73,7 +73,7 @@ public class ModifiersDef
         assert modifiers != null;
 
         Iterator iter = modifiers.getValues().iterator();
-        
+
         while (iter.hasNext()) {
             String modifier = (String)iter.next();
             add(modifier);
@@ -91,7 +91,7 @@ public class ModifiersDef
 
         return values.contains(modifier);
     }
-    
+
     //
     // Helpers
     //

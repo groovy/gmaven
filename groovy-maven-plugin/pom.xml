@@ -47,7 +47,7 @@
     NOTE: Using the 'Mojo' projects distribution configuration here to allow this module to be published to the correct
           location to pick up the 'groovy' plugin prefix support.
     -->
-    
+
     <distributionManagement>
         <repository>
             <id>codehaus.org</id>
@@ -101,19 +101,19 @@
                             <source>
                                 def input = new File(pom.basedir, 'target/dependency/META-INF/maven/plugin.xml')
                                 def output = new File(pom.basedir, 'target/classes/META-INF/maven/plugin.xml')
-                                
+
                                 if (output.exists()) {
                                     output.delete()
                                 }
                                 else {
                                     output.parentFile.mkdirs()
                                 }
-                                
+
                                 def plugin = new XmlParser().parse(input)
-                                
+
                                 plugin.groupId[0].value = [ 'org.codehaus.mojo' ]
                                 plugin.artifactId[0].value = [ 'groovy-maven-plugin' ]
-                                
+
                                 new XmlNodePrinter(output.newPrintWriter()).print(plugin)
                             </source>
                         </configuration>

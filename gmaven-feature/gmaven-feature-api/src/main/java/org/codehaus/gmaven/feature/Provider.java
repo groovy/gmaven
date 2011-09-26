@@ -35,11 +35,11 @@ public interface Provider
     boolean supported();
 
     void require();
-    
+
     Configuration config();
 
     Collection features();
-    
+
     Feature feature(String key);
 
     Feature feature(Class key);

@@ -105,7 +105,7 @@ public abstract class ProviderMojoSupport
         }
 
         log.debug("Detected compatible provider: {}", provider);
-        
+
         return provider;
     }
 
@@ -119,7 +119,7 @@ public abstract class ProviderMojoSupport
         if (selectedProvider == null) {
             selectedProvider = getProviderManager().select(getProviderSelection());
         }
-        
+
         return selectedProvider;
     }
 
@@ -135,7 +135,7 @@ public abstract class ProviderMojoSupport
     //
     // ArtifactHandlerImpl
     //
-    
+
     private class ArtifactHandlerImpl
         implements ArtifactHandler
     {
@@ -189,7 +189,7 @@ public abstract class ProviderMojoSupport
             ArtifactFilter filters = new ArtifactFilter() {
                 public boolean include(final Artifact artifact) {
                     assert artifact != null;
-                    
+
                     boolean include = false;
 
                     if (filter != null) {

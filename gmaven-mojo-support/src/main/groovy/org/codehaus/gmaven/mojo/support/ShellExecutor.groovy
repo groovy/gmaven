@@ -25,69 +25,69 @@ package org.codehaus.gmaven.mojo.support
 class ShellExecutor
 {
     private GroovyLog log = new GroovyLog(this)
-    
+
     private AntBuilder ant = new AntBuilder()
-    
+
     private List body = []
-    
+
     boolean failOnError = false
-    
+
     def ShellExecutor(String script) {
         body << '#!/bin/sh'
         if (script) {
             this << script
         }
     }
-    
+
     def ShellExecutor() {
         this(null)
     }
-    
+
     def leftShift(String text) {
         assert text
-        
+
         // Split up the script into multi-line for better output handling
         new StringReader(text).eachLine { line ->
             body << line
         }
     }
-    
+
     //
     // TODO: Complain if shell is missing, or on wrong platform?
     //
-    
+
     //
     // TODO: Add BatchExecutor (ick) ?
     //
-    
+
     //
     // TODO: Clean up output
     //
-    
+
     def execute(List args) {
         def scriptFile = File.createTempFile('shell-executor', '.sh')
         scriptFile.deleteOnExit()
-        
+
         scriptFile.withPrintWriter { writer ->
             body.each {
                 writer.println(it.trim())
             }
         }
-        
+
         log.info "Executing shell script: $scriptFile"
-        
+
         println '----8<----'
         scriptFile.eachLine { line ->
             println line
         }
         println '---->8----'
-        
+
         ant.chmod(perm: 'u+x', file: scriptFile)
-        
+
         try {
             // Ant does not like to replace props, so make a unique one each time
             def propname = 'shell-executor.' + UUID.randomUUID()
-            
+
             ant.exec(executable: scriptFile, failonerror: failOnError, outputproperty: propname) {
                 if (args) {
                     args.each {
@@ -95,30 +95,30 @@ class ShellExecutor
                     }
                 }
             }
-            
+
             def result = ant.antProject.properties[propname]
-            
+
             log.info 'Shell output:'
-            
+
             println '----8<----'
             println result
             println '---->8----'
-            
+
             return result
         }
         finally {
             scriptFile.delete()
         }
     }
-    
+
     def execute() {
         return execute(null)
     }
-    
+
     static def execute(String script, List args) {
         return new ShellExecutor(script).execute(args)
     }
-    
+
     static def execute(String script) {
         return execute(script, null)
     }

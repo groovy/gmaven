@@ -20,21 +20,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>org.codehaus.gmaven.it.gmaven-testsuite.mojo</groupId>
         <artifactId>common</artifactId>
         <version>@project.version@</version>
         <relativePath>../common.xml</relativePath>
     </parent>
-    
+
     <artifactId>mojo-2</artifactId>
     <packaging>pom</packaging>
-    
+
     <description>
         Checks that plugin's can have both Java and Groovy mojo implementations in the same module.
     </description>
-    
+
     <modules>
         <module>plugin</module>
         <module>module</module>

@@ -27,7 +27,7 @@ class SmokeTest
             new DarkCrystal(),
             new YellowTubularSwimmingThingy(),
         ]
-        
+
         pipes.each {
             it.tok()
         }

@@ -422,7 +422,7 @@ public class RendererSupport
 
         if (!constants.isEmpty()) {
             out.print("    ");
-            
+
             Iterator iter = constants.iterator();
 
             while (iter.hasNext()) {
@@ -715,7 +715,7 @@ public class RendererSupport
 
         out.println(");");
     }
-    
+
     protected void renderMagicConstructors(final PrintWriter out) {
         assert out != null;
 
@@ -800,7 +800,7 @@ public class RendererSupport
             //
             // TODO: Render default muck
             //
-            
+
             out.println(";");
         }
         else if (def.getParent().isInterface() || def.getModifiers().isAbstract() || def.getModifiers().isNative()) {
@@ -864,7 +864,7 @@ public class RendererSupport
         //
         // TODO: If we can't find one that is fully typed, perhaps we should pick the next best?
         //
-        
+
     FIND_MAGIC_CTOR:
 
         while (iter.hasNext()) {

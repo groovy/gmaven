@@ -47,7 +47,7 @@ public class JavaStubCompilationUnit
     extends CompilationUnit
 {
     private static final String DOT_GROOVY = ".groovy";
-    
+
     private final JavaStubGenerator stubGenerator;
 
     private int stubCount;

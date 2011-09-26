@@ -41,7 +41,7 @@ public class ImportDef
         setPackage(packageName);
         setType(type);
     }
-    
+
     public boolean isStatic() {
         return isStatic;
     }

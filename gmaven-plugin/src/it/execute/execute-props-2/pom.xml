@@ -20,7 +20,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>org.codehaus.gmaven.it.gmaven-plugin.execute</groupId>
         <artifactId>common</artifactId>
@@ -29,17 +29,17 @@
     </parent>
 
     <artifactId>execute-props-2</artifactId>
-    
+
     <description>
         Verify that properties are picked up from system as expected.
     </description>
-    
+
     <properties>
         <prop1>${prop2}</prop1>
         <prop2>${prop3}</prop2>
         <!-- prop3 is defined in test.properties -->
     </properties>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -57,7 +57,7 @@
                                 println "system:  " + System.properties['prop3']
                                 println "exec:    " + project.session.executionProperties['prop3']
                                 println ""
-                                
+
                                 println "prop1: "
                                 println project.properties['prop1']
                                 println ""
@@ -75,6 +75,6 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>
 

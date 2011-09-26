@@ -70,7 +70,7 @@ public class ScriptExecutorFeature
         @Override
         protected Object createClosure(final Callable target) {
             assert target != null;
-            
+
             return new Closure(this) {
                 public Object call(final Object[] args) {
                     try {

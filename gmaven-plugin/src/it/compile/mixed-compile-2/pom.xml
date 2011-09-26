@@ -27,27 +27,27 @@
         <version>@project.version@</version>
         <relativePath>../common.xml</relativePath>
     </parent>
-    
+
     <artifactId>mixed-compile-2</artifactId>
     <packaging>groovy-jar</packaging>
 
     <description>
         Test that the basic mixed Java/Groovy compilation works with the groovy-jar packaging.
     </description>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all-minimal</artifactId>
         </dependency>
-        
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
-    
+
     <build>
         <extensions>
             <extension>
@@ -56,7 +56,7 @@
                 <version>@project.version@</version>
             </extension>
         </extensions>
-        
+
         <plugins>
             <plugin>
                 <groupId>org.codehaus.gmaven</groupId>

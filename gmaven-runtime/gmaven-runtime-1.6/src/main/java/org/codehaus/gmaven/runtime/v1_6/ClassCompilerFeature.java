@@ -51,7 +51,7 @@ public class ClassCompilerFeature
     //
     // ClassCompilerImpl
     //
-    
+
     private class ClassCompilerImpl
         extends CompilerSupport
         implements ClassCompiler, ClassCompiler.Keys
@@ -73,7 +73,7 @@ public class ClassCompilerFeature
             if (config.contains(TOLERANCE)) {
                 cc.setTolerance(config.get(TOLERANCE, 0));
             }
-            
+
             if (config.contains(TARGET_BYTECODE)) {
                 cc.setTargetBytecode(config.get(TARGET_BYTECODE, (String)null));
             }
@@ -85,11 +85,11 @@ public class ClassCompilerFeature
             if (config.contains(DEFAULT_SCRIPT_EXTENSION)) {
                 cc.setDefaultScriptExtension(config.get(DEFAULT_SCRIPT_EXTENSION, (String)null));
             }
-            
+
             if (config.contains(WARNING_LEVEL)) {
                 cc.setTolerance(config.get(WARNING_LEVEL, 0));
             }
-            
+
             if (config.contains(SOURCE_ENCODING)) {
                 cc.setSourceEncoding(config.get(SOURCE_ENCODING, (String)null));
             }
@@ -105,7 +105,7 @@ public class ClassCompilerFeature
             if (classPath == null || classPath.length == 0) {
                 throw new IllegalStateException("Classpath not bound, or is empty");
             }
-            
+
             return classPath;
         }
 
@@ -133,7 +133,7 @@ public class ClassCompilerFeature
 
             // Append each URL to the GCL
             URL[] classpath = getClassPath();
-            
+
             for (int i=0; i<classpath.length; i++) {
                 gcl.addURL(classpath[i]);
 
@@ -143,13 +143,13 @@ public class ClassCompilerFeature
             //
             // TODO: See if we should set the CodeSource to something?
             //
-            
+
             CodeSource security = null;
             GroovyClassLoader transformLoader = new GroovyClassLoader(getClass().getClassLoader());
             for (int i=0; i<classpath.length; i++) {
                 transformLoader.addURL(classpath[i]);
             }
-          
+
             CompilationUnit cu = new CompilationUnit(cc, security, gcl, transformLoader);
             log.debug("Compiling {} sources", String.valueOf(sources.size()));
 

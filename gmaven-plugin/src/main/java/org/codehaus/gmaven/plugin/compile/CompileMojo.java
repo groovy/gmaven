@@ -60,7 +60,7 @@ public class CompileMojo
 
     protected FileSet[] getDefaultSources() {
         FileSet set = new FileSet();
-        
+
         File basedir = new File(project.getBasedir(), "src/main/groovy");
         set.setDirectory(basedir.getAbsolutePath());
         set.addInclude("**/*.groovy");

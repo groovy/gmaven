@@ -31,7 +31,7 @@ import org.apache.maven.artifact.resolver.filter.ArtifactFilter;
 public interface ArtifactHandler
 {
     Artifact createQuery(String key);
-    
+
     Artifact createDependency(Artifact query);
 
     ArtifactResolutionResult resolve(Artifact artifact, ArtifactFilter filter) throws ArtifactNotFoundException, ArtifactResolutionException;

@@ -81,7 +81,7 @@ public class DefaultProviderSelector
 
             for (int i=0; i<keys.length; i++) {
                 Provider tmp = registry.lookup(keys[i]);
-                
+
                 if (tmp != null) {
                     provider = tmp;
                     break;
@@ -97,7 +97,7 @@ public class DefaultProviderSelector
                 log.trace("Found unsupported provider matching selection: {}, found: {}", selection, provider);
             }
         }
-        
+
         return provider;
     }
 
@@ -235,7 +235,7 @@ public class DefaultProviderSelector
         if (loaders == null) {
             throw new Error("No provider loaders found");
         }
-        
+
         Set keys = loaders.keySet();
         Map found = null;
         ProviderLoader defaultLoader = null;
@@ -244,7 +244,7 @@ public class DefaultProviderSelector
             String key = (String)iter.next();
 
             ProviderLoader loader;
-            
+
             try {
                 loader = (ProviderLoader) getContainer().lookup(ProviderLoader.class.getName(), key);
             }

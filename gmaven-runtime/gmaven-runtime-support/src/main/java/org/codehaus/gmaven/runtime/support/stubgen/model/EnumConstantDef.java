@@ -26,7 +26,7 @@ public class EnumConstantDef
     extends NamedElement
 {
     public EnumConstantDef() {}
-    
+
     public EnumConstantDef(final String name) {
         setName(name);
     }

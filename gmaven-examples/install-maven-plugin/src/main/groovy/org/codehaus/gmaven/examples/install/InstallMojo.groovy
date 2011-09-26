@@ -40,7 +40,7 @@ public class InstallMojo
      * @parameter expression="${updateReleaseInfo}" default-value="false"
      */
     boolean updateReleaseInfo
-    
+
     /**
      * @parameter expression="${project}"
      * @required
@@ -51,11 +51,11 @@ public class InstallMojo
     //
     // Mojo
     //
-    
+
     void execute() {
         def pomFile = project.file
         def artifact = project.artifact
-        
+
         if (updateReleaseInfo) {
             artifact.release = true
         }
@@ -72,7 +72,7 @@ public class InstallMojo
 
                 if (createChecksum) {
                     def pom = new File(localRepository.basedir, localRepository.pathOfLocalRepositoryMetadata(metadata, localRepository))
-                    
+
                     installCheckSum(pom, true)
                     installCheckSum(artifact.file, artifact, false)
                 }
@@ -81,7 +81,7 @@ public class InstallMojo
                 fail('The packaging for this project did not assign a file to the build artifact')
             }
         }
-        
+
         // Install all attached artifacts
         project.attachedArtifacts.each { attached ->
             installer.install(attached.file, attached, localRepository)

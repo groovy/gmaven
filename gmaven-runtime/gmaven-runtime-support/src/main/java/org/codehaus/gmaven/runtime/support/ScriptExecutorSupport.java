@@ -116,7 +116,7 @@ public abstract class ScriptExecutorSupport
                     log.debug("    {} -> {}", name, value);
                 }
             }
-            
+
             invokeMethod(target, setter, new Object[] { name, value });
         }
     }

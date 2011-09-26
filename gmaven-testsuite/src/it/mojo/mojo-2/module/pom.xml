@@ -20,22 +20,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>org.codehaus.gmaven.it.gmaven-testsuite.mojo</groupId>
         <artifactId>mojo-2</artifactId>
         <version>@project.version@</version>
     </parent>
-    
+
     <artifactId>module</artifactId>
-    
+
     <build>
         <plugins>
             <plugin>
                 <groupId>${pom.groupId}</groupId>
                 <artifactId>plugin</artifactId>
                 <version>@project.version@</version>
-                
+
                 <executions>
                     <execution>
                         <id>1</id>
@@ -52,7 +52,7 @@
                             <goal>mygroovymojo</goal>
                         </goals>
                     </execution>
-                    
+
                     <execution>
                         <id>3</id>
                         <phase>compile</phase>
@@ -64,6 +64,6 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>
 

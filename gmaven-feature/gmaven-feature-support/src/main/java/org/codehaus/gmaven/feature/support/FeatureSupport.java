@@ -45,7 +45,7 @@ public abstract class FeatureSupport
 
     protected FeatureSupport(final String key, final boolean supported) {
         assert key != null;
-        
+
         this.key = key;
         this.supported = supported;
         this.config = new Configuration();

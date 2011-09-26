@@ -20,24 +20,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>org.codehaus.gmaven.it.gmaven-plugin.compile</groupId>
         <artifactId>common</artifactId>
         <version>@project.version@</version>
         <relativePath>../common.xml</relativePath>
     </parent>
-    
+
     <artifactId>test-compile-4</artifactId>
-    
+
     <description>
         Tests that 'mvn -Dmaven.test.skip=true' will cause groovy:testCompile to skip.
     </description>
-    
+
     <properties>
         <maven.test.skip>true</maven.test.skip>
     </properties>
-    
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -45,7 +45,7 @@
             <version>3.8.1</version>
         </dependency>
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -65,7 +65,7 @@
                         <goals>
                             <goal>execute</goal>
                         </goals>
-                        
+
                         <configuration>
                             <source>
                                 assert !new File(project.basedir, "target/surefire-reports/SimpleTest.txt").exists()
@@ -76,6 +76,6 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>
 

@@ -35,7 +35,7 @@ public class ParseException
         super(cause);
 
         assert location != null;
-        
+
         this.location = location;
     }
 

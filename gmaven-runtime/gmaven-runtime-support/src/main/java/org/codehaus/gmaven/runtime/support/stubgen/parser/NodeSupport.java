@@ -38,7 +38,7 @@ public abstract class NodeSupport
     public boolean isLeaf() {
         return childCount() == 0;
     }
-    
+
     public String toString() {
         String name = name();
         String text = text();
@@ -55,7 +55,7 @@ public abstract class NodeSupport
     public void dump(final String pad) {
         // FIXME: Use logging
         System.out.println(pad + this);
-        
+
         Node child = firstChild();
         if (child != null) {
             child.dump(pad + "    ");

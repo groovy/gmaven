@@ -46,7 +46,7 @@ public final class Configuration
     private Configuration(final Map store, final String prefix) {
         assert store != null;
         // prefix can be null
-        
+
         this.store = store;
         this.prefix = prefix;
     }
@@ -236,7 +236,7 @@ public final class Configuration
     public Object set(final String name, final int value) {
         return set(name, new Integer(value));
     }
-    
+
     public int get(final String name, final int defaultValue) {
         Object value = get(name);
 

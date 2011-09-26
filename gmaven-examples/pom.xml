@@ -20,13 +20,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>org.codehaus.gmaven</groupId>
         <artifactId>gmaven</artifactId>
         <version>1.4-SNAPSHOT</version>
     </parent>
-    
+
     <groupId>org.codehaus.gmaven.examples</groupId>
     <artifactId>gmaven-examples</artifactId>
     <name>GMaven Examples</name>
@@ -35,12 +35,12 @@
     <description>
         Provides some example plugins implemented in Groovy.
     </description>
-    
+
     <modules>
         <module>clean-maven-plugin</module>
         <module>install-maven-plugin</module>
     </modules>
-    
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -48,13 +48,13 @@
                 <artifactId>maven-artifact-manager</artifactId>
                 <version>2.0.10</version>
             </dependency>
-            
+
             <dependency>
                 <groupId>org.apache.maven</groupId>
                 <artifactId>maven-artifact</artifactId>
                 <version>2.0.10</version>
             </dependency>
-            
+
             <dependency>
                 <groupId>org.codehaus.plexus</groupId>
                 <artifactId>plexus-digest</artifactId>
@@ -62,11 +62,11 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    
+
     <!--
     NOTE: Using the Java 1.4 compatible Groovy 1.5 here for compatibility.
     -->
-    
+
     <build>
         <plugins>
             <plugin>

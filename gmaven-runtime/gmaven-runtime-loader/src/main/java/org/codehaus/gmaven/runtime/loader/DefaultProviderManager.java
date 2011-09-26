@@ -110,7 +110,7 @@ public class DefaultProviderManager
             }
 
             cachedSelection.put(selection, provider);
-            
+
             watch.stop();
 
             log.debug("Selected provider: {} ({})", provider, watch);

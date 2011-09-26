@@ -74,7 +74,7 @@ public class ProvidersMojo
 
         log.info("Provider selection: {}", getProviderSelection());
         log.info("");
-        
+
         Map providers = registry.providers();
         if (providers == null || providers.isEmpty()) {
             log.info("No providers registered");
@@ -110,7 +110,7 @@ public class ProvidersMojo
         log.trace("ClassLoader '{}' Class-Path:", getClass().getClassLoader());
 
         URL[] urls = ((URLClassLoader)getClass().getClassLoader()).getURLs();
-        
+
         for (int i=0; i<urls.length; i++) {
             log.trace("    {}", urls[i]);
         }

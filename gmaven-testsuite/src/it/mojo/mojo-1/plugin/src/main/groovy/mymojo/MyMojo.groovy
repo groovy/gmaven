@@ -34,13 +34,13 @@ class MyMojo
      * @parameter expression="${project}"
      */
     def project
-    
+
     void execute() throws MojoExecutionException, MojoFailureException {
         println()
         println "Groovy baby!"
-        
+
         assert project != null
-        
+
         println()
         println "... I started to work my mojo, to counter their mojo; we got cross-mojulation, and their heads started exploding."
         println()

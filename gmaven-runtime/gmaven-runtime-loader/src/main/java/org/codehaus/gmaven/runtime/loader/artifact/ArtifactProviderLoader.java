@@ -58,7 +58,7 @@ public class ArtifactProviderLoader
     private ArtifactHandler handler;
 
     public ArtifactProviderLoader() {}
-    
+
     public ArtifactHandler getHandler() {
         return handler;
     }
@@ -78,7 +78,7 @@ public class ArtifactProviderLoader
         Provider provider = loadProvider(key);
 
         Map providers = new HashMap();
-        
+
         providers.put(provider.key(), provider);
 
         return providers;
@@ -114,7 +114,7 @@ public class ArtifactProviderLoader
         URL[] classPath = buildClassPath(query);
         ClassLoader parent = getClass().getClassLoader();
         ClassRealm realm = realmManager.createProviderRealm(key, classPath, parent);
-        
+
         Class type = realm.loadClass("org.codehaus.gmaven.runtime.v" + key.replace('.', '_').replace('-', '_') + ".ProviderImpl");
 
         return (Provider) type.newInstance();

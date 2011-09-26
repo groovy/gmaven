@@ -43,7 +43,7 @@ public class JavaDocParser
 
         if (text != null) {
             Matcher m = JAVADOCS_PATTERN.matcher(text);
-            
+
             if (m.matches()) {
                 int lastGroupIndex = m.groupCount();
 
@@ -85,7 +85,7 @@ public class JavaDocParser
         def.setComment(classes[0].getComment());
 
         DocletTag[] tags = classes[0].getTags();
-        
+
         if (tags != null) {
             for (int i=0; i<tags.length; i++) {
                 TagDef tag = new TagDef();
@@ -98,7 +98,7 @@ public class JavaDocParser
                 def.addTag(tag);
             }
         }
-        
+
         return def;
     }
 }

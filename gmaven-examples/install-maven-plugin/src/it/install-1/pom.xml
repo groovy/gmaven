@@ -20,11 +20,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    
+
     <groupId>org.codehaus.gmaven.examples.it</groupId>
     <artifactId>install-1</artifactId>
     <version>@project.version@</version>
-    
+
     <build>
         <pluginManagement>
             <plugins>
@@ -35,13 +35,13 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-        
+
         <plugins>
             <plugin>
                 <groupId>org.codehaus.gmaven.examples</groupId>
                 <artifactId>install-maven-plugin</artifactId>
                 <version>@project.version@</version>
-                
+
                 <executions>
                     <execution>
                         <phase>integration-test</phase>
@@ -53,6 +53,6 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>
 

@@ -44,11 +44,11 @@ abstract class InstallMojoSupport
      * @parameter expression="${createChecksum}" default-value="false"
      */
     boolean createChecksum
-    
+
     //
     // Components
     //
-    
+
     /**
      * @component
      * @required
@@ -80,7 +80,7 @@ abstract class InstallMojoSupport
     //
     // Support
     //
-    
+
     protected void installCheckSum(File file, boolean isPom) {
         installCheckSum(file, null, isPom)
     }
@@ -88,7 +88,7 @@ abstract class InstallMojoSupport
     protected void installCheckSum(File file, Artifact artifact, boolean isPom) {
         assert file
         assert artifact
-        
+
         try {
             def destination
             if (isPom) {
@@ -98,26 +98,26 @@ abstract class InstallMojoSupport
                 def localPath = localRepository.pathOf(artifact)
                 destination = new File(localRepository.basedir, localPath)
             }
-            
+
             def install = { algo ->
                 // Create the checksum value
                 def checksum = getChecksum(file, algo)
-                
+
                 // Make sure the install path exists
                 if (!destination.parentFile.exists()) {
                     destination.parentFile.mkdirs()
                 }
-                
+
                 // Figure out what the suffix should be (strip off "-" and make lower)
                 def suffix = (algo - '-').toLowerCase()
-                
+
                 // Install the checksum file
                 def tmp = new File("${destination}.${suffix}")
                 tmp.write(checksum)
             }
-            
+
             log.debug("Installing checksum for: $destination")
-            
+
             [ 'MD5', 'SHA-1' ].each {
                 install(it)
             }
@@ -130,14 +130,14 @@ abstract class InstallMojoSupport
     protected String getChecksum(File file, String algo) {
         assert file
         assert algo
-        
+
         switch (algo) {
             case 'MD5':
                 return md5Digester.calc(file)
-            
+
             case 'SHA-1':
                 return sha1Digester.calc(file)
-            
+
             default:
                 throw new NoSuchAlgorithmException("No support for algorithm: $algo")
         }
