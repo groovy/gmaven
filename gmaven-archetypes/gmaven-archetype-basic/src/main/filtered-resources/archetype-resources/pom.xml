@@ -31,12 +31,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.codehaus.gmaven.runtime</groupId>
-            <artifactId>gmaven-runtime-1.6</artifactId>
-            <version>@project.version@</version>
-        </dependency>
-
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>3.8.2</version>
@@ -50,6 +44,9 @@
                 <groupId>org.codehaus.gmaven</groupId>
                 <artifactId>gmaven-plugin</artifactId>
                 <version>@project.version@</version>
+                <configuration>
+                    <providerSelection>1.9</providerSelection>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
