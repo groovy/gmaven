@@ -2,12 +2,11 @@
 <document>
   <properties>
     <title>GMaven</title>
-    <author email="dev@groovy.codehaus.org">Jason Smith</author>
   </properties>
   <body>
-    <section name="GMaven">
-    	<p>This is a some text.  The project version is ${project.version}.  The project name is ${project.name}.</p>
-    	<img src="art/gmaven-logo-small.png"/>  
-	</section>
+    <section name="main">
+      <p>The most up to date information can be found on <a href="http://docs.codehaus.org/display/GMAVEN/Home">the wiki.</a></p>
+      <img src="art/gmaven-logo-small.png"/>
+    </section>
   </body>
 </document>
