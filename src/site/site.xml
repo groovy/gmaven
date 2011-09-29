@@ -18,43 +18,41 @@
 <!-- $Id$ -->
 
 <project name="${project.name}">
-    <bannerRight>
-        <name>Groovy</name>
-        <src>http://media.xircles.codehaus.org/_projects/groovy/_logos/small.png</src>
-        <href>http://groovy.codehaus.org</href>
-    </bannerRight>
-    
-    <bannerLeft>
-        <name>GMaven</name>
-        <!-- Due to a bug in site, you can't point back to the same site where
-             you deploy.  I've put the art and a redirect index.html out on 
-             the groovy site, which seems to work. -->
-        <src>http://groovy.codehaus.org/modules/gmaven/art/gmaven-logo-small.png</src>
-        <href>http://groovy.codehaus.org/modules/gmaven/index.html</href>
-    </bannerLeft>
+  <bannerRight>
+    <name>Groovy</name>
+    <src>http://media.xircles.codehaus.org/_projects/groovy/_logos/small.png</src>
+    <href>http://groovy.codehaus.org</href>
+  </bannerRight>
 
-    <publishDate format="dd MMM yyyy" position="left"/>
+  <bannerLeft>
+    <name>GMaven</name>
+    <!-- Due to a bug in site, you can't point back to the same site where
+         you deploy.  I've put the art and a redirect index.html out on
+         the groovy site, which seems to work. -->
+    <src>http://groovy.codehaus.org/modules/gmaven/art/gmaven-logo-small.png</src>
+    <href>http://groovy.codehaus.org/modules/gmaven/index.html</href>
+  </bannerLeft>
 
-    <version position="right"/>
+  <publishDate format="dd MMM yyyy" position="left" />
 
-    <body>
-        <links>
-            <item name="Groovy" href="http://groovy.codehaus.org"/>
-            <item name="Codehaus" href="http://www.codehaus.org"/>
-            <item name="Maven" href="http://maven.apache.org "/>
-        </links>
+  <version position="right" />
 
-        <menu ref="parent"/>
+  <body>
+    <links>
+      <item name="Groovy" href="http://groovy.codehaus.org" />
+      <item name="Codehaus" href="http://www.codehaus.org" />
+      <item name="Maven" href="http://maven.apache.org " />
+    </links>
 
-        <menu name="Overview">
-            <item name="Introduction" href="index.html"/>
-            
-        </menu>
-        
+    <menu ref="parent" />
 
-        <menu ref="modules"/>
+    <menu name="Overview">
+      <item name="Introduction" href="index.html" />
+    </menu>
 
-        <menu ref="reports"/>
-    </body>
+    <menu ref="modules" />
+
+    <menu ref="reports" />
+  </body>
 </project>
 
