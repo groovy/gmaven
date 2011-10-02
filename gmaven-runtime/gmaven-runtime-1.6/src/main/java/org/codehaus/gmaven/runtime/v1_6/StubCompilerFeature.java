@@ -93,7 +93,12 @@ public class StubCompilerFeature
         private int render(final URL url) throws Exception {
             assert url != null;
 
-            SourceDef model = modelFactory.create(url);
+            SourceDef model;
+            if (config.contains(SOURCE_ENCODING)) {
+                model = modelFactory.create(url, config.get(SOURCE_ENCODING, (String)null));
+            } else {
+                model = modelFactory.create(url);
+            }
 
             Set renderers = rendererFactory.create(model);
 
@@ -138,11 +143,7 @@ public class StubCompilerFeature
 
             outputFile.getParentFile().mkdirs();
 
-            if (config.contains(SOURCE_ENCODING)) {
-                return new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile))));
-            } else {
-                return new PrintWriter(new BufferedWriter(new FileWriter(outputFile)));
-            }
+            return new PrintWriter(new BufferedWriter(new FileWriter(outputFile)));
         }
     }
 }

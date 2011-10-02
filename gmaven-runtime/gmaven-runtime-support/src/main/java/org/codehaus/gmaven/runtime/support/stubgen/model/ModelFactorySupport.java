@@ -26,6 +26,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -56,12 +57,20 @@ public abstract class ModelFactorySupport
     }
 
     public SourceDef create(final URL input) throws Exception {
-        assert input != null;
-
-        return create(input, SourceType.forURL(input));
+        return create(input, Charset.defaultCharset().name());
     }
 
     public SourceDef create(final URL input, final SourceType type) throws Exception {
+        return create(input, Charset.defaultCharset().name(), type);
+    }
+
+    public SourceDef create(final URL input, final String encoding) throws Exception {
+        assert input != null;
+
+        return create(input, encoding, SourceType.forURL(input));
+    }
+
+    public SourceDef create(final URL input, final String encoding, final SourceType type) throws Exception {
         assert input != null;
         assert type != null;
 
@@ -76,7 +85,12 @@ public abstract class ModelFactorySupport
         parser = factory.create(source.getType());
 
         // Parse the source
-        Reader reader = new BufferedReader(new InputStreamReader(input.openStream()));
+        Reader reader;
+        if (encoding != null) {
+            reader = new BufferedReader(new InputStreamReader(input.openStream(), encoding));
+        } else {
+            reader = new BufferedReader(new InputStreamReader(input.openStream()));
+        }
         Node node;
 
         try {

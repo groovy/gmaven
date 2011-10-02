@@ -29,8 +29,9 @@ import java.net.URL;
 public interface ModelFactory
 {
     SourceDef create(final URL input) throws Exception;
-
     SourceDef create(final URL input, final SourceType type) throws Exception;
+    SourceDef create(final URL input, final String encoding) throws Exception;
+    SourceDef create(final URL input, final String encoding, final SourceType type) throws Exception;
 
     //
     // TODO: Consider adding inputstream and/or reader impl with sourcetype
