@@ -28,12 +28,7 @@ import org.codehaus.gmaven.runtime.support.stubgen.render.RendererFactory;
 import org.codehaus.gmaven.runtime.v1_6.stubgen.ModelFactoryImpl;
 import org.codehaus.gmaven.runtime.v1_6.stubgen.RendererFactoryImpl;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.Writer;
+import java.io.*;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.Set;
@@ -62,7 +57,7 @@ public class StubCompilerFeature
 
     private class StubCompilerImpl
         extends CompilerSupport
-        implements StubCompiler
+        implements StubCompiler, StubCompiler.Keys
     {
         private ModelFactory modelFactory = new ModelFactoryImpl();
 
@@ -143,7 +138,11 @@ public class StubCompilerFeature
 
             outputFile.getParentFile().mkdirs();
 
-            return new PrintWriter(new BufferedWriter(new FileWriter(outputFile)));
+            if (config.contains(SOURCE_ENCODING)) {
+                return new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile))));
+            } else {
+                return new PrintWriter(new BufferedWriter(new FileWriter(outputFile)));
+            }
         }
     }
 }
