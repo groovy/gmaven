@@ -228,13 +228,13 @@ $Id$
             <dependency>
                 <groupId>org.codehaus.plexus</groupId>
                 <artifactId>plexus-classworlds</artifactId>
-                <version>2.2.2</version>
+                <version>2.4</version>
             </dependency>
 
             <dependency>
                 <groupId>org.codehaus.plexus</groupId>
                 <artifactId>plexus-container-default</artifactId>
-                <version>1.0-alpha-9-stable-1</version>
+                <version>1.5.5</version>
                 <exclusions>
                     <exclusion>
                         <groupId>junit</groupId>
@@ -246,7 +246,7 @@ $Id$
             <dependency>
                 <groupId>org.codehaus.plexus</groupId>
                 <artifactId>plexus-utils</artifactId>
-                <version>2.0.1</version>
+                <version>3.0</version>
             </dependency>
 
             <dependency>
@@ -294,7 +294,7 @@ $Id$
             <dependency>
                 <groupId>org.sonatype.gshell</groupId>
                 <artifactId>gshell-io</artifactId>
-                <version>2.0</version>
+                <version>2.4</version>
                 <exclusions>
                     <exclusion>
                         <groupId>org.sonatype.jline</groupId>
@@ -312,13 +312,13 @@ $Id$
             <dependency>
                 <groupId>com.thoughtworks.qdox</groupId>
                 <artifactId>qdox</artifactId>
-                <version>1.10</version>
+                <version>1.12</version>
             </dependency>
 
             <dependency>
                 <groupId>commons-lang</groupId>
                 <artifactId>commons-lang</artifactId>
-                <version>2.4</version>
+                <version>2.6</version>
             </dependency>
 
             <dependency>
@@ -434,7 +434,7 @@ $Id$
             <extension>
                 <groupId>org.apache.maven.wagon</groupId>
                 <artifactId>wagon-webdav-jackrabbit</artifactId>
-                <version>1.0-beta-5</version>
+                <version>1.0</version>
             </extension>
         </extensions>
 
@@ -481,31 +481,31 @@ $Id$
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>1.0-beta-1</version>
+                    <version>1.0.1</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
-                    <version>2.3</version>
+                    <version>2.4.1</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>2.0.2</version>
+                    <version>2.3.2</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>2.3</version>
+                    <version>2.5</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-remote-resources-plugin</artifactId>
-                    <version>1.0</version>
+                    <version>1.2.1</version>
                     <executions>
                         <execution>
                             <goals>
@@ -523,7 +523,7 @@ $Id$
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.4.3</version>
+                    <version>2.10</version>
                     <configuration>
                         <redirectTestOutputToFile>true</redirectTestOutputToFile>
                     </configuration>
@@ -532,43 +532,43 @@ $Id$
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.2</version>
+                    <version>2.3.2</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>2.1</version>
+                    <version>2.3</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-install-plugin</artifactId>
-                    <version>2.2</version>
+                    <version>2.3.1</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>2.4</version>
+                    <version>2.7</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-plugin-plugin</artifactId>
-                    <version>2.5</version>
+                    <version>2.9</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-antrun-plugin</artifactId>
-                    <version>1.3</version>
+                    <version>1.6</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>2.0-beta-9</version>
+                    <version>2.2.1</version>
                     <configuration>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
                         <useReleaseProfile>false</useReleaseProfile>
@@ -581,37 +581,37 @@ $Id$
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-archetype-plugin</artifactId>
-                    <version>2.0-alpha-4</version>
+                    <version>2.0</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-pmd-plugin</artifactId>
-                    <version>2.3</version>
+                    <version>2.5</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>2.1</version>
+                    <version>2.7</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-gpg-plugin</artifactId>
-                    <version>1.0-alpha-4</version>
+                    <version>1.4</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
-                    <version>2.0.4</version>
+                    <version>2.1.2</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.5</version>
+                    <version>2.8</version>
                     <configuration>
                         <source>1.4</source>
                     </configuration>
@@ -620,7 +620,7 @@ $Id$
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>2.0.1</version>
+                    <version>2.3</version>
                 </plugin>
 
                 <plugin>
@@ -638,13 +638,13 @@ $Id$
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>1.0</version>
+                    <version>1.7</version>
                 </plugin>
 
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>cobertura-maven-plugin</artifactId>
-                    <version>2.2</version>
+                    <version>2.5.1</version>
                 </plugin>
 
                 <!-- INTERNAL -->
@@ -697,7 +697,7 @@ $Id$
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-scm-plugin</artifactId>
-                <version>1.2</version>
+                <version>1.5</version>
             </plugin>
 
             <plugin>
@@ -716,7 +716,7 @@ $Id$
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.1.2</version>
+                <version>2.4</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -735,12 +735,12 @@ $Id$
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.4.3</version>
+                <version>2.10</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.5</version>
+                <version>2.8</version>
                 <reportSets>
                     <reportSet>
                         <id>non-aggregate</id>
@@ -804,12 +804,12 @@ $Id$
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>taglist-maven-plugin</artifactId>
-                <version>2.1</version>
+                <version>2.4</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
-                <version>2.5</version>
+                <version>2.9</version>
             </plugin>
         </plugins>
     </reporting>
@@ -838,7 +838,7 @@ $Id$
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-pmd-plugin</artifactId>
-                        <version>2.3</version>
+                        <version>2.5</version>
                     </plugin>
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
@@ -851,7 +851,7 @@ $Id$
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-jxr-plugin</artifactId>
-                        <version>2.1</version>
+                        <version>2.3</version>
                     </plugin>
                     <!--
                      <plugin>
