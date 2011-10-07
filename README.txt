@@ -11,9 +11,9 @@ Simply run Maven ;-)
 Integration Testing
 ===================
 
-To invoke integration tests using the SHITTY plugin you need to:
+To invoke integration tests using the invoker plugin you need to:
 
-    mvn -Dit
+    mvn integration-test
 
 
 Site Generation
