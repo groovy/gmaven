@@ -18,7 +18,7 @@
 // $Id: checkversion.groovy 81 2009-12-10 09:07:22Z user57 $
 //
 
-def version = org.codehaus.groovy.runtime.InvokerHelper.getVersion()
+def version = GroovySystem.getVersion()
 assert version
 
 def expect = pom.properties['groovy_version']
