@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import groovy.transform.Immutable
+
 /**
  * An immutable object using @Immutable AST transform.
  *

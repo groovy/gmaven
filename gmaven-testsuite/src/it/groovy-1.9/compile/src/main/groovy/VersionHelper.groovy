@@ -23,7 +23,7 @@
 class VersionHelper
 {
     String getVersion() {
-        def type = getClass().classLoader.loadClass('org.codehaus.groovy.runtime.InvokerHelper')
+        def type = getClass().classLoader.loadClass('groovy.lang.GroovySystem')
         def target = type.newInstance()
 
         return target.version
