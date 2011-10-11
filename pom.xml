@@ -209,6 +209,15 @@ $Id$
                 <role>Emeritus Developer</role>
             </roles>
         </developer>
+
+        <developer>
+            <id>keeganwitt</id>
+            <name>Keegan Witt</name>
+            <email>keeganwitt@codehaus.org</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
     </developers>
 
     <dependencyManagement>
