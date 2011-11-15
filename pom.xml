@@ -394,7 +394,7 @@ $Id$
 
             <dependency>
                 <groupId>org.codehaus.gmaven.runtime</groupId>
-                <artifactId>gmaven-runtime-1.9</artifactId>
+                <artifactId>gmaven-runtime-2.0</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

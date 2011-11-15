@@ -77,7 +77,7 @@ public class ShellFeature
                     new DefaultTask(config()).run(classLoader);
                 }
                 else {
-                    log.warn("Legacy task not supported in 1.9.  Using default task.");
+                    log.warn("Legacy task not supported in 2.0.  Using default task.");
                     new DefaultTask(config()).run(classLoader);
                 }
             }

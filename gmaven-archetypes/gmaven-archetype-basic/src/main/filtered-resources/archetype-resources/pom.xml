@@ -45,7 +45,7 @@
                 <artifactId>gmaven-plugin</artifactId>
                 <version>@project.version@</version>
                 <configuration>
-                    <providerSelection>1.9</providerSelection>
+                    <providerSelection>1.8</providerSelection>
                 </configuration>
                 <executions>
                     <execution>

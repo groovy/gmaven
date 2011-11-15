@@ -83,7 +83,7 @@
                 <module>gmaven-runtime-1.6</module>
                 <module>gmaven-runtime-1.7</module>
                 <module>gmaven-runtime-1.8</module>
-                <module>gmaven-runtime-1.9</module>
+                <module>gmaven-runtime-2.0</module>
             </modules>
         </profile>
         <profile>
@@ -95,7 +95,7 @@
                 <module>gmaven-runtime-1.6</module>
                 <module>gmaven-runtime-1.7</module>
                 <module>gmaven-runtime-1.8</module>
-                <module>gmaven-runtime-1.9</module>
+                <module>gmaven-runtime-2.0</module>
             </modules>
         </profile>
         <profile>
@@ -107,7 +107,7 @@
                 <module>gmaven-runtime-1.6</module>
                 <module>gmaven-runtime-1.7</module>
                 <module>gmaven-runtime-1.8</module>
-                <module>gmaven-runtime-1.9</module>
+                <module>gmaven-runtime-2.0</module>
             </modules>
         </profile>
     </profiles>

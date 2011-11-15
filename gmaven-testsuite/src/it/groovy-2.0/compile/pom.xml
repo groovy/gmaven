@@ -22,7 +22,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.codehaus.gmaven.it.gmaven-testsuite.groovy-1.9</groupId>
+        <groupId>org.codehaus.gmaven.it.gmaven-testsuite.groovy-2.0</groupId>
         <artifactId>common</artifactId>
         <version>@project.version@</version>
         <relativePath>../common.xml</relativePath>
@@ -31,11 +31,11 @@
     <artifactId>compile</artifactId>
 
     <description>
-        Tests that compilation related fluff (includeing Javadoc generation) works with Groovy 1.9.
+        Tests that compilation related fluff (includeing Javadoc generation) works with Groovy 2.0.
     </description>
 
     <properties>
-        <groovy_version>1.9</groovy_version>
+        <groovy_version>2.0</groovy_version>
     </properties>
 
     <dependencies>

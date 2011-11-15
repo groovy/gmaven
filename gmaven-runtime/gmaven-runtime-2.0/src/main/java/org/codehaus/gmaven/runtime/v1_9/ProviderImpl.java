@@ -33,7 +33,7 @@ import java.util.Map;
 public class ProviderImpl
     extends ProviderSupport
 {
-    public static final String KEY = "1.9";
+    public static final String KEY = "2.0";
 
     public ProviderImpl() {
         super(KEY);
