@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.gmaven.runtime.v1_9;
+package org.codehaus.gmaven.runtime.v2_0;
 
 import junit.framework.TestCase;
 import org.codehaus.gmaven.runtime.StubCompiler;

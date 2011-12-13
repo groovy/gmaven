@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package org.codehaus.gmaven.runtime.v1_9.stubgen;
+package org.codehaus.gmaven.runtime.v2_0.stubgen;
 
-import org.codehaus.gmaven.runtime.v1_9.RendererTestSupport;
+import org.codehaus.gmaven.runtime.v2_0.RendererTestSupport;
 
 /**
- * Tests for rendering interfaces.
+ * Tests for rendering annotations.
  *
- * @version $Id: InterfaceRenderingTest.java 50 2009-10-16 14:06:18Z user57 $
+ * @version $Id: AnnotationRenderingTest.java 50 2009-10-16 14:06:18Z user57 $
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  */
-public class InterfaceRenderingTest
+public class AnnotationRenderingTest
     extends RendererTestSupport
 {
     public void testRender() throws Exception {
-        chew("interfaces.groovy.txt");
+        chew("annotations.groovy.txt");
     }
 }

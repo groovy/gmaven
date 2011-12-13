@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-package org.codehaus.gmaven.runtime.v1_9;
+package org.codehaus.gmaven.runtime.v2_0;
 
 import groovy.lang.Binding;
-import groovy.lang.MetaClass;
 import org.codehaus.gmaven.feature.Component;
 import org.codehaus.gmaven.feature.support.ComponentSupport;
 import org.codehaus.gmaven.feature.support.FeatureSupport;

@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.codehaus.gmaven.runtime.v1_9.stubgen;
+package org.codehaus.gmaven.runtime.v2_0.stubgen;
 
-import org.codehaus.gmaven.runtime.v1_9.RendererTestSupport;
+import org.codehaus.gmaven.runtime.v2_0.RendererTestSupport;
 
 /**
  * Tests for rendering scripts.

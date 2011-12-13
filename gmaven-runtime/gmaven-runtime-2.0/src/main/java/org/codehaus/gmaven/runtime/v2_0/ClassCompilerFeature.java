@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.codehaus.gmaven.runtime.v1_9;
+package org.codehaus.gmaven.runtime.v2_0;
 
 import groovy.lang.GroovyClassLoader;
 import org.codehaus.gmaven.feature.Component;

@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package org.codehaus.gmaven.runtime.v1_9.stubgen;
+package org.codehaus.gmaven.runtime.v2_0.stubgen;
 
-import org.codehaus.gmaven.runtime.v1_9.RendererTestSupport;
+import org.codehaus.gmaven.runtime.v2_0.RendererTestSupport;
 
 /**
- * Tests for rendering classes.
- *
- * @version $Id: ClassRenderingTest.java 50 2009-10-16 14:06:18Z user57 $
+ * Tests for rendering generics information.
+ * 
+ * @version $Id: GenericsRenderingTest.java 50 2009-10-16 14:06:18Z user57 $
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  */
-public class ClassRenderingTest
+public class GenericsRenderingTest
     extends RendererTestSupport
 {
     public void testRender() throws Exception {
-        chew("classes.groovy.txt");
+        chew("generics.groovy.txt");
     }
 }
