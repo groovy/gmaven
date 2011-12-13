@@ -25,7 +25,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Provides support for Groovy 1.9.
+ * Provides support for Groovy 2.0.
  *
  * @version $Id: ProviderImpl.java -1M 2011-09-23 02:21:23Z (local) $
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
@@ -62,7 +62,7 @@ public class ProviderImpl
 
     @Override
     protected Version detectVersion() {
-        return new Version(1, 8, 2);
+        return new Version(2, 0, 0, "beta-1");
     }
 
     @Override
