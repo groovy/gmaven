@@ -13,7 +13,7 @@ Integration Testing
 
 To invoke integration tests using the invoker plugin you need to:
 
-    mvn -Dit integration-test
+    mvn -Dit install
 
 
 Site Generation
