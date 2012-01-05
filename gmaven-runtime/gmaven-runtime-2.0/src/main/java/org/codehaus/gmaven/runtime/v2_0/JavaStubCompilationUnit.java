@@ -20,6 +20,7 @@ import groovy.lang.GroovyClassLoader;
 import org.codehaus.groovy.ast.ClassNode;
 import org.codehaus.groovy.ast.ModuleNode;
 import org.codehaus.groovy.classgen.GeneratorContext;
+import org.codehaus.groovy.classgen.VariableScopeVisitor;
 import org.codehaus.groovy.control.*;
 import org.codehaus.groovy.tools.javac.JavaAwareResolveVisitor;
 import org.codehaus.groovy.tools.javac.JavaStubGenerator;
@@ -61,6 +62,7 @@ public class JavaStubCompilationUnit
         addPhaseOperation(new PrimaryClassNodeOperation()
         {
             public void call(final SourceUnit source, final GeneratorContext context, final ClassNode node) throws CompilationFailedException {
+                new VariableScopeVisitor(source).visitClass(node);
                 new JavaAwareResolveVisitor(JavaStubCompilationUnit.this).startResolving(node, source);
             }
         },Phases.CONVERSION);
