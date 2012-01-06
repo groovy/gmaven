@@ -43,24 +43,6 @@
         </dependency>
     </dependencies>
 
-    <!--
-    NOTE: Using the 'Mojo' projects distribution configuration here to allow this module to be published to the correct
-          location to pick up the 'groovy' plugin prefix support.
-    -->
-
-    <!--<distributionManagement>-->
-        <!--<repository>-->
-            <!--<id>codehaus.org</id>-->
-            <!--<name>Mojo Central Repository</name>-->
-            <!--<url>dav:https://dav.codehaus.org/repository/mojo/</url>-->
-        <!--</repository>-->
-        <!--<snapshotRepository>-->
-            <!--<id>codehaus.org</id>-->
-            <!--<name>Mojo Central Development Repository</name>-->
-            <!--<url>dav:https://dav.codehaus.org/snapshots.repository/mojo/</url>-->
-        <!--</snapshotRepository>-->
-    <!--</distributionManagement>-->
-
     <build>
         <plugins>
             <plugin>

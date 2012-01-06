@@ -155,21 +155,6 @@ $Id$
         <maven>2.0.10</maven>
     </prerequisites>
 
-    <!--<distributionManagement>-->
-        <!--<repository>-->
-            <!--<id>codehaus.org</id>-->
-            <!--<url>dav:https://dav.codehaus.org/repository/gmaven</url>-->
-        <!--</repository>-->
-        <!--<snapshotRepository>-->
-            <!--<id>codehaus.org</id>-->
-            <!--<url>dav:https://dav.codehaus.org/snapshots.repository/gmaven</url>-->
-        <!--</snapshotRepository>-->
-        <!--<site>-->
-            <!--<id>codehaus.org</id>-->
-            <!--<url>dav:https://dav.codehaus.org/gmaven/maven-generated/${project.version}</url>-->
-        <!--</site>-->
-    <!--</distributionManagement>-->
-
     <developers>
         <developer>
             <id>user57</id>
