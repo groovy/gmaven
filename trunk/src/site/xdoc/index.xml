@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <title>GMaven</title>
+  </properties>
+  <body>
+    <section name="main">
+      <p>The most up to date information can be found on <a href="http://docs.codehaus.org/display/GMAVEN/Home">the wiki</a>.</p>
+      <img src="art/gmaven-logo-small.png"/>
+    </section>
+  </body>
+</document>

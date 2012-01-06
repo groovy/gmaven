@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <title>${project.name}</title>
+    <author email="dev@groovy.codehaus.org">Jason Smith</author>
+  </properties>
+  <body>
+    <section name="${project.name}">
+    	<p>This is a some text.  The project version is ${project.version}.  The project name is ${project.name}.</p>
+    	  
+	</section>
+  </body>
+</document>

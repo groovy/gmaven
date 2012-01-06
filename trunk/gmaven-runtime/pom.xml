@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (C) 2006-2007 the original author or authors.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<!-- $Id$ -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.codehaus.gmaven</groupId>
+        <artifactId>gmaven</artifactId>
+        <version>1.4</version>
+    </parent>
+
+    <groupId>org.codehaus.gmaven.runtime</groupId>
+    <name>GMaven Runtime</name>
+    <artifactId>gmaven-runtime</artifactId>
+    <packaging>pom</packaging>
+
+    <description>
+        Groovy runtime abstraction layer.
+    </description>
+
+    <modules>
+        <module>gmaven-runtime-api</module>
+        <module>gmaven-runtime-support</module>
+        <module>gmaven-runtime-1.5</module>
+        <module>gmaven-runtime-loader</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.sonatype.gossip</groupId>
+            <artifactId>gossip</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.plexus</groupId>
+                <artifactId>plexus-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>descriptor</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>java5</id>
+            <activation>
+                <jdk>1.5</jdk>
+            </activation>
+            <modules>
+                <module>gmaven-runtime-1.6</module>
+                <module>gmaven-runtime-1.7</module>
+                <module>gmaven-runtime-1.8</module>
+                <module>gmaven-runtime-2.0</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>java6</id>
+            <activation>
+                <jdk>1.6</jdk>
+            </activation>
+            <modules>
+                <module>gmaven-runtime-1.6</module>
+                <module>gmaven-runtime-1.7</module>
+                <module>gmaven-runtime-1.8</module>
+                <module>gmaven-runtime-2.0</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>java7</id>
+            <activation>
+                <jdk>1.7</jdk>
+            </activation>
+            <modules>
+                <module>gmaven-runtime-1.6</module>
+                <module>gmaven-runtime-1.7</module>
+                <module>gmaven-runtime-1.8</module>
+                <module>gmaven-runtime-2.0</module>
+            </modules>
+        </profile>
+    </profiles>
+
+</project>
