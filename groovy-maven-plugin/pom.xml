@@ -48,18 +48,18 @@
           location to pick up the 'groovy' plugin prefix support.
     -->
 
-    <distributionManagement>
-        <repository>
-            <id>codehaus.org</id>
-            <name>Mojo Central Repository</name>
-            <url>dav:https://dav.codehaus.org/repository/mojo/</url>
-        </repository>
-        <snapshotRepository>
-            <id>codehaus.org</id>
-            <name>Mojo Central Development Repository</name>
-            <url>dav:https://dav.codehaus.org/snapshots.repository/mojo/</url>
-        </snapshotRepository>
-    </distributionManagement>
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<id>codehaus.org</id>-->
+            <!--<name>Mojo Central Repository</name>-->
+            <!--<url>dav:https://dav.codehaus.org/repository/mojo/</url>-->
+        <!--</repository>-->
+        <!--<snapshotRepository>-->
+            <!--<id>codehaus.org</id>-->
+            <!--<name>Mojo Central Development Repository</name>-->
+            <!--<url>dav:https://dav.codehaus.org/snapshots.repository/mojo/</url>-->
+        <!--</snapshotRepository>-->
+    <!--</distributionManagement>-->
 
     <build>
         <plugins>
