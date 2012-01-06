@@ -55,7 +55,7 @@ $Id$
     <name>GMaven</name>
     <packaging>pom</packaging>
 
-    <version>1.5-SNAPSHOT</version>
+    <version>1.4-SNAPSHOT</version>
 
     <description>
         GMaven provides integration of the Groovy language into Maven.
