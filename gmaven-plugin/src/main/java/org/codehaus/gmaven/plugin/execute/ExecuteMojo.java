@@ -225,7 +225,7 @@ public class ExecuteMojo
             throw new MojoExecutionException("Invalid value for 'source' parameter; contains nested elements");
         }
 
-        ClassSource classSource = ClassSource.forValue(source.configuration.getValue().replaceAll("\\\\", "\\\\\\\\"));
+        ClassSource classSource = ClassSource.forValue(source.configuration.getValue());
         log.debug("Class source: {}", classSource);
 
         ClassRealm realm = realmManager.createComponentRealm(provider(), createClassPath());
