@@ -42,9 +42,30 @@ public class Source
 
     public String toString() {
         try {
-            return configuration.getValue();
+            return escapeAsNeeded(configuration.getValue());
         } catch (PlexusConfigurationException e) {
             return configuration.toString();
         }
+    }
+
+    protected String escapeAsNeeded(String string) {
+        StringBuilder sb = new StringBuilder(string);
+        int index = 0;
+        while (index > -1) {
+            int i = sb.indexOf("\\", index);
+            if (i > -1) {
+                String str = sb.substring(i, i + 2);
+                if (!str.contains("\\\\")) {
+                    sb.insert(i, "\\");
+                } else {
+                    sb.delete(i, i + 1);
+                }
+                index = i + 3;
+            } else {
+                index = i;
+            }
+        }
+
+        return sb.toString();
     }
 }

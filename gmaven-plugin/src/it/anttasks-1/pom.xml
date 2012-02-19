@@ -63,7 +63,7 @@
 
                                 ant.mkdir(dir: "${project.build.directory}")
 
-                                ant.zip(file: "${project.build.directory}/test.zi\u0070") {
+                                ant.zip(file: "${project.build.directory}/test.zi\\u0070") {
                                     fileset(dir: "${project.basedir}") {
                                         include(name: "pom.xml")
                                     }
