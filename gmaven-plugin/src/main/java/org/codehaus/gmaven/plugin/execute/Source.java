@@ -18,6 +18,7 @@ package org.codehaus.gmaven.plugin.execute;
 
 import org.codehaus.plexus.component.configurator.expression.ExpressionEvaluator;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
+import org.codehaus.plexus.configuration.PlexusConfigurationException;
 
 /**
  * Container for <tt>groovy:execute</tt> source configuration.
@@ -40,6 +41,10 @@ public class Source
     }
 
     public String toString() {
-        return configuration.toString();
+        try {
+            return configuration.getValue();
+        } catch (PlexusConfigurationException e) {
+            return configuration.toString();
+        }
     }
 }

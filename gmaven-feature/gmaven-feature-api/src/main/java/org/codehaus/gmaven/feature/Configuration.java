@@ -316,4 +316,8 @@ public final class Configuration
             throw new ConfigurationException("Unable to decode URI; name=" + name + ", value=" + value, e);
         }
     }
+
+    public String toString() {
+        return this.store.toString();
+    }
 }
