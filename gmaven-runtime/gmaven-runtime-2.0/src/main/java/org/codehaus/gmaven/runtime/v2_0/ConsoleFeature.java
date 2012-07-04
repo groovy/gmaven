@@ -24,6 +24,7 @@ import org.codehaus.gmaven.runtime.Console;
 import org.codehaus.gmaven.runtime.support.util.NoExitSecurityManager;
 import org.sonatype.gshell.io.StreamSet;
 
+import java.lang.reflect.Field;
 import java.util.EventObject;
 
 /**
@@ -77,6 +78,30 @@ public class ConsoleFeature
                             synchronized (lock) {
                                 lock.notifyAll();
                             }
+                        }
+                    }
+                    public boolean isScriptRunning() {
+                        try {
+                            Field scriptRunningField = groovy.ui.Console.class.getDeclaredField("scriptRunning");
+                            scriptRunningField.setAccessible(true);
+                            return (Boolean) scriptRunningField.get(this);
+                        } catch (NoSuchFieldException e) {
+                            log.error("Unable to get field scriptRunning.  Defaulted to false.");
+                            return false;
+                        } catch (IllegalAccessException e) {
+                            log.error("Unable to get field scriptRunning.  Defaulted to false.");
+                            return false;
+                        }
+                    }
+                    public void setScriptRunning(boolean scriptRunning) {
+                        try {
+                            Field scriptRunningField = groovy.ui.Console.class.getDeclaredField("scriptRunning");
+                            scriptRunningField.setAccessible(true);
+                            scriptRunningField.set(this, scriptRunning);
+                        } catch (NoSuchFieldException e) {
+                            log.error("Unable to set field scriptRunning.");
+                        } catch (IllegalAccessException e) {
+                            log.error("Unable to set field scriptRunning.");
                         }
                     }
                 };
