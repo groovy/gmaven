@@ -23,7 +23,6 @@ import org.codehaus.groovy.classgen.GeneratorContext;
 import org.codehaus.groovy.classgen.VariableScopeVisitor;
 import org.codehaus.groovy.control.*;
 import org.codehaus.groovy.tools.javac.JavaAwareResolveVisitor;
-import org.codehaus.groovy.tools.javac.JavaStubGenerator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
