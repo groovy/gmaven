@@ -77,6 +77,11 @@ public class ClassCompilerFeature
                 cc.setTargetBytecode(config.get(TARGET_BYTECODE, (String)null));
             }
 
+            if (config.contains(INVOKE_DYNAMIC) && (Boolean)config.get(INVOKE_DYNAMIC, false)) {
+                cc.getOptimizationOptions().put("indy", true);
+                cc.getOptimizationOptions().put("int", false);
+            }
+
             if (config.contains(SCRIPT_BASE_CLASSNAME)) {
                 cc.setScriptBaseClass(config.get(SCRIPT_BASE_CLASSNAME, (String)null));
             }

@@ -41,6 +41,8 @@ public interface ClassCompiler
 
         String TARGET_BYTECODE = "targetBytecode";
 
+        String INVOKE_DYNAMIC = "invokeDynamic";
+
         String SCRIPT_BASE_CLASSNAME = "scriptBaseClassname";
 
         String DEFAULT_SCRIPT_EXTENSION = "defaultScriptExtension";

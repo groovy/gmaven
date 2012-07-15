@@ -98,6 +98,15 @@ public abstract class AbstractCompileMojo
     private String targetBytecode;
 
     /**
+     * Allow setting whether to support invokeDynamic (requires Java 7 or greater).
+     *
+     * @parameter expression="${invokeDynamic}" default-value="false"
+     *
+     * @noinspection UnusedDeclaration
+     */
+    private boolean invokeDynamic;
+
+    /**
      * Sets the warning level.
      *
      * @paramater expression="${waningLevel}" default-value="0"
@@ -146,6 +155,8 @@ public abstract class AbstractCompileMojo
         if (targetBytecode != null) {
             config.set(TARGET_BYTECODE, targetBytecode);
         }
+
+        config.set(INVOKE_DYNAMIC, invokeDynamic);
 
         config.set(WARNING_LEVEL, warningLevel);
 
