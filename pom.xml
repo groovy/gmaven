@@ -15,31 +15,6 @@
     limitations under the License.
 -->
 
-<!--
-BUILD NOTES:
-
-To create site docs:
-    C:\work\gmaven>mvn clean install 
-    C:\work\gmaven>mvn site:site org.codehaus.gmaven.support:filter-plugin:1.1-SNAPSHOT:site site:deploy -Preports,local-site
-
-Use profile 'reports' to generate the full set of reports.  This build takes considerably longer than without.
-
-Use profile 'local-site' to build site docs to ${user.home}\.m2\gmaven\maven-generated\...  This builds the site docs to the
-local file system, which is much faster than building to DAV.  Files will still need to be copied to DAV site using some other tool,
-or you can run without this profile to deploy to DAV the old-fashioned way (slow but easy).
-
-The filter-plugin performs standard Maven filtering on /target/site, which is a lot less cumbersome than trying to
-work within the rules for filtering imposed by the maven-site-plugin.
-
-NOTE:
-You can upload the site docs for the GMaven-Plugin projects like this:
-    C:\work\gmaven\gmaven-plugin>mvn clean site:site org.codehaus.gmaven.support:filter-plugin:1.1-SNAPSHOT:site site:deploy -Preports
-
-This takes about 5 minutes, which is much faster than generating and uploading the documentation for all the projects.
-
-$Id$ 
--->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
