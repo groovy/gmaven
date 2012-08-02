@@ -1,23 +1,18 @@
-$Id$
-
-Building
-========
+# Building
 
 Simply run Maven ;-)
 
     mvn install
 
 
-Integration Testing
-===================
+# Integration Testing
 
 To invoke integration tests using the invoker plugin you need to:
 
     mvn -Dit install
 
 
-Site Generation
-===============
+# Site Generation
 
 You need to perform a full build first, before site generation will function correctly:
 
@@ -31,8 +26,7 @@ NOTE: Looks like something is whacky somewhere, and you will *need* to
       run the site goals with the install goal for the gmaven-examples
       site to generate correctly.
 
-Release Muck
-============
+# Release Muck
 
 NOTE: This does not really work ATM, not sure why... but release:prepare barfs
       while tagging, so have to finish up the rest of the details by hand.
@@ -53,8 +47,7 @@ And then:
     mvn -Drelease release:prepare | tee release-prepare.log
     mvn -Drelease release:perform | tee release-perform.log
 
-NOTE: It appears that release:prepare needs -Dusername=xxx and -Dpassword=xxx to
-      work correctly... :-(
+NOTE: It appears that release:prepare needs -Dusername=xxx and -Dpassword=xxx to work correctly... :-(
 
 The generated website is not deployed as part of the release process ATM, so
 keep the release tree around and run site build from there.
