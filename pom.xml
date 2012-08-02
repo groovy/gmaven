@@ -72,7 +72,7 @@
 
     <licenses>
         <license>
-            <name>The Apache Software License, Version 2.0</name>
+            <name>ASLv2</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
             <distribution>repo</distribution>
         </license>
@@ -111,9 +111,9 @@
     </pluginRepositories>
 
     <scm>
-        <connection>scm:svn:https://svn.codehaus.org/gmaven/trunk</connection>
-        <developerConnection>scm:svn:https://svn.codehaus.org/gmaven/trunk</developerConnection>
-        <url>http://fisheye.codehaus.org/browse/gmaven/trunk</url>
+        <connection>scm:git:git://github.com/groovy/gmaven.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/groovy/gmaven.git</developerConnection>
+        <url>https://github.com/groovy/gmaven</url>
     </scm>
 
     <issueManagement>
@@ -297,6 +297,8 @@
             </dependency>
 
             <!-- INTERNAL -->
+
+            <!-- FIXME: Never use ${project.version} for dependency <version> value -->
 
             <dependency>
                 <groupId>org.codehaus.gmaven.feature</groupId>
@@ -543,7 +545,6 @@
                         <useReleaseProfile>false</useReleaseProfile>
                         <goals>deploy</goals>
                         <arguments>-B -Dit -Prelease</arguments>
-                        <!--<tagBase>https://svn.codehaus.org/gmaven/tags</tagBase>-->
                     </configuration>
                 </plugin>
 
