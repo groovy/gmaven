@@ -4,13 +4,11 @@ Simply run Maven ;-)
 
     mvn install
 
-
 # Integration Testing
 
 To invoke integration tests using the invoker plugin you need to:
 
     mvn -Dit install
-
 
 # Site Generation
 
