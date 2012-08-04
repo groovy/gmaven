@@ -90,4 +90,9 @@ public class TestCompileMojo
             super.doExecute();
         }
     }
+
+    protected FileSet[] getSources() {
+        return testSources;
+    }
+
 }

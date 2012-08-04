@@ -172,7 +172,7 @@ public abstract class AbstractCompileMojo
             config.set(DEFAULT_SCRIPT_EXTENSION, defaultScriptExtension);
         }
 
-        compile(compiler, sources != null ? sources : getDefaultSources());
+        compile(compiler, getSources() != null ? getSources() : getDefaultSources());
     }
 
     protected void compile(final ClassCompiler compiler, final FileSet[] sources) throws Exception {

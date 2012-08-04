@@ -70,4 +70,9 @@ public class GenerateTestStubsMojo
     protected void forceCompile(final File file) {
         compileState.addForcedCompilationTestSource(project, file);
     }
+
+    protected FileSet[] getSources() {
+        return testSources;
+    }
+
 }

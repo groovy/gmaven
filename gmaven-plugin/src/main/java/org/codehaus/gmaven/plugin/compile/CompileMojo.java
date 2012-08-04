@@ -71,4 +71,9 @@ public class CompileMojo
     protected Set getForcedCompileSources() {
         return compileState.getForcedCompilationSources(project);
     }
+
+    protected FileSet[] getSources() {
+        return sources;
+    }
+
 }

@@ -53,8 +53,15 @@ public abstract class CompilerMojoSupport
     protected FileSet[] sources;
 
     /**
+     * Source files to be included.  If not specified, then the default will be used.
+     *
+     * @parameter
+     */
+    protected FileSet[] testSources;
+
+    /**
      * @component
-     * 
+     *
      * @noinspection UnusedDeclaration
      */
     protected CompileState compileState;
@@ -154,4 +161,7 @@ public abstract class CompilerMojoSupport
 
         return scanForSources(fileSet, new SourceMapping[] { mapping }); 
     }
+
+    protected abstract FileSet[] getSources();
+
 }

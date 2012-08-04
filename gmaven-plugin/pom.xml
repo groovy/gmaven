@@ -258,6 +258,7 @@
                                 <pomInclude>*/pom.xml</pomInclude>
                                 <pomInclude>compile/*/pom.xml</pomInclude>
                                 <pomInclude>execute/*/pom.xml</pomInclude>
+                                <pomInclude>sources/*/pom.xml</pomInclude>
                             </pomIncludes>
                             <settingsFile>src/it/settings.xml</settingsFile>
                             <localRepositoryPath>${project.build.directory}/it-repo</localRepositoryPath>

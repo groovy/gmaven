@@ -128,7 +128,7 @@ public abstract class AbstractGenerateStubsMojo
         // TODO: Bridge mojo config to component config
         //
 
-        compile(compiler, sources != null ? sources : getDefaultSources());
+        compile(compiler, getSources() != null ? getSources(): getDefaultSources());
     }
 
     protected void compile(final StubCompiler compiler, final FileSet[] sources) throws Exception {
