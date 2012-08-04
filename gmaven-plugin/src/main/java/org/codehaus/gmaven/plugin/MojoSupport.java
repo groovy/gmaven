@@ -44,6 +44,8 @@ import java.util.List;
 /**
  * Support for Mojo implementations.
  *
+ * @threadSafe
+ *
  * @version $Id$
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  */
@@ -64,7 +66,7 @@ public abstract class MojoSupport
     /**
      * Main Mojo execution hook.  Sub-class should use {@link #doExecute} instead.
      */
-    public void execute() throws MojoExecutionException, MojoFailureException {
+    public synchronized void execute() throws MojoExecutionException, MojoFailureException {
         try {
             doExecute();
         }
