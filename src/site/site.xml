@@ -18,13 +18,13 @@
 
     <bannerLeft>
         <name>gmaven</name>
-        <src>FIXME</src>
+        <src>http://groovy.github.com/gmaven/images/gmaven.png</src>
         <href>http://gmaven.codehaus.org</href>
     </bannerLeft>
 
     <bannerRight>
         <name>groovy</name>
-        <src>FIXME</src>
+        <src>http://groovy.github.com/gmaven/images/groovy.png</src>
         <href>http://groovy.codehaus.org</href>
     </bannerRight>
 
