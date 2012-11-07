@@ -110,6 +110,8 @@ public class ExecuteMojo
      * @required
      *
      * @noinspection UnusedDeclaration
+     *
+     * @since 1.5
      */
     private String classpathIncludes;
 
@@ -189,6 +191,9 @@ public class ExecuteMojo
         super(ScriptExecutor.KEY);
     }
 
+    /**
+     * @since 1.5
+     */
     protected Set getClasspathIncludes() {
         Set includes = new HashSet();
         String[] items = classpathIncludes.trim().split(",");
