@@ -199,9 +199,12 @@ public class ExecuteMojo
         String[] items = classpathIncludes.trim().split(",");
         for (int i=0; i<items.length; i++) {
             items[i] = items[i].trim().toLowerCase();
+
+            // If we find none, then ignore everything else
             if (CLASSPATH_INCLUDE_NONE.equals(items[i])) {
                 return new HashSet();
             }
+
             includes.add(items[i]);
         }
 
