@@ -177,12 +177,12 @@ public class ExecuteMojo
         Set results = new LinkedHashSet();
 
         for (Iterator i = project.getRuntimeClasspathElements().iterator(); i.hasNext();) {
-            String cpe = (String) i.next();
+            String fileName = (String) i.next();
             try {
-                results.add(new File(cpe).getCanonicalPath());
+                results.add(new File(fileName).getCanonicalPath());
             }
             catch (IOException e) {
-                throw new RuntimeException("Classpath element not found: " + cpe, e);
+                throw new RuntimeException("Classpath element not found: " + fileName, e);
             }
         }
 
@@ -193,7 +193,7 @@ public class ExecuteMojo
                     results.add(artifact.getFile().getCanonicalPath());
                 }
                 catch (IOException e) {
-                    throw new RuntimeException("Maven artifact file not found: " + artifact.toString(), e);
+                    throw new RuntimeException("Maven artifact file not found: " + artifact, e);
                 }
             }
         }
@@ -205,7 +205,7 @@ public class ExecuteMojo
                     results.add(artifact.getFile().getCanonicalPath());
                 }
                 catch (IOException e) {
-                    throw new RuntimeException("Maven plugin-artifact file not found: " + artifact.toString(), e);
+                    throw new RuntimeException("Maven plugin-artifact file not found: " + artifact, e);
                 }
             }
         }
