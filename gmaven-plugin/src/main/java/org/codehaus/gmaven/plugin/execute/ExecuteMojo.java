@@ -43,6 +43,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -90,6 +91,27 @@ public class ExecuteMojo
      * @noinspection UnusedDeclaration,MismatchedReadAndWriteOfArray
      */
     private ArtifactItem[] classpath;
+
+    public static final String CLASSPATH_INCLUDE_ALL = "all";
+
+    public static final String CLASSPATH_INCLUDE_RUNTIME = "runtime";
+
+    public static final String CLASSPATH_INCLUDE_ARTIFACTS = "artifacts";
+
+    public static final String CLASSPATH_INCLUDE_PLUGINS = "plugins";
+
+    public static final String CLASSPATH_INCLUDE_NONE = "none";
+
+    /**
+     * Allows control over what classpath elements are included.
+     * Comma separated list which can contain one or more of: all, runtime, artifacts, plugins, none.
+     *
+     * @parameter default-value="all"
+     * @required
+     *
+     * @noinspection UnusedDeclaration
+     */
+    private String classpathIncludes;
 
     /**
      * Path to search for imported scripts.
@@ -167,6 +189,20 @@ public class ExecuteMojo
         super(ScriptExecutor.KEY);
     }
 
+    protected Set getClasspathIncludes() {
+        Set includes = new HashSet();
+        String[] items = classpathIncludes.trim().split(",");
+        for (int i=0; i<items.length; i++) {
+            items[i] = items[i].trim().toLowerCase();
+            if (CLASSPATH_INCLUDE_NONE.equals(items[i])) {
+                return new HashSet();
+            }
+            includes.add(items[i]);
+        }
+
+        return includes;
+    }
+
     /**
      * Allow the script to work with every JAR dependency of both the project and plugin, including
      * optional and provided dependencies. Runtime classpath elements are loaded first, so that 
@@ -176,39 +212,48 @@ public class ExecuteMojo
     protected List getProjectClasspathElements() throws DependencyResolutionRequiredException {
         Set results = new LinkedHashSet();
 
-        for (Iterator i = project.getRuntimeClasspathElements().iterator(); i.hasNext();) {
-            String cpe = (String) i.next();
-            try {
-                results.add(new File(cpe).getCanonicalPath());
-            }
-            catch (IOException e) {
-                throw new RuntimeException("Classpath element not found: " + cpe, e);
-            }
-        }
+        Set includes = getClasspathIncludes();
 
-        for (Iterator i = project.getArtifacts().iterator(); i.hasNext();) {
-            Artifact artifact = (Artifact) i.next();
-            if (artifact.getType().equals("jar") && artifact.getClassifier() == null) {
+        if (includes.contains(CLASSPATH_INCLUDE_ALL) || includes.contains(CLASSPATH_INCLUDE_RUNTIME)) {
+            for (Iterator i = project.getRuntimeClasspathElements().iterator(); i.hasNext();) {
+                String cpe = (String) i.next();
                 try {
-                    results.add(artifact.getFile().getCanonicalPath());
+                    results.add(new File(cpe).getCanonicalPath());
                 }
                 catch (IOException e) {
-                    throw new RuntimeException("Maven artifact file not found: " + artifact.toString(), e);
+                    throw new RuntimeException("Classpath element not found: " + cpe, e);
                 }
             }
         }
 
-        for (Iterator i = pluginArtifacts.iterator(); i.hasNext();) {
-            Artifact artifact = (Artifact) i.next();
-            if (artifact.getType().equals("jar") && artifact.getClassifier() == null) {
-                try {
-                    results.add(artifact.getFile().getCanonicalPath());
-                }
-                catch (IOException e) {
-                    throw new RuntimeException("Maven plugin-artifact file not found: " + artifact.toString(), e);
+        if (includes.contains(CLASSPATH_INCLUDE_ALL) || includes.contains(CLASSPATH_INCLUDE_ARTIFACTS)) {
+            for (Iterator i = project.getArtifacts().iterator(); i.hasNext();) {
+                Artifact artifact = (Artifact) i.next();
+                if (artifact.getType().equals("jar") && artifact.getClassifier() == null) {
+                    try {
+                        results.add(artifact.getFile().getCanonicalPath());
+                    }
+                    catch (IOException e) {
+                        throw new RuntimeException("Maven artifact file not found: " + artifact.toString(), e);
+                    }
                 }
             }
         }
+
+        if (includes.contains(CLASSPATH_INCLUDE_ALL) || includes.contains(CLASSPATH_INCLUDE_PLUGINS)) {
+            for (Iterator i = pluginArtifacts.iterator(); i.hasNext();) {
+                Artifact artifact = (Artifact) i.next();
+                if (artifact.getType().equals("jar") && artifact.getClassifier() == null) {
+                    try {
+                        results.add(artifact.getFile().getCanonicalPath());
+                    }
+                    catch (IOException e) {
+                        throw new RuntimeException("Maven plugin-artifact file not found: " + artifact.toString(), e);
+                    }
+                }
+            }
+        }
+
         return new ArrayList(results);
     }
 
