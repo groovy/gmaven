@@ -113,7 +113,7 @@ public class ExecuteMojo
      *
      * @since 1.5
      */
-    private String classpathIncludes;
+    private String classpathIncludes = CLASSPATH_INCLUDE_ALL;
 
     /**
      * Path to search for imported scripts.
