@@ -30,7 +30,7 @@
     <name>GMaven</name>
     <packaging>pom</packaging>
 
-    <version>1.5</version>
+    <version>1.6-SNAPSHOT</version>
 
     <description>
         GMaven provides integration of the Groovy language into Maven.

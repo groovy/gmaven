@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.codehaus.gmaven.examples</groupId>
         <artifactId>gmaven-examples</artifactId>
-        <version>1.5</version>
+        <version>1.6-SNAPSHOT</version>
     </parent>
 
     <artifactId>install-maven-plugin</artifactId>
