@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.codehaus.gmaven.examples</groupId>
         <artifactId>gmaven-examples</artifactId>
-        <version>1.5-SNAPSHOT</version>
+        <version>1.5</version>
     </parent>
 
     <artifactId>clean-maven-plugin</artifactId>
