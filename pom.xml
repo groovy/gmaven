@@ -72,7 +72,7 @@
 
   <ciManagement>
     <system>bamboo</system>
-    <url>http://bamboo.ci.codehaus.org/browse/GMAVEN</url>
+    <url>https://bamboo-ci.codehaus.org/browse/GROOVY-GMVN</url>
   </ciManagement>
 
   <prerequisites>
