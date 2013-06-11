@@ -37,11 +37,14 @@ public abstract class MojoSupport
 
   public void execute() throws MojoExecutionException, MojoFailureException {
     try {
+      log.trace("Prepare");
       prepare();
       try {
+        log.trace("Run");
         run();
       }
       finally {
+        log.trace("Cleanup");
         cleanup();
       }
     }
