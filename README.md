@@ -1,6 +1,6 @@
 <!--
 
-    Copyright (c) 2007-2012, the original author or authors.
+    Copyright (c) 2007-2013, the original author or authors.
 
     This program is licensed to you under the Apache License Version 2.0,
     and you may not use this file except in compliance with the Apache License Version 2.0.
@@ -15,3 +15,10 @@
 # Description
 
 Groovy integration for Maven
+
+## Building
+
+### Requirements
+
+* Apache Maven 3.0.5+
+* Java 6+
