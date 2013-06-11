@@ -31,6 +31,10 @@ public abstract class MojoSupport
 {
   protected final Logger log = LoggerFactory.getLogger(getClass());
 
+  protected MojoSupport() {
+    log.trace("Construct");
+  }
+
   public void execute() throws MojoExecutionException, MojoFailureException {
     try {
       prepare();
