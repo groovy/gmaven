@@ -76,7 +76,7 @@
   </ciManagement>
 
   <prerequisites>
-    <maven>3.0.5</maven>
+    <maven>3.0.4</maven>
   </prerequisites>
 
   <properties>
@@ -384,7 +384,7 @@
                   <version>[1.6,)</version>
                 </requireJavaVersion>
                 <requireMavenVersion>
-                  <version>[3.0.5,)</version>
+                  <version>[3.0.4,)</version>
                 </requireMavenVersion>
               </rules>
             </configuration>
