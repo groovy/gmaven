@@ -235,13 +235,18 @@ public class ExecuteMojo
   private Map<String, Object> createContext() {
     Map<String, Object> context = Maps.newHashMap();
 
+    // TODO: Include mojo execution ID in logger name?
+
     String loggerName = String.format("%s.%s.Script", project.getGroupId(), project.getArtifactId());
     Logger logger = LoggerFactory.getLogger(loggerName);
     context.put("log", logger);
 
-    // TODO: May need to adapt project and properties to auto-resolve
+    // TODO: May need to adapt project and properties to auto-resolve?
+    // TODO: This may only be required if we add custom properties/defaults configuration support?
 
     context.put("container", containerHelper);
+    context.put("plugin", pluginDescriptor);
+    context.put("mojo", mojoExecution);
     context.put("project", project);
     context.put("properties", properties);
     context.put("session", session);
