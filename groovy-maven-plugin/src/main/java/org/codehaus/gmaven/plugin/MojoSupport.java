@@ -10,6 +10,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
+
 package org.codehaus.gmaven.plugin;
 
 import com.google.common.base.Throwables;
@@ -32,7 +33,13 @@ public abstract class MojoSupport
 
   public void execute() throws MojoExecutionException, MojoFailureException {
     try {
-      _execute();
+      prepare();
+      try {
+        run();
+      }
+      finally {
+        cleanup();
+      }
     }
     catch (Exception e) {
       log.trace("Failure", e);
@@ -41,5 +48,9 @@ public abstract class MojoSupport
     }
   }
 
-  protected abstract void _execute() throws Exception;
+  protected void prepare() throws Exception {}
+
+  protected abstract void run() throws Exception;
+
+  protected void cleanup() throws Exception {}
 }

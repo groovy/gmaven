@@ -17,6 +17,7 @@ import java.util.Map;
 
 import com.google.common.collect.Maps;
 import org.apache.maven.execution.MavenSession;
+import org.apache.maven.plugin.MojoExecution;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.descriptor.PluginDescriptor;
 import org.apache.maven.plugins.annotations.Component;
@@ -62,6 +63,9 @@ public class ExecuteMojo
   private PluginDescriptor pluginDescriptor;
 
   @Component
+  private MojoExecution mojoExecution;
+
+  @Component
   private MavenProject project;
 
   @Component
@@ -88,6 +92,10 @@ public class ExecuteMojo
   @Component
   private PropertiesBuilder propertiesBuilder;
 
+  //
+  // Configuration
+  //
+
   @Parameter(property = GROOVY_SOURCE)
   private PlexusConfiguration source;
 
@@ -98,10 +106,19 @@ public class ExecuteMojo
 
   // TODO: properties, defaults, classpath inclusions?
 
+  //
+  // Runtime state
+  //
+
   /**
    * Class-world for script execution.
    */
-  private final ClassWorld classWorld = new ClassWorld();
+  private ClassWorld classWorld;
+
+  /**
+   * Class-realm for GMaven runtime.
+   */
+  private ClassRealm runtimeRealm;
 
   /**
    * Merged execution properties.
@@ -109,21 +126,26 @@ public class ExecuteMojo
   private Map<String, String> properties;
 
   @Override
-  protected void _execute() throws Exception {
-    ClassLoader parentCl = getClass().getClassLoader();
-
-    ensureMavenCompatibility(parentCl);
-
-    ClassRealm runtimeRealm = classWorld.newRealm("gmaven-runtime", parentCl);
-
-    ensureGroovyComparability(runtimeRealm);
-
-    GroovyRuntime runtime = groovyRuntimeFactory.create(runtimeRealm);
+  protected void prepare() throws Exception {
+    classWorld = new ClassWorld();
 
     properties = propertiesBuilder
         .setProject(project)
         .setSession(session)
         .build();
+  }
+
+  @Override
+  protected void run() throws Exception {
+    ClassLoader parentCl = getClass().getClassLoader();
+
+    ensureMavenCompatibility(parentCl);
+
+    runtimeRealm = classWorld.newRealm("gmaven-runtime", parentCl);
+
+    ensureGroovyComparability(runtimeRealm);
+
+    GroovyRuntime runtime = groovyRuntimeFactory.create(runtimeRealm);
 
     String script = decodeScript(source);
     log.debug("Script: {}", script);
@@ -139,10 +161,21 @@ public class ExecuteMojo
     log.debug("Result: {}", result);
   }
 
+  @Override
+  protected void cleanup() throws Exception {
+    if (runtimeRealm != null) {
+      classWorld.disposeRealm(runtimeRealm.getId());
+    }
+  }
+
+  /**
+   * Ensure Maven compatibility.  Requires Maven 3+
+   */
   private void ensureMavenCompatibility(final ClassLoader classLoader) throws MojoExecutionException {
     Version mavenVersion = mavenVersionHelper.detectVersion(classLoader);
     if (mavenVersion == null) {
-      log.warn("Unable to determine Maven version");
+      // complain and continue
+      log.error("Unable to determine Maven version");
     }
     else {
       log.debug("Detected Maven version: {}", mavenVersion);
@@ -152,10 +185,14 @@ public class ExecuteMojo
     }
   }
 
+  /**
+   * Ensure Groovy compatibility.  Requires Groovy 2+
+   */
   private void ensureGroovyComparability(final ClassLoader classLoader) throws MojoExecutionException {
     Version groovyVersion = groovyVersionHelper.detectVersion(classLoader);
     if (groovyVersion == null) {
-      log.warn("Unable to determine Groovy version");
+      // complain and continue
+      log.error("Unable to determine Groovy version");
     }
     else {
       log.debug("Detected Groovy version: {}", groovyVersion);
