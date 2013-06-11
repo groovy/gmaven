@@ -10,9 +10,11 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
+
 package org.codehaus.gmaven.plugin;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 
 import com.google.common.collect.Maps;
@@ -111,6 +113,11 @@ public class ExecuteMojo
   //
 
   /**
+   * Detected base directory.
+   */
+  private File basedir;
+
+  /**
    * Class-world for script execution.
    */
   private ClassWorld classWorld;
@@ -127,12 +134,40 @@ public class ExecuteMojo
 
   @Override
   protected void prepare() throws Exception {
+    basedir = resolveBasedir();
+
     classWorld = new ClassWorld();
 
     properties = propertiesBuilder
         .setProject(project)
         .setSession(session)
         .build();
+  }
+
+  /**
+   * Resolves the base directory for the current execution.
+   */
+  private File resolveBasedir() throws IOException {
+    String path = null;
+
+    if (project != null) {
+      File file = project.getBasedir();
+      if (file != null) {
+        path = file.getAbsolutePath();
+      }
+    }
+
+    if (path == null) {
+      path = session.getExecutionRootDirectory();
+    }
+
+    if (path == null) {
+      path = System.getProperty("user.dir");
+    }
+
+    File dir = new File(path).getCanonicalFile();
+    log.debug("Basedir: {}", dir);
+    return dir;
   }
 
   @Override
@@ -165,7 +200,10 @@ public class ExecuteMojo
   protected void cleanup() throws Exception {
     if (runtimeRealm != null) {
       classWorld.disposeRealm(runtimeRealm.getId());
+      runtimeRealm = null;
     }
+    classWorld = null;
+    properties = null;
   }
 
   /**
@@ -247,6 +285,7 @@ public class ExecuteMojo
     context.put("container", containerHelper);
     context.put("plugin", pluginDescriptor);
     context.put("mojo", mojoExecution);
+    context.put("basedir", basedir);
     context.put("project", project);
     context.put("properties", properties);
     context.put("session", session);
