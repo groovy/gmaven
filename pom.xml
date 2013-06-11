@@ -75,6 +75,13 @@
     <url>https://bamboo-ci.codehaus.org/browse/GROOVY-GMVN</url>
   </ciManagement>
 
+  <repositories>
+    <repository>
+      <id>rso-public-grid</id>
+      <url>https://repository.sonatype.org/content/groups/sonatype-public-grid/</url>
+    </repository>
+  </repositories>
+
   <prerequisites>
     <maven>3.0.4</maven>
   </prerequisites>
