@@ -60,6 +60,7 @@ public class ExecuteMojo
   private static final String GROOVY_SOURCE_EXPR = "${" + GROOVY_SOURCE + "}";
 
   // TODO: Will need to have separate goals to have project/non-project execution support
+  // TODO: Or is there any way we can have a single mojo which can support both?
 
   @Component
   private PluginDescriptor pluginDescriptor;
@@ -141,6 +142,7 @@ public class ExecuteMojo
   @Override
   protected void prepare() throws Exception {
     basedir = resolveBasedir();
+    log.debug("Base directory: {}", basedir);
 
     classWorld = new ClassWorld();
 
@@ -173,9 +175,7 @@ public class ExecuteMojo
       path = System.getProperty("user.dir");
     }
 
-    File dir = new File(path).getCanonicalFile();
-    log.debug("Basedir: {}", dir);
-    return dir;
+    return new File(path).getCanonicalFile();
   }
 
   @Override
