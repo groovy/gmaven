@@ -106,6 +106,9 @@ public class PropertiesBuilder
     Interpolator interpolator = new StringSearchInterpolator();
     interpolator.addValueSource(new MapBasedValueSource(source));
 
+    // TODO: Sort out if we want/need to include ${project.*} ${session.*} or other bits
+    // TODO: ... which are supported by Maven's PluginParameterExpressionEvaluator
+
     for (Entry<String, String> entry : source.entrySet()) {
       try {
         String value = interpolator.interpolate(entry.getValue());
