@@ -107,7 +107,7 @@ public class GroovyRuntimeImpl
 
       @Override
       public String toString() {
-        return getClass().getSimpleName() + "{target=" + target + "}";
+        return getClass().getSimpleName() + "{owner=" + owner + ", target=" + target + "}";
       }
     };
   }
