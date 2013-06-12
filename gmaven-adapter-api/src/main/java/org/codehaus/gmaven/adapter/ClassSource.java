@@ -119,6 +119,9 @@ public final class ClassSource
       // ignore
     }
 
+    // FIXME: This is _slightly_ problematic as if you have a valid file ref
+    // FIXME: but the file is missing then it will be treated as inline instead of as a file
+
     // Then as a File
     File file = new File(trimmed);
     if (file.exists()) {
