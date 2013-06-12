@@ -14,121 +14,27 @@ package org.codehaus.gmaven.adapter;
 
 import java.io.File;
 import java.io.Reader;
-import java.io.StringReader;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import javax.annotation.Nullable;
-
-import com.google.common.annotations.VisibleForTesting;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Configuration details for construction of a {@code groovy.lang.GroovyCodeSource} instance.
  *
  * @since 2.0
  */
-public final class ClassSource
+public interface ClassSource
 {
-  private static final Logger log = LoggerFactory.getLogger(ClassSource.class);
+  URL getUrl();
 
-  public final URL url;
+  File getFile();
 
-  public final File file;
-
-  public final Inline inline;
-
-  private ClassSource(final @Nullable URL url,
-                      final @Nullable File file,
-                      final @Nullable Inline inline)
+  interface Inline
   {
-    this.url = url;
-    this.file = file;
-    this.inline = inline;
+    String getName();
+
+    String getCodeBase();
+
+    Reader getInput();
   }
 
-  private ClassSource(final URL url) {
-    this(url, null, null);
-  }
-
-  private ClassSource(final File file) {
-    this(null, file, null);
-  }
-
-  private ClassSource(final Inline inline) {
-    this(null, null, inline);
-  }
-
-  @Override
-  public String toString() {
-    return getClass().getSimpleName() + "{" +
-        "url=" + url +
-        ", file=" + file +
-        ", inline=" + inline +
-        '}';
-  }
-
-  @VisibleForTesting
-  static final AtomicInteger scriptCounter = new AtomicInteger(0);
-
-  /**
-   * Inline Groovy source.
-   */
-  public static final class Inline
-  {
-    public final String name;
-
-    public final String codeBase;
-
-    public final Reader input;
-
-    private Inline(final String source) {
-      this.name = "script" + scriptCounter.incrementAndGet() + ".groovy";
-      this.codeBase = "/groovy/script";
-      this.input = new StringReader(source);
-    }
-
-    @Override
-    public String toString() {
-      return getClass().getSimpleName() + "{" +
-          "name='" + name + '\'' +
-          ", codeBase='" + codeBase + '\'' +
-          ", input=" + input +
-          '}';
-    }
-  }
-
-  /**
-   * Create a class-source from the given input.
-   */
-  public static ClassSource create(final String source) {
-    checkNotNull(source);
-
-    String trimmed = source.trim();
-    log.trace("Creating class-source from: {}", trimmed);
-
-    // First try and parse the source as a URL
-    try {
-      return new ClassSource(new URL(trimmed));
-    }
-    catch (MalformedURLException e) {
-      // ignore
-    }
-
-    // FIXME: This is _slightly_ problematic as if you have a valid file ref
-    // FIXME: but the file is missing then it will be treated as inline instead of as a file
-
-    // Then as a File
-    File file = new File(trimmed);
-    if (file.exists()) {
-      return new ClassSource(file);
-    }
-
-    // Else it is an inline
-    return new ClassSource(new Inline(source));
-  }
+  Inline getInline();
 }

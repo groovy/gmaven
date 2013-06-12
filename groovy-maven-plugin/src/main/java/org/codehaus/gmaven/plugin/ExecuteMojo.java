@@ -88,6 +88,9 @@ public class ExecuteMojo
   private GroovyRuntimeFactory groovyRuntimeFactory;
 
   @Component
+  private ClassSourceFactory classSourceFactory;
+
+  @Component
   private PropertiesBuilder propertiesBuilder;
 
   //
@@ -103,9 +106,9 @@ public class ExecuteMojo
    *
    * Can be one of: URL, File or inline script.
    *
-   * This parameter is _not_ interpolated by Maven.
-   * Special handling of <code>${source}</code> only when parameter left as default value.
-   * Otherwise Groovy execution will handle resolution of <code>${...}</code> via {@code groovy.lang.GString}.
+   * When using inline scripts, be aware that Maven will interpolate this value early when configuring execution.
+   * This may cause problems if the script is expecting {@code groovy.lang.GString} evaluation instead.
+   * Scripts which make use of GString expressions should seriously consider using a File or URL source instead.
    */
   @Parameter(property = SOURCE)
   private PlexusConfiguration source;
@@ -214,7 +217,7 @@ public class ExecuteMojo
     String script = decodeScript(source);
     log.debug("Script: {}", script);
 
-    ClassSource classSource = ClassSource.create(script);
+    ClassSource classSource = classSourceFactory.create(script);
     log.debug("Class source: {}", classSource);
 
     ResourceLoader resourceLoader = new MojoResourceLoader(runtimeRealm, classSource, scriptpath);
@@ -292,8 +295,6 @@ public class ExecuteMojo
       }
       script = executionProperties.get(SOURCE);
     }
-
-    // TODO: Sort out if we need to resolve here at all, incase of file/url which was using properties?
 
     return script;
   }

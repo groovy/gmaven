@@ -23,6 +23,7 @@ import groovy.lang.GroovyResourceLoader;
 import groovy.util.AntBuilder;
 import org.apache.tools.ant.BuildLogger;
 import org.codehaus.gmaven.adapter.ClassSource;
+import org.codehaus.gmaven.adapter.ClassSource.Inline;
 import org.codehaus.gmaven.adapter.ClosureTarget;
 import org.codehaus.gmaven.adapter.GroovyRuntime;
 import org.codehaus.gmaven.adapter.MagicContext;
@@ -58,14 +59,15 @@ public class GroovyRuntimeImpl
   public GroovyCodeSource create(final ClassSource source) throws IOException {
     checkNotNull(source);
 
-    if (source.url != null) {
-      return new GroovyCodeSource(source.url);
+    if (source.getUrl() != null) {
+      return new GroovyCodeSource(source.getUrl());
     }
-    if (source.file != null) {
-      return new GroovyCodeSource(source.file);
+    if (source.getFile() != null) {
+      return new GroovyCodeSource(source.getFile());
     }
-    if (source.inline != null) {
-      return new GroovyCodeSource(source.inline.input, source.inline.name, source.inline.codeBase);
+    if (source.getInline() != null) {
+      Inline inline = source.getInline();
+      return new GroovyCodeSource(inline.getInput(), inline.getName(), inline.getCodeBase());
     }
 
     throw new Error("Unable to create GroovyCodeSource from: " + source);

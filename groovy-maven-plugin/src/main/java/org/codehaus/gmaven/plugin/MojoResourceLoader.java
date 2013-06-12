@@ -76,7 +76,7 @@ public class MojoResourceLoader
     }
 
     // Check for a class defined in a file next to the main script file
-    File script = classSource.file;
+    File script = classSource.getFile();
 
     if (script != null) {
       File file = new File(script.getParentFile(), name);
