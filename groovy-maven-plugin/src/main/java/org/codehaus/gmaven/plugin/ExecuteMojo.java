@@ -15,6 +15,7 @@ package org.codehaus.gmaven.plugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import com.google.common.collect.Maps;
@@ -53,12 +54,6 @@ import org.slf4j.LoggerFactory;
 public class ExecuteMojo
     extends MojoSupport
 {
-  // TODO: Shall we use -Dsource or -Dgmaven.source ?
-
-  private static final String GROOVY_SOURCE = "groovy.source";
-
-  private static final String GROOVY_SOURCE_EXPR = "${" + GROOVY_SOURCE + "}";
-
   // TODO: Will need to have separate goals to have project/non-project execution support
   // TODO: Or is there any way we can have a single mojo which can support both?
 
@@ -99,17 +94,43 @@ public class ExecuteMojo
   // Configuration
   //
 
-  @Parameter(property = GROOVY_SOURCE)
+  private static final String SOURCE = "source";
+
+  private static final String SOURCE_EXPR = "${" + SOURCE + "}";
+
+  /**
+   * The source of the script to execute.
+   *
+   * Can be one of: URL, File or inline script.
+   *
+   * This parameter is _not_ interpolated by Maven.
+   * Special handling of <code>${source}</code> only when parameter left as default value.
+   * Otherwise Groovy execution will handle resolution of <code>${...}</code> via {@code groovy.lang.GString}.
+   */
+  @Parameter(property = SOURCE)
   private PlexusConfiguration source;
 
-  // TODO: Make this a PlexusConfiguration so we can have -Dscriptpath= support?
+  // TODO: Support configuring via -Dscriptpath= for project-less execution?
 
+  /**
+   * Path to search for imported scripts.
+   */
   @Parameter
-  private File[] scriptpath;
+  private List<File> scriptpath;
 
+  /**
+   * Execution property overrides.
+   *
+   * Any property defined here will take precedence over any other definition.
+   */
   @Parameter
   private Map<String, String> properties;
 
+  /**
+   * Execution property defaults.
+   *
+   * Any property defined _elsewhere_ (project, user, system, etc) will take precedence over default values.
+   */
   @Parameter
   private Map<String, String> defaults;
 
@@ -265,12 +286,14 @@ public class ExecuteMojo
     }
 
     // if the source value is the default property expression, then attempt to resolve it
-    if (GROOVY_SOURCE_EXPR.equals(script)) {
-      if (!executionProperties.containsKey(GROOVY_SOURCE)) {
-        throw new MojoExecutionException("Missing <source> parameter or ${groovy.source} property");
+    if (SOURCE_EXPR.equals(script)) {
+      if (!executionProperties.containsKey(SOURCE)) {
+        throw new MojoExecutionException("Missing <source> parameter or " + SOURCE_EXPR + " property");
       }
-      script = executionProperties.get(GROOVY_SOURCE);
+      script = executionProperties.get(SOURCE);
     }
+
+    // TODO: Sort out if we need to resolve here at all, incase of file/url which was using properties?
 
     return script;
   }

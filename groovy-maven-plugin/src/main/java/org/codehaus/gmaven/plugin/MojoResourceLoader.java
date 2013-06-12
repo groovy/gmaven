@@ -15,6 +15,7 @@ package org.codehaus.gmaven.plugin;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 import javax.annotation.Nullable;
 
@@ -33,11 +34,11 @@ public class MojoResourceLoader
 {
   private final ClassSource classSource;
 
-  private final File[] scriptpath;
+  private final List<File> scriptpath;
 
   public MojoResourceLoader(final ClassLoader classLoader,
                             final ClassSource classSource,
-                            final @Nullable File[] scriptpath)
+                            final @Nullable List<File> scriptpath)
   {
     super(classLoader);
     this.classSource = checkNotNull(classSource);
