@@ -99,7 +99,7 @@ public class ExecuteMojo
   private static final String SOURCE_EXPR = "${" + SOURCE + "}";
 
   /**
-   * The source of the script to execute.
+   * Source of the script to execute.
    *
    * Can be one of: URL, File or inline script.
    *
@@ -309,9 +309,6 @@ public class ExecuteMojo
     String loggerName = String.format("%s.%s.Script", project.getGroupId(), project.getArtifactId());
     Logger logger = LoggerFactory.getLogger(loggerName);
     context.put("log", logger);
-
-    // TODO: May need to adapt project and properties to auto-resolve?
-    // TODO: This may only be required if we add custom properties/defaults configuration support?
 
     context.put("container", containerHelper);
     context.put("plugin", pluginDescriptor);
