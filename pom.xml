@@ -157,6 +157,12 @@
       </dependency>
 
       <dependency>
+        <groupId>org.apache.maven.shared</groupId>
+        <artifactId>maven-verifier</artifactId>
+        <version>1.4</version>
+      </dependency>
+
+      <dependency>
         <groupId>org.apache.maven.plugin-tools</groupId>
         <artifactId>maven-plugin-annotations</artifactId>
         <version>3.2</version>
@@ -214,18 +220,6 @@
         <groupId>org.sonatype.sisu.litmus</groupId>
         <artifactId>litmus-testsupport</artifactId>
         <version>1.6</version>
-      </dependency>
-
-      <dependency>
-        <groupId>io.tesla.maven</groupId>
-        <artifactId>maven-verifier</artifactId>
-        <version>0.0.2-SNAPSHOT</version>
-        <exclusions>
-          <exclusion>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-          </exclusion>
-        </exclusions>
       </dependency>
 
       <!-- INTERNAL -->

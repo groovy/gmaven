@@ -62,7 +62,7 @@
     </dependency>
 
     <dependency>
-      <groupId>io.tesla.maven</groupId>
+      <groupId>org.apache.maven.shared</groupId>
       <artifactId>maven-verifier</artifactId>
       <scope>test</scope>
     </dependency>

@@ -6,7 +6,6 @@ import java.io.IOException;
 import org.sonatype.sisu.litmus.testsupport.TestSupport;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.maven.it.DefaultVerifier;
 import org.apache.maven.it.Verifier;
 import org.junit.Test;
 
@@ -24,7 +23,7 @@ public class VerifierIT
     File projectDir = prepareProjectDir("with-classes");
     File localRepo = util.resolveFile("target/maven-localrepo");
 
-    Verifier verifier = new DefaultVerifier(
+    Verifier verifier = new Verifier(
         projectDir.getAbsolutePath(),
         null, // settings
         true, // debug
