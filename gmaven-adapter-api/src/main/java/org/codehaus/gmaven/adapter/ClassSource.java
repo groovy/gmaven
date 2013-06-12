@@ -21,6 +21,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.annotation.Nullable;
 
+import com.google.common.annotations.VisibleForTesting;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
@@ -66,12 +68,13 @@ public final class ClassSource
         '}';
   }
 
-  private static final AtomicInteger scriptCounter = new AtomicInteger(0);
+  @VisibleForTesting
+  static final AtomicInteger scriptCounter = new AtomicInteger(0);
 
   /**
    * Inline Groovy source.
    */
-  public static class Inline
+  public static final class Inline
   {
     public final String name;
 

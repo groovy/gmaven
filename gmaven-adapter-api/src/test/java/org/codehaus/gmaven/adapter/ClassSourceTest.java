@@ -64,4 +64,15 @@ public class ClassSourceTest
     assertThat(source.inline.codeBase, notNullValue());
     assertThat(source.inline.input, notNullValue());
   }
+
+  @Test
+  public void create_inlineIncrementsCounter() {
+    assertThat(ClassSource.scriptCounter.get(), is(0));
+
+    ClassSource.create("println 1234");
+    assertThat(ClassSource.scriptCounter.get(), is(1));
+
+    ClassSource.create("println 5678");
+    assertThat(ClassSource.scriptCounter.get(), is(2));
+  }
 }
