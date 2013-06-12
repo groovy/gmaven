@@ -16,7 +16,6 @@ import java.util.Iterator;
 import java.util.ServiceLoader;
 
 import com.google.common.annotations.VisibleForTesting;
-import org.apache.maven.plugin.MojoExecutionException;
 import org.codehaus.gmaven.adapter.GroovyRuntime;
 import org.codehaus.plexus.component.annotations.Component;
 import org.slf4j.Logger;

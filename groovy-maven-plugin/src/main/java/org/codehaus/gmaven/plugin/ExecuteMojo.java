@@ -47,6 +47,9 @@ public class ExecuteMojo
 
   private static final String SOURCE_EXPR = "${" + SOURCE + "}";
 
+  // FIXME: Perhaps revert back to using a String here, since we can not easily instruct Maven to not interpolate,
+  // FIXME: ... which was what I was attempting to do here with this special type.
+
   /**
    * Source of the script to execute.
    *

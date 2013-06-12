@@ -11,7 +11,15 @@ import java.util.concurrent.Callable;
  */
 public class SystemNoExitGuard
 {
-  public <T> T run(final Callable<T> task) throws Exception {
+  /**
+   * Runnable-like interface which allows Exceptions.
+   */
+  public static interface Task
+  {
+    void run() throws Exception;
+  }
+
+  public void run(final Task task) throws Exception {
     // capture system streams
     final InputStream systemIn = System.in;
     final PrintStream systemOut = System.out;
@@ -22,7 +30,7 @@ public class SystemNoExitGuard
     System.setSecurityManager(new NoExitSecurityManager(sm));
 
     try {
-      return task.call();
+      task.run();
     }
     finally {
       // restore security manager and system streams

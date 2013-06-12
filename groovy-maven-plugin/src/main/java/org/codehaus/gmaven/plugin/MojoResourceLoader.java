@@ -10,6 +10,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
+
 package org.codehaus.gmaven.plugin;
 
 import java.io.File;
@@ -41,6 +42,12 @@ public class MojoResourceLoader
     super(classLoader);
     this.classSource = classSource;
     this.scriptpath = scriptpath;
+  }
+
+  public MojoResourceLoader(final ClassLoader classLoader,
+                            final @Nullable List<File> scriptpath)
+  {
+    this(classLoader, null, scriptpath);
   }
 
   @Nullable
