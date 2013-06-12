@@ -22,8 +22,6 @@ import javax.annotation.Nullable;
 import org.codehaus.gmaven.adapter.ClassSource;
 import org.codehaus.gmaven.adapter.ResourceLoader;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 /**
  * Mojo {@link ResourceLoader}.
  *
@@ -37,11 +35,11 @@ public class MojoResourceLoader
   private final List<File> scriptpath;
 
   public MojoResourceLoader(final ClassLoader classLoader,
-                            final ClassSource classSource,
+                            final @Nullable ClassSource classSource,
                             final @Nullable List<File> scriptpath)
   {
     super(classLoader);
-    this.classSource = checkNotNull(classSource);
+    this.classSource = classSource;
     this.scriptpath = scriptpath;
   }
 
@@ -76,13 +74,14 @@ public class MojoResourceLoader
     }
 
     // Check for a class defined in a file next to the main script file
-    File script = classSource.getFile();
+    if (classSource != null) {
+      File script = classSource.getFile();
+      if (script != null) {
+        File file = new File(script.getParentFile(), name);
 
-    if (script != null) {
-      File file = new File(script.getParentFile(), name);
-
-      if (file.exists()) {
-        return file.toURI().toURL();
+        if (file.exists()) {
+          return file.toURI().toURL();
+        }
       }
     }
 

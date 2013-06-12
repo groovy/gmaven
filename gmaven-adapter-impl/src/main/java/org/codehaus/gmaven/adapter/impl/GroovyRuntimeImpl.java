@@ -10,14 +10,19 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
+
 package org.codehaus.gmaven.adapter.impl;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import com.google.common.base.Throwables;
+import groovy.lang.Binding;
 import groovy.lang.Closure;
+import groovy.lang.GroovyClassLoader;
 import groovy.lang.GroovyCodeSource;
 import groovy.lang.GroovyResourceLoader;
 import groovy.util.AntBuilder;
@@ -25,6 +30,7 @@ import org.apache.tools.ant.BuildLogger;
 import org.codehaus.gmaven.adapter.ClassSource;
 import org.codehaus.gmaven.adapter.ClassSource.Inline;
 import org.codehaus.gmaven.adapter.ClosureTarget;
+import org.codehaus.gmaven.adapter.ConsoleWindow;
 import org.codehaus.gmaven.adapter.GroovyRuntime;
 import org.codehaus.gmaven.adapter.MagicContext;
 import org.codehaus.gmaven.adapter.ResourceLoader;
@@ -49,9 +55,38 @@ public class GroovyRuntimeImpl
     return new ScriptExecutorImpl(this);
   }
 
+  @Override
+  public ConsoleWindow getConsoleWindow() {
+    return new ConsoleWindowImpl(this);
+  }
+
   //
   // Internal
   //
+
+  /**
+   * Create a {@link GroovyClassLoader} from given {@link ClassLoader} and {@link ResourceLoader}.
+   */
+  public GroovyClassLoader create(final ClassLoader classLoader, final ResourceLoader resourceLoader) {
+    GroovyClassLoader gcl = new GroovyClassLoader(classLoader);
+    gcl.setResourceLoader(create(resourceLoader));
+    return gcl;
+  }
+
+  /**
+   * Creates a {@link GroovyResourceLoader} from a {@link ResourceLoader}.
+   */
+  public GroovyResourceLoader create(final ResourceLoader resourceLoader) {
+    checkNotNull(resourceLoader);
+
+    return new GroovyResourceLoader()
+    {
+      @Override
+      public URL loadGroovySource(final String name) throws MalformedURLException {
+        return resourceLoader.loadResource(name);
+      }
+    };
+  }
 
   /**
    * Creates a {@link GroovyCodeSource} from a {@link ClassSource}.
@@ -71,21 +106,6 @@ public class GroovyRuntimeImpl
     }
 
     throw new Error("Unable to create GroovyCodeSource from: " + source);
-  }
-
-  /**
-   * Creates a {@link GroovyResourceLoader} from a {@link ResourceLoader}.
-   */
-  public GroovyResourceLoader create(final ResourceLoader resourceLoader) {
-    checkNotNull(resourceLoader);
-
-    return new GroovyResourceLoader()
-    {
-      @Override
-      public URL loadGroovySource(final String name) throws MalformedURLException {
-        return resourceLoader.loadResource(name);
-      }
-    };
   }
 
   /**
@@ -136,5 +156,30 @@ public class GroovyRuntimeImpl
     }
 
     throw new Error("Unsupported magic context: " + magic);
+  }
+
+  /**
+   * Create script binding, handling conversion of {@link ClosureTarget} and {@link MagicContext} entries.
+   */
+  public Binding createBinding(final Map<String, Object> context) {
+    Binding binding = new Binding();
+
+    log.debug("Binding:");
+    for (Entry<String, Object> entry : context.entrySet()) {
+      String key = entry.getKey();
+      Object value = entry.getValue();
+
+      if (value instanceof ClosureTarget) {
+        value = create(this, (ClosureTarget) value);
+      }
+      else if (value instanceof MagicContext) {
+        value = create((MagicContext) value);
+      }
+
+      log.debug("  {}={}", key, value);
+      binding.setVariable(entry.getKey(), value);
+    }
+
+    return binding;
   }
 }

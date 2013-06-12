@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Callable;
 
 import com.google.common.collect.Maps;
 import org.apache.maven.execution.MavenSession;
@@ -28,35 +29,36 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.settings.Settings;
-import org.codehaus.gmaven.adapter.ClassSource;
+import org.codehaus.gmaven.adapter.ConsoleWindow;
+import org.codehaus.gmaven.adapter.ConsoleWindow.WindowHandle;
 import org.codehaus.gmaven.adapter.GroovyRuntime;
 import org.codehaus.gmaven.adapter.MagicContext;
 import org.codehaus.gmaven.adapter.ResourceLoader;
-import org.codehaus.gmaven.adapter.ScriptExecutor;
 import org.codehaus.gmaven.plugin.util.ContainerHelper;
 import org.codehaus.gmaven.plugin.util.GroovyVersionHelper;
 import org.codehaus.gmaven.plugin.util.MavenVersionHelper;
 import org.codehaus.gmaven.plugin.util.PropertiesBuilder;
+import org.codehaus.gmaven.plugin.util.SystemNoExitGuard;
 import org.codehaus.gmaven.plugin.util.VersionHelper;
 import org.codehaus.plexus.classworlds.ClassWorld;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
-import org.codehaus.plexus.configuration.PlexusConfiguration;
 import org.eclipse.aether.version.Version;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+//
+// FIXME: Unify support class with other mojos
+//
+
 /**
- * Execute a Groovy script.
+ * Open the Groovy console.
  *
  * @since 2.0
  */
-@Mojo(name = "execute", threadSafe = true)
-public class ExecuteMojo
+@Mojo(name = "console", aggregator = true)
+public class ConsoleMojo
     extends MojoSupport
 {
-  // TODO: Will need to have separate goals to have project/non-project execution support
-  // TODO: Or is there any way we can have a single mojo which can support both?
-
   @Component
   private PluginDescriptor pluginDescriptor;
 
@@ -88,32 +90,7 @@ public class ExecuteMojo
   private GroovyRuntimeFactory groovyRuntimeFactory;
 
   @Component
-  private ClassSourceFactory classSourceFactory;
-
-  @Component
   private PropertiesBuilder propertiesBuilder;
-
-  //
-  // Configuration
-  //
-
-  private static final String SOURCE = "source";
-
-  private static final String SOURCE_EXPR = "${" + SOURCE + "}";
-
-  /**
-   * Source of the script to execute.
-   *
-   * Can be one of: URL, File or inline script.
-   *
-   * When using inline scripts, be aware that Maven will interpolate this value early when configuring execution.
-   * This may cause problems if the script is expecting {@code groovy.lang.GString} evaluation instead.
-   * Scripts which make use of GString expressions should seriously consider using a File or URL source instead.
-   */
-  @Parameter(property = SOURCE)
-  private PlexusConfiguration source;
-
-  // TODO: Support configuring via -Dscriptpath= for project-less execution?
 
   /**
    * Path to search for imported scripts.
@@ -165,10 +142,6 @@ public class ExecuteMojo
 
   @Override
   protected void prepare() throws Exception {
-    // TODO: Sort out if we can use the original model to get the non-interpolated value of <source> to avoid issues with use of GStrings
-    //System.out.println(project.getOriginalModel().getBuild().getPlugins());
-    //System.out.println(project.getOriginalModel().getBuild().getPlugins().get(0).getConfiguration());
-
     basedir = resolveBasedir();
     log.debug("Base directory: {}", basedir);
 
@@ -218,18 +191,20 @@ public class ExecuteMojo
 
     GroovyRuntime runtime = groovyRuntimeFactory.create(runtimeRealm);
 
-    String script = decodeScript(source);
-    log.debug("Script: {}", script);
+    final ResourceLoader resourceLoader = new MojoResourceLoader(runtimeRealm, null, scriptpath);
+    final Map<String, Object> context = createContext();
+    final ConsoleWindow console = runtime.getConsoleWindow();
 
-    ClassSource classSource = classSourceFactory.create(script);
-    log.debug("Class source: {}", classSource);
-
-    ResourceLoader resourceLoader = new MojoResourceLoader(runtimeRealm, classSource, scriptpath);
-    Map<String, Object> context = createContext();
-    ScriptExecutor executor = runtime.getScriptExecutor();
-
-    Object result = executor.execute(classSource, runtimeRealm, resourceLoader, context);
-    log.debug("Result: {}", result);
+    // open console window guarding against system exist and protecting system streams
+    new SystemNoExitGuard().run(new Callable<Void>()
+    {
+      @Override
+      public Void call() throws Exception {
+        WindowHandle handle = console.open(runtimeRealm, resourceLoader, context);
+        handle.await();
+        return null;
+      }
+    });
   }
 
   @Override
@@ -274,33 +249,6 @@ public class ExecuteMojo
         throw new MojoExecutionException("Unsupported Groovy version: " + groovyVersion);
       }
     }
-  }
-
-  /**
-   * Decode the text/location of the script to execute.
-   *
-   * Configuration must be a simple value, no nested xml elements.
-   *
-   * If left as default, then script value is pulled from the {@code groovy.script} property if it has been set.
-   */
-  private String decodeScript(final PlexusConfiguration configuration) throws MojoExecutionException {
-    log.debug("Decoding script from: {}", configuration);
-    String script = source.getValue();
-
-    // source must be simple container
-    if (source.getChildCount() != 0) {
-      throw new MojoExecutionException("Invalid <source> parameter contents; contains nested elements");
-    }
-
-    // if the source value is the default property expression, then attempt to resolve it
-    if (SOURCE_EXPR.equals(script)) {
-      if (!executionProperties.containsKey(SOURCE)) {
-        throw new MojoExecutionException("Missing <source> parameter or " + SOURCE_EXPR + " property");
-      }
-      script = executionProperties.get(SOURCE);
-    }
-
-    return script;
   }
 
   /**
