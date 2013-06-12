@@ -28,11 +28,20 @@
   <name>${project.groupId}:${project.artifactId}</name>
 
   <dependencies>
-    <!--<dependency>-->
-    <!--<groupId>org.codehaus.gmaven</groupId>-->
-    <!--<artifactId>groovy-maven-plugin</artifactId>-->
-    <!--<scope>provided</scope>-->
-    <!--</dependency>-->
+    <!--
+    HACK: Ensure reactor build order, but keep out any dependencies.
+    -->
+    <dependency>
+      <groupId>org.codehaus.gmaven</groupId>
+      <artifactId>groovy-maven-plugin</artifactId>
+      <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
 
     <dependency>
       <groupId>org.sonatype.sisu.litmus</groupId>

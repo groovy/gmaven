@@ -5,28 +5,33 @@ import java.io.IOException;
 
 import org.sonatype.sisu.litmus.testsupport.TestSupport;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.maven.it.DefaultVerifier;
 import org.apache.maven.it.Verifier;
-import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 /**
  * ???
  */
 public class VerifierIT
-  extends TestSupport
+    extends TestSupport
 {
   @Test
   public void test() throws Exception {
+    System.setProperty("verifier.forkMode", "embedded");
     System.setProperty("maven.home", util.resolvePath("target/filesets/apache-maven-3.0.5"));
 
     File projectDir = prepareProjectDir("with-classes");
     File localRepo = util.resolveFile("target/maven-localrepo");
 
-    Verifier verifier = new DefaultVerifier(projectDir.getAbsolutePath());
-    verifier.setForkJvm(true);
+    Verifier verifier = new DefaultVerifier(
+        projectDir.getAbsolutePath(),
+        null, // settings
+        true, // debug
+        false // fork
+    );
     verifier.setLocalRepo(localRepo.getAbsolutePath());
-    verifier.resetStreams();
+    //verifier.resetStreams();
 
     log("Executing goals");
     verifier.executeGoal("verify");
