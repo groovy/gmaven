@@ -37,7 +37,7 @@ public class NoExitSecurityManager
   // NOTE: Do not log/print anything from this implementation, as it can result in stack overflow
   // NOTE: due to console/shell installing system out/err interceptors.
 
-  private void fail() {
+  private void deny() {
     throw new SecurityException("Use of System.exit() is forbidden");
   }
 
@@ -48,7 +48,7 @@ public class NoExitSecurityManager
     }
     String name = perm.getName();
     if (name != null && name.startsWith("exitVM")) {
-      fail();
+      deny();
     }
     if (parent != null) {
       parent.checkPermission(perm);
@@ -60,6 +60,6 @@ public class NoExitSecurityManager
    */
   @Override
   public void checkExit(final int code) {
-    fail();
+    deny();
   }
 }
