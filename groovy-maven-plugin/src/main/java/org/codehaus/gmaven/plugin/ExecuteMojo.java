@@ -106,7 +106,13 @@ public class ExecuteMojo
   @Parameter
   private File[] scriptpath;
 
-  // TODO: properties, defaults, classpath inclusions?
+  @Parameter
+  private Map<String, String> properties;
+
+  @Parameter
+  private Map<String, String> defaults;
+
+  // TODO: classpath inclusions?
 
   //
   // Runtime state
@@ -130,7 +136,7 @@ public class ExecuteMojo
   /**
    * Merged execution properties.
    */
-  private Map<String, String> properties;
+  private Map<String, String> executionProperties;
 
   @Override
   protected void prepare() throws Exception {
@@ -138,9 +144,11 @@ public class ExecuteMojo
 
     classWorld = new ClassWorld();
 
-    properties = propertiesBuilder
+    executionProperties = propertiesBuilder
         .setProject(project)
         .setSession(session)
+        .setProperties(properties)
+        .setDefaults(defaults)
         .build();
   }
 
@@ -203,7 +211,7 @@ public class ExecuteMojo
       runtimeRealm = null;
     }
     classWorld = null;
-    properties = null;
+    executionProperties = null;
   }
 
   /**
@@ -258,10 +266,10 @@ public class ExecuteMojo
 
     // if the source value is the default property expression, then attempt to resolve it
     if (GROOVY_SOURCE_EXPR.equals(script)) {
-      if (!properties.containsKey(GROOVY_SOURCE)) {
+      if (!executionProperties.containsKey(GROOVY_SOURCE)) {
         throw new MojoExecutionException("Missing <source> parameter or ${groovy.source} property");
       }
-      script = properties.get(GROOVY_SOURCE);
+      script = executionProperties.get(GROOVY_SOURCE);
     }
 
     return script;
@@ -287,7 +295,7 @@ public class ExecuteMojo
     context.put("mojo", mojoExecution);
     context.put("basedir", basedir);
     context.put("project", project);
-    context.put("properties", properties);
+    context.put("properties", executionProperties);
     context.put("session", session);
     context.put("settings", settings);
     context.put("ant", MagicContext.ANT_BUILDER);

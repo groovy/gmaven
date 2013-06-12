@@ -85,6 +85,11 @@
     </dependency>
 
     <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-interpolation</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>org.eclipse.aether</groupId>
       <artifactId>aether-util</artifactId>
     </dependency>

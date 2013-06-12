@@ -163,6 +163,12 @@
       </dependency>
 
       <dependency>
+        <groupId>org.codehaus.plexus</groupId>
+        <artifactId>plexus-interpolation</artifactId>
+        <version>1.16</version>
+      </dependency>
+
+      <dependency>
         <groupId>org.eclipse.aether</groupId>
         <artifactId>aether-api</artifactId>
         <version>${eclipse-aether.version}</version>
