@@ -35,6 +35,7 @@ import org.codehaus.gmaven.adapter.GroovyRuntime;
 import org.codehaus.gmaven.adapter.MagicContext;
 import org.codehaus.gmaven.adapter.ResourceLoader;
 import org.codehaus.gmaven.adapter.ScriptExecutor;
+import org.codehaus.gmaven.adapter.ShellRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,6 +59,11 @@ public class GroovyRuntimeImpl
   @Override
   public ConsoleWindow getConsoleWindow() {
     return new ConsoleWindowImpl(this);
+  }
+
+  @Override
+  public ShellRunner getShellRunner() {
+    return new ShellRunnerImpl(this);
   }
 
   //

@@ -17,33 +17,31 @@ import java.util.Map;
 import java.util.concurrent.Callable;
 
 import org.apache.maven.plugins.annotations.Mojo;
-import org.codehaus.gmaven.adapter.ConsoleWindow;
-import org.codehaus.gmaven.adapter.ConsoleWindow.WindowHandle;
 import org.codehaus.gmaven.adapter.ResourceLoader;
+import org.codehaus.gmaven.adapter.ShellRunner;
 import org.codehaus.gmaven.plugin.util.SystemNoExitGuard;
 
 /**
- * Open the Groovy console.
+ * Run {@code groovysh} shell.
  *
  * @since 2.0
  */
-@Mojo(name = "console", aggregator = true)
-public class ConsoleMojo
+@Mojo(name = "shell", aggregator = true)
+public class ShellMojo
     extends RuntimeMojoSupport
 {
   @Override
   protected void run() throws Exception {
     final ResourceLoader resourceLoader = new MojoResourceLoader(runtimeRealm, null, scriptpath);
     final Map<String, Object> context = createContext();
-    final ConsoleWindow console = runtime.getConsoleWindow();
+    final ShellRunner shell = runtime.getShellRunner();
 
-    // open console window guarding against system exist and protecting system streams
+    // run groovysh guarding against system exist and protecting system streams
     new SystemNoExitGuard().run(new Callable<Void>()
     {
       @Override
       public Void call() throws Exception {
-        WindowHandle handle = console.open(runtimeRealm, resourceLoader, context);
-        handle.await();
+        shell.run(runtimeRealm, resourceLoader, context);
         return null;
       }
     });

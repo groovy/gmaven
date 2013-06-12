@@ -10,18 +10,20 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
+
 package org.codehaus.gmaven.adapter;
 
+import java.util.Map;
+
 /**
- * Provides access to Groovy runtime components.
+ * Provides the ability to run a {@code groovysh} shell.
  *
  * @since 2.0
  */
-public interface GroovyRuntime
+public interface ShellRunner
 {
-  ScriptExecutor getScriptExecutor();
-
-  ConsoleWindow getConsoleWindow();
-
-  ShellRunner getShellRunner();
+  void run(ClassLoader classLoader,
+           ResourceLoader resourceLoader,
+           Map<String, Object> context)
+      throws Exception;
 }

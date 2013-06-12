@@ -54,7 +54,7 @@ public class ConsoleWindowImpl
     checkNotNull(resourceLoader);
     checkNotNull(context);
 
-    log.trace("Opening; class-loader: {}, resource-loader: {}, context: {}, background: {}",
+    log.trace("Opening; class-loader: {}, resource-loader: {}, context: {}",
         classLoader, resourceLoader, context);
 
     GroovyClassLoader gcl = runtime.create(classLoader, resourceLoader);
