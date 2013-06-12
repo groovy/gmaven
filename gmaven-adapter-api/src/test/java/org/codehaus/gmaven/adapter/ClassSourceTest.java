@@ -18,9 +18,11 @@ import static org.junit.Assert.assertThat;
 public class ClassSourceTest
     extends TestSupport
 {
-  @Test
-  public void create_fromUrl() throws Exception {
-    String url = "http://google.com";
+  private String whitespace(final String text) {
+    return "\n\t    " + text + "\n\t    ";
+  }
+
+  private void assertUrl(final String url) throws Exception {
     ClassSource source = ClassSource.create(url);
     log(source);
 
@@ -33,9 +35,17 @@ public class ClassSourceTest
   }
 
   @Test
-  public void create_fromFile() throws Exception {
-    File file = util.createTempFile();
-    ClassSource source = ClassSource.create(file.getPath());
+  public void create_url() throws Exception {
+    assertUrl("http://google.com");
+  }
+
+  @Test
+  public void create_url_withWhitespace() throws Exception {
+    assertUrl(whitespace("http://google.com"));
+  }
+
+  private void assertFile(final String path) throws Exception {
+    ClassSource source = ClassSource.create(path);
     log(source);
 
     assertThat(source, notNullValue());
@@ -43,12 +53,20 @@ public class ClassSourceTest
     assertThat(source.file, notNullValue());
     assertThat(source.inline, nullValue());
 
-    assertThat(source.file, is(file));
+    assertThat(source.file, is(new File(path.trim())));
   }
 
   @Test
-  public void create_fromInline() throws Exception {
-    String script = "println 1234";
+  public void create_file() throws Exception {
+    assertFile(util.createTempFile().getPath());
+  }
+
+  @Test
+  public void create_file_withWhitespace() throws Exception {
+    assertFile(whitespace(util.createTempFile().getPath()));
+  }
+
+  private void assertInline(final String script) throws Exception {
     ClassSource source = ClassSource.create(script);
     log(source);
 
@@ -66,8 +84,18 @@ public class ClassSourceTest
   }
 
   @Test
+  public void create_inline() throws Exception {
+    assertInline("println 1234");
+  }
+
+  @Test
+  public void create_inline_withWhitespace() throws Exception {
+    assertInline(whitespace("println 1234"));
+  }
+
+  @Test
   public void create_inlineIncrementsCounter() {
-    assertThat(ClassSource.scriptCounter.get(), is(0));
+    ClassSource.scriptCounter.set(0);
 
     ClassSource.create("println 1234");
     assertThat(ClassSource.scriptCounter.get(), is(1));

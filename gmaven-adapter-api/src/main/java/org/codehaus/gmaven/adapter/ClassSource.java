@@ -22,6 +22,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
 
 import com.google.common.annotations.VisibleForTesting;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -32,6 +34,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public final class ClassSource
 {
+  private static final Logger log = LoggerFactory.getLogger(ClassSource.class);
+
   public final URL url;
 
   public final File file;
@@ -104,16 +108,19 @@ public final class ClassSource
   public static ClassSource create(final String source) {
     checkNotNull(source);
 
+    String trimmed = source.trim();
+    log.trace("Creating class-source from: {}", trimmed);
+
     // First try and parse the source as a URL
     try {
-      return new ClassSource(new URL(source));
+      return new ClassSource(new URL(trimmed));
     }
     catch (MalformedURLException e) {
       // ignore
     }
 
     // Then as a File
-    File file = new File(source);
+    File file = new File(trimmed);
     if (file.exists()) {
       return new ClassSource(file);
     }
