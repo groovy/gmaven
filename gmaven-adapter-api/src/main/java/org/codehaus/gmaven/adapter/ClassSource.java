@@ -82,16 +82,10 @@ public final class ClassSource
 
     public final Reader input;
 
-    private Inline(final String name, final String codeBase, final Reader input) {
-      this.name = checkNotNull(name);
-      this.codeBase = checkNotNull(codeBase);
-      this.input = checkNotNull(input);
-    }
-
     private Inline(final String source) {
-      this("script" + scriptCounter.incrementAndGet() + ".groovy",
-          "/groovy/script",
-          new StringReader(source));
+      this.name = "script" + scriptCounter.incrementAndGet() + ".groovy";
+      this.codeBase = "/groovy/script";
+      this.input = new StringReader(source);
     }
 
     @Override
