@@ -19,10 +19,19 @@ interact with the Groovy runtime.
 
 ## Main Components
 
-* GroovyRuntime
-* ScriptExecutor
-* ConsoleWindow
-* ShellRunner
+### GroovyRuntime
 
+Factory, discovered via `java.util.ServiceLoader`, which provides access to feature components.
 
+### ScriptExecutor
+
+Provides script execution functionality.
+
+### ConsoleWindow
+
+Provides the ability to open the GUI Groovy console window.
+
+### ShellRunner
+
+Provides the ability to run the command-line Groovy shell (aka `groovysh`).
 

@@ -18,10 +18,11 @@
 
 [Groovy](http://groovy.codehaus.org) integration for [Apache Maven](http://maven.apache.org).
 
-## Supported Versions
+## Supported Environments
 
 * Java 1.6+
-* Grovoy 2+
+* Groovy 2.0+
+* Groovy 2.1+
 * Apache Maven 3.0+
 * Apache Maven 3.1+
 
@@ -33,7 +34,7 @@
 
 For more details please see the [groovy-maven-plugin](groovy-maven-plugin/index.html) documentation.
 
-## Compilation
+## No Compilation Support
 
 GMaven 2.x no longer supports any integration for compilation of Groovy sources.  There were too many problems with
 stub-generation and hooking up compliation to the proper Maven lifecycle phases to effectivly support.

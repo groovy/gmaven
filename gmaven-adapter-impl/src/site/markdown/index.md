@@ -16,7 +16,10 @@
 
 Provides the default [gmaven-runtime-api](../gmaven-runtime-api/index.html) implementation.
 
-Supports Groovy 2.x runtimes.
+Supports Groovy 2.0+ and 2.1+ runtimes.  Groovy 2.1.4 is the default version which is used.
+
+New versions of Groovy could break compatiblity, so becareful if customizing the Groovy version.
+If an incompatiblity is found, please [report the problem](https://jira.codehaus.org/browse/GMAVEN).
 
 
 
