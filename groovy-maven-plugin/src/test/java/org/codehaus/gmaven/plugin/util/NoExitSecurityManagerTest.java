@@ -40,7 +40,17 @@ public class NoExitSecurityManagerTest
   }
 
   @Test(expected = SecurityException.class)
-  public void exit() {
+  public void system_exit() {
     System.exit(0);
+  }
+
+  @Test(expected = SecurityException.class)
+  public void runtime_exit() {
+    Runtime.getRuntime().exit(0);
+  }
+
+  @Test(expected = SecurityException.class)
+  public void runtime_halt() {
+    Runtime.getRuntime().halt(0);
   }
 }
