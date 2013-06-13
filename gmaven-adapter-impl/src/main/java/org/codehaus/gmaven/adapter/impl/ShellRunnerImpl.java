@@ -67,7 +67,12 @@ public class ShellRunnerImpl
       configureOptions(shell, options);
     }
 
-    shell.run();
+    try {
+      shell.run();
+    }
+    finally {
+      gcl.clearCache();
+    }
   }
 
   private void configureOptions(final Groovysh shell, final Map<String, Object> options) {

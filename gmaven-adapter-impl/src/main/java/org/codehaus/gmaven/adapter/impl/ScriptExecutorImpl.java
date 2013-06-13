@@ -75,7 +75,7 @@ public class ScriptExecutorImpl
       return shell.evaluate(codeSource);
     }
     finally {
-      shell.resetLoadedClasses();
+      gcl.clearCache();
     }
   }
 }

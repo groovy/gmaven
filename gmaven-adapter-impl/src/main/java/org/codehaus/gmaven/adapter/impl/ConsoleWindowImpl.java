@@ -60,7 +60,7 @@ public class ConsoleWindowImpl
     log.trace("Opening; class-loader: {}, resource-loader: {}, context: {}",
         classLoader, resourceLoader, context);
 
-    GroovyClassLoader gcl = runtime.createGroovyClassLoader(classLoader, resourceLoader);
+    final GroovyClassLoader gcl = runtime.createGroovyClassLoader(classLoader, resourceLoader);
     Binding binding = runtime.createBinding(context);
 
     // FIXME: Sort out how we can avoid IDEA from thinking a sub-class of this needs to have additional overrides
@@ -94,6 +94,7 @@ public class ConsoleWindowImpl
       public void close() {
         log.trace("Closing");
         console.exit();
+        cleanup();
       }
 
       @Override
@@ -102,6 +103,11 @@ public class ConsoleWindowImpl
         synchronized (lock) {
           lock.wait();
         }
+        cleanup();
+      }
+
+      private void cleanup() {
+        gcl.clearCache();
       }
     };
   }
