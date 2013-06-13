@@ -15,6 +15,7 @@ package org.codehaus.gmaven.plugin;
 
 import java.util.Map;
 
+import com.google.common.collect.Maps;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.codehaus.gmaven.adapter.ConsoleWindow;
 import org.codehaus.gmaven.adapter.ConsoleWindow.WindowHandle;
@@ -33,10 +34,13 @@ import static org.apache.maven.plugins.annotations.ResolutionScope.TEST;
 public class ConsoleMojo
     extends RuntimeMojoSupport
 {
+  // TODO: Expose console options
+
   @Override
   protected void run() throws Exception {
     final ResourceLoader resourceLoader = new MojoResourceLoader(getRuntimeRealm(), getScriptpath());
     final Map<String, Object> context = createContext();
+    final Map<String, Object> options = Maps.newHashMap();
     final ConsoleWindow console = getRuntime().getConsoleWindow();
 
     // Guard against system exit and automatically restore system streams
@@ -44,7 +48,7 @@ public class ConsoleMojo
     {
       @Override
       public void run() throws Exception {
-        WindowHandle handle = console.open(getRuntimeRealm(), resourceLoader, context);
+        WindowHandle handle = console.open(getRuntimeRealm(), resourceLoader, context, options);
         handle.await();
       }
     });

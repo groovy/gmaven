@@ -15,6 +15,8 @@ package org.codehaus.gmaven.adapter.impl;
 
 import java.util.Map;
 
+import javax.annotation.Nullable;
+
 import groovy.lang.Binding;
 import groovy.lang.GroovyClassLoader;
 import org.codehaus.gmaven.adapter.ResourceLoader;
@@ -45,7 +47,8 @@ public class ShellRunnerImpl
   @Override
   public void run(final ClassLoader classLoader,
                   final ResourceLoader resourceLoader,
-                  final Map<String, Object> context)
+                  final Map<String, Object> context,
+                  final @Nullable Map<String, Object> options)
       throws Exception
   {
     checkNotNull(classLoader);

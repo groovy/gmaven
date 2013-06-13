@@ -15,6 +15,7 @@ package org.codehaus.gmaven.plugin;
 
 import java.util.Map;
 
+import com.google.common.collect.Maps;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.codehaus.gmaven.adapter.ResourceLoader;
 import org.codehaus.gmaven.adapter.ShellRunner;
@@ -38,6 +39,7 @@ public class ShellMojo
   protected void run() throws Exception {
     final ResourceLoader resourceLoader = new MojoResourceLoader(getRuntimeRealm(), getScriptpath());
     final Map<String, Object> context = createContext();
+    final Map<String, Object> options = Maps.newHashMap();
     final ShellRunner shell = getRuntime().getShellRunner();
 
     // Guard against system exit and automatically restore system streams
@@ -45,7 +47,7 @@ public class ShellMojo
     {
       @Override
       public void run() throws Exception {
-        shell.run(getRuntimeRealm(), resourceLoader, context);
+        shell.run(getRuntimeRealm(), resourceLoader, context, options);
       }
     });
   }

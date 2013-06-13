@@ -15,6 +15,8 @@ package org.codehaus.gmaven.adapter;
 
 import java.util.Map;
 
+import javax.annotation.Nullable;
+
 /**
  * Provides the ability to run a {@code groovysh} shell.
  *
@@ -24,6 +26,7 @@ public interface ShellRunner
 {
   void run(ClassLoader classLoader,
            ResourceLoader resourceLoader,
-           Map<String, Object> context)
+           Map<String, Object> context,
+           @Nullable Map<String, Object> options)
       throws Exception;
 }

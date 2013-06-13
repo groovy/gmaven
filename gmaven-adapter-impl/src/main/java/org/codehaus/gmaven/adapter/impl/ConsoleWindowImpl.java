@@ -16,6 +16,8 @@ package org.codehaus.gmaven.adapter.impl;
 import java.util.EventObject;
 import java.util.Map;
 
+import javax.annotation.Nullable;
+
 import groovy.lang.Binding;
 import groovy.lang.GroovyClassLoader;
 import groovy.ui.Console;
@@ -47,7 +49,8 @@ public class ConsoleWindowImpl
   @Override
   public WindowHandle open(final ClassLoader classLoader,
                            final ResourceLoader resourceLoader,
-                           final Map<String, Object> context)
+                           final Map<String, Object> context,
+                           final @Nullable Map<String, Object> options)
       throws Exception
   {
     checkNotNull(classLoader);
