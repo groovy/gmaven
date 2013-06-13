@@ -61,7 +61,7 @@ public class ScriptExecutorImpl
     log.trace("Execute; class-source: {}, class-loader: {}, resource-loader: {}, context: {}",
         classSource, classLoader, resourceLoader, context);
 
-    GroovyClassLoader gcl = runtime.create(classLoader, resourceLoader);
+    GroovyClassLoader gcl = runtime.createGroovyClassLoader(classLoader, resourceLoader);
 
     CompilerConfiguration cc = new CompilerConfiguration();
 
@@ -70,7 +70,7 @@ public class ScriptExecutorImpl
     Binding binding = runtime.createBinding(context);
     GroovyShell shell = new GroovyShell(gcl, binding, cc);
 
-    GroovyCodeSource codeSource = runtime.create(classSource);
+    GroovyCodeSource codeSource = runtime.createGroovyCodeSource(classSource);
     try {
       return shell.evaluate(codeSource);
     }

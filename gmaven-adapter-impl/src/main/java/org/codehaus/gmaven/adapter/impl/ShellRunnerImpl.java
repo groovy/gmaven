@@ -58,7 +58,7 @@ public class ShellRunnerImpl
     log.trace("Running; class-loader: {}, resource-loader: {}, context: {}",
         classLoader, resourceLoader, context);
 
-    GroovyClassLoader gcl = runtime.create(classLoader, resourceLoader);
+    GroovyClassLoader gcl = runtime.createGroovyClassLoader(classLoader, resourceLoader);
     Binding binding = runtime.createBinding(context);
 
     IO io = new IO();

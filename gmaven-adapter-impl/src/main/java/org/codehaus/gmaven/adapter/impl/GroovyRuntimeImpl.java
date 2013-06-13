@@ -78,16 +78,16 @@ public class GroovyRuntimeImpl
   /**
    * Create a {@link GroovyClassLoader} from given {@link ClassLoader} and {@link ResourceLoader}.
    */
-  public GroovyClassLoader create(final ClassLoader classLoader, final ResourceLoader resourceLoader) {
+  public GroovyClassLoader createGroovyClassLoader(final ClassLoader classLoader, final ResourceLoader resourceLoader) {
     GroovyClassLoader gcl = new GroovyClassLoader(classLoader);
-    gcl.setResourceLoader(create(resourceLoader));
+    gcl.setResourceLoader(createGroovyResourceLoader(resourceLoader));
     return gcl;
   }
 
   /**
    * Creates a {@link GroovyResourceLoader} from a {@link ResourceLoader}.
    */
-  public GroovyResourceLoader create(final ResourceLoader resourceLoader) {
+  public GroovyResourceLoader createGroovyResourceLoader(final ResourceLoader resourceLoader) {
     checkNotNull(resourceLoader);
 
     return new GroovyResourceLoader()
@@ -102,7 +102,7 @@ public class GroovyRuntimeImpl
   /**
    * Creates a {@link GroovyCodeSource} from a {@link ClassSource}.
    */
-  public GroovyCodeSource create(final ClassSource source) throws IOException {
+  public GroovyCodeSource createGroovyCodeSource(final ClassSource source) throws IOException {
     checkNotNull(source);
 
     if (source.getUrl() != null) {
@@ -122,7 +122,7 @@ public class GroovyRuntimeImpl
   /**
    * Creates a {@link Closure} from a {@link ClosureTarget}.
    */
-  public Closure create(final Object owner, final ClosureTarget target) {
+  public Closure createClosure(final Object owner, final ClosureTarget target) {
     checkNotNull(owner);
     checkNotNull(target);
 
@@ -148,7 +148,7 @@ public class GroovyRuntimeImpl
   /**
    * Create an object for a {@link MagicContext} entry.
    */
-  public Object create(final MagicContext magic) {
+  public Object createMagicContextValue(final MagicContext magic) {
     checkNotNull(magic);
 
     switch (magic) {
@@ -181,10 +181,10 @@ public class GroovyRuntimeImpl
       Object value = entry.getValue();
 
       if (value instanceof ClosureTarget) {
-        value = create(this, (ClosureTarget) value);
+        value = createClosure(this, (ClosureTarget) value);
       }
       else if (value instanceof MagicContext) {
-        value = create((MagicContext) value);
+        value = createMagicContextValue((MagicContext) value);
       }
 
       log.debug("  {}={}", key, value);
