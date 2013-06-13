@@ -52,17 +52,17 @@ public class GroovyRuntimeImpl
   private final Logger log = LoggerFactory.getLogger(getClass());
 
   @Override
-  public ScriptExecutor getScriptExecutor() {
+  public ScriptExecutor createScriptExecutor() {
     return new ScriptExecutorImpl(this);
   }
 
   @Override
-  public ConsoleWindow getConsoleWindow() {
+  public ConsoleWindow createConsoleWindow() {
     return new ConsoleWindowImpl(this);
   }
 
   @Override
-  public ShellRunner getShellRunner() {
+  public ShellRunner createShellRunner() {
     return new ShellRunnerImpl(this);
   }
 

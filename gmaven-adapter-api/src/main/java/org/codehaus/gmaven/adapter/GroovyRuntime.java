@@ -19,11 +19,11 @@ package org.codehaus.gmaven.adapter;
  */
 public interface GroovyRuntime
 {
-  ScriptExecutor getScriptExecutor();
+  ScriptExecutor createScriptExecutor();
 
-  ConsoleWindow getConsoleWindow();
+  ConsoleWindow createConsoleWindow();
 
-  ShellRunner getShellRunner();
+  ShellRunner createShellRunner();
 
   void cleanup();
 }

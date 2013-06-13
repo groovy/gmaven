@@ -40,7 +40,7 @@ public class ShellMojo
     final ResourceLoader resourceLoader = new MojoResourceLoader(getRuntimeRealm(), getScriptpath());
     final Map<String, Object> context = createContext();
     final Map<String, Object> options = Maps.newHashMap();
-    final ShellRunner shell = getRuntime().getShellRunner();
+    final ShellRunner shell = getRuntime().createShellRunner();
 
     // Guard against system exit and automatically restore system streams
     new SystemNoExitGuard().run(new Task()

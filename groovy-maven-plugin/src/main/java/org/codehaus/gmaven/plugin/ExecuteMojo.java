@@ -74,7 +74,7 @@ public class ExecuteMojo
     ResourceLoader resourceLoader = new MojoResourceLoader(getRuntimeRealm(), classSource, getScriptpath());
     Map<String, Object> context = createContext();
     Map<String, Object> options = Maps.newHashMap();
-    ScriptExecutor executor = getRuntime().getScriptExecutor();
+    ScriptExecutor executor = getRuntime().createScriptExecutor();
 
     Object result = executor.execute(classSource, getRuntimeRealm(), resourceLoader, context, options);
     log.debug("Result: {}", result);

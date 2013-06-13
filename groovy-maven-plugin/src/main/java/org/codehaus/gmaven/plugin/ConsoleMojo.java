@@ -41,7 +41,7 @@ public class ConsoleMojo
     final ResourceLoader resourceLoader = new MojoResourceLoader(getRuntimeRealm(), getScriptpath());
     final Map<String, Object> context = createContext();
     final Map<String, Object> options = Maps.newHashMap();
-    final ConsoleWindow console = getRuntime().getConsoleWindow();
+    final ConsoleWindow console = getRuntime().createConsoleWindow();
 
     // Guard against system exit and automatically restore system streams
     new SystemNoExitGuard().run(new Task()
