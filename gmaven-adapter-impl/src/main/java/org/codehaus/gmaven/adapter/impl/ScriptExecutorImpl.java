@@ -37,7 +37,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class ScriptExecutorImpl
     implements ScriptExecutor
 {
-  protected final Logger log = LoggerFactory.getLogger(getClass());
+  private final Logger log = LoggerFactory.getLogger(getClass());
 
   private final GroovyRuntimeImpl runtime;
 
