@@ -32,7 +32,7 @@ import static com.google.common.base.Preconditions.checkState;
 @Component(role=GroovyRuntimeFactory.class)
 public class GroovyRuntimeFactory
 {
-  protected final Logger log = LoggerFactory.getLogger(getClass());
+  private final Logger log = LoggerFactory.getLogger(getClass());
 
   public GroovyRuntime create(final ClassLoader classLoader) {
     checkNotNull(classLoader);

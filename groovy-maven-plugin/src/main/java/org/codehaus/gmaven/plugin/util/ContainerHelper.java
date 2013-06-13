@@ -30,7 +30,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 @Component(role = ContainerHelper.class)
 public class ContainerHelper
 {
-  protected final Logger log = LoggerFactory.getLogger(getClass());
+  private final Logger log = LoggerFactory.getLogger(getClass());
 
   @Requirement
   private PlexusContainer container;
