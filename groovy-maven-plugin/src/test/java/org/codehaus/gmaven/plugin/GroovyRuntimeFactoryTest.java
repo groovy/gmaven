@@ -33,7 +33,7 @@ import static org.mockito.Mockito.mock;
  * Tests for {@link GroovyRuntimeFactory}.
  *
  * These tests assume that the underlying {@link java.util.ServiceLoader} functions,
- * so we by-pass it and only validate the handling around the loaders.
+ * so we by-pass it and only validate the handling around the loader.
  */
 public class GroovyRuntimeFactoryTest
     extends TestSupport
