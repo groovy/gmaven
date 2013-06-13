@@ -23,6 +23,8 @@ import org.codehaus.gmaven.adapter.ClassSource;
 import org.codehaus.gmaven.adapter.ResourceLoader;
 import org.codehaus.gmaven.adapter.ScriptExecutor;
 import org.codehaus.gmaven.plugin.util.PropertiesBuilder;
+import org.codehaus.gmaven.plugin.util.SystemNoExitGuard;
+import org.codehaus.gmaven.plugin.util.SystemNoExitGuard.Task;
 
 import static org.apache.maven.plugins.annotations.ResolutionScope.TEST;
 
@@ -68,16 +70,23 @@ public class ExecuteMojo
 
   @Override
   protected void run() throws Exception {
-    ClassSource classSource = classSourceFactory.create(source);
+    final ClassSource classSource = classSourceFactory.create(source);
     log.debug("Class source: {}", classSource);
 
-    ResourceLoader resourceLoader = new MojoResourceLoader(getRuntimeRealm(), classSource, getScriptpath());
-    Map<String, Object> context = createContext();
-    Map<String, Object> options = Maps.newHashMap();
-    ScriptExecutor executor = getRuntime().createScriptExecutor();
+    final ResourceLoader resourceLoader = new MojoResourceLoader(getRuntimeRealm(), classSource, getScriptpath());
+    final Map<String, Object> context = createContext();
+    final Map<String, Object> options = Maps.newHashMap();
+    final ScriptExecutor executor = getRuntime().createScriptExecutor();
 
-    Object result = executor.execute(classSource, getRuntimeRealm(), resourceLoader, context, options);
-    log.debug("Result: {}", result);
+    // Guard against system exit and automatically restore system streams
+    new SystemNoExitGuard().run(new Task()
+    {
+      @Override
+      public void run() throws Exception {
+        Object result = executor.execute(classSource, getRuntimeRealm(), resourceLoader, context, options);
+        log.debug("Result: {}", result);
+      }
+    });
   }
 
   @Override
