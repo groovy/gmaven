@@ -22,27 +22,29 @@ import org.codehaus.gmaven.adapter.ResourceLoader;
 import org.codehaus.gmaven.plugin.util.SystemNoExitGuard;
 import org.codehaus.gmaven.plugin.util.SystemNoExitGuard.Task;
 
+import static org.apache.maven.plugins.annotations.ResolutionScope.TEST;
+
 /**
  * Open a Groovy console window.
  *
  * @since 2.0
  */
-@Mojo(name = "console", requiresProject = false, aggregator = true)
+@Mojo(name = "console", requiresProject = false, requiresDependencyResolution = TEST, aggregator = true)
 public class ConsoleMojo
     extends RuntimeMojoSupport
 {
   @Override
   protected void run() throws Exception {
-    final ResourceLoader resourceLoader = new MojoResourceLoader(runtimeRealm, scriptpath);
+    final ResourceLoader resourceLoader = new MojoResourceLoader(getRuntimeRealm(), getScriptpath());
     final Map<String, Object> context = createContext();
-    final ConsoleWindow console = runtime.getConsoleWindow();
+    final ConsoleWindow console = getRuntime().getConsoleWindow();
 
-    // open console window guarding against system exist and protecting system streams
+    // Guard against system exit and automatically restore system streams
     new SystemNoExitGuard().run(new Task()
     {
       @Override
       public void run() throws Exception {
-        WindowHandle handle = console.open(runtimeRealm, resourceLoader, context);
+        WindowHandle handle = console.open(getRuntimeRealm(), resourceLoader, context);
         handle.await();
       }
     });

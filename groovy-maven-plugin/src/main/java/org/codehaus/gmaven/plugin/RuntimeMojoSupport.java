@@ -15,10 +15,14 @@ package org.codehaus.gmaven.plugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.base.Throwables;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import org.apache.maven.artifact.Artifact;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.MojoExecution;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -39,6 +43,9 @@ import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.eclipse.aether.version.Version;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static org.codehaus.gmaven.plugin.ClasspathScope.compile;
+import static org.codehaus.gmaven.plugin.ClasspathScope.test;
 
 /**
  * Support for {@link org.apache.maven.plugin.Mojo} implementations which require
@@ -86,31 +93,25 @@ public abstract class RuntimeMojoSupport
   // Configuration
   //
 
-  // TODO: Support configuring via -Dscriptpath= for project-less execution?
+  /**
+   * Include additional classpath from project artifacts in given scope.
+   *
+   * Scope can be one of: none, provided, compile, runtime, test
+   */
+  @Parameter(property = "scope", defaultValue = "none")
+  private ClasspathScope classpathScope;
 
   /**
    * Path to search for imported scripts.
-   */
-  @Parameter
-  protected List<File> scriptpath;
-
-  /**
-   * Execution property overrides.
    *
-   * Any property defined here will take precedence over any other definition.
+   * Supports -Dscriptpath=PATH,PATH property syntax.
    */
-  @Parameter
-  protected Map<String, String> properties;
+  @Parameter(property = "scriptpath")
+  private List<File> scriptpath;
 
-  /**
-   * Execution property defaults.
-   *
-   * Any property defined _elsewhere_ (project, user, system, etc) will take precedence over default values.
-   */
-  @Parameter
-  protected Map<String, String> defaults;
-
-  // TODO: classpath inclusions?
+  protected List<File> getScriptpath() {
+    return scriptpath;
+  }
 
   //
   // Runtime state
@@ -119,27 +120,30 @@ public abstract class RuntimeMojoSupport
   /**
    * Detected base directory.
    */
-  protected File basedir;
+  private File basedir;
 
   /**
    * Class-world for script execution.
    */
-  protected ClassWorld classWorld;
+  private ClassWorld classWorld;
 
   /**
    * Class-realm for GMaven runtime.
    */
-  protected ClassRealm runtimeRealm;
+  private ClassRealm runtimeRealm;
 
-  /**
-   * Merged execution properties.
-   */
-  protected Map<String, String> executionProperties;
+  protected ClassRealm getRuntimeRealm() {
+    return runtimeRealm;
+  }
 
   /**
    * GMaven runtime.
    */
-  protected GroovyRuntime runtime;
+  private GroovyRuntime runtime;
+
+  protected GroovyRuntime getRuntime() {
+    return runtime;
+  }
 
   @Override
   protected void prepare() throws Exception {
@@ -147,13 +151,6 @@ public abstract class RuntimeMojoSupport
     log.debug("Base directory: {}", basedir);
 
     classWorld = new ClassWorld();
-
-    executionProperties = propertiesBuilder
-        .setProject(project)
-        .setSession(session)
-        .setProperties(properties)
-        .setDefaults(defaults)
-        .build();
 
     ClassLoader parentCl = getClass().getClassLoader();
 
@@ -165,7 +162,7 @@ public abstract class RuntimeMojoSupport
 
     runtime = groovyRuntimeFactory.create(runtimeRealm);
 
-    configureClasspath(runtimeRealm);
+    configureAdditionalClasspath(runtimeRealm);
   }
 
   /**
@@ -194,15 +191,19 @@ public abstract class RuntimeMojoSupport
 
   @Override
   protected void cleanup() throws Exception {
+    // allow runtime to clean up
     if (runtime != null) {
       runtime.cleanup();
     }
+
+    // dispose runtime realm
     if (runtimeRealm != null) {
       classWorld.disposeRealm(runtimeRealm.getId());
       runtimeRealm = null;
     }
+
+    // sanity nulls
     classWorld = null;
-    executionProperties = null;
   }
 
   /**
@@ -242,8 +243,76 @@ public abstract class RuntimeMojoSupport
   /**
    * Configure additional classpath elements for the runtime realm.
    */
-  private void configureClasspath(final ClassRealm realm) {
-    // TODO:
+  private void configureAdditionalClasspath(final ClassRealm realm) {
+    log.debug("Configuring additional classpath with scope: {}", classpathScope);
+
+    List<File> classpath = Lists.newArrayList();
+
+    // add build output directory if scope includes 'compile'
+    if (classpathScope.matches(compile)) {
+      classpath.add(new File(project.getBuild().getOutputDirectory()));
+    }
+
+    // add build test output directory if scope includes 'test'
+    if (classpathScope.matches(test)) {
+      classpath.add(new File(project.getBuild().getTestOutputDirectory()));
+    }
+
+    // add matching project dependency artifacts
+    if (!project.getArtifacts().isEmpty()) {
+      for (Artifact artifact : project.getArtifacts()) {
+        if (classpathScope.matches(artifact.getScope())) {
+          File file = artifact.getFile();
+          if (!file.exists()) {
+            // for sanity, this should not really ever happen
+            log.warn("Artifact not resolved; ignoring: {}", artifact);
+            continue;
+          }
+          classpath.add(file);
+        }
+      }
+    }
+
+    if (!classpath.isEmpty()) {
+      log.debug("Additional classpath:");
+      for (File file : classpath) {
+        log.debug("  {}", file);
+        try {
+          realm.addURL(file.toURI().toURL());
+        }
+        catch (MalformedURLException e) {
+          throw Throwables.propagate(e);
+        }
+      }
+    }
+  }
+
+  /**
+   * Create script logger.
+   */
+  private Logger createLogger() {
+    String loggerName = String.format("%s.%s.Script", project.getGroupId(), project.getArtifactId());
+    return LoggerFactory.getLogger(loggerName);
+  }
+
+  /**
+   * Create script execution properties.
+   */
+  private Map<String, String> createProperties() {
+    propertiesBuilder
+      .setProject(project)
+      .setSession(session);
+
+    customizeProperties(propertiesBuilder);
+
+    return propertiesBuilder.build();
+  }
+
+  /**
+   * Allow sub-class to customize properties.
+   */
+  protected void customizeProperties(final PropertiesBuilder builder) {
+    // empty
   }
 
   /**
@@ -252,18 +321,14 @@ public abstract class RuntimeMojoSupport
   protected Map<String, Object> createContext() {
     Map<String, Object> context = Maps.newHashMap();
 
-    // TODO: Include mojo execution ID in logger name?  Would have to sanitize it first, may not be worth it
-
-    String loggerName = String.format("%s.%s.Script", project.getGroupId(), project.getArtifactId());
-    Logger logger = LoggerFactory.getLogger(loggerName);
-    context.put("log", logger);
-
+    context.put("log", createLogger());
     context.put("container", containerHelper);
     context.put("plugin", pluginDescriptor);
+    context.put("pluginContext", getPluginContext());
     context.put("mojo", mojoExecution);
     context.put("basedir", basedir);
     context.put("project", project);
-    context.put("properties", executionProperties);
+    context.put("properties", createProperties());
     context.put("session", session);
     context.put("settings", settings);
     context.put("ant", MagicContext.ANT_BUILDER);

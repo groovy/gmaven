@@ -21,19 +21,19 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.codehaus.gmaven.adapter.ClassSource;
 import org.codehaus.gmaven.adapter.ResourceLoader;
 import org.codehaus.gmaven.adapter.ScriptExecutor;
+import org.codehaus.gmaven.plugin.util.PropertiesBuilder;
+
+import static org.apache.maven.plugins.annotations.ResolutionScope.TEST;
 
 /**
  * Execute a Groovy script.
  *
  * @since 2.0
  */
-@Mojo(name = "execute", requiresProject = false, threadSafe = true)
+@Mojo(name = "execute", requiresProject = false, threadSafe = true, requiresDependencyResolution = TEST)
 public class ExecuteMojo
     extends RuntimeMojoSupport
 {
-  // TODO: Will need to have separate goals to have project/non-project execution support
-  // TODO: Or is there any way we can have a single mojo which can support both?
-
   @Component
   private ClassSourceFactory classSourceFactory;
 
@@ -49,16 +49,38 @@ public class ExecuteMojo
   @Parameter(property = "source", required = true)
   private String source;
 
+  /**
+   * Execution property overrides.
+   *
+   * Any property defined here will take precedence over any other definition.
+   */
+  @Parameter
+  private Map<String, String> properties;
+
+  /**
+   * Execution property defaults.
+   *
+   * Any property defined _elsewhere_ (project, user, system, etc) will take precedence over default values.
+   */
+  @Parameter
+  private Map<String, String> defaults;
+
   @Override
   protected void run() throws Exception {
     ClassSource classSource = classSourceFactory.create(source);
     log.debug("Class source: {}", classSource);
 
-    ResourceLoader resourceLoader = new MojoResourceLoader(runtimeRealm, classSource, scriptpath);
+    ResourceLoader resourceLoader = new MojoResourceLoader(getRuntimeRealm(), classSource, getScriptpath());
     Map<String, Object> context = createContext();
-    ScriptExecutor executor = runtime.getScriptExecutor();
+    ScriptExecutor executor = getRuntime().getScriptExecutor();
 
-    Object result = executor.execute(classSource, runtimeRealm, resourceLoader, context);
+    Object result = executor.execute(classSource, getRuntimeRealm(), resourceLoader, context);
     log.debug("Result: {}", result);
+  }
+
+  @Override
+  protected void customizeProperties(final PropertiesBuilder builder) {
+    builder.setProperties(properties)
+        .setDefaults(defaults);
   }
 }

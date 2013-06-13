@@ -21,12 +21,14 @@ import org.codehaus.gmaven.adapter.ShellRunner;
 import org.codehaus.gmaven.plugin.util.SystemNoExitGuard;
 import org.codehaus.gmaven.plugin.util.SystemNoExitGuard.Task;
 
+import static org.apache.maven.plugins.annotations.ResolutionScope.TEST;
+
 /**
  * Run {@code groovysh} shell.
  *
  * @since 2.0
  */
-@Mojo(name = "shell", requiresProject = false, aggregator = true)
+@Mojo(name = "shell", requiresProject = false, requiresDependencyResolution = TEST, aggregator = true)
 public class ShellMojo
     extends RuntimeMojoSupport
 {
@@ -34,16 +36,16 @@ public class ShellMojo
 
   @Override
   protected void run() throws Exception {
-    final ResourceLoader resourceLoader = new MojoResourceLoader(runtimeRealm, scriptpath);
+    final ResourceLoader resourceLoader = new MojoResourceLoader(getRuntimeRealm(), getScriptpath());
     final Map<String, Object> context = createContext();
-    final ShellRunner shell = runtime.getShellRunner();
+    final ShellRunner shell = getRuntime().getShellRunner();
 
-    // run groovysh guarding against system exist and protecting system streams
+    // Guard against system exit and automatically restore system streams
     new SystemNoExitGuard().run(new Task()
     {
       @Override
       public void run() throws Exception {
-        shell.run(runtimeRealm, resourceLoader, context);
+        shell.run(getRuntimeRealm(), resourceLoader, context);
       }
     });
   }

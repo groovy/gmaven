@@ -55,9 +55,13 @@ public abstract class MojoSupport
     }
   }
 
-  protected void prepare() throws Exception {}
+  protected void prepare() throws Exception {
+    // empty
+  }
 
   protected abstract void run() throws Exception;
 
-  protected void cleanup() throws Exception {}
+  protected void cleanup() throws Exception {
+    // empty
+  }
 }
