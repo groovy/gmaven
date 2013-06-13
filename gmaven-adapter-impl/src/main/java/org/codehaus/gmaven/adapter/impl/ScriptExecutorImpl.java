@@ -50,7 +50,8 @@ public class ScriptExecutorImpl
   public Object execute(final ClassSource classSource,
                         final ClassLoader classLoader,
                         final ResourceLoader resourceLoader,
-                        final Map<String, Object> context)
+                        final Map<String, Object> context,
+                        final @Nullable Map<String, Object> options)
       throws Exception
   {
     checkNotNull(classSource);
@@ -70,6 +71,10 @@ public class ScriptExecutorImpl
     Binding binding = runtime.createBinding(context);
     GroovyShell shell = new GroovyShell(gcl, binding, cc);
 
+    if (options != null) {
+      configureOptions(shell, options);
+    }
+
     GroovyCodeSource codeSource = runtime.createGroovyCodeSource(classSource);
     try {
       return shell.evaluate(codeSource);
@@ -77,5 +82,9 @@ public class ScriptExecutorImpl
     finally {
       gcl.clearCache();
     }
+  }
+
+  private void configureOptions(final GroovyShell shell, final Map<String, Object> options) {
+    // TODO
   }
 }

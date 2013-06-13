@@ -15,6 +15,7 @@ package org.codehaus.gmaven.plugin;
 
 import java.util.Map;
 
+import com.google.common.collect.Maps;
 import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
@@ -72,9 +73,10 @@ public class ExecuteMojo
 
     ResourceLoader resourceLoader = new MojoResourceLoader(getRuntimeRealm(), classSource, getScriptpath());
     Map<String, Object> context = createContext();
+    Map<String, Object> options = Maps.newHashMap();
     ScriptExecutor executor = getRuntime().getScriptExecutor();
 
-    Object result = executor.execute(classSource, getRuntimeRealm(), resourceLoader, context);
+    Object result = executor.execute(classSource, getRuntimeRealm(), resourceLoader, context, options);
     log.debug("Result: {}", result);
   }
 

@@ -27,6 +27,7 @@ public interface ScriptExecutor
   Object execute(ClassSource classSource,
                  ClassLoader classLoader,
                  ResourceLoader resourceLoader,
-                 Map<String, Object> context)
+                 Map<String, Object> context,
+                 @Nullable Map<String, Object> options)
       throws Exception;
 }
