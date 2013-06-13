@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!--
 
     Copyright (c) 2007-2013, the original author or authors.
@@ -13,20 +12,8 @@
     See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 
 -->
-<project xmlns="http://maven.apache.org/DECORATION/1.3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/DECORATION/1.3.0 http://maven.apache.org/xsd/decoration-1.3.0.xsd">
+# TODO
 
-  <body>
-    <breadcrumbs>
-      <item name="${project.name}" href="${project.url}/index.html"/>
-    </breadcrumbs>
+TODO
 
-    <menu name="Overview">
-      <item name="About" href="index.html"/>
-      <item name="Usage" href="usage.html"/>
-    </menu>
 
-    <menu ref="reports"/>
-  </body>
-
-</project>

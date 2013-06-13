@@ -12,6 +12,29 @@
     See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 
 -->
-# TODO
+# GMaven
 
-TODO
+<img src="http://media.xircles.codehaus.org/_projects/gmaven/_logos/large.png" style="float: right;"/>
+
+Groovy integration for Apache Maven.
+
+## Supported Versions
+
+* Grovoy 2.x
+* Apache Maven 3.x
+* Apache Maven 3.1.x
+
+## Features
+
+* Script execution
+* GUI console access
+* Command-line shell access
+
+## Compilation
+
+GMaven 2.x no longer supports any integration for compilation of Groovy sources.  There were too many problems with
+stub-generation and hooking up compliation to the proper Maven lifecycle phases to effectivly support.
+
+For compliation support please see the
+[Groovy Eclipse Compiler](http://docs.codehaus.org/display/GROOVY/Groovy-Eclipse+compiler+plugin+for+Maven)
+or use the [Groovy ant tasks](http://groovy.codehaus.org/Compiling+With+Maven2).
