@@ -20,9 +20,10 @@
 
 ## Supported Versions
 
-* Grovoy 2.x
-* Apache Maven 3.x
-* Apache Maven 3.1.x
+* Java 1.6+
+* Grovoy 2+
+* Apache Maven 3.0+
+* Apache Maven 3.1+
 
 ## Features
 

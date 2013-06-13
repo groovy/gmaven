@@ -121,6 +121,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-plugin-plugin</artifactId>
+        <configuration>
+          <requirements>
+            <maven>3.0</maven>
+            <jdk>1.6</jdk>
+          </requirements>
+        </configuration>
       </plugin>
     </plugins>
   </build>
