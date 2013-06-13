@@ -399,6 +399,15 @@
               <phase>none</phase>
             </execution>
             <execution>
+              <id>help-descriptor</id>
+              <goals>
+                <goal>helpmojo</goal>
+              </goals>
+              <configuration>
+                <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
+              </configuration>
+            </execution>
+            <execution>
               <id>plugin-descriptor</id>
               <goals>
                 <goal>descriptor</goal>
