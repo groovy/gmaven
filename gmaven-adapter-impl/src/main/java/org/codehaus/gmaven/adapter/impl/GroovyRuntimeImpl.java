@@ -66,6 +66,11 @@ public class GroovyRuntimeImpl
     return new ShellRunnerImpl(this);
   }
 
+  @Override
+  public void cleanup() {
+    // nothing atm
+  }
+
   //
   // Internal
   //

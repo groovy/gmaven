@@ -24,4 +24,6 @@ public interface GroovyRuntime
   ConsoleWindow getConsoleWindow();
 
   ShellRunner getShellRunner();
+
+  void cleanup();
 }

@@ -194,6 +194,9 @@ public abstract class RuntimeMojoSupport
 
   @Override
   protected void cleanup() throws Exception {
+    if (runtime != null) {
+      runtime.cleanup();
+    }
     if (runtimeRealm != null) {
       classWorld.disposeRealm(runtimeRealm.getId());
       runtimeRealm = null;
