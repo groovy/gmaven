@@ -40,7 +40,7 @@ public class ShellRunnerImpl
 
   private final GroovyRuntimeImpl runtime;
 
-  public ShellRunnerImpl(final GroovyRuntimeImpl runtime) {
+  ShellRunnerImpl(final GroovyRuntimeImpl runtime) {
     this.runtime = checkNotNull(runtime);
   }
 

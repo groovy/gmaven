@@ -41,7 +41,7 @@ public class ScriptExecutorImpl
 
   private final GroovyRuntimeImpl runtime;
 
-  public ScriptExecutorImpl(final GroovyRuntimeImpl runtime) {
+  ScriptExecutorImpl(final GroovyRuntimeImpl runtime) {
     this.runtime = checkNotNull(runtime);
   }
 

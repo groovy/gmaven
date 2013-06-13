@@ -42,7 +42,7 @@ public class ConsoleWindowImpl
 
   private final Object lock = new Object();
 
-  public ConsoleWindowImpl(final GroovyRuntimeImpl runtime) {
+  ConsoleWindowImpl(final GroovyRuntimeImpl runtime) {
     this.runtime = checkNotNull(runtime);
   }
 
