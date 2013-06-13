@@ -12,7 +12,7 @@
     See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 
 -->
-# Description
+# ![GMaven](http://media.xircles.codehaus.org/_projects/gmaven/_logos/medium.png)
 
 Groovy integration for Maven
 

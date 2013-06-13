@@ -12,7 +12,7 @@
     See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 
 -->
-# GMaven
+# ![GMaven](http://media.xircles.codehaus.org/_projects/gmaven/_logos/medium.png)
 
 ## [GMaven 2.0][2_0], released TBD
 [2_0]: https://nexus.codehaus.org/content/repositories/releases/org/codehaus/gmaven/gmaven/2.0
