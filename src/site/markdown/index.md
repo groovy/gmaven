@@ -16,7 +16,7 @@
 
 <img src="http://media.xircles.codehaus.org/_projects/gmaven/_logos/large.png" style="float: right;"/>
 
-Groovy integration for Apache Maven.
+[Groovy](http://groovy.codehaus.org) integration for [Apache Maven](http://maven.apache.org).
 
 ## Supported Versions
 
@@ -29,6 +29,8 @@ Groovy integration for Apache Maven.
 * Script execution
 * GUI console access
 * Command-line shell access
+
+For more details please see the [groovy-maven-plugin](groovy-maven-plugin/index.html) documentation.
 
 ## Compilation
 

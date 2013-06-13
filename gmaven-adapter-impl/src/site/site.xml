@@ -18,7 +18,7 @@
 
   <body>
     <breadcrumbs>
-      <item name="${project.name}" href="${project.url}/index.html"/>
+      <item name="gmaven-adapter-impl" href="${project.url}/index.html"/>
     </breadcrumbs>
 
     <menu name="Overview">

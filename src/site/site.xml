@@ -46,7 +46,7 @@
 
   <body>
     <breadcrumbs>
-      <item name="${project.name}" href="${project.url}/index.html"/>
+      <item name="gmaven" href="${project.url}/index.html"/>
     </breadcrumbs>
 
     <menu name="Overview">
