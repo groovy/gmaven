@@ -16,6 +16,8 @@ package org.codehaus.gmaven.adapter.impl;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -79,9 +81,15 @@ public class GroovyRuntimeImpl
    * Create a {@link GroovyClassLoader} from given {@link ClassLoader} and {@link ResourceLoader}.
    */
   public GroovyClassLoader createGroovyClassLoader(final ClassLoader classLoader, final ResourceLoader resourceLoader) {
-    GroovyClassLoader gcl = new GroovyClassLoader(classLoader);
-    gcl.setResourceLoader(createGroovyResourceLoader(resourceLoader));
-    return gcl;
+    return AccessController.doPrivileged(new PrivilegedAction<GroovyClassLoader>()
+    {
+      @Override
+      public GroovyClassLoader run() {
+        GroovyClassLoader gcl = new GroovyClassLoader(classLoader);
+        gcl.setResourceLoader(createGroovyResourceLoader(resourceLoader));
+        return gcl;
+      }
+    });
   }
 
   /**
