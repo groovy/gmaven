@@ -12,8 +12,11 @@
     See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 
 -->
-# TODO
+# GMaven Adapter Implementation
 
-TODO
+Provides the default [gmaven-runtime-api](../gmaven-runtime-api/index.html) implementation.
+
+Supports Groovy 2.x runtimes.
+
 
 

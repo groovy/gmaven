@@ -12,13 +12,26 @@
     See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 
 -->
-# TODO
+# Groovy Maven Plugin
 
 TODO
 
-* [Usage](usage.html)
-* [Plugin Documentation](plugin-info.html)
+Common:
+* Hard requirements for Maven and Groovy versions
+* Default context variables
+* Resolving external script locations
+* Customize Groovy version
+* Enable verbose logging
+* System.exit usage forbidden
+* Calling goals with and with-out projects
+* Accessing project classes and dependencies
 
-<br style="clear:both"/>
+Features:
+* Script execution
+  * Source configuration
+    * Details about Maven interpolation and GStrings in inline-source configurations
+  * Properties, defaults and precedence
+* Open console
+* Run shell
 
 

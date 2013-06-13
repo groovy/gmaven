@@ -12,8 +12,17 @@
     See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 
 -->
-# TODO
+# GMaven Adapter API
 
-TODO
+Provides an abstraction used by [groovy-maven-plugin](../groovy-maven-plugin/index.html) to
+interact with the Groovy runtime.
+
+## Main Components
+
+* GroovyRuntime
+* ScriptExecutor
+* ConsoleWindow
+* ShellRunner
+
 
 
