@@ -26,7 +26,7 @@ import org.codehaus.gmaven.plugin.util.SystemNoExitGuard.Task;
  *
  * @since 2.0
  */
-@Mojo(name = "shell", aggregator = true)
+@Mojo(name = "shell", requiresProject = false, aggregator = true)
 public class ShellMojo
     extends RuntimeMojoSupport
 {

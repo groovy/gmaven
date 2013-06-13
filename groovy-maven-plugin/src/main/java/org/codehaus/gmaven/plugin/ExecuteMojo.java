@@ -27,7 +27,7 @@ import org.codehaus.gmaven.adapter.ScriptExecutor;
  *
  * @since 2.0
  */
-@Mojo(name = "execute", threadSafe = true)
+@Mojo(name = "execute", requiresProject = false, threadSafe = true)
 public class ExecuteMojo
     extends RuntimeMojoSupport
 {

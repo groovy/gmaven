@@ -27,7 +27,7 @@ import org.codehaus.gmaven.plugin.util.SystemNoExitGuard.Task;
  *
  * @since 2.0
  */
-@Mojo(name = "console", aggregator = true)
+@Mojo(name = "console", requiresProject = false, aggregator = true)
 public class ConsoleMojo
     extends RuntimeMojoSupport
 {
