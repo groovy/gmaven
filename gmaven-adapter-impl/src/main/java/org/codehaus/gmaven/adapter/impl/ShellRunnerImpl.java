@@ -61,8 +61,16 @@ public class ShellRunnerImpl
     GroovyClassLoader gcl = runtime.createGroovyClassLoader(classLoader, resourceLoader);
     Binding binding = runtime.createBinding(context);
 
-    IO io = new IO();
-    Groovysh shell = new Groovysh(gcl, binding, io);
+    Groovysh shell = new Groovysh(gcl, binding, new IO());
+
+    if (options != null) {
+      configureOptions(shell, options);
+    }
+
     shell.run();
+  }
+
+  private void configureOptions(final Groovysh shell, final Map<String, Object> options) {
+    // TODO:
   }
 }

@@ -81,6 +81,10 @@ public class ConsoleWindowImpl
       }
     };
 
+    if (options != null) {
+      configureOptions(console, options);
+    }
+
     log.trace("Opening");
     console.run();
 
@@ -100,5 +104,9 @@ public class ConsoleWindowImpl
         }
       }
     };
+  }
+
+  private void configureOptions(final Console console, final Map<String, Object> options) {
+    // TODO
   }
 }
