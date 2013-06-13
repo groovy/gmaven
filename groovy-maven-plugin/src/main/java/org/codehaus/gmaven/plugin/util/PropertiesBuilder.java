@@ -37,7 +37,7 @@ import org.slf4j.LoggerFactory;
  *
  * @since 2.0
  */
-@Component(role = PropertiesBuilder.class)
+@Component(role = PropertiesBuilder.class, instantiationStrategy="per-lookup")
 public class PropertiesBuilder
 {
   private final Logger log = LoggerFactory.getLogger(getClass());
