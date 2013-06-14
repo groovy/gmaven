@@ -37,8 +37,7 @@ All goals which invoke the Groovy runtime, expose a set of predefined context (a
   <tr>
     <td>properties</td>
     <td>
-      <code>java.util.Map</code> containing merged execution properties.
-      <strong>NOT</strong> a <code>java.util.Properties</code> instance.
+      <code>java.util.Properties</code> containing merged execution properties.
     </td>
   </tr>
 
@@ -52,7 +51,8 @@ All goals which invoke the Groovy runtime, expose a set of predefined context (a
   <tr>
     <td>fail</td>
     <td>
-      Closure to help fail execution.  See <a href="apidocs/org/codehaus/gmaven/plugin/FailClosureTarget.html">FailClosureTarget</a>
+      Closure to help fail execution.
+      See <a href="apidocs/org/codehaus/gmaven/plugin/FailClosureTarget.html">FailClosureTarget</a>
       for supported syntax and usage.
     </td>
   </tr>

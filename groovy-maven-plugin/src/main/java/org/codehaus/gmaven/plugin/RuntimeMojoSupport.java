@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import com.google.common.base.Throwables;
 import com.google.common.collect.Lists;
@@ -298,14 +299,17 @@ public abstract class RuntimeMojoSupport
   /**
    * Create script execution properties.
    */
-  private Map<String, String> createProperties() {
+  private Properties createProperties() {
     propertiesBuilder
       .setProject(project)
       .setSession(session);
 
     customizeProperties(propertiesBuilder);
 
-    return propertiesBuilder.build();
+    // convert to Properties for better compatibility, groovy doesn't care about types so its not a big deal
+    Properties props = new Properties();
+    props.putAll(propertiesBuilder.build());
+    return props;
   }
 
   /**
