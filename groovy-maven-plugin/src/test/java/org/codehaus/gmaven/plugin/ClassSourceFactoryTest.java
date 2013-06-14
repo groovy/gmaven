@@ -87,6 +87,15 @@ public class ClassSourceFactoryTest
     assertFile(whitespace(util.createTempFile().getPath()));
   }
 
+  // FIXME: This test will not pass as current logic treats non-existing files as inline-sources
+
+  //@Test
+  //public void create_file_nonExisting() throws Exception {
+  //  File file = util.createTempFile();
+  //  file.delete();
+  //  assertFile(file.getPath());
+  //}
+
   private void assertInline(final String script) throws Exception {
     ClassSource source = underTest.create(script);
     log(source);
