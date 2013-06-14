@@ -108,6 +108,15 @@
       <groupId>org.sonatype.sisu.litmus</groupId>
       <artifactId>litmus-testsupport</artifactId>
       <scope>test</scope>
+      <exclusions>
+        <!--
+        HACK: Keeping logback out of 'test' scope here as we already include Gossip in 'runtime' which causes collisions.
+        -->
+        <exclusion>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-classic</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
   </dependencies>
 
