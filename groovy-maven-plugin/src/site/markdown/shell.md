@@ -12,7 +12,7 @@
     See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 
 -->
-# Run Shell
+# Shell
 
 GMaven supports running the command-line [Groovy Shell](http://groovy.codehaus.org/Groovy+Shell)
 (aka `groovysh`) with the [shell](shell-mojo.html) goal:

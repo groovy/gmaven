@@ -12,7 +12,7 @@
     See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 
 -->
-# Open Console
+# Console
 
 GMaven supports opening up the GUI [Groovy Console](http://groovy.codehaus.org/Groovy+Console)
 with the [console](console-mojo.html) goal:
