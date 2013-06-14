@@ -12,7 +12,7 @@
     See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 
 -->
-# Script Execution
+# Execute
 
 Groovy script execution is the main purpose of GMaven and is available with the [execute](execute-mojo.html) goal.
 A script can be executed as part of a build (attached to a lifecycle phase) or directly via the command-line.

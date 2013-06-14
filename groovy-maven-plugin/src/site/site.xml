@@ -27,7 +27,7 @@
     </menu>
 
     <menu name="Usage">
-      <item name="Script Execution" href="execute.html"/>
+      <item name="Execute" href="execute.html"/>
       <item name="Console" href="console.html"/>
       <item name="Shell" href="shell.html"/>
       <item name="Variables" href="variables.html"/>
