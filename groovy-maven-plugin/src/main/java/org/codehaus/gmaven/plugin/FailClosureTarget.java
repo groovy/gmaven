@@ -13,6 +13,8 @@
 
 package org.codehaus.gmaven.plugin;
 
+import javax.annotation.Nullable;
+
 import com.google.common.annotations.VisibleForTesting;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.codehaus.gmaven.adapter.ClosureTarget;
@@ -68,7 +70,7 @@ public class FailClosureTarget
   /**
    * Throws {@link MojoExecutionException}.
    */
-  public Object call(final Object[] args) throws Exception {
+  public Object call(final @Nullable Object[] args) throws Exception {
     if (args == null || args.length == 0) {
       throw new MojoExecutionException(FAILED);
     }
