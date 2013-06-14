@@ -17,7 +17,7 @@
 Provides an abstraction used by [groovy-maven-plugin](../groovy-maven-plugin/index.html) to
 interact with the Groovy runtime.
 
-## Main Components
+## Components
 
 ### GroovyRuntime
 
