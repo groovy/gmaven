@@ -12,7 +12,7 @@
  */
 
 /**
- * Groovy maven plugin.
+ * GMaven plugin.
  *
  * @since 2.0
  */

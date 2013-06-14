@@ -20,7 +20,10 @@ import javax.annotation.Nullable;
  * Provides the ability to execute a Groovy script.
  *
  * @since 2.0
+ *
+ * @see groovy.lang.GroovyShell
  */
+@SuppressWarnings("JavadocReference")
 public interface ScriptExecutor
 {
   @Nullable

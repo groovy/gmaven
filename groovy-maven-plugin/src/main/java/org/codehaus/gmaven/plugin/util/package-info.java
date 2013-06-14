@@ -12,7 +12,7 @@
  */
 
 /**
- * Utilities.
+ * GMaven plugin utilities.
  *
  * @since 2.0
  */

@@ -18,10 +18,11 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 /**
- * Provides the ability to open a Groovy console window.
+ * Provides the ability to open a {@link groovy.ui.Console} window.
  *
  * @since 2.0
  */
+@SuppressWarnings("JavadocReference")
 public interface ConsoleWindow
 {
   interface WindowHandle

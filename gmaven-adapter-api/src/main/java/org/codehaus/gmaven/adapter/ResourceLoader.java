@@ -18,10 +18,13 @@ import java.net.URL;
 import javax.annotation.Nullable;
 
 /**
- * Provides named access to resources.  See {@code groovy.lang.GroovyResourceLoader}.
+ * Provides named access to resources.
  *
  * @since 2.0
+ *
+ * @see groovy.lang.GroovyResourceLoader
  */
+@SuppressWarnings("JavadocReference")
 public interface ResourceLoader
 {
   @Nullable

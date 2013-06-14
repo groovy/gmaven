@@ -21,7 +21,10 @@ import javax.annotation.Nullable;
  * Provides the ability to run a {@code groovysh} shell.
  *
  * @since 2.0
+ *
+ * @see org.codehaus.groovy.tools.shell.Groovysh
  */
+@SuppressWarnings("JavadocReference")
 public interface ShellRunner
 {
   void run(ClassLoader classLoader,

@@ -10,6 +10,7 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
+
 package org.codehaus.gmaven.adapter;
 
 /**
@@ -20,7 +21,8 @@ package org.codehaus.gmaven.adapter;
 public enum MagicContext
 {
   /**
-   * Context value will be replaced by a {@code groovy.util.AntBuilder} instance.
+   * Context value will be replaced by a {@link groovy.util.AntBuilder} instance.
    */
+  @SuppressWarnings("JavadocReference")
   ANT_BUILDER
 }

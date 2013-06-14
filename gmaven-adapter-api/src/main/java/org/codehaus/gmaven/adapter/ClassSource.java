@@ -17,10 +17,11 @@ import java.io.Reader;
 import java.net.URL;
 
 /**
- * Configuration details for construction of a {@code groovy.lang.GroovyCodeSource} instance.
+ * Configuration details for construction of a {@link groovy.lang.GroovyCodeSource} instance.
  *
  * @since 2.0
  */
+@SuppressWarnings("JavadocReference")
 public interface ClassSource
 {
   URL getUrl();

@@ -15,10 +15,11 @@ package org.codehaus.gmaven.adapter;
 import javax.annotation.Nullable;
 
 /**
- * Target implementation for a {@code groovy.lang.Closure}.
+ * Target implementation for a {@link groovy.lang.Closure}.
  *
  * @since 2.0
  */
+@SuppressWarnings("JavadocReference")
 public interface ClosureTarget
 {
   @Nullable
