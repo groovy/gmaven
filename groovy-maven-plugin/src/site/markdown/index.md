@@ -47,5 +47,5 @@ Direct execution of goals will always use the default Groovy version.
 
 ### System.exit Forbidden
 
-Use of `java.lang.System.exit`, `java.lang.Runtime.exit` or `java.lang.Runtime.halt` is ***forbidden***
+Use of `java.lang.System.exit()`, `java.lang.Runtime.exit()` or `java.lang.Runtime.halt()` is ***forbidden***
 from use by a script execution or evaluation in console or shells.
