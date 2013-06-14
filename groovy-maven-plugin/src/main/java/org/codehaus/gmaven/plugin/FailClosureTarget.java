@@ -20,19 +20,15 @@ import org.codehaus.gmaven.adapter.ClosureTarget;
 /**
  * Target implementation of {@code fail} closure.
  *
- * Sometimes executed Groovy scripts need to fail the build. To do so with out causing evil stack traces or assert
- * expressions to get spat out, you need to throw a {@link MojoExecutionException}.
- *
- * To help make this a little bit easier there is a {code fail} closure bound the the default namespace for the executed script.
- *
+ * <p>
  * Failing with a simple string:
- *
  * <code>
  * fail('I done goofed')
  * </code>
+ * </p>
  *
+ * <p>
  * Failing with an exception detail:
- *
  * <code>
  * try {
  *   ....
@@ -41,9 +37,10 @@ import org.codehaus.gmaven.adapter.ClosureTarget;
  *   fail(e)
  * }
  * </code>
+ * </p>
  *
+ * <p>
  * Failing with an exception detail and a message:
- *
  * <code>
  * try {
  *   ....
@@ -52,6 +49,7 @@ import org.codehaus.gmaven.adapter.ClosureTarget;
  *   fail('Houston we have a problem', e)
  * }
  * </code>
+ * </p>
  *
  * @since 2.0
  */

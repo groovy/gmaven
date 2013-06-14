@@ -30,7 +30,7 @@
       <item name="Execute Script" href="execute.html"/>
       <item name="Open Console" href="console.html"/>
       <item name="Run Shell" href="shell.html"/>
-      <item name="Context Variables" href="variables.html"/>
+      <item name="Variables" href="variables.html"/>
       <item name="Classpath" href="classpath.html"/>
       <item name="Scriptpath" href="scriptpath.html"/>
       <item name="Logging" href="logging.html"/>

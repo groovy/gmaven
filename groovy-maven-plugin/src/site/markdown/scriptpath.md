@@ -75,3 +75,8 @@ So if you had a `${project.basedir}/src/main/script/Main.groovy` with something 
       </executions>
     </plugin>
 
+### Command-line
+
+Configure the `scriptpath` property on the mvn command-line with a _comma seperated_ list of entries:
+
+    mvn -Dscriptpath=dir1,dir2,dir3
