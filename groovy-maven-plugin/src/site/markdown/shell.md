@@ -14,5 +14,12 @@
 -->
 # Run Shell
 
-TODO
+GMaven supports running the command-line [Groovy Shell](http://groovy.codehaus.org/Groovy+Shell)
+(aka `groovysh`) with the [shell](shell-mojo.html) goal:
 
+    mvn groovy:shell
+
+This goal works with and without a project.  When a project is available additional [classpath](classpath.html)
+configuration options are avaiable.
+
+All context [variables](variables.html) are availble for use in the shell.

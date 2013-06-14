@@ -14,6 +14,16 @@
 -->
 # Open Console
 
-TODO
+GMaven supports opening up the GUI [Groovy Console](http://groovy.codehaus.org/Groovy+Console)
+with the [console](console-mojo.html) goal:
+
+    mvn groovy:console
+
+This goal works with and without a project.  When a project is available additional [classpath](classpath.html)
+configuration options are avaiable.
+
+All context [variables](variables.html) are availble for use in the console.
+
+
 
 

@@ -39,7 +39,7 @@
     <menu name="Details">
       <item name="Javadocs" href="apidocs/index.html"/>
       <item name="Source" href="xref/index.html"/>
-      <item name="Dependency Information" href="dependency-info.html"/>
+      <!--<item name="Dependency Information" href="dependency-info.html"/>-->
     </menu>
 
     <menu name="Dependencies">
