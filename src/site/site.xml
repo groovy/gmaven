@@ -72,11 +72,17 @@
     <menu name="Details">
       <item name="Summary" href="project-summary.html"/>
       <item name="License" href="license.html"/>
-      <item name="Source Repository" href="source-repository.html"/>
-      <!--<item name="Mailing Lists" href="mail-lists.html"/>-->
+      <item name="Mailing Lists" href="mail-lists.html"/>
       <item name="Issue Tracking" href="issue-tracking.html"/>
+      <item name="Source Repository" href="source-repository.html"/>
+      <item name="Change Log" href="changelog.html"/>
       <item name="Modules" href="modules.html"/>
       <item name="Builds" href="integration.html"/>
+    </menu>
+
+    <menu name="Uber Ref">
+      <item name="Javadocs" href="apidocs/index.html"/>
+      <item name="Source" href="xref/index.html"/>
     </menu>
   </body>
 </project>

@@ -75,6 +75,23 @@
     <url>https://bamboo-ci.codehaus.org/browse/GROOVY-GMVN</url>
   </ciManagement>
 
+  <mailingLists>
+    <mailingList>
+      <name>gmaven-user</name>
+      <post>mailto:gmaven-user@googlegroups.com</post>
+      <unsubscribe>mailto:gmaven-user+unsubscribe@googlegroups.com</unsubscribe>
+      <subscribe>https://groups.google.com/group/gmaven-user</subscribe>
+      <archive>https://groups.google.com/group/gmaven-user</archive>
+    </mailingList>
+    <mailingList>
+      <name>gmaven-dev</name>
+      <post>mailto:gmaven-dev@googlegroups.com</post>
+      <unsubscribe>mailto:gmaven-dev+unsubscribe@googlegroups.com</unsubscribe>
+      <subscribe>https://groups.google.com/group/gmaven-dev</subscribe>
+      <archive>https://groups.google.com/group/gmaven-dev</archive>
+    </mailingList>
+  </mailingLists>
+
   <repositories>
     <repository>
       <id>rso-public-grid</id>
@@ -98,6 +115,13 @@
 
     <apache-maven.version>3.0.5</apache-maven.version>
     <eclipse-aether.version>0.9.0.M2</eclipse-aether.version>
+
+    <!--
+    Site configuration.  Using '_' instead of '.' for velocity-based filtering.
+    -->
+    <site_mavenApidocsUrl>http://maven.apache.org/ref/${apache-maven.version}/apidocs</site_mavenApidocsUrl>
+    <site_groovyApidocsUrl>http://groovy.codehaus.org/gapi</site_groovyApidocsUrl>
+    <site_javaApidocsUrl>http://docs.oracle.com/javase/6/docs/api</site_javaApidocsUrl>
   </properties>
 
   <dependencyManagement>
@@ -596,6 +620,11 @@
         <version>2.9</version>
         <configuration>
           <source>1.6</source>
+          <links>
+            <link>${site_mavenApidocsUrl}</link>
+            <link>${site_groovyApidocsUrl}</link>
+            <link>${site_javaApidocsUrl}</link>
+          </links>
         </configuration>
       </plugin>
 
@@ -630,6 +659,13 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>cobertura-maven-plugin</artifactId>
         <version>2.5.2</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changelog-plugin</artifactId>
+        <version>2.2</version>
+        <inherited>false</inherited>
       </plugin>
     </plugins>
   </reporting>

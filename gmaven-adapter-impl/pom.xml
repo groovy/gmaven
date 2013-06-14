@@ -27,6 +27,15 @@
   <artifactId>gmaven-adapter-impl</artifactId>
   <name>${project.groupId}:${project.artifactId}</name>
 
+  <properties>
+    <groovy.version>2.1.5</groovy.version>
+
+    <!--
+    Site configuration.  Using '_' instead of '.' for velocity-based filtering.
+    -->
+    <site_groovyVersion>${groovy.version}</site_groovyVersion>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.codehaus.gmaven</groupId>
@@ -43,7 +52,7 @@
     <dependency>
       <groupId>org.codehaus.groovy</groupId>
       <artifactId>groovy-all</artifactId>
-      <version>2.1.4</version>
+      <version>${groovy.version}</version>
     </dependency>
 
     <dependency>

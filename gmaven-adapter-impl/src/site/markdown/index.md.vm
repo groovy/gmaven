@@ -12,11 +12,13 @@
     See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 
 -->
-# GMaven Adapter Implementation
+<h1>GMaven Adapter Implementation</h1>
 
 Provides the default [gmaven-runtime-api](../gmaven-runtime-api/index.html) implementation.
 
-Supports Groovy 2.0+ and 2.1+ runtimes.  Groovy 2.1.4 is the default version which is used.
+Supports Groovy 2.0+ and 2.1+ runtimes.
+
+Default version: Groovy ${site_groovyVersion}
 
 New versions of Groovy could break compatiblity, so becareful if customizing the Groovy version.
 If an incompatiblity is found, please [report the problem](https://jira.codehaus.org/browse/GMAVEN).

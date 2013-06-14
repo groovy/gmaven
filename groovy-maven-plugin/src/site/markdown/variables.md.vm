@@ -1,0 +1,57 @@
+<!--
+
+    Copyright (c) 2007-2013, the original author or authors.
+
+    This program is licensed to you under the Apache License Version 2.0,
+    and you may not use this file except in compliance with the Apache License Version 2.0.
+    You may obtain a copy of the Apache License Version 2.0 at http://www.apache.org/licenses/LICENSE-2.0.
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the Apache License Version 2.0 is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
+
+-->
+<h1>Variables</h1>
+
+All goals which invoke the Groovy runtime, expose a set of predefined context (aka binding) variables.
+
+<h2>Basic</h2>
+
+Basic context variables.
+
+| Name       | Description
+| ---------- | -----------
+| project    | The currently executing [MavenProject][MavenProject] or if no project, this will be a reference to the generic stub project.
+| basedir    | [File][File] reference to detected base directory for Maven execution.
+| properties | [Properties][Properties] containing merged execution properties.
+| ant        | Preconfigured [AntBuilder][AntBuilder].
+| fail       | Closure to help fail execution.  See [FailClosureTarget][FailClosureTarget] for supported syntax and usage.
+| log        | SLF4J [Logger][Logger].
+
+<h2>Advanced</h2>
+
+Advanced context variables.
+
+| Name          | Description
+| ------------- | -----------
+| container     | [ContainerHelper][ContainerHelper] to simplify looking up Maven components.
+| plugin        | `groovy-maven-plugin` [PluginDescriptor][PluginDescriptor].
+| pluginContext | Plugin context [Map][Map] to allow communication between plugin goals.  See [ContextEnabled][ContextEnabled] for more details.
+| mojo          | The current [MojoExecution][MojoExecution].
+| session       | The current [MavenSession][MavenSession].
+| settings      | The current [Settings][Settings].
+
+[File]: ${site_javaApidocsUrl}/java/io/File.html
+[Properties]: ${site_javaApidocsUrl}/java/util/Properties.html
+[Map]: ${site_javaApidocsUrl}/java/util/Map.html
+[FailClosureTarget]: apidocs/org/codehaus/gmaven/plugin/FailClosureTarget.html
+[ContainerHelper]: apidocs/org/codehaus/gmaven/plugin/util/ContainerHelper.html
+[MavenProject]: ${site_mavenApidocsUrl}/org/apache/maven/project/MavenProject.html
+[AntBuilder]: ${site_groovyApidocsUrl}/groovy/util/AntBuilder.html
+[PluginDescriptor]: ${site_mavenApidocsUrl}/org/apache/maven/plugin/descriptor/PluginDescriptor.html
+[ContextEnabled]: ${site_mavenApidocsUrl}/org/apache/maven/plugin/ContextEnabled.html
+[MojoExecution]: ${site_mavenApidocsUrl}/org/apache/maven/plugin/MojoExecution.html
+[MavenSession]: ${site_mavenApidocsUrl}/org/apache/maven/execution/MavenSession.html
+[Settings]: ${site_mavenApidocsUrl}/org/apache/maven/settings/Settings.html
+[Logger]: http://www.slf4j.org/apidocs/org/slf4j/Logger.html
