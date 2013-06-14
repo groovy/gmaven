@@ -21,6 +21,9 @@ This goal is not bound to a [lifecycle phase](http://maven.apache.org/guides/int
 by default, so the phase must always be configured, and the phase will depend highly on what the purpose is that you are
 executing a script for.
 
+This goal works with and without a project.  When a project is available additional [classpath](classpath.html)
+configuration options are avaiable.
+
 All context [variables](variables.html) are availble for use in executed scripts.
 
 ## Source
