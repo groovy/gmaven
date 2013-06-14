@@ -100,16 +100,16 @@
                   
       <li>
     
-                          <a href="console.html" title="Open Console">
+                          <a href="console.html" title="Console">
           <i class="none"></i>
-        Open Console</a>
+        Console</a>
             </li>
                   
       <li>
     
-                          <a href="shell.html" title="Run Shell">
+                          <a href="shell.html" title="Shell">
           <i class="none"></i>
-        Run Shell</a>
+        Shell</a>
             </li>
                   
       <li>
@@ -259,10 +259,10 @@
   &lt;/dependencies&gt;
 &lt;/plugin&gt;
 </pre></div>
-<p>There is currently no way to change the Groovy version without a project. Direct execution of goals will always use the default Groovy version.</p></div>
+<p>There is currently no way to change the Groovy version without a project. Direct execution of goals will always use the default Groovy version if no project is available. When a project is available, then <tt>pluginManagement</tt> can be used to configure direct goal execution.</p></div>
 <div class="section">
 <h3>System.exit Forbidden<a name="System.exit_Forbidden"></a></h3>
-<p>Use of <tt>java.lang.System.exit</tt>, <tt>java.lang.Runtime.exit</tt> or <tt>java.lang.Runtime.halt</tt> is <b><i>forbidden</i></b> from use by a script execution or evaluation in console or shells.</p></div></div>
+<p>Use of <tt>java.lang.System.exit()</tt>, <tt>java.lang.Runtime.exit()</tt> or <tt>java.lang.Runtime.halt()</tt> is <b><i>forbidden</i></b> from use by a script execution or evaluation in console or shells.</p></div></div>
                   </div>
             </div>
           </div>
