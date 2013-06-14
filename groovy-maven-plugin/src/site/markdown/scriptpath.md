@@ -14,4 +14,64 @@
 -->
 # Scriptpath
 
-TODO
+The `scriptpath` is a path where GMaven will search for additional Groovy sources to resolve when executing a Groovy script.
+
+This configuration applies to all goals.  This means that you can access your external script via the `console`
+and `shell` goals as well as `execute`.
+
+### Explicit
+
+For example if you have a class named `Helper` defined in a file named `${project.basedir}/src/main/script/Helper.groovy`
+your scripts can use that class if you configure the script path to include `${project.basedir}/src/main/script`:
+
+    <plugin>
+      <groupId>org.codehaus.gmaven</groupId>
+      <artifactId>groovy-maven-plugin</artifactId>
+      <executions>
+        <execution>
+          <phase>generate-resources</phase>
+          <goals>
+              <goal>execute</goal>
+          </goals>
+          <configuration>
+            <scriptpath>
+              <path>${project.basedir}/src/main/script</path>
+            </scriptpath>
+            <source>
+              import Helper
+              def h = new Helper()
+            </source>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+
+### Peer
+
+Additionally if using a file-based source configuration, GMaven will automatically look for
+matching classes _nexus to_ the source file.
+
+So if you had a `${project.basedir}/src/main/script/Main.groovy` with something like:
+
+    import Helper
+    def h = new Helper()
+
+... then this configuration would be sufficent to allow the source file script to access to
+`${project.basedir}/src/main/script/Helper.groovy` script:
+
+    <plugin>
+      <groupId>org.codehaus.gmaven</groupId>
+      <artifactId>groovy-maven-plugin</artifactId>
+      <executions>
+        <execution>
+          <phase>generate-resources</phase>
+          <goals>
+              <goal>execute</goal>
+          </goals>
+          <configuration>
+            <source>${project.basedir}/src/main/script/Main.groovy</source>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+
