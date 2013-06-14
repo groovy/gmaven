@@ -46,3 +46,17 @@ When executing a goal directly without a project, the scope may be configured by
 
 For all supported values and additional documentation see
 [ClasspathScope](apidocs/org/codehaus/gmaven/plugin/ClasspathScope.html).
+
+Any additional classpath which may be needed can also be configured on the plugin definition:
+
+    <plugin>
+      <groupId>org.codehaus.gmaven</groupId>
+      <artifactId>groovy-maven-plugin</artifactId>
+      <dependencies>
+        <dependency>
+          <groupId>commons-lang</groupId>
+          <artifactId>commons-lang</artifactId>
+          <version>2.6</version>
+        </dependency>
+      </dependencies>
+    </plugin>
