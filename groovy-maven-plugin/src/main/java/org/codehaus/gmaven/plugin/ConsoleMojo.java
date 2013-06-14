@@ -28,6 +28,9 @@ import static org.apache.maven.plugins.annotations.ResolutionScope.TEST;
 /**
  * Open a Groovy console window.
  *
+ * <br/>
+ * See <a href="console.html">usage</a> for more details.
+ *
  * @since 2.0
  */
 @Mojo(name = "console", requiresProject = false, requiresDependencyResolution = TEST, aggregator = true)

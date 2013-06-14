@@ -27,6 +27,9 @@ import static org.apache.maven.plugins.annotations.ResolutionScope.TEST;
 /**
  * Run {@code groovysh} shell.
  *
+ * <br/>
+ * See <a href="shell.html">usage</a> for more details.
+ *
  * @since 2.0
  */
 @Mojo(name = "shell", requiresProject = false, requiresDependencyResolution = TEST, aggregator = true)

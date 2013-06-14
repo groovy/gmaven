@@ -31,6 +31,9 @@ import static org.apache.maven.plugins.annotations.ResolutionScope.TEST;
 /**
  * Execute a Groovy script.
  *
+ * <br/>
+ * See <a href="execute.html">usage</a> for more details.
+ *
  * @since 2.0
  */
 @Mojo(name = "execute", requiresProject = false, threadSafe = true, requiresDependencyResolution = TEST)
@@ -43,10 +46,19 @@ public class ExecuteMojo
   /**
    * Source of the script to execute.
    *
-   * Can be one of: URL, File or inline script.
+   * <br/>
+   * Allowed content flavors:
+   * <ul>
+   *   <li>File</li>
+   *   <li>URL</li>
+   *   <li>Inline script</li>
+   * </ul>
    *
+   * <br/>
    * When using inline scripts, be aware that Maven will interpolate this value early when configuring execution.
    * This may cause problems if the script is expecting {@code groovy.lang.GString} evaluation instead.
+   *
+   * <br/>
    * Scripts which make use of GString expressions should seriously consider using a File or URL source instead.
    */
   @Parameter(property = "source", required = true)
@@ -55,6 +67,7 @@ public class ExecuteMojo
   /**
    * Execution property overrides.
    *
+   * <br/>
    * Any property defined here will take precedence over any other definition.
    */
   @Parameter
@@ -63,6 +76,7 @@ public class ExecuteMojo
   /**
    * Execution property defaults.
    *
+   * <br/>
    * Any property defined _elsewhere_ (project, user, system, etc) will take precedence over default values.
    */
   @Parameter

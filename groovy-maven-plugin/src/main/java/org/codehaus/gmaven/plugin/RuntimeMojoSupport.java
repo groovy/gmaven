@@ -97,7 +97,15 @@ public abstract class RuntimeMojoSupport
   /**
    * Include additional classpath from project artifacts in given scope.
    *
-   * Scope can be one of: none, provided, compile, runtime, test
+   * <br/>
+   * Scope can be one of:
+   * <ul>
+   *   <li>none</li>
+   *   <li>provided</li>
+   *   <li>compile</li>
+   *   <li>runtime</li>
+   *   <li>test</li>
+   * </ul>
    */
   @Parameter(property = "scope", defaultValue = "none")
   private ClasspathScope classpathScope;
@@ -105,6 +113,7 @@ public abstract class RuntimeMojoSupport
   /**
    * Path to search for imported scripts.
    *
+   * <br/>
    * Supports -Dscriptpath=PATH,PATH property syntax.
    */
   @Parameter(property = "scriptpath")
