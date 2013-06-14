@@ -28,8 +28,8 @@
 
     <menu name="Usage">
       <item name="Script Execution" href="execute.html"/>
-      <item name="Open Console" href="console.html"/>
-      <item name="Run Shell" href="shell.html"/>
+      <item name="Console" href="console.html"/>
+      <item name="Shell" href="shell.html"/>
       <item name="Variables" href="variables.html"/>
       <item name="Classpath" href="classpath.html"/>
       <item name="Scriptpath" href="scriptpath.html"/>
