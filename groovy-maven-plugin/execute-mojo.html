@@ -97,9 +97,9 @@
                                 
       <li>
     
-                          <a href="execute.html" title="Script Execution">
+                          <a href="execute.html" title="Execute">
           <i class="none"></i>
-        Script Execution</a>
+        Execute</a>
             </li>
                   
       <li>
@@ -240,7 +240,8 @@
       
 <p><b>Description</b>:</p>
       
-<div>Execute a Groovy script.</div>
+<div>Execute a Groovy script. <br />
+See <a href="execute.html">usage</a> for more details.</div>
       
 <p><b>Attributes</b>:</p>
       
@@ -277,13 +278,24 @@
             
 <td><tt>2.0</tt></td>
             
-<td>Source of the script to execute. Can be one of: URL, File or inline
-script. When using inline scripts, be aware that Maven will
-interpolate this value early when configuring execution. This may
-cause problems if the script is expecting
-<tt>groovy.lang.GString</tt> evaluation instead. Scripts which
-make use of GString expressions should seriously consider using a
-File or URL source instead.<br /><b>User property is</b>: <tt>source</tt>.</td>
+<td>Source of the script to execute. <br />
+Allowed content flavors: 
+
+<ul>
+
+<li>File</li>
+
+<li>URL</li>
+
+<li>Inline script</li>
+</ul>
+<br />
+When using inline scripts, be aware that Maven will interpolate
+this value early when configuring execution. This may cause
+problems if the script is expecting
+<tt>groovy.lang.GString</tt> evaluation instead. <br />
+Scripts which make use of GString expressions should seriously
+consider using a File or URL source instead.<br /><b>User property is</b>: <tt>source</tt>.</td>
           </tr>
         </table>
       </div>
@@ -313,7 +325,21 @@ File or URL source instead.<br /><b>User property is</b>: <tt>source</tt>.</td>
 <td><tt>2.0</tt></td>
             
 <td>Include additional classpath from project artifacts in given scope.
-Scope can be one of: none, provided, compile, runtime, test<br /><b>Default value is</b>: <tt>none</tt>.<br /><b>User property is</b>: <tt>scope</tt>.</td>
+<br />
+Scope can be one of: 
+
+<ul>
+
+<li>none</li>
+
+<li>provided</li>
+
+<li>compile</li>
+
+<li>runtime</li>
+
+<li>test</li>
+</ul><br /><b>Default value is</b>: <tt>none</tt>.<br /><b>User property is</b>: <tt>scope</tt>.</td>
           </tr>
           
 <tr class="a">
@@ -324,9 +350,9 @@ Scope can be one of: none, provided, compile, runtime, test<br /><b>Default valu
             
 <td><tt>2.0</tt></td>
             
-<td>Execution property defaults. Any property defined _elsewhere_
-(project, user, system, etc) will take precedence over default
-values.<br /></td>
+<td>Execution property defaults. <br />
+Any property defined _elsewhere_ (project, user, system, etc) will
+take precedence over default values.<br /></td>
           </tr>
           
 <tr class="b">
@@ -337,8 +363,9 @@ values.<br /></td>
             
 <td><tt>2.0</tt></td>
             
-<td>Execution property overrides. Any property defined here will take
-precedence over any other definition.<br /></td>
+<td>Execution property overrides. <br />
+Any property defined here will take precedence over any other
+definition.<br /></td>
           </tr>
           
 <tr class="a">
@@ -349,8 +376,8 @@ precedence over any other definition.<br /></td>
             
 <td><tt>2.0</tt></td>
             
-<td>Path to search for imported scripts. Supports
--Dscriptpath=PATH,PATH property syntax.<br /><b>User property is</b>: <tt>scriptpath</tt>.</td>
+<td>Path to search for imported scripts. <br />
+Supports -Dscriptpath=PATH,PATH property syntax.<br /><b>User property is</b>: <tt>scriptpath</tt>.</td>
           </tr>
         </table>
       </div>
@@ -361,7 +388,21 @@ precedence over any other definition.<br /></td>
 <p><b><a name="classpathScope">classpathScope</a>:</b></p>
         
 <div>Include additional classpath from project artifacts in given scope.
-Scope can be one of: none, provided, compile, runtime, test</div>
+<br />
+Scope can be one of: 
+
+<ul>
+
+<li>none</li>
+
+<li>provided</li>
+
+<li>compile</li>
+
+<li>runtime</li>
+
+<li>test</li>
+</ul></div>
         
 <ul>
           
@@ -377,9 +418,9 @@ Scope can be one of: none, provided, compile, runtime, test</div>
         </ul><hr />
 <p><b><a name="defaults">defaults</a>:</b></p>
         
-<div>Execution property defaults. Any property defined _elsewhere_
-(project, user, system, etc) will take precedence over default
-values.</div>
+<div>Execution property defaults. <br />
+Any property defined _elsewhere_ (project, user, system, etc) will
+take precedence over default values.</div>
         
 <ul>
           
@@ -391,8 +432,9 @@ values.</div>
         </ul><hr />
 <p><b><a name="properties">properties</a>:</b></p>
         
-<div>Execution property overrides. Any property defined here will take
-precedence over any other definition.</div>
+<div>Execution property overrides. <br />
+Any property defined here will take precedence over any other
+definition.</div>
         
 <ul>
           
@@ -404,8 +446,8 @@ precedence over any other definition.</div>
         </ul><hr />
 <p><b><a name="scriptpath">scriptpath</a>:</b></p>
         
-<div>Path to search for imported scripts. Supports
--Dscriptpath=PATH,PATH property syntax.</div>
+<div>Path to search for imported scripts. <br />
+Supports -Dscriptpath=PATH,PATH property syntax.</div>
         
 <ul>
           
@@ -419,13 +461,24 @@ precedence over any other definition.</div>
         </ul><hr />
 <p><b><a name="source">source</a>:</b></p>
         
-<div>Source of the script to execute. Can be one of: URL, File or inline
-script. When using inline scripts, be aware that Maven will
-interpolate this value early when configuring execution. This may
-cause problems if the script is expecting
-<tt>groovy.lang.GString</tt> evaluation instead. Scripts which
-make use of GString expressions should seriously consider using a
-File or URL source instead.</div>
+<div>Source of the script to execute. <br />
+Allowed content flavors: 
+
+<ul>
+
+<li>File</li>
+
+<li>URL</li>
+
+<li>Inline script</li>
+</ul>
+<br />
+When using inline scripts, be aware that Maven will interpolate
+this value early when configuring execution. This may cause
+problems if the script is expecting
+<tt>groovy.lang.GString</tt> evaluation instead. <br />
+Scripts which make use of GString expressions should seriously
+consider using a File or URL source instead.</div>
         
 <ul>
           
