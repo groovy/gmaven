@@ -24,7 +24,16 @@
     <menu name="Overview">
       <item name="About" href="index.html"/>
       <item name="Goals" href="plugin-info.html"/>
-      <item name="Usage" href="usage.html"/>
+    </menu>
+
+    <menu name="Usage">
+      <item name="Execute Script" href="execute.html"/>
+      <item name="Open Console" href="console.html"/>
+      <item name="Run Shell" href="shell.html"/>
+      <item name="Context Variables" href="variables.html"/>
+      <item name="Classpath" href="classpath.html"/>
+      <item name="Scriptpath" href="scriptpath.html"/>
+      <item name="Logging" href="logging.html"/>
     </menu>
 
     <menu name="Details">

@@ -14,24 +14,38 @@
 -->
 # Groovy Maven Plugin
 
-TODO
+See _USAGE_ content for more details.
 
-Common:
-* Hard requirements for Maven and Groovy versions
-* Default context variables
-* Resolving external script locations
-* Customize Groovy version
-* Enable verbose logging
-* System.exit usage forbidden
-* Calling goals with and with-out projects
-* Accessing project classes and dependencies
+### Hard Requirements
 
-Features:
-* Script execution
-  * Source configuration
-    * Details about Maven interpolation and GStrings in inline-source configurations
-  * Properties, defaults and precedence
-* Open console
-* Run shell
+The Maven and Groovy version requirements are ***hard*** requirements.
 
+When goals are executing the versions of Maven and Groovy are detected.
+If they are not compatible the goals will fail with an error.
 
+### Customizing Groovy Version
+
+To customize the version of Groovy the plugin will use, override the `org.codehaus.groovy:groovy-all` dependency
+on the plugin definition in the project.
+
+For example to use Groovy 2.0.6 instead of the default:
+
+    <plugin>
+      <groupId>org.codehaus.gmaven</groupId>
+      <artifactId>groovy-maven-plugin</artifactId>
+      <dependencies>
+        <dependency>
+          <groupId>org.codehaus.groovy</groupId>
+          <artifactId>groovy-all</artifactId>
+          <version>2.0.6</version>
+        </dependency>
+      </dependencies>
+    </plugin>
+
+There is currently no way to change the Groovy version without a project.
+Direct execution of goals will always use the default Groovy version.
+
+### System.exit Forbidden
+
+Use of `java.lang.System.exit`, `java.lang.Runtime.exit` or `java.lang.Runtime.halt` is ***forbidden***
+from use by a script execution or evaluation in console or shells.
