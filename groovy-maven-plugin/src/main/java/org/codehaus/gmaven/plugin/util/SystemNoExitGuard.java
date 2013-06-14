@@ -16,7 +16,8 @@ import java.io.InputStream;
 import java.io.PrintStream;
 
 /**
- * Helper to guard {@link Task} execution against use of {@link System#exit(int)} and replacement of system streams.
+ * Helper to guard {@link Task} execution against use of {@link System#exit(int)} (and related)
+ * and to restore system streams once the task has finished.
  *
  * @since 2.0
  */
