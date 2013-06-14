@@ -12,7 +12,7 @@
     See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 
 -->
-# Context Variables
+# Variables
 
 All goals which invoke the Groovy runtime, expose a set of predefined context (aka binding) variables.
 

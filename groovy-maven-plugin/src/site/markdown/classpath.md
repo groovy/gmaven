@@ -14,4 +14,35 @@
 -->
 # Classpath
 
-TODO
+When executing a goal with a Maven project, GMaven can provide access to the classpath of the project for a
+particular scope.  This is controlled by the `classpathScope` parameter.
+
+For example, to execute a script and include the `runtime` scope dependencencies on the classpath:
+
+    <plugin>
+      <groupId>org.codehaus.gmaven</groupId>
+      <artifactId>groovy-maven-plugin</artifactId>
+      <executions>
+        <execution>
+          <phase>process-classes</phase>
+          <goals>
+              <goal>execute</goal>
+          </goals>
+          <configuration>
+            <classpathScope>runtime</classpathScope>
+            <source>
+              // this script has access to the compiled classes and all depencencies of scope=runtime.
+            </source>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+
+By default `classpathScope` is set to `none` which means that no additional classpath elements will be available.
+
+When executing a goal directly without a project, the scope may be configured by setting the `scope` property:
+
+    mvn groovy:shell -Dscope=test
+
+For all supported values and additional documentation see
+[ClasspathScope](apidocs/org/codehaus/gmaven/plugin/ClasspathScope.html).
