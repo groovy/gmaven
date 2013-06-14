@@ -37,6 +37,16 @@ public class FailClosureTargetTest
   }
 
   @Test
+  public void fail_null() throws Exception {
+    try {
+      underTest.call(null);
+    }
+    catch (MojoExecutionException e) {
+      assertThat(e.getMessage(), is(FailClosureTarget.FAILED));
+    }
+  }
+
+  @Test
   public void fail_noArgs() throws Exception {
     try {
       underTest.call(new Object[0]);
