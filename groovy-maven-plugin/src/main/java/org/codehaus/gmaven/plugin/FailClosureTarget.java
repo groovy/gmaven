@@ -20,36 +20,42 @@ import org.codehaus.gmaven.adapter.ClosureTarget;
 /**
  * Target implementation of {@code fail} closure.
  *
- * <p>
- * Failing with a simple string:
- * <code>
- * fail('I done goofed')
- * </code>
- * </p>
+ * <br/>
+ * Usage:
+ * <ul>
+ *   <li>{@code fail()}</li>
+ *   <li>{@code fail(Object)}</li>
+ *   <li>{@code fail(Throwable)}</li>
+ *   <li>{@code fail(Object, Throwable)}</li>
+ * </ul>
  *
- * <p>
+ * <br/>
+ * Failing with a simple string:
+ * <pre>
+ * fail('I done goofed')
+ * </pre>
+ *
+ * <br/>
  * Failing with an exception detail:
- * <code>
+ * <pre>
  * try {
  *   ....
  * }
  * catch (e) {
  *   fail(e)
  * }
- * </code>
- * </p>
+ * </pre>
  *
- * <p>
+ * <br/>
  * Failing with an exception detail and a message:
- * <code>
+ * <pre>
  * try {
  *   ....
  * }
  * catch (e) {
  *   fail('Houston we have a problem', e)
  * }
- * </code>
- * </p>
+ * </pre>
  *
  * @since 2.0
  */
@@ -61,14 +67,6 @@ public class FailClosureTarget
 
   /**
    * Throws {@link MojoExecutionException}.
-   *
-   * Usage:
-   * <ul>
-   * <li>{@code fail()}</li>
-   * <li>{@code fail(Object)}</li>
-   * <li>{@code fail(Throwable)}</li>
-   * <li>{@code fail(Object, Throwable)}</li>
-   * </ul>
    */
   public Object call(final Object[] args) throws Exception {
     if (args == null || args.length == 0) {
