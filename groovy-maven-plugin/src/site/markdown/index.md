@@ -43,7 +43,8 @@ For example to use Groovy 2.0.6 instead of the default:
     </plugin>
 
 There is currently no way to change the Groovy version without a project.
-Direct execution of goals will always use the default Groovy version.
+Direct execution of goals will always use the default Groovy version if no project is available.  When a project
+is available, then `pluginManagement` can be used to configure direct goal execution.
 
 ### System.exit Forbidden
 
