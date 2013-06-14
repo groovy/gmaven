@@ -14,10 +14,9 @@ package org.codehaus.gmaven.plugin.util;
 
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.concurrent.Callable;
 
 /**
- * Helper to guard {@link Callable} execution against use of {@link System#exit(int)} and replacement of system streams.
+ * Helper to guard {@link Task} execution against use of {@link System#exit(int)} and replacement of system streams.
  *
  * @since 2.0
  */
