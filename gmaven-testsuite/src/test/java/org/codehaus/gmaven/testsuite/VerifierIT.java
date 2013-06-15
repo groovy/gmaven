@@ -43,13 +43,10 @@ public class VerifierIT
         settingsFile.getAbsolutePath()
     );
 
-    // this can be pretty slow
+    // this can be pretty slow, also unless we install the plugin we built the deployed version will be used
     //File localRepo = util.resolveFile("target/maven-localrepo");
     //log("Local repo: {}", localRepo);
     //verifier.setLocalRepo(localRepo.getAbsolutePath());
-
-    // some issues with streams not resetting?
-    //verifier.resetStreams();
 
     return verifier;
   }
@@ -70,7 +67,7 @@ public class VerifierIT
 
 
   @Test
-  public void execute_groovyVersion() throws Exception {
+  public void execute_groovyVersion_2_1_4() throws Exception {
     Verifier verifier = createVerifier("execute-script");
 
     String testName = "groovyVersion";
@@ -78,10 +75,31 @@ public class VerifierIT
     verifier.getSystemProperties().setProperty("source", "${project.basedir}/${testName}.groovy");
     verifier.setLogFileName(testName + "-test.log");
 
+    verifier.getSystemProperties().setProperty("groovy.version", "2.1.4");
     verifier.executeGoal("groovy:execute");
     verifier.verifyErrorFreeLog();
     verifier.verifyTextInLog("ALL OK");
     verifier.verifyTextInLog("Version: 2.1.4");
+
+    verifier.resetStreams();
+  }
+
+  @Test
+  public void execute_groovyVersion_2_0_6() throws Exception {
+    Verifier verifier = createVerifier("execute-script");
+
+    String testName = "groovyVersion";
+    verifier.getSystemProperties().setProperty("testName", testName);
+    verifier.getSystemProperties().setProperty("source", "${project.basedir}/${testName}.groovy");
+    verifier.setLogFileName(testName + "-test.log");
+
+    verifier.getSystemProperties().setProperty("groovy.version", "2.0.6");
+    verifier.executeGoal("groovy:execute");
+    verifier.verifyErrorFreeLog();
+    verifier.verifyTextInLog("ALL OK");
+    verifier.verifyTextInLog("Version: 2.0.6");
+
+    verifier.resetStreams();
   }
 
 }
