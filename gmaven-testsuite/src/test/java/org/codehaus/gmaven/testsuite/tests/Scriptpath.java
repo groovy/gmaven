@@ -19,7 +19,7 @@ import org.codehaus.gmaven.testsuite.ITSupport;
 import org.junit.Test;
 
 /**
- * Verify property resolution.
+ * Verify scriptpath resolution.
  */
 public class Scriptpath
     extends ITSupport
