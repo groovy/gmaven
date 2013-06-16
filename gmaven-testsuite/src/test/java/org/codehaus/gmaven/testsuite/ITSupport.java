@@ -23,6 +23,7 @@ import org.sonatype.sisu.litmus.testsupport.TestSupport;
 import org.sonatype.sisu.litmus.testsupport.hamcrest.FileMatchers;
 import org.sonatype.sisu.litmus.testsupport.junit.TestIndexRule;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.apache.commons.io.FileUtils;
@@ -108,18 +109,20 @@ public abstract class ITSupport
   }
 
   private File createSettingsFile(final File buildRepository) throws Exception {
-    File template = util.resolveFile("src/test/it-projects/settings.xml");
+    return interpolate(
+        util.resolveFile("src/test/it-projects/settings.xml"),
+        ImmutableMap.of(
+            "localRepositoryUrl", buildRepository.toURI().toURL().toExternalForm()
+        )
+    );
+  }
 
+  private File interpolate(final File template, final Map<String, String> context) throws Exception {
     String content = FileUtils.readFileToString(template);
     Interpolator interpolator = new StringSearchInterpolator();
-
-    Map<String, String> props = Maps.newHashMap();
-    props.put("localRepositoryUrl", buildRepository.toURI().toURL().toExternalForm());
-    interpolator.addValueSource(new MapBasedValueSource(props));
-
+    interpolator.addValueSource(new MapBasedValueSource(context));
     content = interpolator.interpolate(content);
-
-    File file = util.createTempFile("settings.xml");
+    File file = util.createTempFile();
     FileUtils.write(file, content);
     return file;
   }

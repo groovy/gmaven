@@ -24,7 +24,7 @@
       </activation>
       <repositories>
         <repository>
-          <id>local</id>
+          <id>it-repo</id>
           <url>${localRepositoryUrl}</url>
           <releases>
             <enabled>true</enabled>
@@ -36,7 +36,7 @@
       </repositories>
       <pluginRepositories>
         <pluginRepository>
-          <id>local</id>
+          <id>it-repo</id>
           <url>${localRepositoryUrl}</url>
           <releases>
             <enabled>true</enabled>
