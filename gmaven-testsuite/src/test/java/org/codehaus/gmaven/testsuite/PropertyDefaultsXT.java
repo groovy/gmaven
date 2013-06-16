@@ -27,10 +27,8 @@ public class PropertyDefaultsXT
     verifier.getSystemProperties().put("source", "printResult.groovy");
     verifier.addCliOption("-P" + profileId);
 
-    verifier.addCliOption("-X");
-    verifier.addCliOption("-Dgmaven.logging=TRACE");
-
     verifier.executeGoal(goal("execute"));
+
     verifier.verifyErrorFreeLog();
     verifier.verifyTextInLog("RESULT: OK");
     verifier.verifyTextInLog("ALL OK");

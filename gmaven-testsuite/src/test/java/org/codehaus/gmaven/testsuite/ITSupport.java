@@ -227,6 +227,7 @@ public abstract class ITSupport
     Properties props = verifier.getSystemProperties();
     props.setProperty("underTest.version", underTestVersion);
     props.setProperty("groovy.version", groovyVersion);
+    props.setProperty("gmaven.logging", "DEBUG");
 
     // this can be pretty slow, also unless we install the plugin we built the deployed version will be used
     //File localRepo = util.resolveFile("target/maven-localrepo");
