@@ -207,7 +207,7 @@ public abstract class ITSupport
   }
 
   /**
-   * Create a new file interplating from given template.
+   * Create a new file interpolating from given template.
    */
   private File interpolate(final File template, final Map<String, String> context) throws Exception {
     String content = FileUtils.readFileToString(template);
