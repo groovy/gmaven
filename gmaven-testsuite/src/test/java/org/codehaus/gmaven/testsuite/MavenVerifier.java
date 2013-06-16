@@ -15,25 +15,48 @@ package org.codehaus.gmaven.testsuite;
 
 import java.io.File;
 
+import org.apache.maven.it.Verifier;
+
 /**
- * Extended {@link org.apache.maven.it.Verifier}.
+ * Wrapper around {@link org.apache.maven.it.Verifier} to provide saner API.
  */
 public class MavenVerifier
-  extends org.apache.maven.it.Verifier
 {
+  private final Verifier delegate;
+
   public MavenVerifier(final File projectDir, final File settingsFile) throws Exception {
-    super(projectDir.getAbsolutePath(), settingsFile.getAbsolutePath());
+    this.delegate = new Verifier(projectDir.getAbsolutePath(), settingsFile.getAbsolutePath());
+  }
+
+  public MavenVerifier setProperty(final String name, final String value) {
+    delegate.getSystemProperties().setProperty(name, value);
+    return this;
+  }
+
+  public MavenVerifier addArg(final String arg) {
+    delegate.addCliOption(arg);
+    return this;
+  }
+
+  public MavenVerifier addProfile(final String profileId) {
+    delegate.addCliOption("-P" + profileId);
+    return this;
   }
 
   public MavenVerifier errorFree() throws Exception {
-    verifyErrorFreeLog();
+    delegate.verifyErrorFreeLog();
     return this;
   }
 
   public MavenVerifier logContains(final String... values) throws Exception {
     for (String value : values) {
-      verifyTextInLog(value);
+      delegate.verifyTextInLog(value);
     }
+    return this;
+  }
+
+  public MavenVerifier executeGoal(final String goal) throws Exception {
+    delegate.executeGoal(goal);
     return this;
   }
 }

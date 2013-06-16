@@ -213,14 +213,14 @@ public abstract class ITSupport
     testIndex.recordAndCopyLink(label, new File(testIndex.getDirectory(), fileName));
   }
 
-  protected MavenVerifierBuilder verifier(final String projectName) throws Exception {
+  protected MavenVerifier verifier(final String projectName) throws Exception {
     File sourceDir = util.resolveFile("src/test/it-projects/" + projectName);
     File projectDir = testIndex.getDirectory();
 
     log("Copying {} -> {}", sourceDir, projectDir);
     FileUtils.copyDirectory(sourceDir, projectDir);
 
-    MavenVerifierBuilder builder = new MavenVerifierBuilder(projectDir, settingsFile);
+    MavenVerifier builder = new MavenVerifier(projectDir, settingsFile);
 
     // include env details in log
     builder.addArg("-V");

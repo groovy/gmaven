@@ -11,11 +11,13 @@
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
 
-package org.codehaus.gmaven.testsuite;
+package org.codehaus.gmaven.testsuite.xt;
 
 import java.io.File;
 import java.net.URL;
 
+import org.codehaus.gmaven.testsuite.ITSupport;
+import org.codehaus.gmaven.testsuite.MavenVerifier;
 import org.junit.Test;
 
 /**
@@ -25,13 +27,9 @@ public class ExecuteBasicsXT
     extends ITSupport
 {
   private MavenVerifier executeScript(final String source) throws Exception {
-    MavenVerifier verifier = verifier("execute-script")
+    return verifier("execute-script")
         .setProperty("source", source)
-        .build();
-
-    verifier.executeGoal(goal("execute"));
-
-    return verifier;
+        .executeGoal(goal("execute"));
   }
 
   private MavenVerifier executeScriptFileName(final String fileName) throws Exception {
@@ -43,9 +41,9 @@ public class ExecuteBasicsXT
    */
   @Test
   public void defaultContext() throws Exception {
-    MavenVerifier verifier = executeScriptFileName("defaultContext.groovy");
-    verifier.verifyErrorFreeLog();
-    verifier.verifyTextInLog("ALL OK");
+    executeScriptFileName("defaultContext.groovy")
+        .errorFree()
+        .logContains("ALL OK");
   }
 
   /**
@@ -53,8 +51,7 @@ public class ExecuteBasicsXT
    */
   @Test
   public void groovyVersion() throws Exception {
-    MavenVerifier verifier = executeScriptFileName("groovyVersion.groovy");
-    verifier
+    executeScriptFileName("groovyVersion.groovy")
         .errorFree()
         .logContains(
             "Version: " + getGroovyVersion(),
@@ -67,8 +64,7 @@ public class ExecuteBasicsXT
    */
   @Test
   public void simpleInlineSource() throws Exception {
-    MavenVerifier verifier = executeScript("println(12345+1)");
-    verifier
+    executeScript("println(12345+1)")
         .errorFree()
         .logContains("12346");
   }
@@ -79,8 +75,7 @@ public class ExecuteBasicsXT
   @Test
   public void simpleFileSource() throws Exception {
     File file = new File(testIndex.getDirectory(), "simple.groovy");
-    MavenVerifier verifier = executeScript(file.getAbsolutePath());
-    verifier
+    executeScript(file.getAbsolutePath())
         .errorFree()
         .logContains("ALL OK");
   }
@@ -91,8 +86,7 @@ public class ExecuteBasicsXT
   @Test
   public void simpleUrlSource() throws Exception {
     URL url = new File(testIndex.getDirectory(), "simple.groovy").toURI().toURL();
-    MavenVerifier verifier = executeScript(url.toExternalForm());
-    verifier
+    executeScript(url.toExternalForm())
         .errorFree()
         .logContains("ALL OK");
   }

@@ -1,7 +1,7 @@
 package org.codehaus.gmaven.testsuite.suite;
 
-import org.codehaus.gmaven.testsuite.ExecuteBasicsXT;
-import org.codehaus.gmaven.testsuite.PropertyResolutionXT;
+import org.codehaus.gmaven.testsuite.xt.ExecuteBasicsXT;
+import org.codehaus.gmaven.testsuite.xt.PropertyResolutionXT;
 import org.junit.runners.Suite.SuiteClasses;
 
 /**

@@ -11,8 +11,10 @@
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
 
-package org.codehaus.gmaven.testsuite;
+package org.codehaus.gmaven.testsuite.xt;
 
+import org.codehaus.gmaven.testsuite.ITSupport;
+import org.codehaus.gmaven.testsuite.MavenVerifier;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -22,7 +24,7 @@ import org.junit.Test;
 public class PropertyResolutionXT
     extends ITSupport
 {
-  private MavenVerifierBuilder verifier() throws Exception {
+  private MavenVerifier verifier() throws Exception {
     return verifier("property-resolution")
         .setProperty("source", "printResult.groovy")
         .addProfile(testName.getMethodName());
@@ -39,44 +41,44 @@ public class PropertyResolutionXT
 
   @Test
   public void onlyDefaultDefined() throws Exception {
-    MavenVerifier verifier = verifier()
-        .build();
-    verifier.executeGoal(goal("execute"));
-    verify(verifier);
+    verify(
+        verifier()
+            .executeGoal(goal("execute"))
+    );
   }
 
   @Test
   public void defaultReferencesProjectProperty() throws Exception {
-    MavenVerifier verifier = verifier()
-        .build();
-    verifier.executeGoal(goal("execute"));
-    verify(verifier);
+    verify(
+        verifier()
+            .executeGoal(goal("execute"))
+    );
   }
 
   @Test
   public void defaultReferencesSystemProperty() throws Exception {
-    MavenVerifier verifier = verifier()
-        .setProperty("foo", "OK")
-        .build();
-    verifier.executeGoal(goal("execute"));
-    verify(verifier);
+    verify(
+        verifier()
+            .setProperty("foo", "OK")
+            .executeGoal(goal("execute"))
+    );
   }
 
   @Test
   public void overrideReferencesSystemProperty() throws Exception {
-    MavenVerifier verifier = verifier()
-        .setProperty("foo", "OK")
-        .build();
-    verifier.executeGoal(goal("execute"));
-    verify(verifier);
+    verify(
+        verifier()
+            .setProperty("foo", "OK")
+            .executeGoal(goal("execute"))
+    );
   }
 
   @Test
   @Ignore("FIXME: This test has issues due to Maven interpolation before execution")
   public void overrideReferencesDefault() throws Exception {
-    MavenVerifier verifier = verifier()
-        .build();
-    verifier.executeGoal(goal("execute"));
-    verify(verifier);
+    verify(
+        verifier()
+            .executeGoal(goal("execute"))
+    );
   }
 }
