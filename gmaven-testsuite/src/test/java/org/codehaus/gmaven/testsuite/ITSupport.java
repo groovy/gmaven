@@ -32,7 +32,7 @@ import static org.junit.Assert.assertThat;
 /**
  * Support for integration tests.
  */
-public class ITSupport
+public abstract class ITSupport
     extends TestSupport
 {
   public static final String DEFAULT_MAVEN_VERSION = "3.0.5";
