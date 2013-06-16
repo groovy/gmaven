@@ -25,26 +25,25 @@ import org.apache.maven.it.Verifier;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
 import org.junit.rules.TestName;
 
 import static org.junit.Assert.assertThat;
 
 /**
- * ???
+ * Support for integration tests.
  */
-public class VerifierTrial
+public class ITSupport
     extends TestSupport
 {
   public static final String DEFAULT_MAVEN_VERSION = "3.0.5";
 
   public static final String DEFAULT_GROOVY_VERSION = "2.1.5";
 
-  private String mavenVersion;
+  protected String mavenVersion;
 
-  private File mavenHome;
+  protected File mavenHome;
 
-  private String groovyVersion;
+  protected String groovyVersion;
 
   @Rule
   public final TestName testName = new TestName();
@@ -85,7 +84,7 @@ public class VerifierTrial
     recordLink("mvn log", "log.txt");
   }
 
-  private Verifier createVerifier(final String projectName) throws Exception {
+  protected Verifier createVerifier(final String projectName) throws Exception {
     File sourceDir = util.resolveFile("src/test/it-projects/" + projectName);
     File projectDir = testIndex.getDirectory();
 
@@ -102,7 +101,7 @@ public class VerifierTrial
     return verifier;
   }
 
-  private Verifier executeScript(final String source) throws Exception {
+  protected Verifier executeScript(final String source) throws Exception {
     log("Execute script: {}", source);
 
     Verifier verifier = createVerifier("execute-script");
@@ -117,72 +116,7 @@ public class VerifierTrial
     return verifier;
   }
 
-  private Verifier executeScriptFile(final String scriptFilename) throws Exception {
-    log("Execute script file: {}", scriptFilename);
-
-    Verifier verifier = createVerifier("execute-script");
-    File basedir = new File(verifier.getBasedir());
-
-    Properties sysprops = verifier.getSystemProperties();
-    sysprops.setProperty("groovy.version", groovyVersion);
-    sysprops.setProperty("source", new File(basedir, scriptFilename).getAbsolutePath());
-
-    verifier.executeGoal("org.codehaus.gmaven:groovy-maven-plugin:execute");
-    verifier.resetStreams();
-
-    return verifier;
-  }
-
-  /**
-   * Verifies all default variables in context.
-   */
-  @Test
-  public void defaultVariables() throws Exception {
-    Verifier verifier = executeScriptFile("defaultVariables.groovy");
-    verifier.verifyErrorFreeLog();
-    verifier.verifyTextInLog("ALL OK");
-  }
-
-  /**
-   * Verify configured groovy runtime version matches what is detected.
-   */
-  @Test
-  public void groovyVersion() throws Exception {
-    Verifier verifier = executeScriptFile("groovyVersion.groovy");
-    verifier.verifyErrorFreeLog();
-    verifier.verifyTextInLog("ALL OK");
-    verifier.verifyTextInLog("Version: " + groovyVersion);
-  }
-
-  /**
-   * Verify execution of a simple inline-source script.
-   */
-  @Test
-  public void simpleInlineSource() throws Exception {
-    Verifier verifier = executeScript("println(12345)");
-    verifier.verifyErrorFreeLog();
-    verifier.verifyTextInLog("12345");
-  }
-
-  /**
-   * Verify execution of a simple file-source script.
-   */
-  @Test
-  public void simpleFileSource() throws Exception {
-    File file = new File(testIndex.getDirectory(), "simple.groovy");
-    Verifier verifier = executeScript(file.getAbsolutePath());
-    verifier.verifyErrorFreeLog();
-    verifier.verifyTextInLog("ALL OK");
-  }
-
-  /**
-   * Verify execution of a simple url-source script.
-   */
-  @Test
-  public void simpleUrlSource() throws Exception {
-    File file = new File(testIndex.getDirectory(), "simple.groovy");
-    Verifier verifier = executeScript(file.toURI().toURL().toExternalForm());
-    verifier.verifyErrorFreeLog();
-    verifier.verifyTextInLog("ALL OK");
+  protected Verifier executeScriptFileName(final String fileName) throws Exception {
+    return executeScript(new File(testIndex.getDirectory(), fileName).getAbsolutePath());
   }
 }
