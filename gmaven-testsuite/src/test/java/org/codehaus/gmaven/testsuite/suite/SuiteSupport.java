@@ -1,15 +1,15 @@
 package org.codehaus.gmaven.testsuite.suite;
 
-import org.codehaus.gmaven.testsuite.xt.ExecuteBasicsXT;
-import org.codehaus.gmaven.testsuite.xt.PropertyResolutionXT;
+import org.codehaus.gmaven.testsuite.tests.ExecuteBasics;
+import org.codehaus.gmaven.testsuite.tests.PropertyResolution;
 import org.junit.runners.Suite.SuiteClasses;
 
 /**
  * Support for suites.
  */
 @SuiteClasses({
-    ExecuteBasicsXT.class,
-    PropertyResolutionXT.class
+    ExecuteBasics.class,
+    PropertyResolution.class
 })
 public abstract class SuiteSupport
 {

@@ -11,7 +11,7 @@
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
 
-package org.codehaus.gmaven.testsuite.xt;
+package org.codehaus.gmaven.testsuite.tests;
 
 import java.io.File;
 import java.net.URL;
@@ -23,7 +23,7 @@ import org.junit.Test;
 /**
  * Verify 'execute' basics.
  */
-public class ExecuteBasicsXT
+public class ExecuteBasics
     extends ITSupport
 {
   private MavenVerifier executeScript(final String source) throws Exception {

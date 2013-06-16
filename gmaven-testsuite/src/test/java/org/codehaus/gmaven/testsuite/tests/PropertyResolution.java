@@ -11,7 +11,7 @@
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
 
-package org.codehaus.gmaven.testsuite.xt;
+package org.codehaus.gmaven.testsuite.tests;
 
 import org.codehaus.gmaven.testsuite.ITSupport;
 import org.codehaus.gmaven.testsuite.MavenVerifier;
@@ -21,7 +21,7 @@ import org.junit.Test;
 /**
  * Verify property resolution.
  */
-public class PropertyResolutionXT
+public class PropertyResolution
     extends ITSupport
 {
   private MavenVerifier verifier() throws Exception {
