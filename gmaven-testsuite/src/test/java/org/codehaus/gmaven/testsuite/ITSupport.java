@@ -30,7 +30,6 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.apache.commons.io.FileUtils;
-import org.apache.maven.it.Verifier;
 import org.codehaus.plexus.interpolation.Interpolator;
 import org.codehaus.plexus.interpolation.MapBasedValueSource;
 import org.codehaus.plexus.interpolation.StringSearchInterpolator;
@@ -206,55 +205,26 @@ public abstract class ITSupport
     testIndex.recordAndCopyLink(label, new File(testIndex.getDirectory(), fileName));
   }
 
-  protected Verifier createVerifier(final String projectName) throws Exception {
+  protected MavenVerifierBuilder verifier(final String projectName) throws Exception {
     File sourceDir = util.resolveFile("src/test/it-projects/" + projectName);
     File projectDir = testIndex.getDirectory();
 
     log("Copying {} -> {}", sourceDir, projectDir);
     FileUtils.copyDirectory(sourceDir, projectDir);
 
-    Verifier verifier = new Verifier(
-        projectDir.getAbsolutePath(),
-        settingsFile.getAbsolutePath()
-    );
-
-    // we are not embedded restore hijacked streams
-    verifier.resetStreams();
+    MavenVerifierBuilder builder = new MavenVerifierBuilder(projectDir, settingsFile);
 
     // include env details in log
-    verifier.addCliOption("-V");
+    builder.addArg("-V");
 
-    Properties props = verifier.getSystemProperties();
-    props.setProperty("underTest.version", underTestVersion);
-    props.setProperty("groovy.version", groovyVersion);
-    props.setProperty("gmaven.logging", "DEBUG");
+    builder.setProperty("underTest.version", underTestVersion);
+    builder.setProperty("groovy.version", groovyVersion);
+    builder.setProperty("gmaven.logging", "DEBUG");
 
-    // this can be pretty slow, also unless we install the plugin we built the deployed version will be used
-    //File localRepo = util.resolveFile("target/maven-localrepo");
-    //log("Local repo: {}", localRepo);
-    //verifier.setLocalRepo(localRepo.getAbsolutePath());
-
-    return verifier;
-  }
-
-  protected Verifier executeScript(final String source) throws Exception {
-    log("Execute script: {}", source);
-
-    Verifier verifier = createVerifier("execute-script");
-    verifier.getSystemProperties().setProperty("source", source);
-
-    String goal = goal("execute");
-    log("Goal: {}", goal);
-    verifier.executeGoal(goal);
-
-    return verifier;
+    return builder;
   }
 
   protected String goal(final String execute) {
     return String.format("org.codehaus.gmaven:groovy-maven-plugin:%s:%s", underTestVersion, execute);
-  }
-
-  protected Verifier executeScriptFileName(final String fileName) throws Exception {
-    return executeScript(new File(testIndex.getDirectory(), fileName).getAbsolutePath());
   }
 }

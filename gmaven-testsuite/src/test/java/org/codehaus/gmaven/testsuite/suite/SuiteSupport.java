@@ -1,7 +1,7 @@
 package org.codehaus.gmaven.testsuite.suite;
 
 import org.codehaus.gmaven.testsuite.ExecuteBasicsXT;
-import org.codehaus.gmaven.testsuite.PropertyDefaultsXT;
+import org.codehaus.gmaven.testsuite.PropertyResolutionXT;
 import org.junit.runners.Suite.SuiteClasses;
 
 /**
@@ -9,7 +9,7 @@ import org.junit.runners.Suite.SuiteClasses;
  */
 @SuiteClasses({
     ExecuteBasicsXT.class,
-    PropertyDefaultsXT.class
+    PropertyResolutionXT.class
 })
 public abstract class SuiteSupport
 {

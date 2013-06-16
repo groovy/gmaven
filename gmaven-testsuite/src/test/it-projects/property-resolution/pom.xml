@@ -42,11 +42,8 @@
   </build>
 
   <profiles>
-    <!--
-    Only default defined.
-    -->
     <profile>
-      <id>1</id>
+      <id>onlyDefaultDefined</id>
       <build>
         <plugins>
           <plugin>
@@ -62,11 +59,8 @@
       </build>
     </profile>
 
-    <!--
-    Project property references default.
-    -->
     <profile>
-      <id>2</id>
+      <id>defaultReferencesProjectProperty</id>
       <properties>
         <result>${foo}</result>
       </properties>
@@ -85,11 +79,45 @@
       </build>
     </profile>
 
+    <profile>
+      <id>defaultReferencesSystemProperty</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.gmaven</groupId>
+            <artifactId>groovy-maven-plugin</artifactId>
+            <configuration>
+              <defaults>
+                <result>${foo}</result>
+              </defaults>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>overrideReferencesSystemProperty</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.gmaven</groupId>
+            <artifactId>groovy-maven-plugin</artifactId>
+            <configuration>
+              <properties>
+                <result>${foo}</result>
+              </properties>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
     <!--
-    Override references default.
+    FIXME: This does not function correctly, mvn interpolates ${foo} to null before GMaven can process it :-(
     -->
     <profile>
-      <id>3</id>
+      <id>overrideReferencesDefault</id>
       <build>
         <plugins>
           <plugin>
