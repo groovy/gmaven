@@ -26,11 +26,11 @@ public class ExecuteBasicsXT
     extends ITSupport
 {
   /**
-   * Verifies all default variables in context.
+   * Verifies all default context variables.
    */
   @Test
-  public void defaultVariables() throws Exception {
-    Verifier verifier = executeScriptFileName("defaultVariables.groovy");
+  public void defaultContext() throws Exception {
+    Verifier verifier = executeScriptFileName("defaultContext.groovy");
     verifier.verifyErrorFreeLog();
     verifier.verifyTextInLog("ALL OK");
   }

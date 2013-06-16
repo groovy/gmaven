@@ -19,25 +19,49 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.codehaus.gmaven.testsuite.it-projects</groupId>
-  <artifactId>execute-script</artifactId>
+  <artifactId>property-defaults</artifactId>
   <version>1</version>
 
   <build>
-    <plugins>
-      <plugin>
-        <groupId>org.codehaus.gmaven</groupId>
-        <artifactId>groovy-maven-plugin</artifactId>
-        <version>${underTest.version}</version>
-        <dependencies>
-          <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <version>${groovy.version}</version>
-          </dependency>
-        </dependencies>
-      </plugin>
-    </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.codehaus.gmaven</groupId>
+          <artifactId>groovy-maven-plugin</artifactId>
+          <version>${underTest.version}</version>
+          <dependencies>
+            <dependency>
+              <groupId>org.codehaus.groovy</groupId>
+              <artifactId>groovy-all</artifactId>
+              <version>${groovy.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
+
+  <profiles>
+    <profile>
+      <id>1</id>
+      <properties>
+        <bar>OK</bar>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.gmaven</groupId>
+            <artifactId>groovy-maven-plugin</artifactId>
+            <configuration>
+              <defaults>
+                <foo>${bar}</foo>
+              </defaults>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 
 </project>
 

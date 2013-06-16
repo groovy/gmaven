@@ -14,6 +14,9 @@
 package org.codehaus.gmaven.testsuite;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -48,6 +51,13 @@ public abstract class ITSupport
 
   public static final String DEFAULT_GROOVY_VERSION = "2.1.5";
 
+  public static final String DEFAULT_UNDER_TEST_VERSION = "2.0-SNAPSHOT";
+
+  /**
+   * The version of the groovy-maven-plugin which is under test.
+   */
+  protected String underTestVersion;
+
   protected String mavenVersion;
 
   protected File mavenHome;
@@ -64,16 +74,26 @@ public abstract class ITSupport
   public final TestName testName = new TestName();
 
   @Rule
-  public final TestIndexRule testIndex = new TestIndexRule(util.resolveFile("target/it-work"));
+  public final TestIndexRule testIndex = new TestIndexRule(
+      util.resolveFile("target/it-reports"),
+      util.resolveFile("target/it-work")
+  );
 
   @Before
   public void setUp() throws Exception {
-    logSystemProperties();
+    log("Index: {}", testIndex.getDirectory().getName());
+
+    underTestVersion = detectUnderTestVersion();
+    log("Under-test version: {}", underTestVersion);
+
+    log("System properties:");
+    logProperties(System.getProperties());
 
     mavenVersion = System.getProperty("maven.version", DEFAULT_MAVEN_VERSION);
     log("Maven version: {}", mavenVersion);
     mavenHome = util.resolveFile("target/filesets/apache-maven-" + mavenVersion);
-    assertThat(mavenHome, FileMatchers.exists());
+    assertThat("Missing maven installation: " + mavenHome,
+        mavenHome, FileMatchers.exists());
     System.setProperty("maven.home", mavenHome.getAbsolutePath());
     log("Maven home: {}", mavenHome);
 
@@ -99,14 +119,57 @@ public abstract class ITSupport
     System.out.println(">>>>>>>>>>");
   }
 
-  private void logSystemProperties() {
-    Map<String, String> props = Maps.fromProperties(System.getProperties());
-    List<String> keys = Lists.newArrayList(props.keySet());
+  @After
+  public void tearDown() throws Exception {
+    System.out.println("<<<<<<<<<<");
+
+    // FIXME: record failsafe details; this won't work because suite class is used
+    //String failsafePrefix = "../../failsafe-reports/" + getClass().getName();
+    //reportFile("test summary", failsafePrefix + ".txt");
+    //reportFile("test output", failsafePrefix + "-output.txt");
+
+    // record build log in index report
+    reportFile("mvn log", "log.txt");
+  }
+
+  private void logProperties(final Properties source) {
+    Map<String, String> map = Maps.fromProperties(source);
+    List<String> keys = Lists.newArrayList(map.keySet());
     Collections.sort(keys);
-    log("System properties:");
     for (String key : keys) {
-      log("  {}={}", key, props.get(key));
+      log("  {}={}", key, map.get(key));
     }
+  }
+
+  private Properties loadResourceProperties(final String resourceName) throws IOException {
+    Properties props = new Properties();
+
+    URL resource = getClass().getResource(resourceName);
+    if (resource != null) {
+      log("Loading properties from: {}", resource);
+      InputStream stream = resource.openStream();
+      try {
+        props.load(stream);
+      }
+      finally {
+        stream.close();
+      }
+    }
+
+    return props;
+  }
+
+  protected String detectUnderTestVersion() throws IOException {
+    Properties props = loadResourceProperties("/META-INF/maven/org.codehaus.gmaven/groovy-maven-plugin/pom.properties");
+    String version = props.getProperty("version");
+
+    // this can happen in IDE context, complain and move on
+    if (version == null) {
+      version = DEFAULT_UNDER_TEST_VERSION;
+      log("WARNING: unable to detect under-test version!");
+    }
+
+    return version;
   }
 
   private File createSettingsFile(final File buildRepository) throws Exception {
@@ -123,7 +186,7 @@ public abstract class ITSupport
     Interpolator interpolator = new StringSearchInterpolator();
     interpolator.addValueSource(new MapBasedValueSource(context));
     content = interpolator.interpolate(content);
-    File file = util.createTempFile();
+    File file = util.createTempFile(template.getName());
     FileUtils.write(file, content);
     return file;
   }
@@ -139,16 +202,8 @@ public abstract class ITSupport
     return new File(userHome, ".m2/repository");
   }
 
-  protected void recordLink(final String label, final String fileName) {
-    testIndex.recordLink(label, new File(testIndex.getDirectory(), fileName));
-  }
-
-  @After
-  public void tearDown() throws Exception {
-    System.out.println("<<<<<<<<<<");
-
-    // record build log in index report
-    recordLink("mvn log", "log.txt");
+  protected void reportFile(final String label, final String fileName) {
+    testIndex.recordAndCopyLink(label, new File(testIndex.getDirectory(), fileName));
   }
 
   protected Verifier createVerifier(final String projectName) throws Exception {
@@ -163,7 +218,15 @@ public abstract class ITSupport
         settingsFile.getAbsolutePath()
     );
 
+    // we are not embedded restore hijacked streams
+    verifier.resetStreams();
+
+    // include env details in log
     verifier.addCliOption("-V");
+
+    Properties props = verifier.getSystemProperties();
+    props.setProperty("underTest.version", underTestVersion);
+    props.setProperty("groovy.version", groovyVersion);
 
     // this can be pretty slow, also unless we install the plugin we built the deployed version will be used
     //File localRepo = util.resolveFile("target/maven-localrepo");
@@ -177,15 +240,17 @@ public abstract class ITSupport
     log("Execute script: {}", source);
 
     Verifier verifier = createVerifier("execute-script");
+    verifier.getSystemProperties().setProperty("source", source);
 
-    Properties sysprops = verifier.getSystemProperties();
-    sysprops.setProperty("groovy.version", groovyVersion);
-    sysprops.setProperty("source", source);
-
-    verifier.executeGoal("org.codehaus.gmaven:groovy-maven-plugin:execute");
-    verifier.resetStreams();
+    String goal = goal("execute");
+    log("Goal: {}", goal);
+    verifier.executeGoal(goal);
 
     return verifier;
+  }
+
+  protected String goal(final String execute) {
+    return String.format("org.codehaus.gmaven:groovy-maven-plugin:%s:%s", underTestVersion, execute);
   }
 
   protected Verifier executeScriptFileName(final String fileName) throws Exception {

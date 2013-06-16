@@ -11,6 +11,27 @@
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
 
-// Print version of groovy we have access
-println "Version: ${GroovySystem.version}"
-println 'ALL OK'
+package org.codehaus.gmaven.testsuite;
+
+import java.io.File;
+import java.net.URL;
+
+import org.apache.maven.it.Verifier;
+import org.junit.Test;
+
+/**
+ * Verify property defaults.
+ */
+public class PropertyDefaultsXT
+    extends ITSupport
+{
+  @Test
+  public void verify_1() throws Exception {
+    Verifier verifier = createVerifier("property-defaults");
+    verifier.getSystemProperties().put("source", "verify.groovy");
+    verifier.addCliOption("-P1");
+    verifier.executeGoal(goal("execute"));
+    verifier.verifyErrorFreeLog();
+    verifier.verifyTextInLog("ALL OK");
+  }
+}

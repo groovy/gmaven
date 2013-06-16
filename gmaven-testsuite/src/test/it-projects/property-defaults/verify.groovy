@@ -11,6 +11,10 @@
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
 
-// Print version of groovy we have access
-println "Version: ${GroovySystem.version}"
+properties.each {
+  println it
+}
+
+assert properties['foo'] == 'OK'
+
 println 'ALL OK'
