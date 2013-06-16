@@ -93,6 +93,8 @@ public class ITSupport
 
     Verifier verifier = new Verifier(projectDir.getAbsolutePath());
 
+    verifier.addCliOption("-V");
+
     // this can be pretty slow, also unless we install the plugin we built the deployed version will be used
     //File localRepo = util.resolveFile("target/maven-localrepo");
     //log("Local repo: {}", localRepo);
