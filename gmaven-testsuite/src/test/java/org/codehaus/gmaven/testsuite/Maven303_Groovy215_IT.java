@@ -10,9 +10,9 @@ import org.junit.runners.Suite.SuiteClasses;
  */
 @RunWith(Suite.class)
 @SuiteClasses(
-    VerifierXIT.class
+    VerifierTrial.class
 )
-public class m303_g215_IT
+public class Maven303_Groovy215_IT
 {
   @BeforeClass
   public static void configureTestsuite() {

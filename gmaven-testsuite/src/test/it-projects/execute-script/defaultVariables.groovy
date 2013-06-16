@@ -13,13 +13,19 @@
 
 //noinspection GroovyAssignabilityCheck
 def assertVariable = { value, Class expectedType ->
+  // spit out value and class for reference
   println value
   println value?.getClass()
+
+  // require non-null and expected type
   assert value != null
   assert expectedType.isAssignableFrom(value.getClass())
+
+  // we are good
   println 'OK'
 }
 
+// basic
 assertVariable(project, org.apache.maven.project.MavenProject)
 assertVariable(basedir, java.io.File)
 assertVariable(properties, java.util.Properties)
@@ -27,6 +33,7 @@ assertVariable(ant, groovy.util.AntBuilder)
 assertVariable(fail, groovy.lang.Closure)
 assertVariable(log, org.slf4j.Logger)
 
+// advanced
 assertVariable(container, org.codehaus.gmaven.plugin.util.ContainerHelper)
 assertVariable(plugin, org.apache.maven.plugin.descriptor.PluginDescriptor)
 assertVariable(pluginContext, java.util.Map)
@@ -34,4 +41,5 @@ assertVariable(mojo, org.apache.maven.plugin.MojoExecution)
 assertVariable(session, org.apache.maven.execution.MavenSession)
 assertVariable(settings, org.apache.maven.settings.Settings)
 
+// all validation passed
 println 'ALL OK'
