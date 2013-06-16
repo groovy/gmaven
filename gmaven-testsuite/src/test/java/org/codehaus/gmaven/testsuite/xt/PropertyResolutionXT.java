@@ -39,8 +39,7 @@ public class PropertyResolutionXT
         );
   }
 
-  @Test
-  public void onlyDefaultDefined() throws Exception {
+  private void verifyDefault() throws Exception {
     verify(
         verifier()
             .executeGoal(goal("execute"))
@@ -48,11 +47,18 @@ public class PropertyResolutionXT
   }
 
   @Test
+  public void projectDefined() throws Exception {
+    verifyDefault();
+  }
+
+  @Test
+  public void defaultDefined() throws Exception {
+    verifyDefault();
+  }
+
+  @Test
   public void defaultReferencesProjectProperty() throws Exception {
-    verify(
-        verifier()
-            .executeGoal(goal("execute"))
-    );
+    verifyDefault();
   }
 
   @Test
@@ -62,6 +68,11 @@ public class PropertyResolutionXT
             .setProperty("foo", "OK")
             .executeGoal(goal("execute"))
     );
+  }
+
+  @Test
+  public void overrideDefined() throws Exception {
+    verifyDefault();
   }
 
   @Test
@@ -76,9 +87,6 @@ public class PropertyResolutionXT
   @Test
   @Ignore("FIXME: This test has issues due to Maven interpolation before execution")
   public void overrideReferencesDefault() throws Exception {
-    verify(
-        verifier()
-            .executeGoal(goal("execute"))
-    );
+    verifyDefault();
   }
 }

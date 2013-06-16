@@ -43,7 +43,14 @@
 
   <profiles>
     <profile>
-      <id>onlyDefaultDefined</id>
+      <id>projectDefined</id>
+      <properties>
+        <result>OK</result>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>defaultDefined</id>
       <build>
         <plugins>
           <plugin>
@@ -90,6 +97,23 @@
               <defaults>
                 <result>${foo}</result>
               </defaults>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>overrideDefined</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.gmaven</groupId>
+            <artifactId>groovy-maven-plugin</artifactId>
+            <configuration>
+              <properties>
+                <result>OK</result>
+              </properties>
             </configuration>
           </plugin>
         </plugins>
