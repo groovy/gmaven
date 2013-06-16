@@ -1,3 +1,5 @@
 org.codehaus.gmaven.plugin
 org.codehaus.gmaven.plugin.util
 org.codehaus.gmaven.testsuite
+org.codehaus.gmaven.testsuite.suite
+org.codehaus.gmaven.testsuite.tests
