@@ -14,14 +14,22 @@
 package org.codehaus.gmaven.testsuite;
 
 import java.io.File;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.sonatype.sisu.litmus.testsupport.TestSupport;
 import org.sonatype.sisu.litmus.testsupport.hamcrest.FileMatchers;
 import org.sonatype.sisu.litmus.testsupport.junit.TestIndexRule;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import org.apache.commons.io.FileUtils;
 import org.apache.maven.it.Verifier;
+import org.codehaus.plexus.interpolation.Interpolator;
+import org.codehaus.plexus.interpolation.MapBasedValueSource;
+import org.codehaus.plexus.interpolation.StringSearchInterpolator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -43,6 +51,12 @@ public abstract class ITSupport
 
   protected File mavenHome;
 
+  protected File buildRepository;
+
+  protected File settingsFile;
+
+  protected File localRepository;
+
   protected String groovyVersion;
 
   @Rule
@@ -53,34 +67,83 @@ public abstract class ITSupport
 
   @Before
   public void setUp() throws Exception {
-    //Map<String, String> props = Maps.fromProperties(System.getProperties());
-    //List<String> keys = Lists.newArrayList(props.keySet());
-    //Collections.sort(keys);
-    //log("System properties:");
-    //for (String key : keys) {
-    //  log("  {}={}", key, props.get(key));
-    //}
+    logSystemProperties();
 
     mavenVersion = System.getProperty("maven.version", DEFAULT_MAVEN_VERSION);
+    log("Maven version: {}", mavenVersion);
     mavenHome = util.resolveFile("target/filesets/apache-maven-" + mavenVersion);
     assertThat(mavenHome, FileMatchers.exists());
     System.setProperty("maven.home", mavenHome.getAbsolutePath());
+    log("Maven home: {}", mavenHome);
+
+    buildRepository = detectBuildRepository();
+    log("Build repository: {}", buildRepository);
+
+    settingsFile = createSettingsFile(buildRepository);
+    log("Settings file: {}", settingsFile);
+
+    localRepository = util.resolveFile("target/maven-localrepo");
+    log("Local repository: {}", localRepository);
 
     groovyVersion = System.getProperty("groovy.version", DEFAULT_GROOVY_VERSION);
+    log("Groovy version: {}", groovyVersion);
 
     //System.setProperty("verifier.forkMode", "embedded");
     System.setProperty("verifier.forkMode", "fork");
 
     testIndex.recordInfo("maven", mavenVersion);
     testIndex.recordInfo("groovy", groovyVersion);
+
+    System.out.println(">>>>>>>>>>");
   }
 
-  private void recordLink(final String label, final String fileName) {
+  private void logSystemProperties() {
+    Map<String, String> props = Maps.fromProperties(System.getProperties());
+    List<String> keys = Lists.newArrayList(props.keySet());
+    Collections.sort(keys);
+    log("System properties:");
+    for (String key : keys) {
+      log("  {}={}", key, props.get(key));
+    }
+  }
+
+  private File createSettingsFile(final File buildRepository) throws Exception {
+    File template = util.resolveFile("src/test/it-projects/settings.xml");
+
+    String content = FileUtils.readFileToString(template);
+    Interpolator interpolator = new StringSearchInterpolator();
+
+    Map<String, String> props = Maps.newHashMap();
+    props.put("localRepositoryUrl", buildRepository.toURI().toURL().toExternalForm());
+    interpolator.addValueSource(new MapBasedValueSource(props));
+
+    content = interpolator.interpolate(content);
+
+    File file = util.createTempFile("settings.xml");
+    FileUtils.write(file, content);
+    return file;
+  }
+
+  private File detectBuildRepository() {
+    String path = System.getProperty("buildRepository");
+    if (path != null) {
+      return new File(path).getAbsoluteFile();
+    }
+
+    // fall back to default
+    File userHome = new File(System.getProperty("user.home"));
+    return new File(userHome, ".m2/repository");
+  }
+
+  protected void recordLink(final String label, final String fileName) {
     testIndex.recordLink(label, new File(testIndex.getDirectory(), fileName));
   }
 
   @After
   public void tearDown() throws Exception {
+    System.out.println("<<<<<<<<<<");
+
+    // record build log in index report
     recordLink("mvn log", "log.txt");
   }
 
@@ -91,14 +154,17 @@ public abstract class ITSupport
     log("Copying {} -> {}", sourceDir, projectDir);
     FileUtils.copyDirectory(sourceDir, projectDir);
 
-    Verifier verifier = new Verifier(projectDir.getAbsolutePath());
+    Verifier verifier = new Verifier(
+        projectDir.getAbsolutePath(),
+        settingsFile.getAbsolutePath()
+    );
 
     verifier.addCliOption("-V");
 
     // this can be pretty slow, also unless we install the plugin we built the deployed version will be used
-    //File localRepo = util.resolveFile("target/maven-localrepo");
-    //log("Local repo: {}", localRepo);
-    //verifier.setLocalRepo(localRepo.getAbsolutePath());
+    File localRepo = util.resolveFile("target/maven-localrepo");
+    log("Local repo: {}", localRepo);
+    verifier.setLocalRepo(localRepo.getAbsolutePath());
 
     return verifier;
   }

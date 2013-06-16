@@ -32,15 +32,15 @@
     HACK: Ensure reactor build order, but keep out any dependencies.
     -->
     <!--<dependency>-->
-      <!--<groupId>org.codehaus.gmaven</groupId>-->
-      <!--<artifactId>groovy-maven-plugin</artifactId>-->
-      <!--<scope>provided</scope>-->
-      <!--<exclusions>-->
-        <!--<exclusion>-->
-          <!--<groupId>*</groupId>-->
-          <!--<artifactId>*</artifactId>-->
-        <!--</exclusion>-->
-      <!--</exclusions>-->
+    <!--<groupId>org.codehaus.gmaven</groupId>-->
+    <!--<artifactId>groovy-maven-plugin</artifactId>-->
+    <!--<scope>provided</scope>-->
+    <!--<exclusions>-->
+    <!--<exclusion>-->
+    <!--<groupId>*</groupId>-->
+    <!--<artifactId>*</artifactId>-->
+    <!--</exclusion>-->
+    <!--</exclusions>-->
     <!--</dependency>-->
 
     <dependency>
@@ -62,6 +62,11 @@
     </dependency>
 
     <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-interpolation</artifactId>
+    </dependency>
+
+    <dependency>
       <groupId>org.apache.maven.shared</groupId>
       <artifactId>maven-verifier</artifactId>
       <scope>test</scope>
@@ -69,6 +74,20 @@
   </dependencies>
 
   <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <configuration>
+            <systemPropertyVariables>
+              <buildRepository>${settings.localRepository}</buildRepository>
+            </systemPropertyVariables>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
     <plugins>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
