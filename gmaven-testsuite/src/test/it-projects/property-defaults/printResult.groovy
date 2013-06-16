@@ -11,10 +11,11 @@
  * See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
  */
 
-properties.each {
-  println it
+println 'Properties:'
+properties.sort().each {
+  println "  $it"
 }
 
-assert properties['foo'] == 'OK'
+println "RESULT: ${properties['result']}"
 
 println 'ALL OK'

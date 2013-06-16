@@ -13,9 +13,6 @@
 
 package org.codehaus.gmaven.testsuite;
 
-import java.io.File;
-import java.net.URL;
-
 import org.apache.maven.it.Verifier;
 import org.junit.Test;
 
@@ -25,13 +22,32 @@ import org.junit.Test;
 public class PropertyDefaultsXT
     extends ITSupport
 {
-  @Test
-  public void verify_1() throws Exception {
+  private void verifyResult(final String profileId) throws Exception {
     Verifier verifier = createVerifier("property-defaults");
-    verifier.getSystemProperties().put("source", "verify.groovy");
-    verifier.addCliOption("-P1");
+    verifier.getSystemProperties().put("source", "printResult.groovy");
+    verifier.addCliOption("-P" + profileId);
+
+    verifier.addCliOption("-X");
+    verifier.addCliOption("-Dgmaven.logging=TRACE");
+
     verifier.executeGoal(goal("execute"));
     verifier.verifyErrorFreeLog();
+    verifier.verifyTextInLog("RESULT: OK");
     verifier.verifyTextInLog("ALL OK");
+  }
+
+  @Test
+  public void verify_1() throws Exception {
+    verifyResult("1");
+  }
+
+  @Test
+  public void verify_2() throws Exception {
+    verifyResult("2");
+  }
+
+  @Test
+  public void verify_3() throws Exception {
+    verifyResult("3");
   }
 }

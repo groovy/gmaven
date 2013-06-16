@@ -42,10 +42,33 @@
   </build>
 
   <profiles>
+    <!--
+    Only default defined.
+    -->
     <profile>
       <id>1</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.gmaven</groupId>
+            <artifactId>groovy-maven-plugin</artifactId>
+            <configuration>
+              <defaults>
+                <result>OK</result>
+              </defaults>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <!--
+    Project property references default.
+    -->
+    <profile>
+      <id>2</id>
       <properties>
-        <bar>OK</bar>
+        <result>${foo}</result>
       </properties>
       <build>
         <plugins>
@@ -54,13 +77,37 @@
             <artifactId>groovy-maven-plugin</artifactId>
             <configuration>
               <defaults>
-                <foo>${bar}</foo>
+                <foo>OK</foo>
               </defaults>
             </configuration>
           </plugin>
         </plugins>
       </build>
     </profile>
+
+    <!--
+    Override references default.
+    -->
+    <profile>
+      <id>3</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.gmaven</groupId>
+            <artifactId>groovy-maven-plugin</artifactId>
+            <configuration>
+              <defaults>
+                <foo>OK</foo>
+              </defaults>
+              <properties>
+                <result>${foo}</result>
+              </properties>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
   </profiles>
 
 </project>
