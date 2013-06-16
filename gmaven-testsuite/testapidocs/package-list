@@ -1,1 +1,3 @@
 org.codehaus.gmaven.testsuite
+org.codehaus.gmaven.testsuite.suite
+org.codehaus.gmaven.testsuite.tests
