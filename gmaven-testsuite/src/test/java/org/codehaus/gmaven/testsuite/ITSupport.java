@@ -78,10 +78,16 @@ public abstract class ITSupport
       util.resolveFile("target/it-work")
   );
 
+  /**
+   * Returns the configured Maven version.
+   */
   protected String getMavenVersion() {
     return mavenVersion;
   }
 
+  /**
+   * Returns the configured Groovy version.
+   */
   protected String getGroovyVersion() {
     return groovyVersion;
   }
@@ -139,6 +145,9 @@ public abstract class ITSupport
     reportFile("mvn log", "log.txt");
   }
 
+  /**
+   * Log a properties object.
+   */
   private void logProperties(final Properties source) {
     Map<String, String> map = Maps.fromProperties(source);
     List<String> keys = Lists.newArrayList(map.keySet());
@@ -148,6 +157,9 @@ public abstract class ITSupport
     }
   }
 
+  /**
+   * Load a resources as a {@link Properties}.
+   */
   private Properties loadResourceProperties(final String resourceName) throws IOException {
     Properties props = new Properties();
 
@@ -166,6 +178,9 @@ public abstract class ITSupport
     return props;
   }
 
+  /**
+   * Try to figure out what the version of the plugin we are testing.  Falls back to {@link #DEFAULT_UNDER_TEST_VERSION}.
+   */
   private String detectUnderTestVersion() throws IOException {
     Properties props = loadResourceProperties("/META-INF/maven/org.codehaus.gmaven/groovy-maven-plugin/pom.properties");
     String version = props.getProperty("version");
@@ -179,6 +194,9 @@ public abstract class ITSupport
     return version;
   }
 
+  /**
+   * Create the settings file which will be used for verification builds.
+   */
   private File createSettingsFile(final File buildRepository) throws Exception {
     return interpolate(
         util.resolveFile("src/test/it-projects/settings.xml"),
@@ -188,6 +206,9 @@ public abstract class ITSupport
     );
   }
 
+  /**
+   * Create a new file interplating from given template.
+   */
   private File interpolate(final File template, final Map<String, String> context) throws Exception {
     String content = FileUtils.readFileToString(template);
     Interpolator interpolator = new StringSearchInterpolator();
@@ -198,6 +219,9 @@ public abstract class ITSupport
     return file;
   }
 
+  /**
+   * Detect the repository used to build the plugin under test.
+   */
   private File detectBuildRepository() {
     String path = System.getProperty("buildRepository");
     if (path != null) {
@@ -209,10 +233,16 @@ public abstract class ITSupport
     return new File(userHome, ".m2/repository");
   }
 
+  /**
+   * Record a report file relative to the work dir in the index.
+   */
   private void reportFile(final String label, final String fileName) {
     testIndex.recordAndCopyLink(label, new File(testIndex.getDirectory(), fileName));
   }
 
+  /**
+   * Create a verifier for the given project-name, cloning its contents to test work directory.
+   */
   protected MavenVerifier verifier(final String projectName) throws Exception {
     File sourceDir = util.resolveFile("src/test/it-projects/" + projectName);
     File projectDir = testIndex.getDirectory();
@@ -220,18 +250,16 @@ public abstract class ITSupport
     log("Copying {} -> {}", sourceDir, projectDir);
     FileUtils.copyDirectory(sourceDir, projectDir);
 
-    MavenVerifier builder = new MavenVerifier(projectDir, settingsFile);
-
-    // include env details in log
-    builder.addArg("-V");
-
-    builder.setProperty("underTest.version", underTestVersion);
-    builder.setProperty("groovy.version", groovyVersion);
-    builder.setProperty("gmaven.logging", "DEBUG");
-
-    return builder;
+    return new MavenVerifier(projectDir, settingsFile)
+        .addArg("-V")
+        .setProperty("underTest.version", underTestVersion)
+        .setProperty("groovy.version", groovyVersion)
+        .setProperty("gmaven.logging", "DEBUG");
   }
 
+  /**
+   * Construct fully qualified goal name for plugin under test.
+   */
   protected String goal(final String execute) {
     return String.format("org.codehaus.gmaven:groovy-maven-plugin:%s:%s", underTestVersion, execute);
   }
