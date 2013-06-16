@@ -83,8 +83,9 @@ public abstract class ITSupport
     settingsFile = createSettingsFile(buildRepository);
     log("Settings file: {}", settingsFile);
 
-    localRepository = util.resolveFile("target/maven-localrepo");
-    log("Local repository: {}", localRepository);
+    // FIXME: Setting local repo here isn't working properly with settings. Just use the default for now.
+    //localRepository = util.resolveFile("target/maven-localrepo");
+    //log("Local repository: {}", localRepository);
 
     groovyVersion = System.getProperty("groovy.version", DEFAULT_GROOVY_VERSION);
     log("Groovy version: {}", groovyVersion);
