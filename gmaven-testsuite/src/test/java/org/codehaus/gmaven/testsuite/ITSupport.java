@@ -145,6 +145,9 @@ public abstract class ITSupport
     reportFile("mvn log", "log.txt");
   }
 
+  /**
+   * Return the directory where tests are run from.
+   */
   protected File testdir() {
     return testIndex.getDirectory();
   }
@@ -241,7 +244,7 @@ public abstract class ITSupport
    * Record a report file relative to the work dir in the index.
    */
   private void reportFile(final String label, final String fileName) {
-    testIndex.recordAndCopyLink(label, new File(testIndex.getDirectory(), fileName));
+    testIndex.recordAndCopyLink(label, new File(testdir(), fileName));
   }
 
   /**
@@ -249,7 +252,7 @@ public abstract class ITSupport
    */
   protected MavenVerifier verifier(final String projectName) throws Exception {
     File sourceDir = util.resolveFile("src/test/it-projects/" + projectName);
-    File projectDir = testIndex.getDirectory();
+    File projectDir = testdir();
 
     log("Copying {} -> {}", sourceDir, projectDir);
     FileUtils.copyDirectory(sourceDir, projectDir);
