@@ -16,6 +16,7 @@ package org.codehaus.gmaven.testsuite.tests;
 import java.io.File;
 
 import org.codehaus.gmaven.testsuite.ITSupport;
+import org.codehaus.gmaven.testsuite.MavenVerifier;
 import org.junit.Test;
 
 /**
@@ -24,10 +25,14 @@ import org.junit.Test;
 public class Scriptpath
     extends ITSupport
 {
+  private MavenVerifier verifier() throws Exception {
+    return verifier("scriptpath")
+        .addProfile(testName.getMethodName());
+  }
+
   @Test
   public void scriptpathResolvesClass() throws Exception {
-    verifier("scriptpath")
-        .addProfile(testName.getMethodName())
+    verifier()
         .setProperty("source", "hello.groovy")
         .executeGoal(goal("execute"))
         .errorFree()
@@ -36,7 +41,7 @@ public class Scriptpath
 
   @Test
   public void scriptpathPropertyResolvesClass() throws Exception {
-    verifier("scriptpath")
+    verifier()
         .setProperty("scriptpath", new File(testdir(), "scripts"))
         .setProperty("source", "hello.groovy")
         .executeGoal(goal("execute"))
@@ -46,8 +51,7 @@ public class Scriptpath
 
   @Test
   public void peerResolvesClass() throws Exception {
-    verifier("scriptpath")
-        .addProfile(testName.getMethodName())
+    verifier()
         .setProperty("source", "scripts/goodbye.groovy")
         .executeGoal(goal("execute"))
         .errorFree()
