@@ -55,19 +55,19 @@ public abstract class ITSupport
   /**
    * The version of the groovy-maven-plugin which is under test.
    */
-  protected String underTestVersion;
+  private String underTestVersion;
 
-  protected String mavenVersion;
+  private String mavenVersion;
 
-  protected File mavenHome;
+  private File mavenHome;
 
-  protected File buildRepository;
+  private File buildRepository;
 
-  protected File settingsFile;
+  private File settingsFile;
 
-  protected File localRepository;
+  private File localRepository;
 
-  protected String groovyVersion;
+  private String groovyVersion;
 
   @Rule
   public final TestName testName = new TestName();
@@ -77,6 +77,14 @@ public abstract class ITSupport
       util.resolveFile("target/it-reports"),
       util.resolveFile("target/it-work")
   );
+
+  protected String getMavenVersion() {
+    return mavenVersion;
+  }
+
+  protected String getGroovyVersion() {
+    return groovyVersion;
+  }
 
   @Before
   public void setUp() throws Exception {
@@ -158,7 +166,7 @@ public abstract class ITSupport
     return props;
   }
 
-  protected String detectUnderTestVersion() throws IOException {
+  private String detectUnderTestVersion() throws IOException {
     Properties props = loadResourceProperties("/META-INF/maven/org.codehaus.gmaven/groovy-maven-plugin/pom.properties");
     String version = props.getProperty("version");
 
@@ -201,7 +209,7 @@ public abstract class ITSupport
     return new File(userHome, ".m2/repository");
   }
 
-  protected void reportFile(final String label, final String fileName) {
+  private void reportFile(final String label, final String fileName) {
     testIndex.recordAndCopyLink(label, new File(testIndex.getDirectory(), fileName));
   }
 

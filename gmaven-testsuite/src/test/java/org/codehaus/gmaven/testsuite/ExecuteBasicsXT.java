@@ -57,7 +57,7 @@ public class ExecuteBasicsXT
     verifier
         .errorFree()
         .logContains(
-            "Version: " + groovyVersion,
+            "Version: " + getGroovyVersion(),
             "ALL OK"
         );
   }
@@ -67,10 +67,10 @@ public class ExecuteBasicsXT
    */
   @Test
   public void simpleInlineSource() throws Exception {
-    MavenVerifier verifier = executeScript("println(12345)");
+    MavenVerifier verifier = executeScript("println(12345+1)");
     verifier
         .errorFree()
-        .logContains("12345");
+        .logContains("12346");
   }
 
   /**
