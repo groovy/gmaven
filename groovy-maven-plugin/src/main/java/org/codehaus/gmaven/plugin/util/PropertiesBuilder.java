@@ -107,15 +107,25 @@ public class PropertiesBuilder
     interpolator.addValueSource(new MapBasedValueSource(source));
 
     for (Entry<String, String> entry : source.entrySet()) {
+      String key = entry.getKey();
       String value = entry.getValue();
-      try {
-        value = interpolator.interpolate(value);
-        result.put(entry.getKey(), value);
+
+      if (value == null) {
+        log.warn("Ignoring null property: {}", key);
+        continue;
       }
-      catch (InterpolationException e) {
-        log.warn("Failed to interpolate: {}, using original value: {}", entry.getKey(), value);
+
+      // skip unless value contains an expression
+      if (value.contains(StringSearchInterpolator.DEFAULT_START_EXPR)) {
+        try {
+          value = interpolator.interpolate(value);
+          log.trace("Resolved: {} -> '{}'", key, value);
+        }
+        catch (InterpolationException e) {
+          log.warn("Failed to interpolate: {}, using original value: {}", key, value);
+        }
       }
-      result.put(entry.getKey(), value);
+      result.put(key, value);
     }
 
     return result;
