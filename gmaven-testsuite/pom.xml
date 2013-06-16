@@ -119,14 +119,6 @@
                   <artifactId>apache-maven</artifactId>
                   <classifier>bin</classifier>
                   <type>zip</type>
-                  <version>3.0.3</version>
-                </artifactItem>
-
-                <artifactItem>
-                  <groupId>org.apache.maven</groupId>
-                  <artifactId>apache-maven</artifactId>
-                  <classifier>bin</classifier>
-                  <type>zip</type>
                   <version>3.0.5</version>
                 </artifactItem>
 
