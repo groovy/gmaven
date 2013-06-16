@@ -145,6 +145,10 @@ public abstract class ITSupport
     reportFile("mvn log", "log.txt");
   }
 
+  protected File testdir() {
+    return testIndex.getDirectory();
+  }
+
   /**
    * Log a properties object.
    */

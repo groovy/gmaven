@@ -28,8 +28,8 @@ public class MavenVerifier
     this.delegate = new Verifier(projectDir.getAbsolutePath(), settingsFile.getAbsolutePath());
   }
 
-  public MavenVerifier setProperty(final String name, final String value) {
-    delegate.getSystemProperties().setProperty(name, value);
+  public MavenVerifier setProperty(final String name, final Object value) {
+    delegate.getSystemProperties().setProperty(name, String.valueOf(value));
     return this;
   }
 

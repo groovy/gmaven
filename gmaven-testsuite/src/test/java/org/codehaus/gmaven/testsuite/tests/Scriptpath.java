@@ -13,6 +13,8 @@
 
 package org.codehaus.gmaven.testsuite.tests;
 
+import java.io.File;
+
 import org.codehaus.gmaven.testsuite.ITSupport;
 import org.junit.Test;
 
@@ -26,6 +28,16 @@ public class Scriptpath
   public void scriptpathResolvesClass() throws Exception {
     verifier("scriptpath")
         .addProfile(testName.getMethodName())
+        .setProperty("source", "hello.groovy")
+        .executeGoal(goal("execute"))
+        .errorFree()
+        .logContains("Hello World");
+  }
+
+  @Test
+  public void scriptpathPropertyResolvesClass() throws Exception {
+    verifier("scriptpath")
+        .setProperty("scriptpath", new File(testdir(), "scripts"))
         .setProperty("source", "hello.groovy")
         .executeGoal(goal("execute"))
         .errorFree()
