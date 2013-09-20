@@ -28,7 +28,7 @@
   <name>${project.groupId}:${project.artifactId}</name>
   <packaging>pom</packaging>
 
-  <version>2.0</version>
+  <version>2.1-SNAPSHOT</version>
 
   <description>
     Groovy integration for Maven.
@@ -55,7 +55,7 @@
     <connection>scm:git:git://github.com/groovy/gmaven.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/groovy/gmaven.git</developerConnection>
     <url>https://github.com/groovy/gmaven</url>
-    <tag>gmaven-2.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <distributionManagement>
@@ -251,25 +251,25 @@
       <dependency>
         <groupId>org.codehaus.gmaven</groupId>
         <artifactId>gmaven-adapter-api</artifactId>
-        <version>2.0</version>
+        <version>2.1-SNAPSHOT</version>
       </dependency>
 
       <dependency>
         <groupId>org.codehaus.gmaven</groupId>
         <artifactId>gmaven-adapter-impl</artifactId>
-        <version>2.0</version>
+        <version>2.1-SNAPSHOT</version>
       </dependency>
 
       <dependency>
         <groupId>org.codehaus.gmaven</groupId>
         <artifactId>groovy-maven-plugin</artifactId>
-        <version>2.0</version>
+        <version>2.1-SNAPSHOT</version>
       </dependency>
 
       <dependency>
         <groupId>org.codehaus.gmaven</groupId>
         <artifactId>gmaven-testsuite</artifactId>
-        <version>2.0</version>
+        <version>2.1-SNAPSHOT</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -445,7 +445,7 @@
         <plugin>
           <groupId>org.codehaus.gmaven</groupId>
           <artifactId>groovy-maven-plugin</artifactId>
-          <version>2.0</version>
+          <version>2.1-SNAPSHOT</version>
         </plugin>
       </plugins>
     </pluginManagement>
