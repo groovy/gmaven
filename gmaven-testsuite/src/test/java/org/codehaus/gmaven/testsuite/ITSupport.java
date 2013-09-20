@@ -185,6 +185,8 @@ public abstract class ITSupport
     return props;
   }
 
+  // FIXME: Look into why this might not be working...
+
   /**
    * Try to figure out what the version of the plugin we are testing.  Falls back to {@link #DEFAULT_UNDER_TEST_VERSION}.
    */
