@@ -50,7 +50,7 @@ public abstract class ITSupport
 
   public static final String DEFAULT_GROOVY_VERSION = "2.1.5";
 
-  public static final String DEFAULT_UNDER_TEST_VERSION = "2.0-SNAPSHOT";
+  public static final String DEFAULT_UNDER_TEST_VERSION = "2.1-SNAPSHOT";
 
   /**
    * The version of the groovy-maven-plugin which is under test.
