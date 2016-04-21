@@ -1,3 +1,6 @@
+
+As stated on <http://www.mojohaus.org/plugins.html> this plugin has been discontinued.
+
 # Building
 
 Simply run Maven ;-)
