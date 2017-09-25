@@ -17,13 +17,19 @@ import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.CyclicBarrier;
 
+import org.codehaus.gmaven.plugin.ExecuteMojo;
 import org.sonatype.sisu.litmus.testsupport.TestSupport;
 
 import org.codehaus.gmaven.plugin.util.SystemNoExitGuard.Task;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -53,5 +59,87 @@ public class SystemNoExitGuardTest
     assertThat(System.in, is(systemIn));
     assertThat(System.out, is(systemOut));
     assertThat(System.err, is(systemErr));
+  }
+
+  /**
+   * If maven is running in multi-threaded environment then
+   * SystemNoExitGuard breaks build because there is no
+   * guarantee that the first started groovy task will
+   * finish last.
+   * Imagine we have 2 groovy tasks - task1, task2. And they are executed in the
+   * following order:
+   *
+   * task1.start
+   * task2.start
+   * task1.finish
+   * task2.finish
+   *
+   * In that case task2.start will use task1.securityManager
+   * and that security manager will be applied after task2.finish
+   */
+  @Test
+  public void testTaskOverlapping() throws Exception {
+    final SecurityManager sm = System.getSecurityManager();
+
+    final CyclicBarrier barrier1 = new CyclicBarrier(2);
+    final CyclicBarrier barrier2 = new CyclicBarrier(2);
+    final List<Exception> exceptions = new CopyOnWriteArrayList<Exception>();
+
+    // start task1
+    Thread thread1 = new Thread(new Runnable() {
+      @Override
+      public void run() {
+        try {
+          new SystemNoExitGuard().run(new Task() {
+            @Override
+            public void run() throws Exception {
+              barrier1.await();
+              // wait task2 to start and finish execution
+              barrier1.await();
+            }
+          });
+        } catch (Exception e) {
+          exceptions.add(e);
+        }
+      }
+    });
+    thread1.start();
+
+    // wait task1 to start
+    barrier1.await();
+
+    // And start task 2
+    Thread thread2 = new Thread(new Runnable() {
+      @Override
+      public void run() {
+        try {
+          new SystemNoExitGuard().run(new Task() {
+            @Override
+            public void run() throws Exception {
+              // wait for task start
+              barrier2.await();
+              // wait for task1 to finish and exit
+              barrier2.await();
+            }
+          });
+        } catch (Exception e) {
+          exceptions.add(e);
+        }
+      }
+    });
+    thread2.start();
+
+    // wait task2 to start
+    barrier2.await();
+
+    // wait task1 to finish
+    barrier1.await();
+    thread1.join();
+
+    // unlock task2 and wait it to finish
+    barrier2.await();
+    thread2.join();
+
+    assertEquals(sm, System.getSecurityManager());
   }
 }
