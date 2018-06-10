@@ -91,10 +91,6 @@
     </mailingList>
   </mailingLists>
 
-  <prerequisites>
-    <maven>3.5</maven>
-  </prerequisites>
-
   <properties>
     <maven.compiler.source>1.6</maven.compiler.source>
     <maven.compiler.target>1.6</maven.compiler.target>
