@@ -54,7 +54,6 @@
     <connection>scm:git:git://github.com/groovy/gmaven.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/groovy/gmaven.git</developerConnection>
     <url>https://github.com/groovy/gmaven</url>
-    <tag>HEAD</tag>
   </scm>
 
   <distributionManagement>
