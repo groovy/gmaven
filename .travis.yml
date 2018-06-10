@@ -1,0 +1,21 @@
+language: java
+
+sudo: false
+
+env:
+  global:
+    - MAVEN_SETTINGS='.travis/settings.xml'
+    - MAVEN_OPTIONS="-V -B -s $MAVEN_SETTINGS"
+
+branches:
+  only:
+    - master
+
+jdk:
+  - oraclejdk8
+
+#install: ./build ci-prepare $MAVEN_OPTIONS
+
+#script: ./build ci-build $MAVEN_OPTIONS
+
+script: mvn clean install
