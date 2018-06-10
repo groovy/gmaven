@@ -12,7 +12,7 @@
     See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
 
 -->
-# ![GMaven](http://media.xircles.codehaus.org/_projects/gmaven/_logos/medium.png)
+# ![GMaven](http://groovy.github.io/gmaven/images/gmaven.png)
 
 Groovy integration for Maven
 
@@ -20,5 +20,5 @@ Groovy integration for Maven
 
 ### Requirements
 
-* Apache Maven 3.0.4+
-* Java 6+
+* Apache Maven 3.5+
+* Java 7+
