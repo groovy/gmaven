@@ -42,11 +42,6 @@
 
   <inceptionYear>2006</inceptionYear>
 
-  <!--<organization>-->
-  <!--<name>Codehaus</name>-->
-  <!--<url>http://codehaus.org</url>-->
-  <!--</organization>-->
-
   <licenses>
     <license>
       <name>ASLv2</name>

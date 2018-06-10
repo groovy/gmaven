@@ -18,5 +18,3 @@
 # GMaven Testsuite
 
 GMaven integration tests.
-
-
