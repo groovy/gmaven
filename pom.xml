@@ -90,6 +90,22 @@
     </mailingList>
   </mailingLists>
 
+  <!--
+  TODO: remove once parent is released.
+  -->
+  <repositories>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
   <properties>
     <maven.compiler.source>1.6</maven.compiler.source>
     <maven.compiler.target>1.6</maven.compiler.target>
@@ -101,7 +117,7 @@
     Site configuration.  Using '_' instead of '.' for velocity-based filtering.
     -->
     <site_mavenApidocsUrl>http://maven.apache.org/ref/${apache-maven.version}/apidocs</site_mavenApidocsUrl>
-    <site_groovyApidocsUrl>http://groovy.codehaus.org/gapi</site_groovyApidocsUrl>
+    <site_groovyApidocsUrl>http://docs.groovy-lang.org/latest/html/gapi</site_groovyApidocsUrl>
     <site_javaApidocsUrl>http://docs.oracle.com/javase/6/docs/api</site_javaApidocsUrl>
   </properties>
 
