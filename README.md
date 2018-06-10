@@ -24,4 +24,4 @@ Groovy integration for Maven
 ### Requirements
 
 * Apache Maven 3.5+
-* Java 7+
+* Java 8+

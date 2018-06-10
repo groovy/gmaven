@@ -287,6 +287,16 @@
     <pluginManagement>
       <plugins>
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>3.0.1</version>
+          <configuration>
+            <!-- Turn off strict javadoc checks in Java-8 -->
+            <additionalparam>-Xdoclint:none</additionalparam>
+          </configuration>
+        </plugin>
+
+        <plugin>
           <groupId>org.codehaus.plexus</groupId>
           <artifactId>plexus-component-metadata</artifactId>
           <version>1.5.5</version>
@@ -320,15 +330,15 @@
               <id>default-descriptor</id>
               <phase>none</phase>
             </execution>
-            <execution>
-              <id>help-descriptor</id>
-              <goals>
-                <goal>helpmojo</goal>
-              </goals>
-              <configuration>
-                <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
-              </configuration>
-            </execution>
+            <!--<execution>-->
+              <!--<id>help-descriptor</id>-->
+              <!--<goals>-->
+                <!--<goal>helpmojo</goal>-->
+              <!--</goals>-->
+              <!--<configuration>-->
+                <!--<skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>-->
+              <!--</configuration>-->
+            <!--</execution>-->
             <execution>
               <id>plugin-descriptor</id>
               <goals>
@@ -361,7 +371,7 @@
             <configuration>
               <rules>
                 <requireJavaVersion>
-                  <version>[1.7,)</version>
+                  <version>[1.8,)</version>
                 </requireJavaVersion>
                 <requireMavenVersion>
                   <version>[3.5,)</version>
@@ -394,12 +404,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.3</version>
+        <version>3.7.1</version>
         <dependencies>
           <dependency>
             <groupId>org.apache.maven.doxia</groupId>
             <artifactId>doxia-module-markdown</artifactId>
-            <version>1.4</version>
+            <version>1.8</version>
           </dependency>
         </dependencies>
         <configuration>
@@ -444,33 +454,32 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>2.7</version>
+        <version>2.9</version>
       </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.9</version>
+        <version>3.0.1</version>
         <configuration>
           <source>1.6</source>
-          <links>
-            <link>${site_mavenApidocsUrl}</link>
-            <link>${site_groovyApidocsUrl}</link>
-            <link>${site_javaApidocsUrl}</link>
-          </links>
+          <additionalOptions>
+            <!-- Turn off strict javadoc checks in Java-8 -->
+            <option>-Xdoclint:none</option>
+          </additionalOptions>
         </configuration>
       </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>2.15</version>
+        <version>2.20</version>
       </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.0.1</version>
+        <version>3.10.0</version>
         <configuration>
           <targetJdk>1.6</targetJdk>
         </configuration>
@@ -479,26 +488,26 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jxr-plugin</artifactId>
-        <version>2.3</version>
-      </plugin>
-
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>findbugs-maven-plugin</artifactId>
-        <version>2.5.2</version>
-      </plugin>
-
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>cobertura-maven-plugin</artifactId>
-        <version>2.5.2</version>
+        <version>2.5</version>
       </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changelog-plugin</artifactId>
-        <version>2.2</version>
+        <version>2.3</version>
         <inherited>false</inherited>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <version>3.0.5</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+        <version>2.7</version>
       </plugin>
     </plugins>
   </reporting>
