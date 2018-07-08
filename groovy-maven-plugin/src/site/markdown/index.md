@@ -48,8 +48,3 @@ For example to use Groovy 2.0.6 instead of the default:
 There is currently no way to change the Groovy version without a project.
 Direct execution of goals will always use the default Groovy version if no project is available.  When a project
 is available, then `pluginManagement` can be used to configure direct goal execution.
-
-### System.exit Forbidden
-
-Use of `java.lang.System.exit()`, `java.lang.Runtime.exit()` or `java.lang.Runtime.halt()` is ***forbidden***
-from use by a script execution or evaluation in console or shells.

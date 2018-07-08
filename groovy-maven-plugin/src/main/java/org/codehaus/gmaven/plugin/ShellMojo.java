@@ -21,8 +21,6 @@ import com.google.common.collect.Maps;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.codehaus.gmaven.adapter.ResourceLoader;
 import org.codehaus.gmaven.adapter.ShellRunner;
-import org.codehaus.gmaven.plugin.util.SystemNoExitGuard;
-import org.codehaus.gmaven.plugin.util.SystemNoExitGuard.Task;
 
 import static org.apache.maven.plugins.annotations.ResolutionScope.TEST;
 
@@ -47,13 +45,6 @@ public class ShellMojo
     final Map<String, Object> options = Maps.newHashMap();
     final ShellRunner shell = getRuntime().createShellRunner();
 
-    // Guard against system exit and automatically restore system streams
-    new SystemNoExitGuard().run(new Task()
-    {
-      @Override
-      public void run() throws Exception {
-        shell.run(getRuntimeRealm(), resourceLoader, context, options);
-      }
-    });
+    shell.run(getRuntimeRealm(), resourceLoader, context, options);
   }
 }
