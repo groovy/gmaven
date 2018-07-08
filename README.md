@@ -1,18 +1,21 @@
 <!--
 
-    Copyright (c) 2007-2013, the original author or authors.
+    Copyright (c) 2006-present the original author or authors.
 
-    This program is licensed to you under the Apache License Version 2.0,
-    and you may not use this file except in compliance with the Apache License Version 2.0.
-    You may obtain a copy of the Apache License Version 2.0 at http://www.apache.org/licenses/LICENSE-2.0.
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
 
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the Apache License Version 2.0 is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
 
 -->
-# ![GMaven](http://media.xircles.codehaus.org/_projects/gmaven/_logos/medium.png)
+# GMaven ![gmaven-logo](http://groovy.github.io/gmaven/images/gmaven.png)
 
 Groovy integration for Maven
 
@@ -20,5 +23,5 @@ Groovy integration for Maven
 
 ### Requirements
 
-* Apache Maven 3.0.4+
-* Java 6+
+* Apache Maven 3.5+
+* Java 8+

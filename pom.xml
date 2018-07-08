@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (c) 2007-2013, the original author or authors.
+    Copyright (c) 2006-present the original author or authors.
 
-    This program is licensed to you under the Apache License Version 2.0,
-    and you may not use this file except in compliance with the Apache License Version 2.0.
-    You may obtain a copy of the Apache License Version 2.0 at http://www.apache.org/licenses/LICENSE-2.0.
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
 
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the Apache License Version 2.0 is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the Apache License Version 2.0 for the specific language governing permissions and limitations there under.
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -18,9 +21,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.codehaus</groupId>
-    <artifactId>codehaus-parent</artifactId>
-    <version>4</version>
+    <groupId>com.planet57.buildsupport</groupId>
+    <artifactId>public-parent</artifactId>
+    <version>2-SNAPSHOT</version>
+    <relativePath/>
   </parent>
 
   <groupId>org.codehaus.gmaven</groupId>
@@ -34,14 +38,9 @@
     Groovy integration for Maven.
   </description>
 
-  <url>http://gmaven.codehaus.org</url>
+  <url>http://groovy.github.io/gmaven</url>
 
   <inceptionYear>2006</inceptionYear>
-
-  <organization>
-    <name>Codehaus</name>
-    <url>http://codehaus.org</url>
-  </organization>
 
   <licenses>
     <license>
@@ -55,7 +54,6 @@
     <connection>scm:git:git://github.com/groovy/gmaven.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/groovy/gmaven.git</developerConnection>
     <url>https://github.com/groovy/gmaven</url>
-    <tag>HEAD</tag>
   </scm>
 
   <distributionManagement>
@@ -66,14 +64,14 @@
   </distributionManagement>
 
   <issueManagement>
-    <system>jira</system>
-    <url>http://jira.codehaus.org/browse/GMAVEN</url>
+    <system>github</system>
+    <url>https://github.com/groovy/gmaven/issues</url>
   </issueManagement>
 
-  <ciManagement>
-    <system>bamboo</system>
-    <url>https://bamboo-ci.codehaus.org/browse/GROOVY-GMVN</url>
-  </ciManagement>
+  <!--<ciManagement>-->
+  <!--<system>travis</system>-->
+  <!--<url>https://travis-ci.org/groovy/gmaven</url>-->
+  <!--</ciManagement>-->
 
   <mailingLists>
     <mailingList>
@@ -92,26 +90,25 @@
     </mailingList>
   </mailingLists>
 
+  <!--
+  TODO: remove once parent is released.
+  -->
   <repositories>
     <repository>
-      <id>rso-public-grid</id>
-      <url>https://repository.sonatype.org/content/groups/sonatype-public-grid/</url>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
     </repository>
   </repositories>
 
-  <prerequisites>
-    <maven>3.0.4</maven>
-  </prerequisites>
-
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-    <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
-    <build.timestamp>${maven.build.timestamp}</build.timestamp>
-    <build.number />
-
-    <maven.test.redirectTestOutputToFile>true</maven.test.redirectTestOutputToFile>
+    <maven.compiler.source>1.6</maven.compiler.source>
+    <maven.compiler.target>1.6</maven.compiler.target>
 
     <apache-maven.version>3.0.5</apache-maven.version>
     <eclipse-aether.version>0.9.0.M2</eclipse-aether.version>
@@ -120,7 +117,7 @@
     Site configuration.  Using '_' instead of '.' for velocity-based filtering.
     -->
     <site_mavenApidocsUrl>http://maven.apache.org/ref/${apache-maven.version}/apidocs</site_mavenApidocsUrl>
-    <site_groovyApidocsUrl>http://groovy.codehaus.org/gapi</site_groovyApidocsUrl>
+    <site_groovyApidocsUrl>http://docs.groovy-lang.org/latest/html/gapi</site_groovyApidocsUrl>
     <site_javaApidocsUrl>http://docs.oracle.com/javase/6/docs/api</site_javaApidocsUrl>
   </properties>
 
@@ -303,88 +300,15 @@
       </extension>
     </extensions>
 
-    <defaultGoal>install</defaultGoal>
-
-    <resources>
-      <resource>
-        <directory>${project.basedir}/src/main/resources</directory>
-        <filtering>false</filtering>
-        <includes>
-          <include>**/*</include>
-        </includes>
-      </resource>
-
-      <resource>
-        <directory>${project.basedir}/src/main/resources-filtered</directory>
-        <filtering>true</filtering>
-        <includes>
-          <include>**/*</include>
-        </includes>
-      </resource>
-    </resources>
-
-    <testResources>
-      <testResource>
-        <directory>${project.basedir}/src/test/resources</directory>
-        <filtering>false</filtering>
-        <includes>
-          <include>**/*</include>
-        </includes>
-      </testResource>
-
-      <testResource>
-        <directory>${project.basedir}/src/test/resources-filtered</directory>
-        <filtering>true</filtering>
-        <includes>
-          <include>**/*</include>
-        </includes>
-      </testResource>
-    </testResources>
-
     <pluginManagement>
       <plugins>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-dependency-plugin</artifactId>
-          <version>2.8</version>
-        </plugin>
-
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-scm-plugin</artifactId>
-          <version>1.8.1</version>
-        </plugin>
-
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.15</version>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>3.0.1</version>
           <configuration>
-            <forkMode>once</forkMode>
-            <workingDirectory>${project.build.directory}</workingDirectory>
-            <systemPropertyVariables>
-              <java.awt.headless>true</java.awt.headless>
-            </systemPropertyVariables>
-            <excludes>
-              <exclude>**/Abstract*.java</exclude>
-              <exclude>**/Test*.java</exclude>
-            </excludes>
-            <includes>
-              <include>**/*Test.java</include>
-            </includes>
-          </configuration>
-        </plugin>
-
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-failsafe-plugin</artifactId>
-          <version>2.15</version>
-          <configuration>
-            <forkMode>once</forkMode>
-            <workingDirectory>${project.build.directory}</workingDirectory>
-            <systemPropertyVariables>
-              <java.awt.headless>true</java.awt.headless>
-            </systemPropertyVariables>
+            <!-- Turn off strict javadoc checks in Java-8 -->
+            <additionalparam>-Xdoclint:none</additionalparam>
           </configuration>
         </plugin>
 
@@ -422,15 +346,15 @@
               <id>default-descriptor</id>
               <phase>none</phase>
             </execution>
-            <execution>
-              <id>help-descriptor</id>
-              <goals>
-                <goal>helpmojo</goal>
-              </goals>
-              <configuration>
-                <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
-              </configuration>
-            </execution>
+            <!--<execution>-->
+              <!--<id>help-descriptor</id>-->
+              <!--<goals>-->
+                <!--<goal>helpmojo</goal>-->
+              <!--</goals>-->
+              <!--<configuration>-->
+                <!--<skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>-->
+              <!--</configuration>-->
+            <!--</execution>-->
             <execution>
               <id>plugin-descriptor</id>
               <goals>
@@ -454,7 +378,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
-        <version>1.2</version>
         <executions>
           <execution>
             <phase>validate</phase>
@@ -464,10 +387,10 @@
             <configuration>
               <rules>
                 <requireJavaVersion>
-                  <version>[1.6,)</version>
+                  <version>[1.8,)</version>
                 </requireJavaVersion>
                 <requireMavenVersion>
-                  <version>[3.0.4,)</version>
+                  <version>[3.5,)</version>
                 </requireMavenVersion>
               </rules>
             </configuration>
@@ -476,19 +399,8 @@
       </plugin>
 
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.1</version>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-        </configuration>
-      </plugin>
-
-      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>animal-sniffer-maven-plugin</artifactId>
-        <version>1.9</version>
         <executions>
           <execution>
             <goals>
@@ -507,55 +419,13 @@
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>2.4</version>
-        <configuration>
-          <archive>
-            <manifest>
-              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-              <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>2.2.1</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>jar-no-fork</goal>
-            </goals>
-            <configuration>
-              <includePom>true</includePom>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-release-plugin</artifactId>
-        <version>2.4.1</version>
-        <configuration>
-          <autoVersionSubmodules>true</autoVersionSubmodules>
-          <useReleaseProfile>false</useReleaseProfile>
-          <goals>deploy</goals>
-          <releaseProfiles>release</releaseProfiles>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.3</version>
+        <version>3.7.1</version>
         <dependencies>
           <dependency>
             <groupId>org.apache.maven.doxia</groupId>
             <artifactId>doxia-module-markdown</artifactId>
-            <version>1.4</version>
+            <version>1.8</version>
           </dependency>
         </dependencies>
         <configuration>
@@ -572,35 +442,24 @@
         </executions>
       </plugin>
 
-      <!--
-      mvn license:format -N
-      -->
       <plugin>
-        <groupId>com.mycila.maven-license-plugin</groupId>
-        <artifactId>maven-license-plugin</artifactId>
-        <version>1.9.0</version>
+        <groupId>com.mycila</groupId>
+        <artifactId>license-maven-plugin</artifactId>
         <configuration>
-          <aggregate>true</aggregate>
-          <strictCheck>true</strictCheck>
-          <header>${project.basedir}/header.txt</header>
-          <useDefaultExcludes>false</useDefaultExcludes>
-          <includes>
-            <include>**/pom.xml</include>
-            <include>**/*.xml</include>
-            <include>**/*.properties</include>
-            <include>**/*.java</include>
-            <include>**/*.groovy</include>
-            <include>**/*.md</include>
-          </includes>
-          <excludes>
-            <exclude>**/target/**</exclude>
-            <exclude>**/.*/**</exclude>
+          <excludes combine.children="append">
+            <exclude>gmaven-testsuite/src/test/it-projects/**</exclude>
           </excludes>
-          <mapping>
-            <md>XML_STYLE</md>
-            <java>SLASHSTAR_STYLE</java>
-            <groovy>SLASHSTAR_STYLE</groovy>
-          </mapping>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <configuration>
+          <autoVersionSubmodules>true</autoVersionSubmodules>
+          <useReleaseProfile>false</useReleaseProfile>
+          <goals>deploy</goals>
+          <arguments>-B -Pbuildsupport-release</arguments>
         </configuration>
       </plugin>
     </plugins>
@@ -611,33 +470,32 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>2.7</version>
+        <version>2.9</version>
       </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.9</version>
+        <version>3.0.1</version>
         <configuration>
           <source>1.6</source>
-          <links>
-            <link>${site_mavenApidocsUrl}</link>
-            <link>${site_groovyApidocsUrl}</link>
-            <link>${site_javaApidocsUrl}</link>
-          </links>
+          <additionalOptions>
+            <!-- Turn off strict javadoc checks in Java-8 -->
+            <option>-Xdoclint:none</option>
+          </additionalOptions>
         </configuration>
       </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>2.15</version>
+        <version>2.20</version>
       </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
-        <version>3.0.1</version>
+        <version>3.10.0</version>
         <configuration>
           <targetJdk>1.6</targetJdk>
         </configuration>
@@ -646,26 +504,26 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jxr-plugin</artifactId>
-        <version>2.3</version>
-      </plugin>
-
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>findbugs-maven-plugin</artifactId>
-        <version>2.5.2</version>
-      </plugin>
-
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>cobertura-maven-plugin</artifactId>
-        <version>2.5.2</version>
+        <version>2.5</version>
       </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changelog-plugin</artifactId>
-        <version>2.2</version>
+        <version>2.3</version>
         <inherited>false</inherited>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <version>3.0.5</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+        <version>2.7</version>
       </plugin>
     </plugins>
   </reporting>
