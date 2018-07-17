@@ -25,8 +25,6 @@ import org.codehaus.gmaven.adapter.ClassSource;
 import org.codehaus.gmaven.adapter.ResourceLoader;
 import org.codehaus.gmaven.adapter.ScriptExecutor;
 import org.codehaus.gmaven.plugin.util.PropertiesBuilder;
-import org.codehaus.gmaven.plugin.util.SystemNoExitGuard;
-import org.codehaus.gmaven.plugin.util.SystemNoExitGuard.Task;
 
 import static org.apache.maven.plugins.annotations.ResolutionScope.TEST;
 
@@ -94,15 +92,8 @@ public class ExecuteMojo
     final Map<String, Object> options = Maps.newHashMap();
     final ScriptExecutor executor = getRuntime().createScriptExecutor();
 
-    // Guard against system exit and automatically restore system streams
-    new SystemNoExitGuard().run(new Task()
-    {
-      @Override
-      public void run() throws Exception {
-        Object result = executor.execute(classSource, getRuntimeRealm(), resourceLoader, context, options);
-        log.debug("Result: {}", result);
-      }
-    });
+    Object result = executor.execute(classSource, getRuntimeRealm(), resourceLoader, context, options);
+    log.debug("Result: {}", result);
   }
 
   @Override

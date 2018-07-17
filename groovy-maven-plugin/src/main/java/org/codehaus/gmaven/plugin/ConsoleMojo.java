@@ -22,8 +22,6 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.codehaus.gmaven.adapter.ConsoleWindow;
 import org.codehaus.gmaven.adapter.ConsoleWindow.WindowHandle;
 import org.codehaus.gmaven.adapter.ResourceLoader;
-import org.codehaus.gmaven.plugin.util.SystemNoExitGuard;
-import org.codehaus.gmaven.plugin.util.SystemNoExitGuard.Task;
 
 import static org.apache.maven.plugins.annotations.ResolutionScope.TEST;
 
@@ -48,14 +46,7 @@ public class ConsoleMojo
     final Map<String, Object> options = Maps.newHashMap();
     final ConsoleWindow console = getRuntime().createConsoleWindow();
 
-    // Guard against system exit and automatically restore system streams
-    new SystemNoExitGuard().run(new Task()
-    {
-      @Override
-      public void run() throws Exception {
-        WindowHandle handle = console.open(getRuntimeRealm(), resourceLoader, context, options);
-        handle.await();
-      }
-    });
+    WindowHandle handle = console.open(getRuntimeRealm(), resourceLoader, context, options);
+    handle.await();
   }
 }
