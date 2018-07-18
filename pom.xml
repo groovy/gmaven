@@ -450,6 +450,7 @@
         <configuration>
           <excludes combine.children="append">
             <exclude>gmaven-testsuite/src/test/it-projects/**</exclude>
+            <exclude>**/src/site/**</exclude>
           </excludes>
         </configuration>
       </plugin>
