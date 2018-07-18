@@ -9,7 +9,7 @@ env:
 
 branches:
   only:
-    - master
+    - gmaven-2.x
 
 jdk:
   - oraclejdk8
