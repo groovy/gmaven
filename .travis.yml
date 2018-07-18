@@ -4,6 +4,8 @@ sudo: false
 
 env:
   global:
+    - secure: "GDFKIFESOdPDItXYqhk8Ci97oE9phVo79Nn3eFHdU1+ncLeAcNcZZ05T+iLBQXumuZ8Z4BJgNW5vqBcTXpr+IlavKbcI1zfpOdqaLMBZSoJpB+DcrT9pypp/FL1hiVdnoyk3CGHwVMj5KDgIGDG+Bf58Jh8K/d+Zof7zrFilut8="
+    - secure: "IkXdzwD5xUB57fzf2wE/q9UlGjAZhiVohoDuID0fbzM+VEdG0LyaUe1fpLnOQH6ZHwm8d2BDv3mK2nuMASpQu+K9xKiqPTFCh1UUo/8Zi0lTiXDWRAOzZ/QCu9rPw9xmQAZYWAZjj8+H9oYcAV7CIhe7JvYGKKQOv/dFytxVnnA="
     - MAVEN_SETTINGS='.travis/settings.xml'
     - MAVEN_OPTIONS="-V -B -s $MAVEN_SETTINGS"
 
