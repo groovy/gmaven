@@ -559,7 +559,7 @@
       <id>site-stage</id>
 
       <build>
-        <defaultGoal>clean install site:site site:stage</defaultGoal>
+        <defaultGoal>site:site site:stage</defaultGoal>
       </build>
     </profile>
   </profiles>

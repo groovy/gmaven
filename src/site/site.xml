@@ -22,7 +22,7 @@
   <bannerLeft>
     <name>gmaven</name>
     <title>GMaven</title>
-    <src>http://media.xircles.codehaus.org/_projects/gmaven/_logos/small.png</src>
+    <src>http://groovy.github.io/gmaven/images/gmaven.png</src>
     <href>http://gmaven.codehaus.org</href>
   </bannerLeft>
 
@@ -48,9 +48,9 @@
   </custom>
 
   <body>
-    <!--<breadcrumbs>-->
-      <!--<item name="gmaven" href="${project.url}/index.html"/>-->
-    <!--</breadcrumbs>-->
+    <breadcrumbs>
+      <item name="gmaven" href="index.html"/>
+    </breadcrumbs>
 
     <menu name="Overview">
       <item name="About" href="index.html"/>
