@@ -68,10 +68,10 @@
     <url>https://github.com/groovy/gmaven/issues</url>
   </issueManagement>
 
-  <!--<ciManagement>-->
-  <!--<system>travis</system>-->
-  <!--<url>https://travis-ci.org/groovy/gmaven</url>-->
-  <!--</ciManagement>-->
+  <ciManagement>
+    <system>travis</system>
+    <url>https://travis-ci.org/groovy/gmaven</url>
+  </ciManagement>
 
   <mailingLists>
     <mailingList>
