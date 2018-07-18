@@ -19,5 +19,3 @@ jdk:
 install: ./build ci-prepare $MAVEN_OPTIONS
 
 script: ./build ci-build $MAVEN_OPTIONS
-
-script: mvn clean install
