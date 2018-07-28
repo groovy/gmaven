@@ -15,7 +15,13 @@
     limitations under the License.
 
 -->
-# GMaven ![gmaven-logo](http://groovy.github.io/gmaven/images/gmaven.png)
+# GMaven
+
+![license](https://img.shields.io/github/license/groovy/gmaven.svg)
+
+![maven-central](https://img.shields.io/maven-central/v/org.codehaus.gmaven/gmaven/2.svg)
+
+![gmaven-logo](http://groovy.github.io/gmaven/images/gmaven.png)
 
 Groovy integration for Maven
 
