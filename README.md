@@ -21,6 +21,8 @@
 
 ![maven-central](https://img.shields.io/maven-central/v/org.codehaus.gmaven/gmaven/2.svg)
 
+[![DepShield Badge](https://depshield.sonatype.org/badges/groovy/gmaven/depshield.svg)](https://depshield.github.io)
+
 ![gmaven-logo](http://groovy.github.io/gmaven/images/gmaven.png)
 
 Groovy integration for Maven
