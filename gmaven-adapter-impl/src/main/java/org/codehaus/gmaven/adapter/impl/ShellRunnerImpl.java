@@ -70,7 +70,7 @@ public class ShellRunnerImpl
     }
 
     try {
-      shell.run();
+      shell.run(null);
     }
     finally {
       gcl.clearCache();

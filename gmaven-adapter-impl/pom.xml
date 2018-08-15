@@ -30,7 +30,8 @@
   <name>${project.groupId}:${project.artifactId}</name>
 
   <properties>
-    <groovy.version>2.1.5</groovy.version>
+    <groovy.version>2.4.9</groovy.version>
+    <apache-ant.version>1.9.4</apache-ant.version>
 
     <!--
     Site configuration.  Using '_' instead of '.' for velocity-based filtering.
@@ -60,13 +61,13 @@
     <dependency>
       <groupId>org.apache.ant</groupId>
       <artifactId>ant</artifactId>
-      <version>1.8.4</version>
+      <version>${apache-ant.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.apache.ant</groupId>
       <artifactId>ant-launcher</artifactId>
-      <version>1.8.4</version>
+      <version>${apache-ant.version}</version>
     </dependency>
 
     <dependency>
