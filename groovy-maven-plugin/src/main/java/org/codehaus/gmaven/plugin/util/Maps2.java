@@ -25,7 +25,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /**
  * Map helper.
  *
- * @since ???
+ * @since 2.1.1
  */
 public class Maps2
 {

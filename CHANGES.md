@@ -15,9 +15,18 @@
     limitations under the License.
 
 -->
-# ![GMaven](http://media.xircles.codehaus.org/_projects/gmaven/_logos/medium.png)
+# ![GMaven](https://groovy.github.io/gmaven/images/gmaven.png)
 
-## [GMaven 2.0][2_0], released TBD
-[2_0]: https://nexus.codehaus.org/content/repositories/releases/org/codehaus/gmaven/gmaven/2.0
+## GMaven 2.1.1
+
+* Remove use of Guava Maps and Lists helpers
+* Resolve issue with property entry with null value
+
+## GMaven 2.1
+
+* Adjustments for use with Maven multi-threading
+* Build configuration improvements
+
+## GMaven 2.0
 
 * Initial release of 2.0 rewrite
