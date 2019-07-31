@@ -14,7 +14,7 @@ branches:
     - gmaven-2.x
 
 jdk:
-  - oraclejdk8
+  - openjdk8
 
 install: ./build ci-prepare $MAVEN_OPTIONS
 
