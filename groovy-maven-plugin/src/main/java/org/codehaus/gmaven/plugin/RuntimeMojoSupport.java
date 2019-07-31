@@ -18,13 +18,13 @@ package org.codehaus.gmaven.plugin;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
 import com.google.common.base.Throwables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.MojoExecution;
@@ -258,7 +258,7 @@ public abstract class RuntimeMojoSupport
   private void configureAdditionalClasspath(final ClassRealm realm) {
     log.debug("Configuring additional classpath with scope: {}", classpathScope);
 
-    List<File> classpath = Lists.newArrayList();
+    List<File> classpath = new ArrayList<File>();
 
     // add build output directory if scope includes 'compile'
     if (classpathScope.matches(compile)) {
@@ -334,7 +334,7 @@ public abstract class RuntimeMojoSupport
    * Configures the context which will be available to executed scripts as binding variables.
    */
   protected Map<String, Object> createContext() {
-    Map<String, Object> context = Maps.newHashMap();
+    Map<String, Object> context = new HashMap<String, Object>();
 
     context.put("log", createLogger());
     context.put("container", containerHelper);

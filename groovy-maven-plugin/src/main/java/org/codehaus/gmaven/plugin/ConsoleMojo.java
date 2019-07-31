@@ -15,9 +15,9 @@
  */
 package org.codehaus.gmaven.plugin;
 
+import java.util.HashMap;
 import java.util.Map;
 
-import com.google.common.collect.Maps;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.codehaus.gmaven.adapter.ConsoleWindow;
 import org.codehaus.gmaven.adapter.ConsoleWindow.WindowHandle;
@@ -43,7 +43,7 @@ public class ConsoleMojo
   protected void run() throws Exception {
     final ResourceLoader resourceLoader = new MojoResourceLoader(getRuntimeRealm(), getScriptpath());
     final Map<String, Object> context = createContext();
-    final Map<String, Object> options = Maps.newHashMap();
+    final Map<String, Object> options = new HashMap<String, Object>();
     final ConsoleWindow console = getRuntime().createConsoleWindow();
 
     WindowHandle handle = console.open(getRuntimeRealm(), resourceLoader, context, options);

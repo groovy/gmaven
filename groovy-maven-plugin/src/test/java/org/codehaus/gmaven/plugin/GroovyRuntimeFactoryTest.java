@@ -15,12 +15,12 @@
  */
 package org.codehaus.gmaven.plugin;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.sonatype.sisu.litmus.testsupport.TestSupport;
 
-import com.google.common.collect.Lists;
 import org.codehaus.gmaven.adapter.GroovyRuntime;
 import org.junit.Before;
 import org.junit.Test;
@@ -49,7 +49,7 @@ public class GroovyRuntimeFactoryTest
 
   @Before
   public void setUp() throws Exception {
-    services = Lists.newArrayList();
+    services = new ArrayList<GroovyRuntime>();
 
     underTest = new GroovyRuntimeFactory()
     {
