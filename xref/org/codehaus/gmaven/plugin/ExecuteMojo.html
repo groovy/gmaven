@@ -23,9 +23,9 @@
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> */</em>
 <a class="jxr_linenumber" name="L16" href="#L16">16</a>  <strong class="jxr_keyword">package</strong> org.codehaus.gmaven.plugin;
 <a class="jxr_linenumber" name="L17" href="#L17">17</a>  
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <strong class="jxr_keyword">import</strong> java.util.Map;
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>  
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <strong class="jxr_keyword">import</strong> com.google.common.collect.Maps;
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <strong class="jxr_keyword">import</strong> java.util.HashMap;
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <strong class="jxr_keyword">import</strong> java.util.Map;
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  
 <a class="jxr_linenumber" name="L21" href="#L21">21</a>  <strong class="jxr_keyword">import</strong> org.apache.maven.plugins.annotations.Component;
 <a class="jxr_linenumber" name="L22" href="#L22">22</a>  <strong class="jxr_keyword">import</strong> org.apache.maven.plugins.annotations.Mojo;
 <a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.maven.plugins.annotations.Parameter;
@@ -97,7 +97,7 @@
 <a class="jxr_linenumber" name="L89" href="#L89">89</a>  
 <a class="jxr_linenumber" name="L90" href="#L90">90</a>      <strong class="jxr_keyword">final</strong> <a href="../../../../org/codehaus/gmaven/adapter/ResourceLoader.html">ResourceLoader</a> resourceLoader = <strong class="jxr_keyword">new</strong> <a href="../../../../org/codehaus/gmaven/plugin/MojoResourceLoader.html">MojoResourceLoader</a>(getRuntimeRealm(), classSource, getScriptpath());
 <a class="jxr_linenumber" name="L91" href="#L91">91</a>      <strong class="jxr_keyword">final</strong> Map&lt;String, Object&gt; context = createContext();
-<a class="jxr_linenumber" name="L92" href="#L92">92</a>      <strong class="jxr_keyword">final</strong> Map&lt;String, Object&gt; options = Maps.newHashMap();
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>      <strong class="jxr_keyword">final</strong> Map&lt;String, Object&gt; options = <strong class="jxr_keyword">new</strong> HashMap&lt;String, Object&gt;();
 <a class="jxr_linenumber" name="L93" href="#L93">93</a>      <strong class="jxr_keyword">final</strong> <a href="../../../../org/codehaus/gmaven/adapter/ScriptExecutor.html">ScriptExecutor</a> executor = getRuntime().createScriptExecutor();
 <a class="jxr_linenumber" name="L94" href="#L94">94</a>  
 <a class="jxr_linenumber" name="L95" href="#L95">95</a>      Object result = executor.execute(classSource, getRuntimeRealm(), resourceLoader, context, options);
@@ -112,6 +112,6 @@
 <a class="jxr_linenumber" name="L104" href="#L104">104</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2006&#x2013;2018. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2006&#x2013;2019. All rights reserved.</div>
 </body>
 </html>

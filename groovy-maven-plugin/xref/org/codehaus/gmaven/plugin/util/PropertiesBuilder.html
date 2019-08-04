@@ -23,15 +23,15 @@
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> */</em>
 <a class="jxr_linenumber" name="L16" href="#L16">16</a>  <strong class="jxr_keyword">package</strong> org.codehaus.gmaven.plugin.util;
 <a class="jxr_linenumber" name="L17" href="#L17">17</a>  
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <strong class="jxr_keyword">import</strong> java.util.Collections;
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <strong class="jxr_keyword">import</strong> java.util.List;
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <strong class="jxr_keyword">import</strong> java.util.Map;
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <strong class="jxr_keyword">import</strong> java.util.Map.Entry;
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>  
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> javax.annotation.Nullable;
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <strong class="jxr_keyword">import</strong> java.util.ArrayList;
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <strong class="jxr_keyword">import</strong> java.util.Collections;
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <strong class="jxr_keyword">import</strong> java.util.HashMap;
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <strong class="jxr_keyword">import</strong> java.util.List;
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <strong class="jxr_keyword">import</strong> java.util.Map;
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> java.util.Map.Entry;
 <a class="jxr_linenumber" name="L24" href="#L24">24</a>  
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> com.google.common.collect.Lists;
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> com.google.common.collect.Maps;
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> javax.annotation.Nullable;
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.maven.execution.MavenSession;
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.maven.project.MavenProject;
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>  <strong class="jxr_keyword">import</strong> org.codehaus.plexus.component.annotations.Component;
@@ -81,16 +81,16 @@
 <a class="jxr_linenumber" name="L73" href="#L73">73</a>    }
 <a class="jxr_linenumber" name="L74" href="#L74">74</a>  
 <a class="jxr_linenumber" name="L75" href="#L75">75</a>    <strong class="jxr_keyword">public</strong> Map&lt;String, String&gt; build() {
-<a class="jxr_linenumber" name="L76" href="#L76">76</a>      Map&lt;String, String&gt; props = Maps.newHashMap();
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>      Map&lt;String, String&gt; props = <strong class="jxr_keyword">new</strong> HashMap&lt;String, String&gt;();
 <a class="jxr_linenumber" name="L77" href="#L77">77</a>      <strong class="jxr_keyword">if</strong> (defaults != <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="L78" href="#L78">78</a>        props.putAll(defaults);
 <a class="jxr_linenumber" name="L79" href="#L79">79</a>      }
 <a class="jxr_linenumber" name="L80" href="#L80">80</a>      <strong class="jxr_keyword">if</strong> (project != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L81" href="#L81">81</a>        props.putAll(Maps.fromProperties(project.getProperties()));
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>        props.putAll(Maps2.fromProperties(project.getProperties()));
 <a class="jxr_linenumber" name="L82" href="#L82">82</a>      }
 <a class="jxr_linenumber" name="L83" href="#L83">83</a>      <strong class="jxr_keyword">if</strong> (session != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L84" href="#L84">84</a>        props.putAll(Maps.fromProperties(session.getSystemProperties()));
-<a class="jxr_linenumber" name="L85" href="#L85">85</a>        props.putAll(Maps.fromProperties(session.getUserProperties()));
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>        props.putAll(Maps2.fromProperties(session.getSystemProperties()));
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>        props.putAll(Maps2.fromProperties(session.getUserProperties()));
 <a class="jxr_linenumber" name="L86" href="#L86">86</a>      }
 <a class="jxr_linenumber" name="L87" href="#L87">87</a>      <strong class="jxr_keyword">if</strong> (properties != <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="L88" href="#L88">88</a>        props.putAll(properties);
@@ -101,7 +101,7 @@
 <a class="jxr_linenumber" name="L93" href="#L93">93</a>  
 <a class="jxr_linenumber" name="L94" href="#L94">94</a>      <strong class="jxr_keyword">if</strong> (log.isTraceEnabled()) {
 <a class="jxr_linenumber" name="L95" href="#L95">95</a>        log.trace(<span class="jxr_string">"Properties:"</span>);
-<a class="jxr_linenumber" name="L96" href="#L96">96</a>        List&lt;String&gt; keys = Lists.newArrayList(props.keySet());
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>        List&lt;String&gt; keys = <strong class="jxr_keyword">new</strong> ArrayList&lt;String&gt;(props.keySet());
 <a class="jxr_linenumber" name="L97" href="#L97">97</a>        Collections.sort(keys);
 <a class="jxr_linenumber" name="L98" href="#L98">98</a>        <strong class="jxr_keyword">for</strong> (String key : keys) {
 <a class="jxr_linenumber" name="L99" href="#L99">99</a>          log.trace(<span class="jxr_string">"  {}={}"</span>, key, props.get(key));
@@ -112,7 +112,7 @@
 <a class="jxr_linenumber" name="L104" href="#L104">104</a>   }
 <a class="jxr_linenumber" name="L105" href="#L105">105</a> 
 <a class="jxr_linenumber" name="L106" href="#L106">106</a>   <strong class="jxr_keyword">private</strong> Map&lt;String, String&gt; resolve(<strong class="jxr_keyword">final</strong> Map&lt;String, String&gt; source) {
-<a class="jxr_linenumber" name="L107" href="#L107">107</a>     Map&lt;String, String&gt; result = Maps.newHashMapWithExpectedSize(source.size());
+<a class="jxr_linenumber" name="L107" href="#L107">107</a>     Map&lt;String, String&gt; result = <strong class="jxr_keyword">new</strong> HashMap&lt;String, String&gt;(source.size());
 <a class="jxr_linenumber" name="L108" href="#L108">108</a>     Interpolator interpolator = <strong class="jxr_keyword">new</strong> StringSearchInterpolator();
 <a class="jxr_linenumber" name="L109" href="#L109">109</a>     interpolator.addValueSource(<strong class="jxr_keyword">new</strong> MapBasedValueSource(source));
 <a class="jxr_linenumber" name="L110" href="#L110">110</a> 
@@ -143,6 +143,6 @@
 <a class="jxr_linenumber" name="L135" href="#L135">135</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2006&#x2013;2018. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2006&#x2013;2019. All rights reserved.</div>
 </body>
 </html>

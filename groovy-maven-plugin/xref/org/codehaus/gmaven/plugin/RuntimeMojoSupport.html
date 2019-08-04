@@ -26,13 +26,13 @@
 <a class="jxr_linenumber" name="L18" href="#L18">18</a>  <strong class="jxr_keyword">import</strong> java.io.File;
 <a class="jxr_linenumber" name="L19" href="#L19">19</a>  <strong class="jxr_keyword">import</strong> java.io.IOException;
 <a class="jxr_linenumber" name="L20" href="#L20">20</a>  <strong class="jxr_keyword">import</strong> java.net.MalformedURLException;
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <strong class="jxr_keyword">import</strong> java.util.List;
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <strong class="jxr_keyword">import</strong> java.util.Map;
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> java.util.Properties;
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>  
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> com.google.common.base.Throwables;
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> com.google.common.collect.Lists;
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> com.google.common.collect.Maps;
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <strong class="jxr_keyword">import</strong> java.util.ArrayList;
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <strong class="jxr_keyword">import</strong> java.util.HashMap;
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> java.util.List;
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <strong class="jxr_keyword">import</strong> java.util.Map;
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> java.util.Properties;
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> com.google.common.base.Throwables;
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.maven.artifact.Artifact;
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>  <strong class="jxr_keyword">import</strong> org.apache.maven.execution.MavenSession;
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> org.apache.maven.plugin.MojoExecution;
@@ -266,7 +266,7 @@
 <a class="jxr_linenumber" name="L258" href="#L258">258</a>   <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> configureAdditionalClasspath(<strong class="jxr_keyword">final</strong> ClassRealm realm) {
 <a class="jxr_linenumber" name="L259" href="#L259">259</a>     log.debug(<span class="jxr_string">"Configuring additional classpath with scope: {}"</span>, classpathScope);
 <a class="jxr_linenumber" name="L260" href="#L260">260</a> 
-<a class="jxr_linenumber" name="L261" href="#L261">261</a>     List&lt;File&gt; classpath = Lists.newArrayList();
+<a class="jxr_linenumber" name="L261" href="#L261">261</a>     List&lt;File&gt; classpath = <strong class="jxr_keyword">new</strong> ArrayList&lt;File&gt;();
 <a class="jxr_linenumber" name="L262" href="#L262">262</a> 
 <a class="jxr_linenumber" name="L263" href="#L263">263</a>     <em class="jxr_comment">// add build output directory if scope includes 'compile'</em>
 <a class="jxr_linenumber" name="L264" href="#L264">264</a>     <strong class="jxr_keyword">if</strong> (classpathScope.matches(compile)) {
@@ -342,7 +342,7 @@
 <a class="jxr_linenumber" name="L334" href="#L334">334</a> <em class="jxr_javadoccomment">   * Configures the context which will be available to executed scripts as binding variables.</em>
 <a class="jxr_linenumber" name="L335" href="#L335">335</a> <em class="jxr_javadoccomment">   */</em>
 <a class="jxr_linenumber" name="L336" href="#L336">336</a>   <strong class="jxr_keyword">protected</strong> Map&lt;String, Object&gt; createContext() {
-<a class="jxr_linenumber" name="L337" href="#L337">337</a>     Map&lt;String, Object&gt; context = Maps.newHashMap();
+<a class="jxr_linenumber" name="L337" href="#L337">337</a>     Map&lt;String, Object&gt; context = <strong class="jxr_keyword">new</strong> HashMap&lt;String, Object&gt;();
 <a class="jxr_linenumber" name="L338" href="#L338">338</a> 
 <a class="jxr_linenumber" name="L339" href="#L339">339</a>     context.put(<span class="jxr_string">"log"</span>, createLogger());
 <a class="jxr_linenumber" name="L340" href="#L340">340</a>     context.put(<span class="jxr_string">"container"</span>, containerHelper);
@@ -362,6 +362,6 @@
 <a class="jxr_linenumber" name="L354" href="#L354">354</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2006&#x2013;2018. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2006&#x2013;2019. All rights reserved.</div>
 </body>
 </html>
