@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -29,8 +30,6 @@ import org.sonatype.sisu.litmus.testsupport.hamcrest.FileMatchers;
 import org.sonatype.sisu.litmus.testsupport.junit.TestIndexRule;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import org.apache.commons.io.FileUtils;
 import org.codehaus.plexus.interpolation.Interpolator;
 import org.codehaus.plexus.interpolation.MapBasedValueSource;
@@ -158,11 +157,10 @@ public abstract class ITSupport
    * Log a properties object.
    */
   private void logProperties(final Properties source) {
-    Map<String, String> map = Maps.fromProperties(source);
-    List<String> keys = Lists.newArrayList(map.keySet());
+    List<String> keys = new ArrayList<String>(source.stringPropertyNames());
     Collections.sort(keys);
     for (String key : keys) {
-      log("  {}={}", key, map.get(key));
+      log("  {}={}", key, source.getProperty(key));
     }
   }
 

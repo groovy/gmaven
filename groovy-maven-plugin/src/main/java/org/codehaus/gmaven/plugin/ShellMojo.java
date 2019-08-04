@@ -15,9 +15,9 @@
  */
 package org.codehaus.gmaven.plugin;
 
+import java.util.HashMap;
 import java.util.Map;
 
-import com.google.common.collect.Maps;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.codehaus.gmaven.adapter.ResourceLoader;
 import org.codehaus.gmaven.adapter.ShellRunner;
@@ -42,7 +42,7 @@ public class ShellMojo
   protected void run() throws Exception {
     final ResourceLoader resourceLoader = new MojoResourceLoader(getRuntimeRealm(), getScriptpath());
     final Map<String, Object> context = createContext();
-    final Map<String, Object> options = Maps.newHashMap();
+    final Map<String, Object> options = new HashMap<String, Object>();
     final ShellRunner shell = getRuntime().createShellRunner();
 
     shell.run(getRuntimeRealm(), resourceLoader, context, options);

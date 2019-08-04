@@ -15,15 +15,15 @@
  */
 package org.codehaus.gmaven.plugin.util;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.annotation.Nullable;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.component.annotations.Component;
@@ -73,16 +73,16 @@ public class PropertiesBuilder
   }
 
   public Map<String, String> build() {
-    Map<String, String> props = Maps.newHashMap();
+    Map<String, String> props = new HashMap<String, String>();
     if (defaults != null) {
       props.putAll(defaults);
     }
     if (project != null) {
-      props.putAll(Maps.fromProperties(project.getProperties()));
+      props.putAll(Maps2.fromProperties(project.getProperties()));
     }
     if (session != null) {
-      props.putAll(Maps.fromProperties(session.getSystemProperties()));
-      props.putAll(Maps.fromProperties(session.getUserProperties()));
+      props.putAll(Maps2.fromProperties(session.getSystemProperties()));
+      props.putAll(Maps2.fromProperties(session.getUserProperties()));
     }
     if (properties != null) {
       props.putAll(properties);
@@ -93,7 +93,7 @@ public class PropertiesBuilder
 
     if (log.isTraceEnabled()) {
       log.trace("Properties:");
-      List<String> keys = Lists.newArrayList(props.keySet());
+      List<String> keys = new ArrayList<String>(props.keySet());
       Collections.sort(keys);
       for (String key : keys) {
         log.trace("  {}={}", key, props.get(key));
@@ -104,7 +104,7 @@ public class PropertiesBuilder
   }
 
   private Map<String, String> resolve(final Map<String, String> source) {
-    Map<String, String> result = Maps.newHashMapWithExpectedSize(source.size());
+    Map<String, String> result = new HashMap<String, String>(source.size());
     Interpolator interpolator = new StringSearchInterpolator();
     interpolator.addValueSource(new MapBasedValueSource(source));
 

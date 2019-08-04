@@ -17,7 +17,7 @@
 -->
 # GMaven
 
-<img src="http://media.xircles.codehaus.org/_projects/gmaven/_logos/large.png" style="float: right;"/>
+<img src="https://groovy.github.io/gmaven/images/gmaven.png" style="float: right;"/>
 
 [Groovy](http://groovy.codehaus.org) integration for [Apache Maven](http://maven.apache.org).
 
