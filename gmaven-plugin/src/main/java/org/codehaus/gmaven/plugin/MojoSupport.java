@@ -63,12 +63,16 @@ public abstract class MojoSupport
      */
     protected MavenProject project;
 
+    private static final Object lock = new Object();
+
     /**
      * Main Mojo execution hook.  Sub-class should use {@link #doExecute} instead.
      */
-    public synchronized void execute() throws MojoExecutionException, MojoFailureException {
+    public void execute() throws MojoExecutionException, MojoFailureException {
         try {
-            doExecute();
+            synchronized(lock) {
+                doExecute();
+            }
         }
         catch (Exception e) {
             //
