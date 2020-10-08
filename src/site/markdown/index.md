@@ -43,9 +43,9 @@ GMaven 2.x no longer supports any integration for compilation of Groovy sources.
 stub-generation and hooking up compliation to the proper Maven lifecycle phases to effectivly support.
 
 For compliation integration with Maven please see the
-[Groovy Eclipse Compiler](http://docs.codehaus.org/display/GROOVY/Groovy-Eclipse+compiler+plugin+for+Maven),
+[Groovy Eclipse Compiler](https://github.com/groovy/groovy-eclipse/wiki/Groovy-Eclipse-Maven-plugin),
 which is the recommended and prefered option.  If any problems are discovered with the compiler please
-[report an issue](http://jira.codehaus.org/browse/GRECLIPSE).
+[report an issue](https://github.com/groovy/groovy-eclipse/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc).
 
 As a fallback the [Groovy ant tasks](http://groovy.codehaus.org/Compiling+With+Maven2) can also be used
 if for some reason the prefered option is not viable for the target environment.
