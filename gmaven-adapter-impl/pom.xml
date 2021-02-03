@@ -31,7 +31,7 @@
 
   <properties>
     <groovy.version>2.4.9</groovy.version>
-    <apache-ant.version>1.9.4</apache-ant.version>
+    <apache-ant.version>1.10.9</apache-ant.version>
 
     <!--
     Site configuration.  Using '_' instead of '.' for velocity-based filtering.
