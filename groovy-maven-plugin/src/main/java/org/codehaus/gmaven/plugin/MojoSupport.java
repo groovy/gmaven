@@ -38,6 +38,10 @@ public abstract class MojoSupport
   }
 
   public void execute() throws MojoExecutionException, MojoFailureException {
+    if (isSkipped()) {
+      getLog().info("Skipping as requested by the user");
+      return;
+    }
     try {
       try {
         log.trace("Prepare");
@@ -66,5 +70,9 @@ public abstract class MojoSupport
 
   protected void cleanup() throws Exception {
     // empty
+  }
+
+  protected boolean isSkipped() {
+    return false;
   }
 }

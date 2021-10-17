@@ -82,6 +82,15 @@ public class ExecuteMojo
   @Parameter
   private Map<String, String> defaults;
 
+
+  /**
+   * Skip the execution of this mojo.
+   *
+   * @since 2.2.0
+   */
+  @Parameter(property = "gmaven.execute.skip", defaultValue = "false")
+  private boolean skip;
+
   @Override
   protected void run() throws Exception {
     final ClassSource classSource = classSourceFactory.create(source);
@@ -101,4 +110,10 @@ public class ExecuteMojo
     builder.setProperties(properties)
         .setDefaults(defaults);
   }
+
+  @Override
+  protected boolean isSkipped() {
+    return skip;
+  }
+
 }
